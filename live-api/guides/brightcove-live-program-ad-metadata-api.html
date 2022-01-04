@@ -1,0 +1,73 @@
+---
+title: API de metadatos de anuncios del programa en vivo de Brightcove
+description: 'La API de metadatos de anuncios del programa expone una API para que los metadatos de contenido se envíen y actualicen constantemente fuera de banda desde una transmisión en vivo del cliente.'
+parent: Guides 
+grandparent: Live API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+ <summary>{{ page.description }}</summary>
+	<section class="bcls-section">
+<h2 id="introduction">Introducción</h2>
+
+<p>El esquema de metadatos de anuncios (ad_server_data) admite una sintaxis JSON plana sin elementos anidados (solo pares clave-valor). Los datos del servidor de anuncios establecidos a través de la API se utilizan para todas las pausas publicitarias recibidas después de la actualización hasta que los datos se sobrescriben o se restablecen. Los clientes pueden actualizar y / o restablecer los datos en cualquier momento durante su transmisión en vivo.</p>
+
+<p>Estos metadatos no persisten entre activaciones de Steam. Los metadatos de anuncios que deben persistir entre las activaciones de transmisiones deben establecerse en la configuración de anuncios de la aplicación SSAI. El conjunto de datos a través de la API se puede configurar para su uso como macros en el servidor de anuncios y el reemplazo de balizas del lado del servidor.</p>
+
+<p>Los metadatos del programa publicitario se envían al sistema SSAI a través de etiquetas de lista de reproducción personalizadas y siguen la precedencia del parámetro dinámico de anuncios (DAP) existente en el sistema SSAI. Los datos del servidor de anuncios enviados en un punto de referencia tienen prioridad sobre los metadatos asignados al trabajo. Si se producen colisiones de claves entre los datos de los puntos de referencia y los metadatos del anuncio en el trabajo, los valores de los puntos de referencia se consideran de mayor prioridad y se utilizan en la colección fusionada.</p>
+
+<p>Los metadatos de anuncios proporcionados en un punto de referencia solo se utilizan para ese punto de referencia y no persisten para las inserciones de puntos de referencia posteriores. Solo los metadatos de anuncios establecidos a través de la API de metadatos de anuncios del programa persistirán para todas las pausas publicitarias recibidas posteriormente hasta que se actualicen o restablezcan.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="endpoints">Puntos finales</h2>
+
+<p>Para obtener detalles completos de los puntos finales, consulte la <a href="/live-api/references/reference.html#operation/AddAdMatadata">Referencia de API en vivo</a>.</p>
+
+<h3>Agregar / actualizar</h3>
+
+<p>Para agregar o actualizar metadatos de anuncios de programas en vivo, envíe un <code translate="No">POST</code> solicitud de:</p>
+
+<pre>
+<code class="language-http" translate="No">https://api.bcovlive.io/v1/jobs/<span class="bcls-input">{job_id}</span>/cuepointdata</code></pre>
+
+<h4><request body=""></request></h4>
+
+<table class="bcls-table">
+	<caption class="bcls-caption--table">Agregar / actualizar campos</caption>
+	<thead class="bcls-table__head">
+		<tr>
+			<th>Campo</th>
+			<th>Tipo</th>
+			<th>Descripción</th>
+			<th>Ejemplo</th>
+		</tr>
+	</thead>
+	<tbody class="bcls-table__body">
+		<tr>
+			<td><code translate="No">ad_server_data</code></td>
+			<td>Objeto</td>
+			<td>Un objeto que contiene pares clave / valor.</td>
+			<td>
+			<pre class="line-numbers">
+<code class="language-json" translate="No">{
+  "ad_server_data": {
+  	"one":"won",
+  	"two":2,
+  	"three":false
+  }
+}
+</code></pre>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Borrar</h3>
+
+<p>Para eliminar metadatos de anuncios de programas en vivo, envíe un <code translate="No">DELETE</code> solicitud de:</p>
+
+<pre>
+<code class="language-http" translate="No">https://api.bcovlive.io/v1/jobs/<span class="bcls-input">{job_id}</span>/cuepointdata</code></pre>
+</section>
+</article>

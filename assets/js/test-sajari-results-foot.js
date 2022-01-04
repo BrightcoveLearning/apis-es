@@ -1,3 +1,7 @@
+---
+layout: null
+---
+
   var getUrlParam = function(e){var t = new RegExp("[?&]" + e.replace(/[\[\]]/g, "\\$&") + "(=([^&#]*)|&|#|$)"),a = t.exec(window.location.href);return a && a[2] ? decodeURIComponent(a[2].replace(/\+/g, " ")) : ""};
   var lang = '', lang_prefix = '', site_href = window.location.href, site_domain, filter;
   if (site_href.indexOf('//de.') > -1) {
@@ -19,7 +23,7 @@
     lang = 'zh-tw';
     lang_prefix = 'zh-tw.'
   }
-  site_domain = lang_prefix + 'apis.support.brightcove.com';
+  site_domain = lang_prefix + '{{ site.site_domain }}';
   filter = "domain='" + site_domain + "'";
   console.log('filter', filter);
   var searchInterface = sajari.init({

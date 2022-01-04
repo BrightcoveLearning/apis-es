@@ -1,0 +1,83 @@
+---
+title: 'PREGUNTAS MÁS FRECUENTES: Marca de agua forense'
+description: "En este tema, puede ver las respuestas a una serie de preguntas frecuentes relacionadas con Brightcove Forensic Watermarking".
+parent: Forensic Watermarking
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <style type="text/css">
+    resumen de detalles { font-size: 1.15rem; }
+  </style>
+  
+  <section class="bcls-section">
+    <h2 id="Introduction">Introducción</h2>
+    <p>
+      La marca de agua forense (FW) le permite proteger su contenido premium contra la piratería y el intercambio de contenido no autorizado. Esta función agrega una marca de agua invisible a sus videos, lo que le permite rastrear cualquier filtración de contenido.
+    </p>
+    <p>Para obtener más información sobre esta función, consulte la <a href="/general/overview-forensic-watermarking.html">Visión general: Marca de agua forense</a> documento.</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="General_questions">General</h2> 
+      <details>
+          <summary>¿Cómo funciona la detección de contenido?</summary>
+          <p>El proceso de detección se basa en una parte del contenido que se puede descargar, capturar o grabar en un archivo. Una herramienta específica de NAGRA, llamada <strong>Empaquetador</strong> , genera un <strong>.pak</strong> expediente. Este archivo se envía a NAGRA para recuperar la secuencia única entregada, que luego se compara con un usuario. Usted es responsable de hacer coincidir la secuencia con el usuario. Los servicios de detección se adquieren directamente con NAGRA; generalmente lo realiza un tercero contratado por el propietario del contenido para rastrear Internet y encontrar contenido ilegal.</p>
+      </details>
+      <br/>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Integrations">Integraciones</h2>
+    <details>
+      <summary>¿La marca de agua forense es compatible con dispositivos como Chromecast o AirPlay?</summary>
+        <p>Sí, el token de marca de agua se transmite al receptor de transmisión. Esto es compatible con el reproductor web y los SDK nativos.</p>
+      </details>
+      <br/>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Reporting">Seguimiento e informes</h2>
+    <details>
+      <summary>¿Cómo rastrea NAGRA el número de transacciones utilizadas por un cliente?</summary>
+      <p>NAGRA no tiene una forma de rastrear si alguna parte de nuestro software está conectada a NAGRA para reportar transacciones.</p>
+      <p>Usted es responsable de descargar de la API de Analytics un informe con el número de espectadores únicos por día, cada 24 horas, para proporcionar como prueba el número de transacciones utilizadas.</p>
+    </details>
+    <br/>
+    <details>
+      <summary>¿Cómo se manejan los informes?</summary>
+      <p>Los informes de análisis sobre los espectadores de videos forenses con marcas de agua están disponibles a través de la API de análisis.</p>
+      <p>Para obtener más detalles, consulte la <a href="/general/overview-forensic-watermarking.html#Analytics_reports">Descripción general: Marca de agua forense</a> documento.</p>
+    </details>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="General_questions">Transcodificación</h2>
+      <details>
+          <summary>¿Cuál es la duración mínima de video requerida para usar FW con éxito?</summary>
+          <p>5 minutos</p>
+      </details>
+      <br/>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="General_questions">Reproductor web</h2>
+      <details>
+          <summary>¿Hay una superposición para indicar a los espectadores que el contenido tiene una marca de agua invisible?</summary>
+          <p>Brightcove Player admite una superposición.<br/>
+            Ejemplo: <a href="https://studio.support.brightcove.com/players/configuring-player-overlay-using-overlay-plugin.html">Configuración de una superposición de reproductor mediante el complemento de superposición</a>.
+          </p>
+      </details>
+      <br/>
+  </section>
+
+  <!-- <section class="bcls-section">
+    <h2 id="General_questions">Native SDKs</h2>
+      <details>
+          <summary>Is Forensic Watermarking supported with devices such as Chromecast or AirPlay?</summary>
+          <p>Yes, the watermark token is passed along to the cast receiver</p>
+      </details>
+      <br/>
+  </section> -->
+  
+</article>

@@ -1,0 +1,55 @@
+<section class="bcls-section" id="workingSample">
+  <h2>Generador de informes de video</h2>
+
+  <fieldset class="bcls-fieldset">
+    <legend>Aporte</legend>
+
+    <p>Si no ingresa la información de la cuenta, se utilizará una cuenta de muestra de Brightcove.</p>
+
+    <p>ID de la cuenta: <input id="account_id" type="text" value="" placeholder="1752604059001" /></p>
+
+    <p>Identificación del cliente: <input id="client_id" type="text" size="60" value="" placeholder="c5d0a622-5479-46d8-8d8a-5f034b943fab" /></p>
+
+    <p>Secreto del cliente: <input id="client_secret" type="text" size="60" value="" placeholder="w7NQYu0vUloM4GYYy2SXAxrvyFpt8fwI35qAFZcS13-VIgs0itwKNsAwHOS80sOWK" /></p>
+
+    <p>Videos para recuperar: <select name="videoCount" id="videoCount">
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="500">500</option>
+        <option value="All">Todas</option>
+      </select></p>
+
+    <p>Desplazamiento inicial: <input id="initial_offset" type="text" value="0" size="20" /><br>
+    (Establezca esto en la cantidad de videos que ya ha recuperado)</p>
+
+    <p>Formato de informe: <select name="report_type" id="report_type">
+      <option value="json">JSON</option>
+      <option value="csv">CSV</option>
+    </select></p>
+
+    <aside class="bcls-aside bcls-aside--warning">Si seleccionas <code translate="No">All</code> , ¡prepárate para esperar un rato! También puede ejecutar el informe en lotes, utilizando la opción de compensación anterior; esto se recomienda para bibliotecas de videos grandes.</aside>
+
+    <p><button class="bcls-button" id="makeReport">Generar el informe</button></p>
+  </fieldset>
+
+  <fieldset class="bcls-fieldset">
+    <legend>Tronco</legend>
+
+    <div id="logger" style="color:rgb(237, 104, 38)">
+      <p id="logText">Esperando entrada ...</p>
+    </div>
+
+    <p>Solicitud de API actual</p>
+
+    <pre class="line-numbers">
+<code id="apiRequest" class="language-http">La solicitud de API aparecerá aquí ...</code></pre>
+  </fieldset>
+</section>
+
+<section id="csvDisplay" class="bcls-section">
+  <h2>Informe de videos heredados</h2>
+
+  <p>Copie y pegue los datos a continuación en un archivo de texto vacío y guárdelo con una extensión .csv. Luego puede abrir el archivo para verlo en su aplicación de hoja de cálculo.</p>
+  <textarea name="csvData" id="csvData" class="bcls-code" style="height:30em;"></textarea>
+</section>

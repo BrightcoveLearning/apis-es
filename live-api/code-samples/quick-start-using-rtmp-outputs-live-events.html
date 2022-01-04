@@ -1,0 +1,287 @@
+---
+title: 'Inicio rápido: Uso de salidas RTMP para eventos en vivo'
+description: 'Este tutorial lo guiará a través de la creación de salidas RTMP para configurar eventos en vivo en YouTube Live y Facebook Live.'
+parent: Code Samples 
+grandparent: Live API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+<section class="bcls-section">
+<h2 id="Overview">Descripción general</h2>
+
+<figure class="bcls-figure"><img alt="general-block-diagram" title="Block diagram" src="/assets/images/live-api/18697/block-diagram-small.png" />
+<figcaption class="bcls-caption--image">Diagrama de bloques</figcaption>
+</figure>
+
+<p>Este tutorial explica a nivel de API cómo crear un trabajo de transmisión en vivo en <a href="/">Brightcove en vivo</a> y luego crea <a href="https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol">RTMP</a> salidas y volver a transmitirlas a YouTube Live y Facebook Live.</p>
+
+<aside class="BCL-bcls-aside bcls-aside--information">Notas:
+<ul>
+	<li>Para obtener información sobre cómo utilizar las salidas RTMP en el módulo Live, consulte <a href="https://live.support.brightcove.com/live-module/using-live-rtmp-outputs-stream-facebook-and-youtube.html">Uso de salidas RTMP en vivo para transmitir a Facebook y YouTube</a>.</li>
+  <li>Salidas RTMP <strong>lo hace</strong> apoyo <code translate="No">rtmps</code> URLs - deberías usar <code translate="No">rtmps</code> si la plataforma social lo admite.</li>
+  <li>Tenga en cuenta que Facebook finalizó el soporte para <code translate="No">rtmp</code>.streams a partir del 1 de mayo de 2019, para Facebook, <strong>DEBER</strong> usar <code translate="No">RTMPS</code>.</li>
+  <li>La <strong>solo el formato actual es compatible con las URL RTMP</strong> es <code translate="No">rtmps://host:port/application/streamName</code>.</li>
+</ul>
+</aside>
+
+<p>Este tutorial usará <a translate="No" href="https://general.support.brightcove.com/developer/concepts-set-curl.html">curl</a> para realizar las solicitudes de API, pero puedes hacerlas fácilmente en <a translate="No" href="https://apis.support.brightcove.com/general/use-insomnia-api-requests.html">Insomnia</a>, <a translate="No" href="https://apis.support.brightcove.com/general/use-postman-api-requests.html">Postman</a> u otros clientes REST en su lugar.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="create_a_live_job">Crea un trabajo en vivo</h2>
+
+<p>Primero, crearemos un trabajo en vivo. Necesitarás un <code translate="No">API-KEY</code> para la API en vivo. Si no lo hace y está interesado en obtener acceso, comuníquese con su gerente de cuenta.</p>
+
+<ol class="bcls-tasklist-restart">
+	<li>
+	<p>Copie y pegue lo siguiente <span translate="No">rizo</span> comando en un editor de texto:</p>
+
+	<pre class="line-numbers">
+<code class="language-bash" translate="No">curl -X POST \
+  https://api.bcovlive.io/v1/jobs \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: {{bcov-live-api-key}}' \
+  -d '{
+    "live_stream": true,
+    "region": "{{closest-region-encoder}}",
+    "outputs": [{
+      "label": "hls360p",
+      "live_stream": true,
+      "height": 360,
+      "video_bitrate": 365,
+      "segment_seconds": 6,
+      "keyframe_interval": 60
+    },
+    {
+      "label": "hls432p",
+      "live_stream": true,
+      "height": 432,
+      "video_bitrate": 730,
+      "segment_seconds": 6,
+      "keyframe_interval": 60
+    },
+    {
+      "label": "hls540p",
+      "live_stream": true,
+      "height": 540,
+      "video_bitrate": 2000,
+      "segment_seconds": 6,
+      "keyframe_interval": 60
+    },
+    {
+      "label": "hls720p3M",
+      "live_stream": true,
+      "height": 540,
+      "video_bitrate": 2000,
+      "segment_seconds": 6,
+      "keyframe_interval": 60
+    },
+    {
+      "label": "hls720p4.5M",
+      "live_stream": true,
+      "height": 540,
+      "video_bitrate": 4500,
+      "segment_seconds": 6,
+      "keyframe_interval": 60
+    }]
+  }'
+</code></pre>
+	</li>
+	<li>
+	<p><strong>Reemplazar:</strong></p>
+
+	<ul>
+		<li><code translate="No">{{closest-region-encoder}}</code> con la región disponible más cercana a su codificador, consulte <a href="/live-api/getting-started/overview-brightcove-live-api.html#Support_aws_regions">regiones disponibles más cercanas</a> a su codificador. Por ejemplo: <code translate="No">us-west-2</code></li>
+		<li><code translate="No">{{bcov-live-api-key}}</code> con su clave API en vivo de Brightcove. Por ejemplo: <code translate="No">abcdfeg-this-is-a-fake-api-key-FgJajjasd12hJHsZ</code></li>
+	</ul>
+	</li>
+	<li>Después de realizar esos cambios, copie y pegue el código en Terminal o en cualquier aplicación de línea de comandos que use y ejecútelo.</li>
+	<li>
+	<p>La respuesta debería ser algo como esto:</p>
+
+	<pre class="line-numbers">
+<code class="language-json" translate="No">{
+    "id": "3b6871bf2f344acaa6b397d09b476018",
+    "outputs": [... removed for simplicity ...],
+    "stream_url": "rtmp://ep1-usw2.bcovlive.io:1935/3b6871bf2f344acaa6b397d09b476018",
+    "stream_name": "alive",
+    "static": false,
+    "encryption": {},
+    "playback_url": "https://bcovlive-a.akamaihd.net/3b6871bf2f344acaa6b397d09b476018/us-west-2/NA/playlist.m3u8",
+    "playback_url_dvr": "https://bcovlive-a.akamaihd.net/3b6871bf2f344acaa6b397d09b476018/us-west-2/NA/playlist_dvr.m3u8"
+}</code></pre>
+	</li>
+</ol>
+
+<p>Estos trabajos crearán 5 representaciones. <strong>basado</strong> en <a href="https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices">Recomendaciones de Apple</a>.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="Configure_your_encoder">Configura tu codificador</h2>
+
+<p>Los pasos que se muestran aquí supondrán una <a href="https://www.elemental.com/products/aws-elemental-live">Caja viva elemental</a> codificador, que se utilizó para probar los pasos de este tutorial. Si tiene un codificador diferente, la configuración debería ser similar.</p>
+
+<p>Los ajustes más importantes para este caso son:</p>
+
+<ul>
+	<li>Configurar la fuente del código de tiempo como "reloj del sistema"</li>
+	<li>Establecer "Frecuencia de código de tiempo de OnFi" en 1</li>
+	<li>Marque "inserción de código de tiempo" dentro del video</li>
+	<li>Muy recomendado: Velocidad de fotogramas = seguir la fuente</li>
+</ul>
+
+<p>Esta es la configuración que usamos para este experimento:</p>
+
+<figure class="bcls-figure"><img alt="elemental-live-job-config" title="Elemental live config" src="/assets/images/live-api/18697/elemental-live-job-config-v1-small.png" />
+<figcaption class="bcls-caption--image">Configuración elemental en vivo</figcaption>
+</figure>
+</section>
+
+<section class="bcls-section">
+<h2 id="test_playback">Prueba de reproducción</h2>
+
+<p>Puedes usar esto <a href="https://videojs.github.io/videojs-contrib-hls/">Página de demostración de VideoJS HLS</a> para probar la reproducción, simplemente pegue el valor <code translate="No">playback_url</code> devuelto en la respuesta del trabajo de creación:</p>
+
+<figure class="bcls-figure"><img alt="videojs-hls-playback" title="VideoJS HLS playback demo page" src="/assets/images/live-api/18697/videojs-hls-playback-small.png" />
+<figcaption class="bcls-caption--image">Página de demostración de reproducción de VideoJS HLS</figcaption>
+</figure>
+</section>
+
+<section class="bcls-section">
+<h2 id="Youtube_live">Agregue la transmisión en vivo a YouTube en vivo</h2>
+
+<p>Suponemos aquí que tiene una cuenta de YouTube habilitada para transmisión en vivo.</p>
+
+<ol class="bcls-tasklist-restart">
+	<li>
+	<p> <strong>Haz clic en «</strong> Activar» y verás lo siguiente:</p>
+
+	<figure class="bcls-figure"><img alt="youtube-go-live" title="YouTube go live" src="/assets/images/live-api/18697/youtube-go-live-small.png" />
+	<figcaption class="bcls-caption--image">YouTube en vivo</figcaption>
+	</figure>
+	</li>
+	<li>
+	<p>Haga clic en "Transmisión en vivo del codificador":</p>
+
+	<figure class="bcls-figure"><img alt="youtube-encoder-live" title="YouTube encoder live source" src="/assets/images/live-api/18697/youtube-encoder-live-small.png" />
+	<figcaption class="bcls-caption--image">Fuente en vivo del codificador de YouTube</figcaption>
+	</figure>
+	</li>
+	<li>
+	<p>Configure los metadatos de YouTube de su evento en vivo y use los datos de "Configuración del codificador" para conectar la transmisión en vivo de Brightcove a YouTube:</p>
+
+	<figure class="bcls-figure"><img alt="youtube-encoder-setup" title="YouTube encoder setup" src="/assets/images/live-api/18697/youtube-encoder-setup-small.png" />
+	<figcaption class="bcls-caption--image">Configuración del codificador de YouTube</figcaption>
+	</figure>
+	</li>
+	<li>
+	<p>Ahora que tenemos configurado YouTube en vivo, crearemos la salida RTMP para él desde nuestro trabajo en vivo.</p>
+	</li>
+	<li>
+	<p>Copia el <span translate="No">rizo</span> comando a continuación en un editor de texto:</p>
+
+	<pre class="line-numbers">
+<code class="language-bash" translate="No">curl -X POST \
+  https://api.bcovlive.io/v1/jobs/{{bcov-live-job-id}}/rtmpouts \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: {{bcov-live-api-key}}' \
+  -d '{
+  "url": "rtmp://a.rtmp.youtube.com/live2/{{youtube-secret-stream-name}}"
+}'</code></pre>
+	</li>
+	<li>
+	<p><strong>Reemplazar:</strong></p>
+
+	<ul>
+		<li><code translate="No">{{bcov-live-job-id}}</code> con su identificación de trabajo en vivo de Brightcove. En nuestro ejemplo, este valor sería <code translate="No">3b6871bf2f344acaa6b397d09b476018</code> - su valor, desde la respuesta a su solicitud para crear el trabajo en vivo, será diferente.</li>
+		<li><code translate="No">{{bcov-live-api-key}}</code> para su clave API en vivo de Brightcove. Por ejemplo: <code translate="No">abcdfeg-this-is-a-fake-api-key-FgJajjasd12hJHsZ</code></li>
+		<li><code translate="No">{{youtube-secret-stream-name}}</code> para el nombre o la clave de la transmisión que proporciona YouTube</li>
+	</ul>
+	</li>
+	<li>Pegue el código editado en su aplicación de línea de comandos y ejecútelo.</li>
+	<li>
+	<p>La respuesta debería ser algo como esto:</p>
+
+	<pre class="line-numbers">
+<code class="language-json" translate="No">{
+          "connection_info": {
+            "host": "a.rtmp.youtube.com",
+            "port": 1935,
+            "application": "live2",
+            "streamName": "{{youtube-secret-stream-name}}"
+          },
+          "duration_history": [],
+          "rtmp_out_id": "27aacdfa5bcf4436ade0519e6a748aba",
+          "stream_start": 1542902218238
+        }</code></pre>
+	</li>
+	<li>
+	<p>Para probar la reproducción de YouTube, puede ir a YouTube. <strong>Mi canal</strong>:</p>
+
+	<figure class="bcls-figure"><img alt="youtube-my-channel-playback" title="YouTube my channel playback" src="/assets/images/live-api/18697/youtube-my-channel-playback-small.png" />
+	<figcaption class="bcls-caption--image">YouTube mi reproducción de canal</figcaption>
+	</figure>
+	</li>
+</ol>
+</section>
+
+<section class="bcls-section">
+<h2 id="facebook_live">Agregue la transmisión en vivo a Facebook en vivo</h2>
+
+<p>Suponemos aquí que tiene una cuenta de Facebook habilitada para transmisión en vivo.</p>
+
+<ol class="bcls-tasklist-restart">
+	<li>
+	<p>Hacer clic <strong>Video en vivo</strong></p>
+	</li>
+	<li>
+	<p>Hacer clic <strong>conectar</strong> y la clave de transmisión para obtener los datos necesarios para conectar su trabajo en vivo de Brightcove:</p>
+
+	<figure class="bcls-figure"><img alt="facebook-live-config" title="Facebook live config" src="/assets/images/live-api/18697/facebook-live-config-small.png" />
+	<figcaption class="bcls-caption--image">Configuración en vivo de Facebook</figcaption>
+	</figure>
+	</li>
+	<li>
+	<p>A continuación, cree una salida en vivo para el trabajo en vivo de Brightcove utilizando la "URL del servidor" y la "clave de transmisión" de Facebook. Copia el <span translate="No">rizo</span> comando a continuación y péguelo en un editor de texto:</p>
+
+	<pre class="line-numbers">
+<code class="language-bash" translate="No">curl -X POST \
+  https://api.bcovlive.io/v1/jobs/{{bcov-live-job-id}}/rtmpouts \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: {{bcov-live-api-key}}' \
+  -d '{
+  "url": "rtmp://live-api-s.facebook.com:80/rtmp/{{facebook-secret-stream-name}}"
+}'</code></pre>
+	</li>
+	<li>
+	<p><strong>Reemplazar:</strong></p>
+
+	<ul>
+		<li><code translate="No">{{bcov-live-job-id}}</code> con su identificación de trabajo en vivo de Brightcove. En nuestro ejemplo, este valor sería <code translate="No">3b6871bf2f344acaa6b397d09b476018</code> - su valor, desde la respuesta a su solicitud para crear el trabajo en vivo, será diferente.</li>
+		<li><code translate="No">{{bcov-live-api-key}}</code> con su clave API en vivo de Brightcove. Por ejemplo: <code translate="No">abcdfeg-this-is-a-fake-api-key-FgJajjasd12hJHsZ</code></li>
+		<li><code translate="No">{{facebook-secret-stream-name}}</code> con el nombre de la transmisión que te da Facebook</li>
+	</ul>
+	</li>
+	<li>
+	<p>La respuesta debería ser algo como esto:</p>
+
+	<pre class="line-numbers">
+<code class="language-json" translate="No">{
+  "connection_info": {
+      "host": "live-api-s.facebook.com",
+      "port": 80,
+      "application": "rtmp",
+      "streamName": "{{facebook-secret-stream-name}}"
+  },
+  "duration_history": [],
+  "rtmp_out_id": "59323c3d1e2b44748755853193fb126c",
+  "stream_start": 1542904101097
+}</code></pre>
+	</li>
+	<li>
+	<p>Para probar su transmisión en vivo de Facebook, haga clic en "Transmitir en vivo" en su página web de Facebook.</p>
+	<img alt="facebook-playback" title="Facebook playback" src="/assets/images/live-api/18697/facebook-playback-small.png" /></li>
+</ol>
+</section>
+</article>

@@ -1,0 +1,46 @@
+---
+title: 'Visión general: API social'
+description: 'Este tema proporciona una descripción general de la API social.'
+parent: Getting Started 
+grandparent: Social API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">Introducción</h2>
+    <p>La API social permite obtener el estado y el historial de intercambio social de sus videos. Su objetivo principal es ayudar con las integraciones de CMS, para permitir que sus usuarios vean esta información en su propio sistema de CMS.</p>
+    <p>Para obtener detalles completos de las solicitudes, consulte la <a href="/social/references/reference.html">Referencia de API</a>.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="base_url">URL base</h2>
+    <p>La URL base de la API es:</p>
+    <pre>
+  <code class="language-http" translate="No">https://edge.social.api.brightcove.com/v1</code></pre>
+  </section>
+  <section class="bcls-section">
+    <h2 id="authentication">Autenticación</h2>
+    <p>La autenticación de solicitudes requiere un <span translate="No">Encabezado de autorización</span> :</p>
+    <pre class="line-numbers">
+        <code class="language-http" translate="No">Authorization: Bearer {access_token}</code></pre>
+    <p>los <code translate="No">access_token</code> es un token de acceso OAuth2 temporal que debe obtenerse del <span translate="No">Brightcove OAuth</span> Servicio. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a> tema.</p>
+    <h3>Operaciones</h3>
+    <p>Cuando solicite credenciales de cliente, deberá especificar el tipo de acceso a la cuenta o las operaciones que desea. La siguiente es una lista de las operaciones admitidas actualmente para el <span translate="No">API social</span> :</p>
+    <ul>
+      <li><code translate="No">video-cloud/social/status/read</code></li>
+    </ul>
+    <p>Tenga en cuenta que, si bien la API social está en versión beta, los permisos para ella son <strong>no</strong> disponible en la sección de administración de Studio para administrar las credenciales de la API. En su lugar, deberá utilizar la API de OAuth para crear sus credenciales. Sin embargo, Brightcove Learning Services, ha creado una <a href="/oauth/code-samples/oauth-api-sample-create-client-credentials.html">herramienta en línea simple</a> por hacer esto.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Summary_of_requests">Resumen de solicitudes</h2>
+    <p>En la versión actual de la API, solo <code translate="No">GET</code> las solicitudes son compatibles. Hay dos grupos de solicitudes, que se resumen en las siguientes secciones.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Status_requests">Solicitudes de estado</h2>
+    <p><a href="/social/references/reference.html#tag/Status">Solicitudes de estado</a> devolver el estado actual de uso compartido en redes sociales para videos. Puede obtener el estado de todos los videos de su cuenta o de un video específico.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="History_requests">Solicitudes de historial</h2>
+    <p><a href="/social/references/reference.html#tag/History">Solicitudes de historial</a> devolver el historial de uso compartido en redes sociales para videos. Puede obtener el historial de todos los videos de su cuenta o de un video específico.</p>
+  </section>
+</article>

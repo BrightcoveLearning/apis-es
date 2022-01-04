@@ -1,0 +1,199 @@
+---
+title: 'API en vivo: VOD del evento en vivo'
+description: 'En este tema, aprenderá a crear un video a pedido (VOD) a partir de un evento de transmisión en vivo después de que se complete el evento.'
+parent: Guides 
+grandparent: Live API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+ <summary>{{ page.description }}</summary>
+  <aside class="bcls-aside bcls-aside--information">Live to VOD no se puede usar con transmisiones encriptadas y devolverá un error al crear un evento de trabajo en vivo.</aside>
+
+
+
+<section class="bcls-section">
+<h2 id="Introduction">Introducción</h2>
+
+<p>Para eventos de transmisión en vivo más cortos, es posible que desee hacer una grabación del evento disponible como un video a pedido (VOD) en su <span translate="No">Video Cloud</span> cuenta una vez finalizado el evento. Puede hacer esto fácilmente agregando alguna configuración para el VOD cuando <a href="/live-api/references/reference.html#api-Live_Jobs-Create_a_Live_Job">crea tu trabajo en vivo</a>.</p>
+
+<p>Fast Live to VOD permite que los clips se publiquen rápidamente con precisión de segmento, mientras que un proceso de backend que es totalmente transparente para el cliente limpiará los límites del clip y volverá a publicarlo.</p>
+
+<p>El resultado es un tiempo de comercialización más rápido con un clip que se volverá a publicar automáticamente con los límites de clip deseados.</p>
+
+<p><strong>Importante</strong>:</p>
+
+<ul>
+	<li>Cuando se complete el evento de transmisión en vivo, detenga el codificador, pero <strong>no hacer <a href="/live-api/references/reference.html#api-Live_Jobs-Cancel_Live_Job">cancelar</a> el trabajo</strong>. Espere hasta que se haya creado el clip VOD antes de cancelar el trabajo, o no se creará correctamente.</li>
+	<li>La creación del VOD no comenzará hasta que <code translate="No">reconnect_time</code> porque el trabajo en vivo ha expirado.</li>
+	<li>Si la duración del evento en vivo es superior a 24 horas, solo las últimas 24 horas se capturarán en el VOD.</li>
+</ul>
+
+<section class="bcls-subsection">
+<h3 id="fast_vod">Opción VOD rápida</h3>
+
+<p>La opción VOD rápida le permite obtener la versión VOD del evento en vivo más rápidamente. Fast Live to VOD publicará (usando un transmux) de interpretaciones en vivo que serán <strong>segmento preciso</strong>.</p>
+
+<p>Los <code translate="No">output</code> campos para VOD rápido son:</p>
+
+<ul>
+  <li><code translate="No">live_to_vod</code> establecido en <code translate="No">true</span> </code></li>
+	<li><code translate="No">mode</code>(necesario para VOD rápido) - para VOD rápido, el valor será <code translate="No">instant</code></li>
+	<li><code translate="No">playlist_label</code>(opcional): solo aplicable para VOD en modo instantáneo. Indica qué lista de reproducción usar para crear una salida VOD (del trabajo en vivo). Solo es necesario si se definieron listas de reproducción personalizadas en la creación del trabajo en vivo.</li>
+</ul>
+</section>
+
+<section class="bcls-section">
+<h2 id="Implementation">Implementaciones</h2>
+
+<h3>Cuando creas el trabajo en vivo</h3>
+<p>La forma más sencilla de implementar Live to VOD es incluir el <code translate="No">"live_to_vod": true</code> en el cuerpo de la solicitud cuando crea el trabajo, ya sea en:</p>
+<ul>
+  <li>el nivel superior <code translate="No">videocloud</code> objeto (para crear el VOD como un activo remoto)</li>
+  <li>un objeto de salida que se envía a Video Cloud o a S3</li>
+</ul>
+<h4>Enviar a <span translate="No">Video Cloud</span></h4>
+
+<p>Tenga en cuenta que hay dos formas de <code translate="No">videocloud</code> Los objetos se utilizan cuando crea un nuevo trabajo en vivo:</p>
+
+<ol class="bcls-tasklist-restart">
+	<li>Incluso <code translate="No">videocloud</code> en el <strong>campos de nivel de trabajo</strong> creará un video en el <span translate="No">Video Cloud</span> cuenta que tomará la transmisión en vivo como un activo remoto y creará el VOD en su biblioteca de Video Cloud:
+
+	<pre class="line-numbers">
+<code class="language-json" translate="No">{
+    "live_stream": true,
+    "region": "us-west-2",
+    "reconnect_time": 2400,
+    "live_dvr_sliding_window_duration": 30,
+    <strong>
+      "videocloud": {
+        "video": {
+          "name": "test_live_stream"
+        },
+        <span class="bcls-highlight">"live_to_vod": true</span>
+        }
+    </strong></code></pre>
+	</li>
+	<li>
+	<p>Incluyendo el <code translate="No">videocloud</code> objeto en las propiedades de un <code translate="No">outputs</code> clip o objeto VOD completo creará un <span translate="No">Video Cloud</span> video para el clip: el clip se ingiere en <span translate="No">Video Cloud</span> y pasa a formar parte de la biblioteca VOD:</p>
+
+	<pre class="line-numbers">
+<code class="language-json" translate="No">{
+  "live_stream": true,
+  "region": "us-west-2",
+  "reconnect_time": 2400,
+  "live_dvr_sliding_window_duration": 30,
+	"videocloud": {
+		"video": {
+			"name": "test_live_stream"
+		}
+	},
+  "outputs": [
+    { "videocloud": {
+        "video": {
+            "name": "video name",
+        },
+        "ingest": {
+            "profile": "<span class="bcls-input">valid-ingest-profile-name</span>"
+        }
+    },
+    "credentials": "<span class="bcls-input">USER_VIDEOCLOUD_CREDENTIAL_LABEL</span>"
+    }
+  ]
+}</code></pre>
+    <p>Nota: omita el campo de perfil de ingesta para usar el perfil de ingesta predeterminado para la cuenta.</p>
+	</li>
+</ol>
+
+<p>También puede incluir el <code translate="no">videocloud</code> objeto dentro de un objeto de salida (en este caso no es necesario <code translate="No">live_to_vod</code> campo):</p>
+
+<pre class="line-numbers">
+<code class="language-json" translate="No">{
+  "live_stream": true,
+  "region": "us-west-2",
+  "reconnect_time": 600,
+  "ad_insertion": false,
+  "outputs": [
+    { OTHER_JOB_OUTPUT_OBJECT },
+    { OTHER_JOB_OUTPUT_OBJECT_2 },
+    <span class="bcls-highlight">{ "videocloud": {
+        "video": {
+            "name": "video name",
+            "description": "video description",
+            "long_description": "long description",
+            "tags": [
+            "tag1", "tag2"
+            ],
+            "schedule":
+            { "starts_at": "2017-01-01T12:00:00-04:00", "ends_at": "2099-01-01T12:00:00-04:00" }
+            ,
+            "custom_fields": {
+                "someCustomField": "value"
+            },
+
+        },
+        "ingest": {
+            "profile": "<span class="bcls-input">valid-ingest-profile-name</span>"
+        }
+    },
+    "credentials": "<span class="bcls-input">USER_VIDEOCLOUD_CREDENTIAL_LABEL</span>"
+    } </span>
+  ]
+}</code></pre>
+
+<aside class="bcls-aside bcls-aside--information">Si aún no tiene las credenciales para configurar su cuenta de Video Cloud, puede agregar nuevas credenciales <a href="/live-api/references/reference.html#operation/CreateCredential">a través de la API</a>.</aside>
+
+<p>Tenga en cuenta que para los metadatos del video, puede incluir cualquier campo <a href="https://docs.brightcove.com/cms-api/v1/doc/index.html#api-videoGroup-Create_Video">Crear video</a> funcionamiento de la API de CMS.</p>
+
+<p>Los perfiles de ingesta definen las representaciones que se crearán para el VOD. Para <code translate="No">valid-ingest-profile-name</code>, puedes sustituir el nombre de cualquier perfil de ingesta personalizado o estándar de tu cuenta. Los perfiles estándar que tenga dependen de si su cuenta está habilitada para Dynamic Delivery o no. Ver el <a href="https://apis.support.brightcove.com/ingest-profiles/references/standard-ingest-profiles-dynamic-delivery-and-context-aware-encoding.html">Perfiles de ingesta estándar para entrega dinámica y codificación sensible al contexto</a> o el <a href="https://apis.support.brightcove.com/ingest-profiles-legacy/references/standard-ingest-profiles-legacy-transcoding.html">Perfiles de ingesta estándar para la transcodificación heredada</a>.</p>
+
+<aside class="bcls-aside bcls-aside--information">Tenga en cuenta que el <code translate="No">profile</code> el campo es opcional. Si no especifica un perfil, se utilizará el perfil predeterminado de la cuenta.</aside>
+
+<h4>Enviar a S3</h4>
+
+<p>Para tener una versión VOD del evento guardada en su bucket de S3, incluya una versión del resaltado <strong>producción</strong> debajo.</p>
+
+<pre class="line-numbers">
+<code class="language-json" translate="No">{
+  "live_stream": true,
+  "region": "us-west-2",
+  "reconnect_time": 600,
+  "ad_insertion": false,
+  "outputs": [
+    { OTHER_JOB_OUTPUT_OBJECT },
+    { OTHER_JOB_OUTPUT_OBJECT_2 },
+    <span class="bcls-highlight">{
+      "url":"s3://YOUR_BUCKET/path/filename.mp4",
+      "credentials": "<span class="bcls-input">YOUR_CREDENTIAL_LABEL</span>",
+      "notifications": [
+        {
+          "url": "http://httpbin.org/post?vodStateChange"
+        },
+        {
+          "url": "http://httpbin.org/post?vodFinished",
+          "event": "output_finished"
+        }
+      ]
+    }</span>
+  ]
+}</code></pre>
+
+<aside class="bcls-aside bcls-aside--information">Se debería haber creado una etiqueta de credencial para un nombre de usuario + contraseña válidos para su bucket de S3 cuando se configuró su cuenta Live y se le debería haber enviado la etiqueta de credencial. Si no lo tiene, póngase en <a href="https://supportportal.brightcove.com/s/login/?language=en_US">contacto con el servicio de asistencia de Brightcove</a>.</aside>
+<h3>Cree el VOD como un videoclip abierto</h3>
+<p>Una forma alternativa de obtener un VOD para un evento en vivo es <a href="/live-api/guides/live-api-creating-vod-clips.html">Crear un clip VOD</a> sin hora de finalización. Consulte el documento de recorte para obtener todos los detalles.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="Limitations">Limitaciones</h2>
+
+<ul>
+	<li>Si usted <a href="/live-api/references/reference.html#api-Live_Jobs-Stop_Live_Job">detener (cancelar)</a> el trabajo en vivo antes de que se haya creado el VOD, no se creará. En su lugar, detenga su codificador para iniciar la creación del VOD y espere a que termine antes de detener el trabajo.</li>
+	<li>Para <a href="/live-api/guides/live-api-static-entry-points.html">Punto de entrada estático</a> arroyos <strong>solamente</strong> , Live to VOD no se puede configurar para archivar la transmisión al finalizar.
+	<p style="font-weight:bold;">Alternativas:</p>
+
+	<ul>
+		<li>Usar <a href="/live-api/guides/live-api-creating-vod-clips.html">recorte</a> para archivar el evento en vivo completo como un VOD. La ventana de recorte estará disponible durante la duración estándar después de un evento o hasta la próxima activación del SEP (lo que sea más corto).</li>
+	</ul>
+	</li>
+</ul>
+</section>
+</article>

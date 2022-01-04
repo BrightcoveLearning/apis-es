@@ -1,0 +1,360 @@
+openapi: '3.0.0'
+x-bc-implicit-head: true
+x-bc-implicit-options: true
+x-bc-upstream: 'https://backend_server'
+info:
+  description: |-
+    API for Brightcove Delivery Rules
+
+    This API is used for managing operations related to Delivery Rules.
+  version: 1.0.0
+  title: Brightcove Delivery Rules API
+  x-bc-access: public
+servers:
+  - url: 'https://delivery-rules.api.brightcove.com'
+    variables: {}
+components:
+  parameters:
+    ActionId:
+      action_idname: 
+      in: path
+      description: ID of the Action to query on
+      required: true
+      schema:
+        type: string
+  schemas:
+      Condition:
+        type: object
+        properties:
+          nombre:
+            type: string
+            description: Descriptive name of the Condition
+          if:
+            type: object
+            description: The conditions that a request must match before the associated rules are invoked
+            properties:
+              device_group:
+                type: array
+                description: A list of device groups
+                items:
+                  description: Device Group
+                  type: string
+                  enum:
+                    - ipad
+                    - iphone
+                    - appletv
+                    - ios-other
+                    - fetchtv
+                    - roku-9
+                    - roku-7/8
+                    - desktop-chrome
+                    - desktop-firefox
+                    - desktop-safari
+                    - android
+                    - tablet-android
+                    - tablet-kindle
+                    - smartphone-generic
+              request_country:
+                type: array
+                description: A list of countries
+                items:
+                  description: A two-character ISO 3166-1 country code
+                  type: string
+              request_continent:
+                type: array
+                description: A list of continents
+                items:
+                  description: Continent
+                  type: string
+                  enum:
+                    - AF
+                    - AN
+                    - AS
+                    - EU
+                    - NA
+                    - OC
+                    - SA
+          then:
+            type: array
+            description: A list of Action IDs to invoke when the conditions are met
+            items:
+              description: Action ID
+              type: string
+      Action:
+        title: Action
+        type: object
+        properties:
+          id:
+            type: string
+            description: ID of the Action
+          properties:
+            type: object
+            description: A list of properties to apply
+            properties:
+              min_video_bitrate:
+                description: Minimum video bitrate
+                type: number
+              max_video_bitrate:
+                description: Maximum video bitrate
+                type: number
+              first_video_bitrate:
+                description: First video bitrate to appear in the manifest
+                type: number
+              min_video_resolution:
+                description: Minimum video resolution
+                type: string
+              max_video_resolution:
+                description: Maximum video resolution
+                type: string
+              max_video_renditions:
+                description: Maximum video renditions
+                type: number
+              max_audio_renditions:
+                description: Maximum audio renditions
+                type: number
+              preferred_cdn_provider:
+                description: Preferred CDN provider
+                type: string
+              preferred_cdn_domain:
+                description: Preferred CDN domain
+                type: string
+              video_codecs:
+                type: array
+                description: A list of Video Codecs to use
+                items:
+                  description: Video Codec
+                  type: string
+              audio_codecs:
+                type: array
+                description: A list of Audio Codecs to use
+                items:
+                  description: Audio Codec
+                  type: string
+
+paths:
+  '/accounts/{account_id}':
+    parameters:
+      - $ref: 'https://openapi.brightcove.com/openapi.yaml#/components/parameters/AccountId'
+    get:
+      tags:
+        - Fetch Delivery Rules
+      summary: Fetch the Delivery Rules for the account
+      description: |-
+        List the Conditions and Actions defined for an account that make up the Delivery Rules configuration.
+      operationId: getDeliveryRules
+      security:
+        - BC_OAuth2:
+          - video-cloud/delivery-rules/read
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  conditions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Condition'
+                  actions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Action'
+        '403':
+          description: Forbidden
+        '500':
+          description: Server error
+  '/accounts/{account_id}/conditions':
+    parameters:
+      - $ref: 'https://openapi.brightcove.com/openapi.yaml#/components/parameters/AccountId'
+    get:
+      tags:
+        - Fetch Conditions
+      summary: Fetch the Conditions for the account
+      description: |-
+        List the Conditions defined for an account
+      operationId: getConditions
+      security:
+        - BC_OAuth2:
+          - video-cloud/delivery-rules/read
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Condition'
+        '403':
+          description: Forbidden
+        '500':
+          description: Server error
+    put:
+      tags:
+        - Update Conditions
+      summary: Update the Conditions
+      description: |-
+        Update the Conditions
+      operationId: updateConditions
+      security:
+        - BC_OAuth2:
+          - video-cloud/delivery-rules/all
+      requestBody:
+        description: Updated Conditions
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Condition'
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Condition'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '500':
+          description: Server error
+
+  '/accounts/{account_id}/actions':
+    parameters:
+      - $ref: 'https://openapi.brightcove.com/openapi.yaml#/components/parameters/AccountId'
+    get:
+      tags:
+        - Fetch Actions
+      summary: Fetch the Actions for the account
+      description: |-
+        List the Actions defined for an account
+      operationId: getActions
+      security:
+        - BC_OAuth2:
+          - video-cloud/delivery-rules/read
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Action'
+        '403':
+          description: Forbidden
+        '500':
+          description: Server error
+    post:
+      tags:
+        - Create Action
+      summary: Create an Action
+      description: |-
+        Create an Action
+      operationId: createAction
+      security:
+        - BC_OAuth2:
+          - video-cloud/delivery-rules/all
+      requestBody:
+        description: New Action
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Action"
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '500':
+          description: Server error
+  '/accounts/{account_id}/actions/{action_id}':
+    parameters:
+      - $ref: 'https://openapi.brightcove.com/openapi.yaml#/components/parameters/AccountId'
+      - $ref: '#/components/parameters/ActionId'
+    get:
+      tags:
+        - Fetch Action
+      summary: Fetch a specific Action
+      description: |-
+        Fetch a specific Action based on its ID
+      operationId: getAction
+      security:
+        - BC_OAuth2:
+          - video-cloud/delivery-rules/read
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+        '403':
+          description: Forbidden
+        '500':
+          description: Server error
+    put:
+      tags:
+        - Update Action
+      summary: Update an Action
+      description: |-
+        Update an Action. The Action ID in the body must match the one in the URL.
+      operationId: updateAction
+      security:
+        - BC_OAuth2:
+          - video-cloud/delivery-rules/all
+      requestBody:
+        description: Updated Action
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Action"
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Action not found
+        '500':
+          description: Server error
+    delete:
+      tags:
+        - Delete Action
+      summary: Delete an Action
+      description: |-
+        Delete an Action
+      operationId: deleteAction
+      security:
+        - BC_OAuth2:
+          - video-cloud/delivery-rules/all
+      responses:
+        '204':
+          description: Action deleted successfully
+        '403':
+          description: Forbidden
+        '404':
+          description: Action not found
+        '500':
+          description: Server error

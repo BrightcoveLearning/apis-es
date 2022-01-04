@@ -1,0 +1,165 @@
+---
+title: 'API en vivo: Puntos de entrada estáticos'
+description: 'Este tema explica los puntos de entrada estáticos y cómo implementarlos usando la API en vivo.'
+parent: Guides 
+grandparent: Live API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+ <summary>{{ page.description }}</summary>
+<section class="bcls-section">
+<h2 id="Introduction">Introducción</h2>
+
+<p>La función Static Entry Points (SEP) permite un trabajo en vivo de larga duración que se puede activar y desactivar mientras se mantienen las URL de los puntos de entrada y las URL de reproducción estáticas y reutilizables. Esta característica permite a los clientes configurar su codificador en sus instalaciones o en el campo y permite al cliente crear su propia lógica de programación para canales o programas en vivo.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="dvr_and_sep">DVR y SEP</h2>
+
+<p>La capacidad de DVR está disponible para puntos de entrada estáticos, pero solo mientras el SEP está <strong>activado</strong>.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="Creating_a_static_entry_point">Creando un punto de entrada estático</h2>
+
+<p>El estandar <a href="/live-api/references/reference.html#api-Live_Jobs-Create_a_Live_Job">Crear trabajo</a> Se utiliza la operación will, pero para la adición de puntos de entrada estáticos, será necesario agregar una propiedad a la solicitud de trabajo:</p>
+
+<pre>
+<code class="language-json" translate="No">"static": true</code></pre>
+
+<p>La URL de RTMP que responde de este trabajo será estática y luego podrá reutilizarse activando / desactivando el trabajo con las operaciones descritas en las secciones siguientes. Lea y comprenda las limitaciones enumeradas al final de este documento.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="max_waiting_time">Tiempo máximo de espera</h2>
+
+<p>Después de que se activa un trabajo SEP, se desactivará automáticamente después de un tiempo si no se inicia el codificador. Las reglas son las siguientes:</p>
+
+<ul>
+	<li>Si el <code translate="No">event_length</code> El valor es superior a 30 minutos, el trabajo terminará automáticamente en 30 minutos de forma predeterminada; si desea cambiar el tiempo de espera, deberá ponerse en contacto con el servicio de asistencia. La desactivación automática no se puede deshabilitar.</li>
+	<li>Si el <code translate="No">event_length&nbsp;</code>valor es inferior al <code translate="No">reconnect_time</code>, el trabajo finalizará en el tiempo establecido para <code translate="No">event_length</code>.</li>
+</ul>
+</section>
+
+<section class="bcls-section">
+<h2 id="Activate_static_entry_point_stream">Activar SEP Live Stream</h2>
+
+<p>Para activar una transmisión en vivo de un punto de entrada estático, envíe la siguiente solicitud a la API en vivo:</p>
+
+<aside class="bcls-aside bcls-aside--information">Para poder ingerir a un punto de entrada estático, debe realizar la <code translate="No">activate</code> Solicitud de API.</aside>
+
+<table class="bcls-table">
+	<caption class="bcls-caption--table">Secuencia SEP activa</caption>
+	<tbody class="bcls-table__body">
+		<tr>
+			<th>Método</th>
+			<td><code translate="No">PUT</code></td>
+		</tr>
+		<tr>
+			<th>Punto final</th>
+			<td>
+			<pre>
+<code class="language-http" translate="No">https://api.bcovlive.io/v1/jobs/<span class="bcls-input">{jobID}</span>/<strong>activate</strong></code></pre>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>No se requiere ningún cuerpo de solicitud.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="Deactivate_static_entry_point_stream">Desactivar SEP Live Stream</h2>
+
+<aside class="bcls-aside bcls-aside--warning">Detenga siempre el codificador antes de desactivar la transmisión. Es posible que la desactivación no se produzca inmediatamente, así que esto le da un control exacto sobre cuándo los espectadores dejan de recibir contenido.</aside>
+
+<p>Para desactivar una transmisión en vivo de un punto de entrada estático, envíe la siguiente solicitud a la API en vivo:</p>
+
+<table class="bcls-table">
+	<caption class="bcls-caption--table">Secuencia SEP activa</caption>
+	<tbody class="bcls-table__body">
+		<tr>
+			<th>Método</th>
+			<td><code translate="No">PUT</code></td>
+		</tr>
+		<tr>
+			<th>Punto final</th>
+			<td>
+			<pre>
+<code class="language-http" translate="No">https://api.bcovlive.io/v1/jobs/<span class="bcls-input">{jobID}</span>/<strong>deactivate</strong></code></pre>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<aside class="bcls-aside bcls-aside--information">Cuando desactiva un punto de entrada estático, los últimos segundos de la transmisión siguen siendo reproducibles.</aside>
+
+<p>No se requiere ningún cuerpo de solicitud.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="Cancel_sep_job">Cancelar un trabajo de SEP</h2>
+
+<p>Para detener permanentemente un trabajo de punto de entrada estático, puede cancelar el trabajo como lo haría con cualquier trabajo en vivo, enviando un <code translate="No">PUT</code> solicitar el punto final <code translate="No">/jobs/{job_id}/cancel</code>. Ver el <a href="/live-api/references/reference.html#operation/CancelLiveJob">Referencia de API</a> para conocer todos los detalles.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="Limitations">Limitaciones</h2>
+
+<ul>
+	<li>Live to VOD no se puede configurar para archivar la transmisión al finalizar.
+	<p style="font-weight:bold;">Alternativas:</p>
+
+	<ul>
+		<li>Usar <a href="/live-api/guides/live-api-creating-vod-clips.html">recorte</a> para archivar el evento en vivo completo como un VOD. La ventana de recorte estará disponible durante la duración estándar después de un evento o hasta la próxima activación del SEP (lo que sea más corto).</li>
+	</ul>
+	</li>
+	<li>La configuración del trabajo no se puede modificar. Actualmente están vinculados a la configuración que creó inicialmente el SEP.</li>
+	<li>La activación de la transmisión puede demorar hasta 60 segundos para que el punto de entrada esté disponible.
+	<p style="font-weight:bold;">Mejores prácticas:</p>
+
+	<p>Implemente notificaciones desde la plataforma Live para cambios en el estado del trabajo para obtener actualizaciones en tiempo real para cuando un trabajo SEP esté realmente listo.</p>
+
+	<p style="font-weight:bold;">Alternativas:</p>
+
+	<ol>
+		<li>Active la transmisión al menos 60 segundos antes de iniciar el codificador.</li>
+		<li>Si el codificador tiene reintento incorporado (Wirecast, Elemental, etc.), la transmisión se puede conectar inmediatamente (aunque puede haber algunos errores) y los codificadores se volverán a conectar tan pronto como el punto de entrada esté disponible.</li>
+	</ol>
+	</li>
+	<li>Reconnect_time sigue siendo aplicable para trabajos SEP en desconexiones del codificador. Si se alcanza el tiempo de reconexión, el trabajo SEP se colocará de nuevo en un estado desactivado.
+	<p style="font-weight:bold;">Mejores prácticas:</p>
+
+	<p>Desactive siempre una transmisión a través de las API cuando se complete un trabajo y establezca el tiempo de reconexión en un período de tiempo aceptable para esperar en caso de una desconexión (los costos de las horas de entrada se acumulan durante este período de espera).</p>
+	</li>
+	<li>A cada cuenta solo se le asignarán 3 trabajos SEP disponibles <em>por región</em>. Si alcanza el límite, deberá <a href="/live-api/references/reference.html#operation/CancelLiveJob">cancelar</a> uno de sus trabajos SEP antes de poder crear uno nuevo.
+	<p>Si ha alcanzado el número máximo de trabajos SEP e intenta crear otro, se devolverá el siguiente error:</p>
+
+	<pre class="line-numbers">
+<code class="language-json" translate="No">{
+  "error": "You've reached the number of static entry points jobs you can create for your account"
+}</code></pre>
+      </li>
+      <li>Si intenta activar más de 5 trabajos SEP a la vez, recibirá un error como el siguiente:
+<pre class="line-numbers"><code class="language-json" translate="No">{
+  “message”:“Allocating additional streaming capacity to the region. Please retry your request.: no_streaming_capacity_in_region”,
+  “statusCode”:500,
+  “name”:“ApiError”,
+  “isApiError”:true
+}</code></pre>
+        <p>Deberá esperar hasta que algunos trabajos hayan terminado de activarse antes de volver a intentar la solicitud.</p>
+      </li>
+    </ul>
+</section>
+
+<section class="bcls-section">
+<h2 id="Notes">Notas</h2>
+
+<dl>
+	<dt>Recorte de trabajos SEP después de la desactivación</dt>
+	<dd>Los usuarios pueden crear clips hasta la próxima activación de la transmisión, o durante 7 días, lo que sea más corto. Cuando se reactiva la transmisión, las sesiones de grabación anteriores se eliminan del servidor y ya no se pueden recortar.</dd>
+	<dt>¿Cuál es el tiempo para el campo stream_start_time cuando se usa un SEP?</dt>
+	<dd>Cuando se activa un SEP, se consideraría la hora de inicio.</dd>
+</dl>
+</section>
+</article>

@@ -1,0 +1,188 @@
+---
+title: 'Visión general: API EPG'
+parent: Getting Started 
+grandparent: Cloud Playout APIs
+description: This topic provides and overview of the EPG API, which is used with Cloud Playout.
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="introduction">Introducción</h2>
+    <p>Hay dos API relacionadas con <a href="https://studio.support.brightcove.com/cloud-playout/index.html">Playout en la nube</a>:</p>
+    <ul>
+      <li>La API de EPG le permite recuperar una guía de programación electrónica para un canal de Cloud Playout. Cloud Playout genera EPG que se adhiere al estándar XML TV como se describe en el esquema que se encuentra en <a href="https://repository.data2type.de/XMLTV/v_1.47/html/index.html">https://repository.data2type.de/XMLTV/v_1.47/html/index.html</a>. <aside class="bcls-aside bcls-aside--information">Asegúrese de leer el <a href="/cloud-playout-apis/getting-started/epg-best-practices.html">API EPG: Mejores prácticas</a> para ver cómo obtener el mejor rendimiento.</aside>
+			</li>
+      <li>La API de canales le permite recuperar información sobre sus canales de Cloud Playout que puede mostrar en su interfaz de usuario o página web. Ver <a href="/cloud-playout-apis/getting-started/overview-channel-api.html">Descripción general: API de canales</a></li>
+  </section>
+  <section class="bcls-section">
+    <h2 id="authentication">Autenticación</h2>
+    <p>Las API de Cloud Playout utilizan <a href="/oauth/getting-started/overview-oauth-api-v4.html">Sistema Brightcove OAuth</a> para autenticar solicitudes a través de un token de acceso que se pasa en un encabezado de autorización con la solicitud:</p>
+    <pre><code class="language-http" translate="No">Authorization: Bearer <span class="bcls-input">{access token}</span></code></pre>
+    <p>Los tokens de acceso se recuperan mediante la API de OAuth; consulte <a href="/oauth/guides/getting-access-tokens.html">Obtener tokens de acceso</a> para detalles. También necesitará credenciales de cliente para autenticar las solicitudes de tokens de acceso. Estos se pueden crear en la sección de administración de Studio; consulte <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de la API</a>. Los permisos que necesitarán sus credenciales para la API de EPG son:</p>
+    <figure class="bcls-figure">
+      <img class="bcls-image" src="/assets/images/cloud-playout/permissions-epg-api.png" alt="EPG API Permissions">
+      <figcaption class="bcls-caption--image">Permisos de la API de EPG</figcaption>
+    </figure>
+  </section>
+  
+  <section class="bcls-section">
+    <h2 id="request_parameters">Parámetros de solicitud EPG</h2>
+    <p>Los siguientes parámetros de consulta opcionales se pueden agregar a la solicitud EPG:</p>
+    <table class="bcls-table">
+      <caption class="bcls-caption--table">Parámetros de consulta de la API de EPG</caption>
+      <thead class="bcls-table__head">
+          <tr>
+              <th>Parámetro</th>
+              <th>Valor por defecto</th>
+              <th>Descripción</th>
+          </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+          <tr>
+              <td><code translate="No">start</code></td>
+              <td><samp translate="No">(14 días antes de ahora)</samp></td>
+              <td>La fecha y hora a partir de la cual se pueden consultar y devolver las respuestas de EPG en formato de fecha ISO 8601</td>
+          </tr>
+          <tr>
+              <td><code translate="No">end</code></td>
+              <td><samp translate="No">(ahora - la fecha y hora actual)</samp></td>
+              <td>La fecha y hora hasta la cual se pueden consultar y devolver las respuestas de EPG en formato de fecha ISO 8601</td>
+          </tr>
+          <tr>
+              <td><code translate="No">limit</code></td>
+              <td><samp translate="No">(todos los programas)</samp></td>
+              <td>Un valor entero que controla el número de programas devueltos en una solicitud. <strong>Tenga en cuenta que el valor límite (predeterminado: 100) puede evitar que se devuelvan todos los programas del período de tiempo especificado. Ver <a href="/cloud-playout-apis/getting-started/epg-best-practices.html">Prácticas recomendadas de la API de EPG</a> para más información</td>
+          </tr>
+          <tr>
+              <td><code translate="No">include_ads</code></td>
+              <td><samp translate="No">falso</samp></td>
+              <td>Establezca esto en verdadero para incluir anuncios en la respuesta.</td>
+          </tr>
+      </tbody>
+    </table>
+    <h3>Notas</h3>
+    <ol>
+      <li>La <code translate="No">start</code>/<code translate="No">end</code> la ventana no puede exceder los 14 días. El inicio puede tener un retraso de 14 días desde la fecha y hora actual para consultar la EPG histórica. También puede futuros datos de EPG hasta 14 días a partir de la fecha y hora actual.</li>
+      <li>Si la diferencia entre la hora de finalización y la hora de inicio es superior a 14 días, la API genera solo 14 días desde la hora solicitada hasta la hora de finalización o 14 días, lo que ocurra primero.</li>
+
+      <li>Ambas cosas <code translate="No">start</code> y <code translate="No">end</code> puede aceptar valores de fecha y hora con y sin desplazamientos de zona horaria; si no se incluye ningún desplazamiento de zona horaria, se asume UTC.</li>
+      <li>
+        Ambas cosas <code translate="No">start</code> y <code translate="No">end</code> debe estar codificado en URI:
+        <table class="bcls-table">
+          <caption class="bcls-caption--table">Codificación URI</caption>
+          <thead class="bcls-table__head">
+              <tr>
+                  <th>Muestra ISO 8601</th>
+                  <th>Codificado en URI</th>
+              </tr>
+          </thead>
+          <tbody class="bcls-table__body">
+              <tr>
+                  <td><code translate="No">2020-07-24 15:30:00</code></td>
+                  <td><code translate="No">2020-07-24<span class="bcls-highlight">%20</span>15<span class="bcls-highlight">%3A</span>30<span class="bcls-highlight">%3A</span>00</code></td>
+              </tr>
+              <tr>
+                  <td><code translate="No">2020-07-24 15:30:00 +0530</code></td>
+                  <td><code translate="No">2020-07-24<span class="bcls-highlight">%20</span>15<span class="bcls-highlight">%3A</span>30<span class="bcls-highlight">%3A</span>00<span class="bcls-highlight">%20%2B</span>0530</code></td>
+              </tr>
+          </tbody>
+      </table>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <details>
+      <summary><h2 id="Sample_response">Ejemplo de respuesta de la API de EPG</h2></summary>
+      <p>A continuación se muestra una respuesta de muestra de la API:</p>
+  <pre class="line-numbers"><code class="language-xml" translate="No">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+    &lt;tv source-info-name="Cloudplayout Schedules" source-info-url="http://www.cloudplayout.qa.brightcove.com"&gt;
+        &lt;channel id="9fb8032ff2fe4f55b388d8969c22ca58"&gt;
+            &lt;display-name&gt;MyCloudChannel&lt;/display-name&gt;
+            &lt;icon src="https://bc-cloudplayout-prod.s3.amazonaws.com/default_channel_image.png"/&gt;
+        &lt;/channel&gt;
+        &lt;programme channel="9fb8032ff2fe4f55b388d8969c22ca58" start="20201120132000" stop="20201120132228"&gt;
+            &lt;title&gt;Frozen&lt;/title&gt;
+            &lt;desc&gt;FrozenMultiLanguage&lt;/desc&gt;
+            &lt;length units="seconds"&gt;147.605&lt;/length&gt;
+            &lt;icon src="https://cf-images.us-east-1.qa.boltdns.net/v1/jit/6063799219001/43d57501-b98a-4708-bdd1-a09081f7a585/main/1280x720/1m13s802ms/match/image.jpg" width="1280" height="720"/&gt;
+            &lt;category&gt;video&lt;/category&gt;
+            &lt;keyword&gt;eyJ2aWRlb19pZCI6IjcwNzAwNDQxMDk2MjAyIiwib3JkZXIiOjEsInRhZ3MiOiJjaGlsZHJlbixjb21lZHkiLCJjdXN0b21fbWV0YWRhdGEiOnsicmVnaW9uIjoiYWZyaWNhIiwic29uZ3MiOjV9fQ==&lt;/keyword&gt;
+        &lt;/programme&gt;
+        &lt;programme channel="9fb8032ff2fe4f55b388d8969c22ca58" start="20201120132228" stop="20201120133228"&gt;
+            &lt;title&gt;LiveDemo&lt;/title&gt;
+            &lt;desc&gt;Live Demo&lt;/desc&gt;
+            &lt;length units="seconds"&gt;600.0&lt;/length&gt;
+            &lt;icon src="https://img.brightcove.com/cloudplayout/live-icon.jpg" width="1280" height="720"/&gt;
+            &lt;category&gt;live&lt;/category&gt;
+            &lt;keyword&gt;eyJ2aWRlb19pZCI6IjcwNzAxNDg0MjA3MjAyIiwib3JkZXIiOjIsInRhZ3MiOiJjcC1saXZlLXBsYWNlaG9sZGVyLGR1cmF0aW9uLTAwOjEwOjAwIiwiY3VzdG9tX21ldGFkYXRhIjp7InJlZ2lvbiI6Im5vcnRoIGFtZXJpY2EifX0=&lt;/keyword&gt;
+        &lt;/programme&gt;
+        &lt;programme channel="9fb8032ff2fe4f55b388d8969c22ca58" start="20201120133228" stop="20201120133327"&gt;
+            &lt;title&gt;ChildrenComedy&lt;/title&gt;
+            &lt;desc&gt;ChildrenComedy&lt;/desc&gt;
+            &lt;length units="seconds"&gt;59.164&lt;/length&gt;
+            &lt;icon src="https://cf-images.us-east-1.qa.boltdns.net/v1/jit/6063799219001/9430773f-76f5-476e-964d-a13b40cab90a/main/1280x720/29s582ms/match/image.jpg" width="1280" height="720"/&gt;
+            &lt;category&gt;video&lt;/category&gt;
+            &lt;keyword&gt;eyJ2aWRlb19pZCI6IjcwNzAxMjE2NDgyMjAyIiwib3JkZXIiOjMsInRhZ3MiOiJyb21hbmNlIiwiY3VzdG9tX21ldGFkYXRhIjp7InJlZ2lvbiI6ImFzaWEiLCJzb25ncyI6NX19&lt;/keyword&gt;
+        &lt;/programme&gt;
+        &lt;programme&gt;
+            ...
+        &lt;/programme&gt;
+    &lt;/tv&gt;</code></pre>
+      <h3>Notas</h3>
+      <ol>
+        <li>Las marcas de tiempo de inicio y finalización están en hora UTC.</li>
+        <li>La <code translate="No">category</code> y <code translate="No">keyword</code> Las entradas son para propósitos internos.</li>
+      </ol>
+    </details>
+    <p>Los datos de EPG contienen múltiples datos de programas donde cada programa representa detalles sobre el video o activo en vivo:</p>
+<pre class="line-numbers"><code class="language-xml">&lt;program channel = "27963aa756294a7c98ca1c2c459d4ba2" start = "20201118232206" stop = "20201118232305"&gt; &lt;title&gt; ChildrenComedy &lt;/title&gt; &lt;desc&gt; ChildrenComedy &lt;/desc&gt; &lt;length&gt; unidades = "segundos"&gt; 59.164 &lt;/length&gt; &lt;icon &gt; src = "https://cf-images.us-east-1.qa.boltdns.net/v1/jit/6063799219001/9430773f-76f5-476e-964d-a13b40cab90a/main/1280x720/29s582ms/match/image. jpg" width = "1280" height = "720"&gt; &lt;/ icono&gt; &lt;categoría&gt; vídeo &lt;/ category&gt; &lt;palabra clave&gt; eyJ2aWRlb19pZCI6IjcwNzAxMjE2NDgyMjAyIiwib3JkZXIiOjEsInRhZ3MiOiJjaGlsZHJlbixjb21lZHkiLCJjdXN0b21fbWV0YWRhdGEiOnsicmVnaW9uIjoiYWZyaWNhIiwic29uZ3MiOjV9fQ == &lt;/ palabra clave&gt; &lt;/ program&gt;</code></pre>
+    <p>Aquí el <code translate="No">keyword</code> contiene el valor json codificado en base64. El valor decodificado del <code translate="No">keyword</code> se muestra a continuación.</p>
+    <ul>
+      <li><code translate="No">video_id</code>: es el identificador del video como en Video Cloud.</li>
+
+      <li><code translate="No">order</code>: es el orden del activo en la lista del programa Cloud Playout. </li>
+
+      <li><code translate="No">tags</code>: separados por comas (si los hay) - asociado con el video correspondiente en la nube de video.</li>
+
+      <li>Metadatos personalizados: (si los hay, representados como pares de nombre / valor) asociados con el video correspondiente en la nube de video.</li> 
+    </ul>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+  "video_id":"70701216482202",
+  "order":1,
+  "tags":"children,comedy",
+  "custom_metadata":{
+    "region":"africa",
+    "songs":5
+  }
+}</code></pre>
+  </section>
+  
+  <section class="bcls-section">
+  <h2 id="epg_bumpers">La EPG y los parachoques</h2>
+  <h3>Cómo maneja la EPG los parachoques</h3>
+  <p>La EPG no incluirá los parachoques en sí. Las duraciones de los parachoques se reflejarán de la siguiente manera:</p>
+  <ul>
+    <li>Las duraciones de los parachoques previos al video se agregan al <strong>siguiente</strong> duración del video</li>
+    <li>Las duraciones de los parachoques post-roll se agregan al <strong>anterior</strong> duración del video</li>
+  </ul>
+  <h3>Problemas potenciales</h3>
+  <p>Hay dos cosas que puede hacer que harán que la EPG sea inexacta:</p>
+  <ul>
+    <li>Etiquetar videos para que sean pre-roll (<code translate="No">cp-preroll-bumper</code> ) <strong>Y</strong> post-roll<code translate="No">cp-postroll-bumper</code> ) hará que la EPG sea inexacta porque depende de la etiqueta para decidir dónde agregar la duración. Si el video tiene ambas etiquetas, la duración del bumper se agregará tanto al video anterior como al siguiente.</li>
+    <li>Puede mover los parachoques en la lista del programa Cloud Playout, pero si los organiza de manera que un parachoques de pre-roll sea seguido inmediatamente por un parachoques de post-roll, se reproducirán ambos parachoques, pero la API de EPG los ignorará y el programa para eso. el período de tiempo estará vacío.</li>
+  </ul>
+</section>
+  <section class="bcls-section">
+    <h2 id="limitations">limitaciones</h2>
+    <ol>
+      <li>La EPG se genera con el mejor esfuerzo / cerca de la precisión.</li>
+      <li>Cuando la EPG se construye inicialmente a partir de la lista de reproducción, puede haber un error de hora de inicio, ya que Cloud Playout tarda algún tiempo en iniciar el cambio.</li>
+      <li>
+        Es posible que la EPG no sea coherente para cada recuperación cuando se modifica la lista de reproducción, porque se construye dinámicamente en función de la información actual que contiene. Algunas acciones que alterarán la EPG incluyen reordenar la lista de reproducción o agregar / eliminar activos en la lista de reproducción.
+      </li>
+      <li>Si ocurre algún mal funcionamiento en la conmutación y el tiempo de conmutación no es exacto, podría haber una inexactitud de tránsito para la futura EPG. Algunos ejemplos de acciones que podrían causar esto serían un cambio de lista de reproducción o la eliminación del activo activo actual en la lista de reproducción.</li>
+      <li>Los consumidores de la EPG deberían solicitarla lo más cerca posible del tiempo real para obtener la versión más precisa.</li>
+    </ol>
+  </section>
+</article>

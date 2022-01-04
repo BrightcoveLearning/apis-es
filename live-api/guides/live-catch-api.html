@@ -1,0 +1,183 @@
+---
+title: la API de actualización en vivo
+description: Este tema explica cómo crear un trabajo en vivo con la puesta al día usando la API de actualización en vivo (TimeShift).
+parent: Guides 
+grandparent: Live API
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">Introducción</h2>
+    <p>La API Live Catch-up es una adición a la API Live que proporciona la capacidad de reproducción para el inicio o una parte de una transmisión en vivo para permitir que los espectadores tardíos "se pongan al día".</p>
+    <p>La capacidad de ponerse al día se agrega a un trabajo en vivo a través de un nuevo <code translate="No">timeshift</code> campo de objeto utilizado cuando crea un trabajo en vivo. Los detalles del <code translate="No">timeshift</code> Los campos de objeto se detallan en las secciones siguientes.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="timeshift_fields">Campos de TimeShift</h2>
+    <p>La <code translate="No">timeshift</code> object es un objeto de nivel superior en el cuerpo de la solicitud para crear una solicitud de trabajo en vivo. La siguiente tabla detalla los campos de este objeto.</p>
+    <table class="bcls-table">
+      <caption class="bcls-caption--table"><code translate="No">timeshift</code> Campos</caption>
+      <thead class="bcls-table__head">
+          <tr>
+              <th>Campo</th>
+              <th>Descripción</th>
+          </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+          <tr>
+              <td><code translate="No">startover_duration</code></td>
+              <td>
+                Tamaño de la ventana de inicio en segundos, hasta 604800 (7 días).
+                <p>Si <code translate="No">timeshift.startover_duration</code> se especifica en la solicitud, se creará una URL de reproducción habilitada con time-shift para cada lista de reproducción. Estas URL admitirán la reproducción de borde en vivo (con un tamaño de DVR según lo especificado por el <code translate="No">live_duration</code> parámetro).</p>
+                <p>También admitirán la reproducción de porciones arbitrarias dentro del período definido por startover_duration agregando parámetros:</p>
+                <ul style="padding: 0;margin-left: 1rem;">
+                  <li><code translate="No">start=ts</code>- Marca de tiempo de época Unix de inicio de reproducción</li>
+                  <li><code translate="No">end=ts</code>- Marca de tiempo de época Unix del final de la reproducción</li>
+                </ul>
+              </td>
+          </tr>
+          <tr>
+              <td><code translate="No">live_duration</code></td>
+              <td>Tamaño de la ventana en vivo en segundos hasta 300. El valor predeterminado es 4 veces la duración del segmento.</td>
+          </tr>
+          <tr>
+              <td><code translate="No">live_delay</code></td>
+              <td>Número de segundos para retrasar la salida en vivo. El mínimo y predeterminado es de 5 segundos.</td>
+          </tr>
+          <tr>
+              <td><code translate="No">type</code></td>
+              <td>
+                <ul style="padding: 0;margin-left: 1rem;">
+                  <li>simple: para un trabajo de turno de tiempo independiente (predeterminado)</li>
+                  <li>primario - para el trabajo de turno de tiempo primario (debe ser un <a href="/live-api/guides/live-api-static-entry-points.html">Trabajo SEP</a>)</li>
+                  <li>respaldo - para un trabajo de turno de tiempo de respaldo</li>
+                </ul>
+              </td>
+          </tr>
+          <tr>
+              <td><code translate="No">primary_job_id</code></td>
+              <td>Hace referencia al ID del trabajo de turno de tiempo principal (obligatorio si el tipo es de respaldo)</td>
+          </tr>
+          <tr>
+              <td><code translate="No">skip_live_output</code></td>
+              <td>No genere listas de reproducción normales en vivo o dvr (el valor predeterminado es falso)</td>
+          </tr>
+      </tbody>
+  </table>
+  <h3>Notas</h3>
+  <ul>
+    <li>Tenga en cuenta que las URL de timeshift no se incluyen en la respuesta de la API si timeshift.type es "backup". Utilice las URL de Timeshift informadas para el trabajo principal.</li>
+    <li>Si se requiere DRM para una salida de time shift, incluya un <code translate="No">drm</code> campo en la solicitud de trabajo como de costumbre. Este atributo solo debe especificarse para el trabajo principal para proteger la salida del turno de tiempo; sin embargo, puede ser conveniente establecer skip_live_output en verdadero para cualquier trabajo de respaldo para evitar la reproducción desprotegida.</li>
+    <li>El recorte está limitado a las últimas 24 horas y, al igual que la redundancia en vivo, solo incluirá la entrada del trabajo seleccionado</li>
+  </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Sample_request_body">Muestra</h2>
+    <h3>Cuerpo de la solicitud</h3>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+  "live_stream": true,
+  "region": "us-west-2",
+  "reconnect_time": 300,
+  "ad_insertion": false,
+  "static": false,
+  <span class="bcls-highlight">"timeshift": {
+    "startover_duration": 36000,
+    "type": "single",
+    "live_delay": 20,
+    "skip_live_output": true
+  },</span>
+  "drm":{"modes":["fairplay","widevine:dash","playready"]},
+  "outputs": [...]
+}</code></pre>
+    <details>
+      <summary><h2>Respuesta de muestra (parcial)</h2></summary>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+  "id": "e948ae380893403eb33bb99ef48f96ca",
+  "outputs": [
+    {
+      "id": "2-e948ae380893403eb33bb99ef48f96ca",
+      "playlist_type": "defaultS3",
+      "type": "playlist",
+      "drm": {
+        "token": "eyJhb...",
+        "modes": [
+            {
+              "type": "fairplay",
+              "key_system": "com.apple.fps.1_0",
+              "license_url": "https://license-proxy-qa.alive.us-west-2.qa.deploys.brightcove.com/lic/fp?token=eyJhb…",
+              "certificate_url": "https://license-proxy-qa.alive.us-west-2.qa.deploys.brightcove.com/cert/fp?token=eyJhb...",
+              "filename": "playlist_fp.m3u8",
+              "dvr_filename": "playlist_fp_dvr.m3u8",
+              "playback_url": "https://playback-qa.a-live.io/e948ae380893403eb33bb99ef48f96ca/us-west-2/NA/playlist_fp.m3u8",
+              "playback_url_dvr": "https://playback-qa.a-live.io/e948ae380893403eb33bb99ef48f96ca/us-west-2/NA/playlist_fp_dvr.m3u8",
+              <span class="bcls-highlight">"timeshift_url": "https://timeshift.bcovlive-dev.com/e948ae380893403eb33bb99ef48f96ca/us-west-2/NA/8343f7014c0ea438/88575623f08e4befbc5892ed09b2042e/playlist_ts.m3u8",</span>
+              "playback_added_cdns": []
+            },
+            {
+              "type": "widevine",
+              "key_system": "com.widevine.alpha",
+              "license_url": "https://license-proxy-qa.alive.us-west-2.qa.deploys.brightcove.com/lic/wv?token=eyJhb...",
+              "filename": "playlist.mpd",
+              "dvr_filename": "playlist_dvr.mpd",
+              "playback_url": "https://playback-qa.a-live.io/e948ae380893403eb33bb99ef48f96ca/us-west-2/NA/playlist.mpd",
+              "playback_url_dvr": "https://playback-qa.a-live.io/e948ae380893403eb33bb99ef48f96ca/us-west-2/NA/playlist_dvr.mpd",
+              <span class="bcls-highlight">"timeshift_url": "https://timeshift.bcovlive-dev.com/e948ae380893403eb33bb99ef48f96ca/us-west-2/NA/8343f7014c0ea438/324e208d72ef47f78e78f430d007a97e/playlist_ts.mpd",</span>
+              "playback_added_cdns": []
+            },
+            {
+              "type": "playready",
+              "key_system": "com.microsoft.playready",
+              "license_url": "https://license-proxy-qa.alive.us-west-2.qa.deploys.brightcove.com/lic/pr?token=eyJhb...",
+              "filename": "playlist.mpd",
+              "dvr_filename": "playlist_dvr.mpd",
+              "playback_url": "https://playback-qa.a-live.io/e948ae380893403eb33bb99ef48f96ca/us-west-2/NA/playlist.mpd",
+              "playback_url_dvr": "https://playback-qa.a-live.io/e948ae380893403eb33bb99ef48f96ca/us-west-2/NA/playlist_dvr.mpd",
+              <span class="bcls-highlight">"timeshift_url": "https://timeshift.bcovlive-dev.com/e948ae380893403eb33bb99ef48f96ca/us-west-2/NA/8343f7014c0ea438/324e208d72ef47f78e78f430d007a97e/playlist_ts.mpd",</span>
+              "playback_added_cdns": []
+            }
+          ],
+          "token_expires_in": 43200,
+          "require_playback_token": false
+      }
+    }
+  ],
+} </code></pre>
+    </details>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Getting_job_info">Obtener detalles del trabajo</h2>
+    <p>Ya sea que solicite una lista de trabajos o detalles para uno específico, <code translate="No">timeshift_url</code> se incluirá para cualquier lista de reproducción en un trabajo habilitado para Timeshift. La persona que llama puede agregar parámetros a esta URL para especificar las horas de inicio y finalización como marcas de tiempo de Unix Epoch. Por ejemplo:</p>
+<pre><code class="language-http" translate="No">https://bcovlive-a.akamaihd.net/8d64308aafe34d17adb98af69e9eac13/us-east-1/6021289116001/ts-cf98fa7b2ee4450e-5df3aae6cb724fe1a4a932b4964d3e17/playlist_ts.m3u8?start=1593457200&end=1593460800</code></pre>
+    <p>Si el <code translate="No">start</code> y <code translate="No">end</code> los parámetros no están incluidos, la reproducción será en el borde en vivo.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="Create_Playback_Token">Crear token de reproducción</h2>
+    <p>Se han agregado nuevos campos al token de reproducción para permitir que la API Obtener fuentes de trabajo devuelva las URL de cambio de tiempo. Actualmente, SSAI no es compatible con trabajos con time-shift habilitado, por lo que <code translate="No">application_id</code> El atributo no debe especificarse.</p>
+    <p>Si <code translate="No">ts_start</code> y <code translate="No">ts_end</code> se especifican, se agregarán a la URL de reproducción como parámetros de consulta como se describe en la sección anterior.</p>
+    <h3>Nuevos campos</h3>
+    <table class="bcls-table">
+      <caption class="bcls-caption--table">Nuevos campos de token de reproducción</caption>
+      <thead class="bcls-table__head">
+          <tr>
+              <th>Campo</th>
+              <th>Descripción</th>
+          </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+          <tr>
+              <td><code translate="No">ts</code></td>
+              <td>Seleccione la URL de reproducción de time-shift (verdadero | falso, opcional, el predeterminado es falso)</td>
+          </tr>
+          <tr>
+              <td><code translate="No">ts_start</code></td>
+              <td>Marca de tiempo de época de Unix para el inicio de la ventana de inicio de nuevo (número, opcional)</td>
+          </tr>
+          <tr>
+              <td><code translate="No">ts_end</code></td>
+              <td>Marca de tiempo de época de Unix para el final de la ventana de inicio de nuevo (número, opcional)</td>
+          </tr>
+      </tbody>
+  </table>
+  </section>
+</article>

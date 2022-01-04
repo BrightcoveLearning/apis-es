@@ -1,0 +1,245 @@
+---
+title: "Limitación de transmisiones simultáneas por espectador"
+description: "En este tema, aprenderá a limitar las transmisiones simultáneas al utilizar las restricciones de reproducción de Brightcove".
+parent: Guides 
+grandparent: Playback Restrictions
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  
+  <!-- <br/>
+  <aside class="bcls-aside bcls-aside--tip">This feature is available for a specific set of customers with access to the Limited Availability phase of Brightcove Playback Restrictions.</aside> -->
+
+  <section class="bcls-section">
+    <h2 id="Introduction">Introducción</h2>
+
+    <p>Con los límites de transmisión simultánea, usted define la cantidad de transmisiones de video que un usuario específico puede ver en un momento dado. Limitar las transmisiones simultáneas por usuario desalienta a los espectadores a compartir sus credenciales con amigos que no tienen cuentas.</p>
+    <p>
+      Cuando se alcanza el número máximo de transmisiones simultáneas y el espectador, o alguien con sus credenciales de cuenta, intenta abrir una transmisión adicional, se detiene la sesión más antigua o se bloquea la solicitud más reciente. Tú controlas este comportamiento.
+    </p>
+    <p>
+      Esta función se conecta al flujo de trabajo de DRM, por lo que es seguro y se puede utilizar con una integración mínima.
+    </p>
+
+    <p>Si es nuevo en esta función, consulte la <a href="/playback-restrictions/getting-started/overview-playback-restrictions.html">Descripción general: Restricciones de reproducción de Brightcove</a> documento.</p>
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Account_setup">Configuracion de cuenta</h2>
+
+    <p>Comuníquese con su gerente de cuenta para que su cuenta esté habilitada para la concurrencia de transmisiones.</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Implementation">Implementación</h2>
+    <p>
+      Para esta función, el contenido debe estar encriptado con DRM. Para implementar, siga estos pasos:
+    </p>
+    <ol class="bcls-tasklist">
+      <li>
+        <p>Determine los valores de las reclamaciones:</p>
+        <ul>
+          <li>La <code translate="No">climit</code> reclamo indica cuántos observadores o transmisiones pueden reproducirse al mismo tiempo. </li>
+          <li>
+            La <code translate="No">cbeh</code> La reclamación define cómo bloquear la simultaneidad. Cuando se alcanza el límite de transmisión, puede bloquear un nuevo espectador (es decir, una dirección IP y un dispositivo diferentes) o bloquear una nueva solicitud de transmisión (sesión).
+            <ul>
+              <li><code translate="No">cbeh</code> valor <code translate="No">BLOCK_NEW_USER</code> - Bloquear nuevos espectadores</li>
+              <li><code translate="No">cbeh</code> valor <code translate="No">BLOCK_NEW</code> - Bloquear nuevas transmisiones</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Cree un JSON Web Tokent (JWT) con reclamos asociados con los límites de transmisión concurrente deseados. Para obtener más detalles, consulte el <a href="https://general.support.brightcove.com/developer/create-jwt.html">Creando un <span translate="No">Token web JSON</span> (JWT)</a> documento.
+      </li>
+      <li>
+        Configure su reproductor para usar restricciones de reproducción y pasar el <span translate="No">Token web JSON</span> (JWT) al recuperar su contenido de video. Para obtener más detalles, consulte la <a href="/playback-rights/getting-started/implementing-epa.html#Configure_your_player">Configura tu reproductor</a> sección del documento Implementación del servicio de gestión de derechos de reproducción.
+      </li>
+    </ol>
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Renewal_interval">Intervalo de renovación</h2>
+    <p>
+      Para garantizar que se cumpla el límite de transmisión simultánea, se envía una solicitud de renovación de licencia DRM durante la reproducción en función de un intervalo de renovación definido. En el momento de la configuración, debe definir este intervalo de renovación.
+    </p>
+    <p>
+      Las solicitudes de autorización de reproducción en mitad de la transmisión deben especificar un límite de simultaneidad en el token JWT junto con una identificación de clave pública.
+    </p>
+
+    <p>Hoy en día, cada solicitud de renovación cuenta como una licencia adicional que iría hacia el número de licencias adquiridas. Esto debe tenerse en cuenta cuando decida un intervalo.</p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Intervalo de renovación</th>
+          <th>Licencias servidas por transmisión para contenido de 2 horas</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>Ninguno</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>15 minutos</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>5 minutos</td>
+          <td>24</td>
+        </tr>
+        <tr>
+          <td>2 minutos</td>
+          <td>60</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Understanding_behavior">Comprender el comportamiento</h2>
+    <p>
+      Con esta función, puede elegir el comportamiento para bloquear transmisiones.
+    </p>
+    <h3>Bloquear la transmisión más antigua</h3>
+    <p>
+      Brightcove admite la limitación de transmisiones de reproducción para contenido protegido por DRM. Cuando se procesa una nueva solicitud de renovación, se detiene la sesión más antigua. Esto permite dar acceso a las solicitudes de nuevos usuarios, mientras bloquea las solicitudes más antiguas que pueden dejar de ser válidas, mostrando un mensaje sobre la falla de la red o del dispositivo.
+    </p>
+    <p>
+      Este es el comportamiento predeterminado.
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" src="//learning-services-media.brightcove.com/doc-assets/pas/concurrency-general.png" alt="Block oldest stream">
+      <figcaption class="bcls-caption--image">Bloquear la transmisión más antigua</figcaption>
+    </figure>
+
+    <p>
+      <strong>Actividad del usuario:</strong>
+    </p>
+    <ol>
+      <li>
+        Ben, Jason y Sarah comienzan a ver una película.
+      </li>
+      <li>
+        Jamie decide comenzar a mirar también, lo que hace que se rechace la próxima solicitud de renovación de Ben.
+      </li>
+      <li>
+        Ben reinicia la película, lo que ahora hace que la solicitud de renovación de Jason falle.
+      </li>
+      <li>
+        Jason comienza a ver otra película algún tiempo después, lo que hace que la película de Sarah se detenga.
+      </li>
+    </ol>
+
+    <h3>Bloquear nueva solicitud</h3>
+    <p>
+      Alternativamente, puede bloquear cualquier solicitud de licencia nueva cuando se alcance el número máximo de transmisiones simultáneas. Esto permite que todos los usuarios actuales sigan mirando, mientras muestran un mensaje a las solicitudes de los nuevos usuarios.
+    </p>
+    <p>
+      Para habilitar este comportamiento, debe configurar el <code translate="No">cbeh</code> reclamar en su <a href="https://general.support.brightcove.com/developer/create-jwt.html">Token web JSON (JWT)</a> como sigue:
+    </p>
+    <pre><code class="language-json" translate="No">&quot;cbeh&quot;: &quot;BLOCK_NEW&quot;</code></pre>
+    <br />
+    <p>
+      Aquí hay un ejemplo:
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" src="//learning-services-media.brightcove.com/doc-assets/pas/block-new-request.png" alt="Block new request">
+      <figcaption class="bcls-caption--image">Bloquear nueva solicitud</figcaption>
+    </figure>
+
+    <p>
+      <strong>Actividad del usuario:</strong>
+    </p>
+    <ol>
+      <li>
+        Ben, Jason y Sarah comienzan a ver una película.
+      </li>
+      <li>
+        Jamie intenta comenzar a mirar, pero su solicitud está bloqueada debido al límite máximo.
+      </li>
+      <li>
+        Jason deja de mirar, permitiendo que otro espectador comience a mirar. Jamie comienza a ver una película.
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="PlayReady">PlayReady</h2>
+    <p>PlayReady no admite comprobaciones de licencias a mitad de camino.</p>
+    <h3>Jugador actual de Brightcove</h3>
+    <p>Si está utilizando Brightcove Player v6.48.xo más reciente, entonces el reproductor establece el orden preferido para que los navegadores Edge utilicen Widevine en lugar de PlayReady. Por lo tanto, PlayReady no debería ser un problema.</p>
+    <p>Puede encontrar la solución para la selección de fuente EPA DRM en los navegadores Chromium Edge en la <a href="https://player.support.brightcove.com/release-notes/brightcove-player-release-notes.html">Notas de la versión de Brightcove Player</a>.</p>
+    <h3>versiones mas antiguas</h3>
+    <p>Las versiones anteriores de Brightcove Player usan primero el navegador Chromium Edge predeterminado de PlayReady. En este caso, debe realizar manualmente las comprobaciones de licencia mid-stream.</p>
+    <p>
+      Para implementar una renovación de licencia manual en sus reproductores, consulte <a href="https://docs.microsoft.com/en-us/playready/features/concurrency-limiting">Limitación de concurrencia de Microsoft</a> documento.
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Safari">Safari</h2>
+    <p>
+      El límite de simultaneidad es compatible con el navegador Safari, pero no se enviarán solicitudes de renovación. Esto significa que las nuevas sesiones / transmisiones se bloquearán durante períodos de tiempo más prolongados que con otros navegadores.
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Notes">Notas</h2>
+    <p>
+      Las siguientes notas se aplican a esta función:
+    </p>
+    <ul>
+      <li>
+        La solicitud de renovación de licencia manual debe implementarse en los siguientes casos:
+        <ul>
+          <li>
+            Límite de simultaneidad en reproductores que no son de Brightcove, excepto cuando están protegidos por Widevine
+          </li>
+          <li>
+            Límite de simultaneidad para PlayReady en todos los dispositivos, excepto cuando se usa Brightcove Player v6.48.xo más reciente
+          </li>
+        </ul>
+      </li>
+      <li>
+        La renovación manual de la licencia debe solicitarse en un período más corto que el intervalo de renovación definido.
+      </li>
+    </ul>
+
+  </section>
+
+  <!-- <section class="bcls-section">
+<h2 id="Limitations">Limitations</h2>
+<p>
+  The following limitations apply to this feature:
+</p>
+
+<ul>
+  <li>
+    Concurrency limit is not yet supported in Safari due to the browser's limitations.
+  </li>
+</ul>
+</section> -->
+
+  <!-- <section class="bcls-section">
+    <h2 id="Related_topics">Related topics</h2>
+
+    <ul>
+      <li>
+        <a href="/playback-rights/getting-started/overview-epa.html">Overview: Managing Playback Rights</a>
+      </li>
+      <li>
+        <a href="/playback-rights/getting-started/implementing-epa.html">Implementing Playback Rights</a>
+      </li>
+      <li>
+        <a href="/playback-rights/guides/using-epa-with-bcp.html">Using Playback Rights with Brightcove Player</a>
+      </li>
+      <li>
+        <a href="/playback-rights/guides/using-epa-with-sdks.html">Using Playback Rights with the Native SDKs</a>
+      </li>
+    </ul>
+  </section> -->
+
+</article>

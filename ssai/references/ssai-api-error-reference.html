@@ -1,0 +1,87 @@
+---
+title: 'Referencia de errores de la API de SSAI'
+description: Este tema proporciona una referencia de error para la API SSAI.
+parent: References 
+grandparent: SSAI API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+<section class="bcls-section">
+<h2 id="errorMessages">Mensajes de error generales</h2>
+
+<table class="bcls-table">
+	<thead class="bcls-table__head">
+		<tr>
+			<th>Estado</th>
+			<th style="width: 20%;">Nombre</th>
+			<th>Mensaje</th>
+			<th>Causa</th>
+		</tr>
+	</thead>
+	<tbody class="bcls-table__body">
+		<tr>
+			<td>400</td>
+			<td><code translate="No">BAD_REQUEST</code></td>
+			<td><code translate="No">Invalid JSON body on request</code></td>
+			<td>Hay un error en JSON para el cuerpo de la solicitud; podría ser un problema JSON básico o un tipo incorrecto para un valor de campo</td>
+		</tr>
+		<tr>
+			<td>400</td>
+			<td><code translate="No">BAD_REQUEST</code></td>
+			<td><code translate="No">"error": "{<span class="bcls-highlight">fieldname</span>} field is required</code></td>
+			<td>Al cuerpo de la solicitud le falta el campo requerido indicado</td>
+		</tr>
+		<tr>
+			<td>400</td>
+			<td><code translate="No">AD_CONFIG_NOT_FOUND</code></td>
+			<td><code translate="No">Ad config not found</code></td>
+			<td>No se encontró la configuración de anuncios especificada en una solicitud SSAI</td>
+		</tr>
+		<tr>
+			<td>400</td>
+			<td><code translate="No">AD_CONFIG_INACTIVE</code></td>
+			<td><code translate="No">Ad config is inactive</code></td>
+			<td>La configuración de anuncios especificada en una solicitud SSAI está inactiva</td>
+		</tr>
+		<tr>
+			<td>401</td>
+			<td><code translate="No">UNAUTHORIZED</code></td>
+			<td><code translate="No">Permission denied.</code></td>
+			<td>Token de acceso de OAuth faltante o no válido. Si proporcionó un token de acceso, es posible que no tenga el alcance adecuado para esta solicitud</td>
+		</tr>
+		<tr>
+			<td>403</td>
+			<td><code translate="No">NOT_AVAILABLE</code></td>
+			<td><code translate="No">Resource is not available.</code></td>
+			<td>El recurso que está solicitando no está disponible temporalmente; esto puede ser una condición temporal mientras se está procesando algún tipo de video, pero si el mensaje persiste, comuníquese con el Soporte.</td>
+		</tr>
+		<tr>
+			<td>404</td>
+			<td><code translate="No">NOT_FOUND</code></td>
+			<td><code translate="No">Resource does not exist.</code></td>
+			<td>Solicitó un recurso que no existe; es posible que esté intentando actualizar una configuración de anuncios u obtener un seguimiento de anuncios en una sesión que ya no existe. Este error también se devolverá si usa un método HTTP no permitido en el punto final.</td>
+		</tr>
+		<tr>
+			<td>500</td>
+			<td><code translate="No">UNKNOWN</code></td>
+			<td><code translate="No">an unknown internal error occurred</code></td>
+			<td>Problema en el sistema Brightcove; inténtelo de nuevo más tarde.</td>
+		</tr>
+		<tr>
+			<td>503</td>
+			<td><code translate="No">SERVICE_UNAVAILABLE</code></td>
+			<td><code translate="No">The API is temporarily unavailable</code></td>
+			<td>Problema de backend: inténtalo de nuevo más tarde.</td>
+		</tr>
+		<tr>
+			<td>504</td>
+			<td><code translate="No">TIMEOUT</code></td>
+			<td><code translate="No">something took too long</code></td>
+			<td>Es probable que el servidor esté demasiado ocupado; inténtelo de nuevo más tarde.</td>
+		</tr>
+	</tbody>
+</table>
+</section>
+</article>

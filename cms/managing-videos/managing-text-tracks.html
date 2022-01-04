@@ -1,0 +1,201 @@
+---
+title: Administrar pistas de texto con la API de CMS
+description: 'En este tema, aprenderá a usar la API de CMS para actualizar las pistas de texto WebVTT de sus videos.'
+parent: Managing Videos/Assets 
+grandparent: CMS API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+    <section class="bcls-section">
+    <h2 id="Introduction">Introducción</h2>
+    
+    <p>Ya sea que las pistas de texto sean ingeridas (estáticas o dinámicas) o remotas, puede usar un <code translate="no">PARCHE</code> solicitud para actualizar los metadatos asociados con las pistas de texto.</p>
+    <h3>Notas</h3>
+    <ul>
+      <li>Los métodos explicados en este documento son para actualizar los archivos WebVTT agregados a sus videos. Puede ingerir archivos WebVTT en Video Cloud utilizando el <a href="/dynamic-ingest/ingest-guides/ingesting-webvtt-files-text-trackscaptions.html">API de ingesta dinámica</a> o <a href="/cms/managing-videos/using-cms-api-add-webvtt-captions-text-tracks.html">agregar archivos WebVTT remotos</a> a tus videos usando la API de CMS.</li>
+    </ul>
+    
+    </section>
+    
+    <section class="section">
+    <h2 id="authorization">Autorización</h2>
+    
+		<p>Las solicitudes a la API de CMS requieren un encabezado de autorización que contiene sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</p>
+    
+    <p>Las operaciones que necesitará para actualizar los metadatos de video son <code translate="No">video-cloud/video/update</code> o <code translate="No">video-cloud/video/all</code>.</p>
+    </section>
+    
+    <section class="section">
+    <h2 id="syntax">Sintaxis</h2>
+
+		<aside class="bcls-aside bcls-aside--warning">los <strong>toda la matriz debe ser parcheada</strong> , no solo la pista o el campo que está cambiando.</aside>
+
+		<p>Recomendamos realizar la siguiente solicitud primero para obtener la matriz completa:</p>
+<pre><code class="language-http" translate="No">GET
+https://cms.api.brightcove.com/v1/accounts/{account_id}/videos/{video_ID}
+</code></pre>
+    <h3>Actualización de pistas de texto</h3>
+		<p>Al actualizar pistas de texto, algunos campos en <a href="/cms/references/cms-api-video-fields-reference-stage.html#text_tracks">Campos de pistas de texto</a> puede tratarse de manera diferente según su tipo.</p>
+
+		<table class="bcls-table">
+			<caption class="bcls-caption--table">Campos de seguimiento de texto</caption>
+			<thead class="bcls-table__head">
+					<tr>
+							<th>Campo</th>
+							<th>Tipo</th>
+							<th>Pistas de texto remotas</th>
+							<th>Pistas de texto ingerido estático</th>
+							<th>Pistas dinámicas de texto ingerido</th>
+					</tr>
+			</thead>
+			<tbody class="bcls-table__body">
+					<tr>
+							<td><code translate="no">identificación</code></td>
+							<td>Cuerda</td>
+							<td colspan="3">Valor de SÓLO LECTURA. Requerido para identificar el TT que necesita actualizarse.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">ID de la cuenta</code></td>
+							<td>Cuerda</td>
+							<td colspan="3">Se ignorarán las actualizaciones en este campo.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">src</code></td>
+							<td>Cuerda</td>
+							<td>Obligatorio y limitado a 255 caracteres.</td>
+							<td colspan="2">Se ignorarán las actualizaciones en este campo.</td>
+					</tr>
+					<tr>
+							<td>srclang<code translate="no"></code></td>
+							<td>Cuerda</td>
+							<td colspan="3">Limitado a 32 caracteres.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">etiqueta</code></td>
+							<td>Cuerda</td>
+							<td colspan="3">Limitado a 255 caracteres.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">amable</code></td>
+							<td>Enum</td>
+							<td colspan="3">Los valores válidos son <code translate="no">subtítulos</code> , <code translate="no">subtítulos</code> , <code translate="no">descripciones</code> , <code translate="no">capítulos</code> , <code translate="no">metadatos</code>. Distingue mayúsculas y minúsculas.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">tipo de Mimica</code></td>
+							<td>Cuerda</td>
+							<td colspan="2">Limitado a 32 caracteres.</td>
+							<td>Se ignorarán las actualizaciones en este campo.</td>
+					</tr>
+					<tr>
+							<td>asset_id<code translate="no"></code></td>
+							<td>Cuerda</td>
+							<td colspan="2">Valor de SÓLO LECTURA.</td>
+							<td>Campo no aplicable para este tipo. Se ignorarán las actualizaciones en este campo.</td>
+					</tr>
+					<tr>
+							<td>in_band_metadata_track_dispatch_type<code translate="no"></code></td>
+							<td>Cuerda</td>
+							<td colspan="2">Campo no aplicable para este tipo. </td>
+							<td>Se ignorarán las actualizaciones en este campo.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">fuentes</code></td>
+							<td>Formación</td>
+							<td colspan="3">Valor de SÓLO LECTURA.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">defecto</code></td>
+							<td>Booleano</td>
+							<td colspan="2"><code translate="no">cierto</code> o <code translate="no">falso</code>. No puede agregar varios <code translate="no">predeterminado = verdadero</code> a pistas de texto con diferentes <code translate="no">srclang</code>.</td>
+							<td>Se ignorarán las actualizaciones en este campo.</td>
+					</tr>
+			</tbody>
+	</table>
+    <h3>Pedido</h3>
+    <p>Aplicable a pistas de texto dinámicas, estáticas y remotas.</p>
+    <pre class="line-numbers">
+<code class="language-http" translate="No">PATCH
+https://cms.api.brightcove.com/v1/accounts/{account_id}/videos/{video_ID}</code></pre>
+    
+    <h3>Solicitar ejemplos de cuerpo</h3>
+    <details>
+			<summary>Pistas de texto remotas</summary>
+			<p>El cuerpo de la solicitud será un objeto JSON que contiene una matriz de pistas de texto:</p>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+	"text_tracks" : 
+	[ 
+		{ 
+			"id" : "1234-1234-1234"
+			"src" :     "http://learning-services-media.brightcove.com/captions/bc_smart_ja.   vtt",
+			"srclang" : "ja", 
+			"label" : "日本人", 
+			"kind" : "captions", 
+			"mime_type" : null, 
+			"default" : true 
+		}, 
+		{ 
+			"id" : "5678-5678-5678"
+			"src" : "http://learning-services-media.brightcove.com/captions/bc_smart_es.   vtt",  
+			"srclang" : "es", 
+			"label" : "español", 
+			"kind" : "descriptions",
+			"mime_type" : null,
+			"default" : false 
+		} 
+	] 
+}</code></pre>
+		</details>
+    <details>
+			<summary>Pistas de texto estático</summary>
+			<p>El cuerpo de la solicitud será un objeto JSON que contiene una matriz de pistas de texto:</p>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+	"text_tracks" : 
+	[ 
+		{ 
+			"id" : "1234-1234-1234"
+			"srclang" : "ja", 
+			"label" : "日本人", 
+			"kind" : "captions", 
+			"mime_type" : null, 
+			"default" : true 
+		}, 
+		{ 
+			"id" : "5678-5678-5678"  
+			"srclang" : "es", 
+			"label" : "español", 
+			"kind" : "descriptions",
+			"mime_type" : null,
+			"default" : false 
+		} 
+	] 
+}</code></pre>
+		</details>
+    <details>
+			<summary>Pistas de texto dinámicas</summary>
+			<p>El cuerpo de la solicitud será un objeto JSON que contiene una matriz de pistas de texto:</p>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+	"text_tracks" : 
+	[ 
+		{ 
+			"id" : "1234-1234-1234"
+			"srclang" : "ja", 
+			"label" : "日本人", 
+			"kind" : "captions", 
+			"mime_type" : null, 
+			"default" : true 
+		}, 
+		{ 
+			"id" : "5678-5678-5678"  
+			"srclang" : "es", 
+			"label" : "español", 
+			"kind" : "descriptions",
+			"mime_type" : null,
+			"default" : false 
+		} 
+	] 
+}</code></pre>
+		</details>
+  </section>
+</article>
+ 

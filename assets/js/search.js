@@ -1,3 +1,7 @@
+---
+layout: null
+---
+
 const myInitCallback = function() {
   if (document.readyState == 'complete') {
     // Document is ready when CSE element is initialized.
@@ -8,10 +12,10 @@ const myInitCallback = function() {
     console.log('searchbox_el', searchbox_el);
     
     searchbox_el.setAttribute('style', 'background-image:none;');
-    searchbox_el.setAttribute('placeholder', 'Search Video Cloud Platform APIs docs');
+    searchbox_el.setAttribute('placeholder', 'Search {{ site.product }} docs');
     searchbox_el.addEventListener('click', function() {
       searchbox_el.setAttribute('style', 'background-image:none;');
-      searchbox_el.setAttribute('placeholder', 'Search Video Cloud Platform APIs docs');
+      searchbox_el.setAttribute('placeholder', 'Search {{ site.product }} docs');
     });
   } else {
     // Document is not ready yet, when CSE element is initialized.
@@ -25,10 +29,10 @@ const myInitCallback = function() {
     console.log('searchbox_el', searchbox_el);
     
     searchbox_el.setAttribute('style', 'background-image:none;border:none');
-    searchbox_el.setAttribute('placeholder', 'Search Video Cloud Platform APIs docs');
+    searchbox_el.setAttribute('placeholder', 'Search {{ site.product }} docs');
     searchbox_el.addEventListener('click', function() {
       searchbox_el.setAttribute('style', 'background-image:none;border:none');
-      searchbox_el.setAttribute('placeholder', 'Search Video Cloud Platform APIs docs');
+      searchbox_el.setAttribute('placeholder', 'Search {{ site.product }} docs');
     });
     
     }, true);

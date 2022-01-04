@@ -1,0 +1,453 @@
+---
+title: 'Inicio rápido: Cree una transmisión en vivo utilizando Brightcove Live API'
+description: 'Este tutorial lo guiará a través de la creación de un trabajo de transmisión en vivo utilizando la API en vivo.'
+parent: Getting Started 
+grandparent: Live API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+ <summary>{{ page.description }}</summary>
+
+<section class="bcls-section">
+<h2 id="What_you_need">Que necesitas</h2>
+
+<p>Para completar este tutorial, necesita lo siguiente.</p>
+
+<ul>
+	<li>Una cuenta configurada para Live API</li>
+	<li>Una clave de API para Live API (que se le proporciona cuando se configura la cuenta)</li>
+	<li>Una cuenta de Video Cloud (no es necesaria para crear el trabajo de transmisión en vivo, pero es necesaria para configurar la reproducción en Brightcove Player)</li>
+	<li>Si va a utilizar el <span translate="No">API de CMS</span> Para crear el video de Video Cloud en lugar de Studio, necesitará credenciales de cliente con permisos de video / lectura y video / escritura; si no está familiarizado con el proceso de obtención de credenciales de cliente, consulte la <a href="#authentication">autenticación</a> sección siguiente.</li>
+	<li>La capacidad de realizar solicitudes de API REST a través de <a href="/oauth/guides/oauth-create-client-credentials-using-curl.html">rizo</a> o un cliente REST como <a href="/general/use-insomnia-api-requests.html">Insomnio</a> o <a href="/oauth/guides/oauth-create-client-credentials-using-postman.html">Cartero</a>.
+	<p>Para ayudarlo, hemos preparado algunas importaciones de Insomnia y Postman que puede usar para el ejercicio (en Brightcove Learning Services, preferimos y usamos Insomnia, pero Postman también funcionará si eso es lo que tiene):</p>
+
+	<p>En cada uno de los archivos zip, encontrará una página Léame para ayudarlo.</p>
+
+	<ul>
+		<li><a href="/assets/downloads/insomnia-imports.zip">Importación de Insomnia Workspace</a></li>
+		<li><a href="/assets/downloads/postman-imports.zip">Colección de cartero y importación de entornos</a></li>
+	</ul>
+	</li>
+	<li>Para crear una transmisión en vivo real, necesitará un codificador de software o hardware para la transmisión en vivo. Las instrucciones que aparecen a continuación incluirán pasos para configurar la transmisión en directo mediante Wirecast ( <a href="http://www.telestream.net/controls/wirecast/download-wirecast.htm">regístrate para una prueba</a>). Si está utilizando un codificador diferente, el proceso será diferente pero debería ser similar en términos de la información que necesita de la respuesta de la API en vivo.</li>
+</ul>
+</section>
+
+<section class="bcls-section">
+<h2 id="getCredentials" class="bcls-expander-head">Obtenga credenciales para la API de CMS</h2>
+
+<div class="bcls-expander-content">
+<p>Usar el <span translate="No">API de CMS</span> necesitará las credenciales adecuadas.</p>
+
+<p>La forma más fácil de obtener credenciales en la mayoría de los casos es a través de la sección Autenticación de la API de administrador de Studio (requiere permisos de administrador en su cuenta). Ver <a href="https://studio.support.brightcove.com/admin/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a> para detalles. En este caso, los permisos que necesita son para <strong>compartir relaciones</strong> - necesita permisos de lectura y escritura:</p>
+
+<figure class="bcls-figure"><img class="bcls-image" alt="Sharing Relationship Permissions" src="/assets/images/live-api/17765/17765-api-permissions.png" />
+<figcaption class="bcls-caption--image">Compartir permisos de relación</figcaption>
+</figure>
+
+<p>Si los permisos que necesita no están disponibles en Studio, o si prefiere obtenerlos directamente de la API de OAuth, utilice su elección de <strong>Obtener credenciales de cliente</strong> documentos que se enumeran a continuación. Cualquiera que sea la opción que elija, deberá solicitar los permisos de operación correctos. Lo siguiente se puede usar con cURL o Postman para obtener los permisos adecuados:</p>
+
+<pre class="line-numbers">
+    <code class="language-json" translate="No">"operations": [
+    "video-cloud/videos/read",
+    "video-cloud/videos/create",
+    "video-cloud/videos/update"]</code></pre>
+
+<ul>
+	<li><a href="/oauth/guides/oauth-create-client-credentials-using-curl.html">OAuth: Obtener credenciales de cliente mediante cURL</a></li>
+	<li><a href="/oauth/guides/oauth-create-client-credentials-using-postman.html">OAuth: Obtenga las credenciales del cliente con Postman</a></li>
+</ul>
+</div>
+</section>
+
+<section class="bcls-section">
+<h2 id="Create_live_job">Crear trabajo en vivo</h2>
+
+<p>Primero crearemos el trabajo en vivo.</p>
+
+<ol class="bcls-tasklist-restart">
+	<li>Para este paso, enviará un <code translate="No">POST </code> solicitud de:
+
+	<pre class="line-numbers">
+<code class="language-http" translate="No">https://api.bcovlive.io/v1/jobs
+</code>
+</pre>
+
+	<p>Utilice lo siguiente como cuerpo de la solicitud:</p>
+
+	<pre class="line-numbers">
+<code class="language-json" translate="No">{
+    "live_stream": true,
+    "region": "us-west-2",
+    "reconnect_time": 1800,
+    "outputs": [
+        {
+            "label": "hls720p",
+            "live_stream": true,
+            "width": 1280,
+            "height": 720,
+            "video_codec": "h264",
+            "h264_profile": "high",
+            "video_bitrate": 2100,
+            "segment_seconds": 4,
+            "keyframe_interval": 60
+        },
+        {
+            "label": "hls540p",
+            "live_stream": true,
+            "width": 960,
+            "height": 540,
+            "video_codec": "h264",
+            "h264_profile": "main",
+            "video_bitrate": 1500,
+            "segment_seconds": 4,
+            "keyframe_interval": 60
+        },
+        {
+            "label": "hls360p",
+            "live_stream": true,
+            "width": 640,
+            "height": 360,
+            "video_codec": "h264",
+            "h264_profile": "main",
+            "video_bitrate": 800,
+            "segment_seconds": 4,
+            "keyframe_interval": 60
+        }
+    ]
+}
+</code>
+</pre>
+	</li>
+	<li>Si utiliza un cliente REST como <a href="/general/use-insomnia-api-requests.html">Insomnia</a> o <a href="/general/use-postman-api-requests.html">Postman</a>, deberá agregar los siguientes encabezados para su solicitud:
+	<table class="bcls-table">
+		<thead>
+			<tr>
+				<th>Clave</th>
+				<th>Valor</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>X-API-KEY</td>
+				<td><span class="bcls-input">TU CLAVE API</span></td>
+			</tr>
+			<tr>
+				<td>Tipo de contenido</td>
+				<td>aplicación / json</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Utilice el cuerpo de la solicitud que se muestra en el paso 1 anterior y asegúrese de enviar la solicitud mediante el método POST.</p>
+
+	<aside class="bcls-aside bcls-aside--information">Si prefiere utilizar cURL, encontrará el <a href="#curlCreateLiveJob">comando cURL equivalente a continuación</a>.</aside>
+	</li>
+	<li>La respuesta de la API debería ser similar a esta:
+		
+	<details>
+		<summary>Respuesta de muestra</summary>
+		<pre class="line-numbers">
+		<code class="language-json" translate="No">{
+				"id": "15981d93877e490185e6ebc9af2c79a3",
+				"outputs": [
+						{
+								"id": "0-15981d93877e490185e6ebc9af2c79a3",
+								"playback_url": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/profile_0/chunklist.m3u8",
+								"playback_url_dvr": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/profile_0/chunklist_dvr.m3u8",
+								"playback_url_vod": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/profile_0/chunklist_vod.m3u8",
+								"label": "hls720p"
+						},
+						{
+								"id": "1-15981d93877e490185e6ebc9af2c79a3",
+								"playback_url": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/profile_1/chunklist.m3u8",
+								"playback_url_dvr": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/profile_1/chunklist_dvr.m3u8",
+								"playback_url_vod": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/profile_1/chunklist_vod.m3u8",
+								"label": "hls540p"
+						},
+						{
+								"id": "2-15981d93877e490185e6ebc9af2c79a3",
+								"playback_url": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/profile_2/chunklist.m3u8",
+								"playback_url_dvr": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/profile_2/chunklist_dvr.m3u8",
+								"playback_url_vod": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/profile_2/chunklist_vod.m3u8",
+								"label": "hls360p"
+						},
+						{
+								"id": "3-15981d93877e490185e6ebc9af2c79a3",
+								"playlist_type": "defaultS3",
+								"type": "playlist",
+								"filename": "playlist.m3u8",
+								"dvr_filename": "playlist_dvr.m3u8",
+								"playback_url": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/playlist.m3u8",
+								"playback_url_dvr": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/playlist_dvr.m3u8",
+								"ssai_playback_urls": {
+										"685b239f582c42fca49da33be4f2328e": {
+												"playback_url": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/685b239f582c42fca49da33be4f2328e/playlist_ssaiM.m3u8",
+												"playback_url_dvr": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/685b239f582c42fca49da33be4f2328e/playlist_dvr_ssaiM.m3u8",
+												"playback_added_cdns": [],
+												"description": "House Ads - a95ac581551b4478b27910e5675db1f8",
+												"type": "ads"
+										},
+										"c96e2d00d6744c65a3eddb15425e4a51": {
+												"playback_url": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/counter/playlist_ssaiM.m3u8",
+												"playback_url_dvr": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/counter/playlist_dvr_ssaiM.m3u8",
+												"playback_added_cdns": [],
+												"description": "House Counter - a95ac581551b4478b27910e5675db1f8",
+												"type": "counter"
+										}
+								}
+						}
+						],
+						<span class="bcls-highlight">"stream_url": "rtmp://ep1-apse2.bcovlive.io:1935/15981d93877e490185e6ebc9af2c79a3"</span>,
+						<span class="bcls-highlight">"stream_name": "alive"</span>,
+						"encryption": {},
+						"playback_url": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/playlist.m3u8",
+						"playback_url_dvr": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/playlist_dvr.m3u8",
+						"ssai_playback_urls": {
+								"685b239f582c42fca49da33be4f2328e": {
+								"playback_url": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/685b239f582c42fca49da33be4f2328e/playlist_ssaiM.m3u8",
+								"playback_url_dvr": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/685b239f582c42fca49da33be4f2328e/playlist_dvr_ssaiM.m3u8",
+								"playback_added_cdns": [],
+								"description": "House Ads - a95ac581551b4478b27910e5675db1f8",
+								"type": "ads"
+								},
+								"c96e2d00d6744c65a3eddb15425e4a51": {
+								"playback_url": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/counter/playlist_ssaiM.m3u8",
+								"playback_url_dvr": "http://bcovlive-a.akamaihd.net/15981d93877e490185e6ebc9af2c79a3/us-west-2/counter/playlist_dvr_ssaiM.m3u8",
+								"playback_added_cdns": [],
+								"description": "House Counter - a95ac581551b4478b27910e5675db1f8",
+								"type": "counter"
+						}
+				}
+		}
+		</code>
+		</pre>
+	</details>
+	</li>
+	<li>Para nuestros propósitos, los campos importantes en la respuesta son:
+	<ul>
+		<li>stream_url (línea 51)</li>
+		<li>stream_name (línea 52)</li>
+		<li>reproducción_url (línea 54)</li>
+	</ul>
+
+	<aside class="bcls-aside bcls-aside--information">Tenga en cuenta que también puede utilizar el <code translate="No">playback_url_dvr</code> si desea la capacidad de DVR; los <code translate="No">playback_url_vod</code> es solo para uso interno.</aside> <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que la capacidad de DVR solo funcionará si el reproductor la admite. Consulte Plugin DVRUX <a href="https://player.support.brightcove.com/plugins/live-dvrux-plugin.html">en vivo</a> para ver el complemento Brightcove Player necesario.</aside>
+
+	<p>Necesitará los valores de estos campos, de su propia respuesta, en los pasos siguientes.</p>
+	</li>
+</ol>
+</section>
+
+<section class="bcls-section">
+<h2 id="Set_up_Video_Cloud_video">Configurar video de Video Cloud</h2>
+
+<p>Ahora que tenemos la información de la transmisión en vivo, configuraremos un video remoto en Video Cloud para que podamos reproducirlo en un Brightcove Player.</p>
+
+<div>En estos pasos, configuramos el vídeo utilizando la API de <a href="/cms/">CMS</a>, pero esto también se puede hacer en Video Cloud Studio, si lo prefieres, consulta los pasos <a href="#useStudio">alternativos a continuación</a>.
+
+<p>Si está utilizando Insomnia o Postman, deberá configurar la autenticación OAuth2 con sus credenciales de cliente. Consulte una de las siguientes guías si necesita ayuda:</p>
+
+<ul>
+	<li><a href="/general/use-insomnia-api-requests.html">Utilice Insomnia para solicitudes de API</a></li>
+	<li><a href="/general/use-postman-api-requests.html">Utilice Postman para solicitudes de API</a></li>
+</ul>
+
+<ol class="bcls-tasklist-restart">
+	<li>
+	<p>Primero, necesitará crear un nuevo video haciendo un <code translate="No">POST</code> solicitud de:</p>
+
+	<pre>
+<code class="language-http" translate="No">https://cms.api.brightcove.com/v1/accounts/<span class="bcls-input">account_id</span>/videos</code></pre>
+	</li>
+	<li>
+	<p>El cuerpo de la solicitud puede incluir varios fragmentos de metadatos (consulte <a href="/cms/references/reference.html#/Videos/CreateVideo">la referencia de la API</a> para obtener más detalles), pero lo único que se requiere es un <code translate="No">name</code>:</p>
+
+	<pre class="line-numbers">
+<code class="language-json" translate="No">{
+    "name": "<span class="bcls-input">some name for your live stream</span>"
+}</code></pre>
+	</li>
+	<li>
+	<p>La respuesta contendrá todos los metadatos de vídeo, pero el campo importante es el <code translate="No">id</code>, al que necesitará agregar el activo remoto.</p>
+	</li>
+	<li>
+	<p>Para agregar la secuencia HLS, creará otra <code translate="No">POST</code> solicitud de:</p>
+
+	<pre>
+<code class="language-http" translate="No">https://cms.api.brightcove.com/v1/accounts/<span class="bcls-input">account_id</span>/videos/<span class="bcls-input">video_id</span>/assets/hls_manifest</code></pre>
+	</li>
+	<li>
+	<p>Esta vez, el cuerpo de la solicitud será:</p>
+
+	<pre class="line-numbers">
+<code class="language-json" translate="No">{
+    "remote_url": "<span class="bcls-input">playback_url for your live stream</span>"
+}</code></pre>
+	</li>
+</ol>
+</div>
+</section>
+
+<section class="bcls-section">
+<h2 id="Add_video_to_player">Agregar video a un reproductor</h2>
+
+<p>Ahora crearemos una página HTML simple y le agregaremos un reproductor con el video que acabamos de crear.</p>
+
+<aside class="bcls-aside bcls-aside--information">Aquí nuevamente usaremos Studio para obtener el código de publicación del reproductor; también puede hacerlo usando el <a href="/player-management/getting-started/overview-player-management-api.html">API de gestión de jugadores</a> si tu prefieres.</aside>
+
+<ol class="bcls-tasklist-restart">
+	<li>Cree una página HTML simple para probar el reproductor de transmisión en vivo. Puede incluir cualquier otro contenido que desee o ninguno.</li>
+	<li>En Studio Media Module, seleccione el video creado en los pasos anteriores y haga clic en <strong>Publicar e insertar&gt; Reproductor web</strong>:
+	<figure class="bcls-figure"><img class="bcls-image" alt="Publish Video" src="/assets/images/live-api/17765/17765-publish-video.png" />
+	<figcaption class="bcls-caption--image">Publicar video</figcaption>
+	</figure>
+	</li>
+	<li>En el cuadro de diálogo Publicar, seleccione un reproductor (el reproductor predeterminado de Brightcove está bien):
+	<figure class="bcls-figure"><img class="bcls-image" alt="Select Player" src="/assets/images/get-started/select-player.png" />
+	<figcaption class="bcls-caption--image">Seleccione jugador</figcaption>
+	</figure>
+	</li>
+	<li>Desplácese hacia abajo, establezca el tamaño del reproductor que desee y luego haga clic en el bloque de código para seleccionar el código del reproductor estándar; copie este código y péguelo en el cuerpo de su página html:
+	<figure class="bcls-figure"><img class="bcls-image" alt="Get Publishing Code" src="/assets/images/get-started/get-publishing-code.png" />
+	<figcaption class="bcls-caption--image">Obtener código de publicación</figcaption>
+	</figure>
+	</li>
+	<li>Guarde su página html en un servidor web local o remoto para que pueda navegar por ella.</li>
+	<li>Abra la página en su navegador web. Como no hemos comenzado a vaporizar, verá un error de medios:
+	<figure class="bcls-figure"><img class="bcls-image" alt="Media Error" src="/assets/images/get-started/media-error.png" />
+	<figcaption class="bcls-caption--image">Error de medios</figcaption>
+	</figure>
+	</li>
+</ol>
+</section>
+
+<section class="bcls-section">
+<h2 id="curl_commands">comandos cURL</h2>
+
+<p>Esta sección proporciona comandos de cURL alternativos para aquellos que no utilizan un cliente REST como Insomnia o Postman.</p>
+
+<details>
+	<summary>
+		<h3 id="curlCreateLiveJob">cURL para crear un trabajo en vivo</h3>
+	</summary>
+	
+	<pre class="line-numbers">
+	<code class="language-bash" translate="No">## Create Job - Simple
+	curl -X "POST" "https://api.bcovlive.io/v1/jobs" \
+	-H "X-API-KEY: <span class="bcls-input">YOUR_API_KEY_HERE</span>" \
+	-H "Content-Type: application/json" \
+	-d $'{
+	"outputs": [
+	{
+	"height": 720,
+	"video_bitrate": 2100,
+	"segment_seconds": 4,
+	"keyframe_interval": 60,
+	"width": 1280,
+	"video_codec": "h264",
+	"label": "hls720p",
+	"h264_profile": "high",
+	"live_stream": true
+	},
+	{
+	"height": 540,
+	"video_bitrate": 1500,
+	"segment_seconds": 4,
+	"keyframe_interval": 60,
+	"width": 960,
+	"video_codec": "h264",
+	"label": "hls540p",
+	"h264_profile": "main",
+	"live_stream": true
+	},
+	{
+	"height": 360,
+	"video_bitrate": 800,
+	"segment_seconds": 4,
+	"keyframe_interval": 60,
+	"width": 640,
+	"video_codec": "h264",
+	"label": "hls360p",
+	"h264_profile": "main",
+	"live_stream": true
+	}
+	],
+	"region": "us-west-2",
+	"reconnect_time": 1800,
+	"live_stream": true
+	}'</code></pre>
+</details>
+
+<p>Copie el código en un editor de texto y reemplace <code translate="No">YOUR_API_KEY_HERE </code> con su propia clave de API. Luego copie y pegue el código en una línea de comando y ejecútelo.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="useStudio">Usa Studio para crear el video</h2>
+
+<p>Aquí hay pasos alternativos para crear el video en Studio.</p>
+
+<ol class="bcls-tasklist-restart">
+	<li>Inicie sesión en Video Cloud Studio.</li>
+	<li>Vaya al Módulo de medios.</li>
+	<li>En las opciones de la izquierda, haga clic en <strong>Agregar video remoto</strong>:
+	<figure class="bcls-figure"><img class="bcls-image" alt="Add Remote Video Menu Item" src="/assets/images/get-started/add-remote-video-option.png" />
+	<figcaption class="bcls-caption--image">Agregar elemento de menú de video remoto</figcaption>
+	</figure>
+	</li>
+	<li>En el <strong>Agregar video remoto</strong> cuadro de diálogo, agregue un nombre de video y copie y pegue el valor para el <code translate="No">playback_url</code> de la respuesta de la API en vivo en el campo URL. Luego haga clic en <strong>Agregar reproducción</strong> , y <strong>Ahorrar</strong>:
+	<figure class="bcls-figure"><img class="bcls-image" alt="Add Rendition Dialog" src="/assets/images/get-started/remote-video-dialog.png" />
+	<figcaption class="bcls-caption--image">Cuadro de diálogo Agregar representación</figcaption>
+	</figure>
+
+	<aside class="bcls-aside bcls-aside--information">Nota: si desea transmitir a través de HTTPS para una transmisión segura, simplemente cambie <code translate="No">http</code> en la URL de reproducción para <code translate="No">https</code>.</aside>
+	</li>
+</ol>
+</section>
+
+<section class="bcls-section">
+<h2 id="wirecast">Use Wirecast para transmitir un evento</h2>
+
+<p>En esta sección, configuraremos y usaremos el codificador Telestream Wirecast para admitir un evento de transmisión en vivo. El software Telestream Wirecast es una aplicación de escritorio que captura la entrada de su cámara y produce una transmisión que puede ser entregada por un CDN. Tenga en cuenta que existen soluciones de codificación basadas en hardware y otro software disponibles que pueden ser más adecuadas para ofrecer su evento de transmisión en vivo. Puede descargar una versión de prueba del software Wirecast desde el <a href="http://www.telestream.net/controls/wirecast/download-wirecast.htm">Sitio web de Telestream</a>.</p>
+
+<p class="BCL-aside">Nota: Debe tener instalado el software Wirecast y tener una cámara conectada al equipo antes de continuar.</p>
+
+<p>Para configurar Wirecast para un evento en vivo, siga estos pasos.</p>
+
+<ol class="bcls-tasklist-restart">
+	<li>Abra Wirecast.</li>
+	<li>Coloca el cursor sobre el <strong>+,</strong> hacer clic <strong>Dispositivos de captura</strong> y luego seleccione su cámara.
+	<figure class="bcls-figure"><img class="bcls-image" alt="Select camera" src="/assets/images/get-started/wirecast-camera-select.png" />
+	<figcaption class="bcls-caption--image">Seleccionar una cámara</figcaption>
+	</figure>
+	</li>
+	<li>Haga clic en el botón de flecha ( <img alt="" src="/assets/images/get-started/arrow-icon.png" />) para hacer que la cámara tome la toma en vivo.
+	<figure class="bcls-figure"><img class="bcls-image" alt="Camera setup" src="/assets/images/get-started/wirecast-camera-setup.png" />
+	<figcaption class="bcls-caption--image">Configuración de la cámara Wirecast</figcaption>
+	</figure>
+	</li>
+	<li>Haga clic en el <strong>Arroyo</strong> botón ( <img alt="" src="/assets/images/get-started/stream-icon.png" />). Se le pedirá que configure los ajustes de salida.</li>
+	<li>Selecciona el <strong>Destino</strong> a <strong>Servidor RTMP</strong>. Hacer clic <strong>OK</strong>.</li>
+	<li>Para la <strong>dirección</strong>, usa la <strong>stream_url</strong> devuelta desde la Live API (paso 3).</li>
+	<li>Para el <strong>Stream</strong>, úsalo vivo.
+	<figure class="bcls-figure"><img class="bcls-image" alt="Output settings" src="/assets/images/get-started/output-settings.png" />
+	<figcaption class="bcls-caption--image">Configuración de salida Wirecast</figcaption>
+	</figure>
+	</li>
+	<li><strong>(Opcional)</strong> Para crear flujos de salida adicionales, haga clic en <strong>Agregar...</strong> Al crear flujos de salida adicionales, es posible que desee crear su propio perfil de codificación personalizado para controlar la tasa de bits de salida. Asegúrese de que el <strong>Arroyo</strong> el nombre refleja la nueva tasa de bits.</li>
+	<li>Hacer clic <strong>OK</strong> para guardar la configuración de salida.</li>
+	<li>Haga clic en el <strong>Arroyo</strong> botón ( <img alt="" src="/assets/images/get-started/stream-icon.png" />). La transmisión en vivo debería comenzar.</li>
+</ol>
+</section>
+
+<section class="bcls-section">
+<h2 id="conclusion">Conclusión</h2>
+
+<p>Ahora está listo para crear una sesión de transmisión en vivo. Debe agregar lo siguiente a la configuración de su codificador:</p>
+
+<ul>
+	<li><code translate="No">stream_url</code>: añade el <code translate="No">stream_url</code> de tu trabajo (el <code translate="No">rtmp</code> habla a)</li>
+	<li><code translate="No">stream_name</code>: el nombre de la transmisión debe ser <code translate="No">alive</code></li>
+</ul>
+
+<p>Una vez que inicie la transmisión en vivo, debería verla aparecer en el reproductor Brightcove que creó en los pasos anteriores.</p>
+</section>
+</article>

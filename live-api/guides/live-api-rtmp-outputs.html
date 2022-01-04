@@ -1,0 +1,198 @@
+---
+title: 'API en vivo: Salidas RTMP En'
+description: 'este tema se explica cómo puede generar RTMP mediante Live API. Las salidas RTMP son útiles cuando va a transmitir a una plataforma que no admite transmisiones en vivo de HLS.'
+parent: Guides 
+grandparent: Live API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+<section class="bcls-section">
+<h2 id="general_information">Información general</h2>
+
+<p>Para utilizar salidas RTMP, tenga en cuenta lo siguiente</p>
+
+<ul>
+	<li>Debes haber comprado <strong>horario del evento</strong> , o cualquier paquete de marketing digital</li>
+	<li>Las horas de salida de RTMP se facturarán contra las horas del evento.</li>
+	<li>Están limitados a 5 salidas por trabajo en vivo.</li>
+	<li>Puede definir un <code translate="No">label</code> donde la etiqueta puede elegir una de las representaciones de salida seleccionadas para la transmisión. Si el <code translate="No">label</code> no está configurado, la salida se establecerá de forma predeterminada en la fuente de entrada.</li>
+	<li>Se pueden utilizar con trabajos estándar y eventos recurrentes (SEP).</li>
+	<li>Se pueden utilizar para eventos o transmisiones 24 horas al día, 7 días a la semana.</li>
+	<li>Se pueden iniciar y detener independientemente de cualquier transmisión en vivo.</li>
+	<li>Para los trabajos SEP que se crearon antes de que se implementara la función de salida de RTMP, la función no funcionará por completo: en la API mostrará una falla aunque la salida de RTMP se haya creado realmente. Para obtener los mejores resultados, cree un nuevo trabajo SEP para utilizar la función de salida RTMP.</li>
+	<li>Cuando se utiliza una salida RTMP con un trabajo estándar (no SEP), el flujo de salida RTMP finalizará cuando finalice el trabajo.</li>
+  <li>Salidas RTMP <strong>hacer</strong> apoyo <code translate="No">rtmps</code> URL, y recomendamos usarlas si la plataforma de redes sociales las admite. También tenga en cuenta que a partir del 1 de mayo de 2019, Facebook solo permitirá RTMPS.</li>
+  <li>La <strong>solo el formato actual es compatible con las URL RTMP</strong> es <code translate="No">rtmps://host:port/application/streamName</code>.</li>
+</ul>
+</section>
+
+<section class="bcls-section">
+<h2 id="notifications">Notificaciones</h2>
+
+<p>Puede configurar notificaciones para <code translate="No">rtmp_output_state_changed</code> eventos. Se enviarán notificaciones para los siguientes estados:</p>
+
+b<table class="bcls-table">
+  <caption class="bcls-caption--table">Estados de salida RTMP</caption>
+  <thead class="bcls-table__head">
+      <tr>
+          <th>Estados de salida RTMP</th>
+          <th>(reportado para <code translate="No">rtmp_output_state_changed</code> notificaciones como <code translate="No">state</code>)</th>
+      </tr>
+  </thead>
+  <tbody class="bcls-table__body">
+		<tr>
+			<td><code translate="No">starting</code></td>
+			<td>La transmisión está comenzando.</td>
+		</tr>
+		<tr>
+			<td><code translate="No">connected</code></td>
+			<td>El codificador se ha conectado.</td>
+		</tr>
+		<tr>
+			<td><code translate="No">Disconnected</code></td>
+			<td>El codificador se ha desconectado.</td>
+		</tr>
+		<tr>
+			<td><code translate="No">error</code></td>
+			<td>La transmisión no se pudo conectar.</td>
+		</tr>
+		<tr>
+			<td><code translate="No">pending_deactivation</code></td>
+			<td>El punto de entrada se ha puesto en cola para la limpieza del trabajador de transmisión.</td>
+		</tr>
+		<tr>
+			<td><code translate="No">deactivation_in_progress</code></td>
+			<td>El punto de entrada se está desconectando del trabajador de transmisión.</td>
+		</tr>
+		<tr>
+			<td><code translate="No">cancelled</code></td>
+			<td>El punto de entrada ha sido cancelado.</td>
+		</tr>
+		<tr>
+			<td><code translate="No">finished</code></td>
+			<td>El punto de entrada se ha completado con éxito.</td>
+		</tr>
+  </tbody>
+</table>
+
+<p>Las notificaciones para las salidas RTMP deben configurarse en el <strong><a href="/live-api/references/reference.html#operation/CreateALiveJob">nivel de trabajo</a></strong> cuando crea el trabajo en vivo.</p>
+
+<p>Para ver lo diferente <code translate="No">state</code> valores informados para las salidas RTMP, consulte <a href="/live-api/guides/live-api-notifications.html">Notificaciones en vivo</a>.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="creating_rtmp_outputs">Creando salidas RTMP</h2>
+
+<p>Primero deberá crear un trabajo en vivo como lo hace normalmente y luego realizar una solicitud adicional para crear los puntos finales RTMP.</p>
+
+<p>Nota: es posible en determinadas situaciones, como activar / desactivar el trabajo, que esta llamada a la API devuelva un error, si eso sucede, vuelva a intentarlo después de una pausa.</p>
+
+<h3>Punto final</h3>
+
+<pre>
+	<code class="language-http" translate="No">https://api.bcovlive.io/v1/jobs/{jobId}/rtmpouts</code></pre>
+
+<h3>Método</h3>
+
+<p><code translate="No">POST</code></p>
+
+<h3>Cuerpo de la solicitud</h3>
+
+<pre class="line-numbers">
+	<code class="language-json" translate="No">{
+		"url": "rtmps://host:port/application/streamName",
+		"output_label": "480p"
+	}</code></pre>
+
+<table class="bcls-table">
+	<caption class="bcls-caption--table">Solicitar campos de cuerpo</caption>
+	<thead class="bcls-table__head">
+		<tr>
+			<th>Nombre del campo</th>
+			<th>Necesario</th>
+			<th>Tipo</th>
+			<th>Descripción</th>
+		</tr>
+	</thead>
+	<tbody class="bcls-table__body">
+		<tr>
+			<td><code translate="No">url</code></td>
+			<td>sí</td>
+			<td>cuerda</td>
+			<td>La URL para la salida de RTMP - ejemplo <code translate="No">rtmp://live-api-s.facebook.com:80/rtmp/my_stream</code></td>
+		</tr>
+		<tr>
+			<td><code translate="No">output_label</code></td>
+			<td>no</td>
+			<td>cuerda</td>
+			<td>La etiqueta de la salida del trabajo que se utilizará como origen de la salida RTMP. Omita este parámetro para usar simplemente la entrada RTMP en su lugar.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Respuesta de muestra</h3>
+
+<pre class="line-numbers">
+	<code class="language-json" translate="No">{
+		"host": "live-api-s.facebook.com",
+		"port": 80,
+		"application": "rtmp",
+		"streamName": "my_stream",
+		"rtmp_out_id": "asdfg-lkjh"
+	}</code></pre>
+</section>
+
+<section class="bcls-section">
+<h2 id="get_rtmp_outputs">Obtenga salidas RTMP</h2>
+
+<h3>Punto final</h3>
+
+<pre>
+	<code class="language-http" translate="No">https://api.bcovlive.io/v1/jobs/{jobId}/rtmpouts</code></pre>
+
+<h3>Método</h3>
+
+<p><code translate="No">GET</code></p>
+
+<h3>Respuesta de muestra</h3>
+
+<pre class="line-numbers">
+	<code class="language-json" translate="No">[
+		{
+			"rtmp_out_id": "asdfg-lkjh",
+			"stream_start": 1538746255247,
+			"connection_info": {
+				"host": "a.rtmp.youtube.com",
+				"port": 1935,
+				"application": "live2",
+				"streamName": "my_stream",
+				"sessionStatus": "Active"
+			}
+		}
+	]</code></pre>
+</section>
+
+<section class="bcls-section">
+<h2 id="stop_rtmp_output">Detener una salida RTMP</h2>
+
+<h3>Punto final</h3>
+
+<pre>
+	<code class="language-http" translate="No">https://api.bcovlive.io/v1/jobs/{jobId}/rtmpouts/{rtmp_out_id}/stop</code></pre>
+
+<h3>Método</h3>
+
+<p><code translate="No">PUT</code></p>
+
+<aside class="bcls-aside bcls-aside--information">Tenga en cuenta que el trabajo debe iniciarse al menos una vez para obtener el <code translate="No">job_id</code>.</aside>
+
+<h3>Respuesta de muestra</h3>
+
+<pre class="line-numbers">
+	<code class="language-json" translate="No">{
+		"message": "RTMP out asdfg-lkjh deleted successfully"
+	}</code></pre>
+</section>
+</article>
