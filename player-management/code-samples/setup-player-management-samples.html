@@ -1,6 +1,6 @@
 ---
-title: 'Configuración para muestras de gestión de jugadores'
-description: 'Esta página describe cómo se escriben las muestras básicas para el nuevo reproductor. Esto incluye detalles sobre la autenticación básica y cómo se usa AJAX en las muestras de la API de administración de jugadores.'
+title: 'Configuración para muestras de gestión de reproductores'
+description: 'Esta página describe cómo se escriben las muestras básicas para el nuevo reproductor. Esto incluye detalles sobre la autenticación básica y cómo se usa AJAX en las muestras de la API de administración de reproductores.'
 parent: Code Samples 
 grandparent: Player Management API
 ---
@@ -10,11 +10,11 @@ grandparent: Player Management API
     <section class="bcls-section">
     <h2 id="Introduction">Introducción</h2>
     
-    <p>En el paso a paso: Documento de gestión de jugadores que utilizó declaraciones curl para interactuar con la API. Cuando se realizó una llamada a la API, se le solicitó de forma interactiva una contraseña. Si bien esto funciona bien para curl, este tipo de autenticación interactiva no es factible cuando se crea una aplicación.</p>
+    <p>En el paso a paso: Documento de gestión de reproductores que utilizó declaraciones curl para interactuar con la API. Cuando se realizó una llamada a la API, se le solicitó de forma interactiva una contraseña. Si bien esto funciona bien para curl, este tipo de autenticación interactiva no es factible cuando se crea una aplicación.</p>
     
-    <p>Aquí aprenderá cómo realiza las solicitudes de API utilizando JavaScript y XMLHttpRequest, también conocido como AJAX, para crear clientes web para operaciones de administración de jugadores.</p>
+    <p>Aquí aprenderá cómo realiza las solicitudes de API utilizando JavaScript y XMLHttpRequest, también conocido como AJAX, para crear clientes web para operaciones de administración de reproductores.</p>
     
-    <p>Porque la API de administración de jugadores es <a href="https://general.support.brightcove.com/developer/concepts-cors.html">Compatible con CORS</a> y permite la autenticación básica con sus credenciales de inicio de sesión de Brightcove, es posible realizar solicitudes de API directamente desde una página web, como hacemos en las muestras de API de gestión de jugadores. Las otras API RESTful de Brightcove requieren autenticación a través de <a href="/oauth/index.html">OAuth</a>. Dado que la API utilizada para recuperar los tokens de acceso no está habilitada para CORS (ni las API mismas), debe realizar solicitudes a través de una aplicación del lado del servidor. Ver <a href="/getting-started/learning-guide-using-rest-apis.html">Usando las API REST</a> para obtener una guía sobre cómo crear aplicaciones híbridas con una interfaz de usuario web y un proxy para acceder a las API REST. Este es el enfoque que recomendamos para las aplicaciones que utilizan Player Management API en producción también, porque es más seguro y no envía credenciales a través de conexiones HTTP.</p>
+    <p>Porque la API de administración de reproductores es <a href="https://general.support.brightcove.com/developer/concepts-cors.html">Compatible con CORS</a> y permite la autenticación básica con sus credenciales de inicio de sesión de Brightcove, es posible realizar solicitudes de API directamente desde una página web, como hacemos en las muestras de API de gestión de reproductores. Las otras API RESTful de Brightcove requieren autenticación a través de <a href="/oauth/index.html">OAuth</a>. Dado que la API utilizada para recuperar los tokens de acceso no está habilitada para CORS (ni las API mismas), debe realizar solicitudes a través de una aplicación del lado del servidor. Ver <a href="/getting-started/learning-guide-using-rest-apis.html">Usando las API REST</a> para obtener una guía sobre cómo crear aplicaciones híbridas con una interfaz de usuario web y un proxy para acceder a las API REST. Este es el enfoque que recomendamos para las aplicaciones que utilizan Player Management API en producción también, porque es más seguro y no envía credenciales a través de conexiones HTTP.</p>
     
     <aside class="bcls-aside bcls-aside--warning">
     <p>Las aplicaciones de muestra a las que se hace referencia en esta página están pensadas como una forma de explorar los conceptos básicos de la API de administración de reproductores. No están diseñadas para ser aplicaciones desplegables listas para la empresa. Por ejemplo, la validación de formularios no es exhaustiva y las contraseñas NO se envían utilizando HTTPS.</p>
@@ -24,7 +24,7 @@ grandparent: Player Management API
     <section class="bcls-section">
     <h2 id="Basic_authentication">Autenticación básica</h2>
     
-    <p>En el paso a paso: Documento de gestión de jugadores que utilizó declaraciones curl para interactuar con la API. Cuando se realizó una llamada a la API, se le solicitó de forma interactiva una contraseña. Si bien esto funciona bien para curl, este tipo de autenticación interactiva no es factible cuando se crea una aplicación.</p>
+    <p>En el paso a paso: Documento de gestión de reproductores que utilizó declaraciones curl para interactuar con la API. Cuando se realizó una llamada a la API, se le solicitó de forma interactiva una contraseña. Si bien esto funciona bien para curl, este tipo de autenticación interactiva no es factible cuando se crea una aplicación.</p>
     
     <p>Puede utilizar la autenticación básica al crear una aplicación. En el encabezado, debe enviar las credenciales, cifradas en una cadena ASCII codificada en base 64. Puede utilizar JavaScript <code translate="No">btoa()</code> método para hacer la codificación. Asumiendo <code translate="No">account_username</code> y <code translate="No">account_password</code> se rellenan desde, por ejemplo, un formulario, el encabezado de Autorización aparecería de la siguiente manera:</p>
     
@@ -96,7 +96,7 @@ grandparent: Player Management API
     };</code></pre>
     <!-- <code data-gist-id="9216425" data-gist-hide-footer="true" data-gist-line="22-47"></code><br /> -->
     
-    <aside class="bcls-aside bcls-aside--information">Se crean llamadas separadas si es necesario pasar datos con la llamada a la API. En el paso a paso: Documento de gestión de jugadores que ha visto en ambos casos de uso. La publicación de un reproductor no requiere la transmisión de datos, mientras que la creación de un reproductor con una fuente de medios sí requiere la transmisión de datos.</aside>
+    <aside class="bcls-aside bcls-aside--information">Se crean llamadas separadas si es necesario pasar datos con la llamada a la API. En el paso a paso: Documento de gestión de reproductores que ha visto en ambos casos de uso. La publicación de un reproductor no requiere la transmisión de datos, mientras que la creación de un reproductor con una fuente de medios sí requiere la transmisión de datos.</aside>
     
     <p>Entonces estará listo para llamar a la función. En el siguiente ejemplo, el <code translate="No">account_id</code> , <code translate="No">account_password</code> y <code translate="No">account_username</code> todos los valores se extraen de un formulario.</p>
     
@@ -110,7 +110,7 @@ grandparent: Player Management API
     };</code></pre>
     <!-- <code data-gist-id="9216425" data-gist-hide-footer="true" data-gist-line="49-55"></code><br /> -->
     
-    <p>Si ha completado el paso a paso: Player Management documenta que sabe que algunos procesos aceptan múltiples llamadas a la API, como crear y publicar un reproductor. Además, la lógica de algunas aplicaciones puede requerir múltiples llamadas a la API, como obtener una lista de todos los jugadores para mostrar y luego eliminar los jugadores que el usuario marcó. En estos casos, lo más probable es que deba modificar su <code translate="No">success</code> handler para realizar una lógica diferente en función de la llamada que se llevó a cabo con éxito. En estas aplicaciones de muestra, la lógica de implementación para estos casos de uso se implementará mediante una variable de marca, <code translate="No">callPurpose</code> y un <code translate="No">case</code> declaración usando esa bandera, como se muestra aquí:</p>
+    <p>Si ha completado el paso a paso: Player Management documenta que sabe que algunos procesos aceptan múltiples llamadas a la API, como crear y publicar un reproductor. Además, la lógica de algunas aplicaciones puede requerir múltiples llamadas a la API, como obtener una lista de todos los reproductores para mostrar y luego eliminar los reproductores que el usuario marcó. En estos casos, lo más probable es que deba modificar su <code translate="No">success</code> handler para realizar una lógica diferente en función de la llamada que se llevó a cabo con éxito. En estas aplicaciones de muestra, la lógica de implementación para estos casos de uso se implementará mediante una variable de marca, <code translate="No">callPurpose</code> y un <code translate="No">case</code> declaración usando esa bandera, como se muestra aquí:</p>
     
     <pre class="line-numbers">
     <code class="language-javascript" translate="No">var ajaxSuccess = function (data) {

@@ -1,5 +1,5 @@
 ---
-title: 'Repositorios de jugadores'
+title: 'Repositorios de reproductores'
 description: 'En este tema, aprenderá cómo la API de administración de reproductores utiliza la API del sistema de entrega para almacenar y mantener información sobre Brightcove Players.'
 parent: Guides 
 grandparent: Player Management API
@@ -12,17 +12,17 @@ grandparent: Player Management API
     
     <p>Para publicar reproductores en una CDN, la API de administración de reproductores utiliza la <a href="/delivery-system/references/reference.html">API del sistema de entrega</a>. La API del sistema de entrega le permite crear un repositorio de git, cuyo contenido se aloja en <strong>players.brightcove.net</strong>. Cuando se crea un reproductor, Brightcove crea un repositorio detrás de escena. Cada vez que se vuelve a publicar el reproductor, ya sea que lo solicite directamente un editor o cuando se lanza una actualización del reproductor Brightcove, hay una confirmación y envío correspondientes a ese repositorio.</p>
     
-    <p>Los repositorios de Git, entre otras cosas, proporcionan un historial de cambios a lo largo del tiempo. Mientras se depura un reproductor, a veces puede resultar muy útil obtener una copia de este repositorio para que pueda examinar el historial de cambios usted mismo. Primero, aprenderá cómo recuperar información general sobre su reproductor, utilizando la herramienta de línea de comandos curl y / o el complemento de Chrome Postman. A continuación, aprenderá a ver el historial del jugador para su creación y publicación.</p>
+    <p>Los repositorios de Git, entre otras cosas, proporcionan un historial de cambios a lo largo del tiempo. Mientras se depura un reproductor, a veces puede resultar muy útil obtener una copia de este repositorio para que pueda examinar el historial de cambios usted mismo. Primero, aprenderá cómo recuperar información general sobre su reproductor, utilizando la herramienta de línea de comandos curl y / o el complemento de Chrome Postman. A continuación, aprenderá a ver el historial del reproductor para su creación y publicación.</p>
     </section>
     
     <section id="playerinfo" class="bcls-section">
-    <h2>Información del jugador</h2>
+    <h2>Información del reproductor</h2>
     
-    <p>Aquellos que se sientan cómodos en la línea de comandos probablemente querrán usar curl para obtener información del jugador, mientras que aquellos que se sientan más cómodos con una GUI elegirán la opción Postman.</p>
+    <p>Aquellos que se sientan cómodos en la línea de comandos probablemente querrán usar curl para obtener información del reproductor, mientras que aquellos que se sientan más cómodos con una GUI elegirán la opción Postman.</p>
     
     <h3>Usando curl</h3>
     
-    <p>Si no está familiarizado con curl y con la configuración de variables de entorno, lea las dos primeras secciones del <a href="/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de jugadores</a>. Asegúrese de que se establezcan las siguientes variables de entorno:</p>
+    <p>Si no está familiarizado con curl y con la configuración de variables de entorno, lea las dos primeras secciones del <a href="/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de reproductores</a>. Asegúrese de que se establezcan las siguientes variables de entorno:</p>
     
     <ul>
       <li>EMAIL</li>
@@ -81,7 +81,7 @@ grandparent: Player Management API
     
     <h3>Usando cartero</h3>
     
-    <p>Postman proporciona una interfaz de usuario más amigable para interactuar con la API. Si no está familiarizado con Postman, lea el <a href="/general/use-postman-api-requests.html">Utilice Postman para solicitudes HTTP</a> doc para una comprensión básica. No crea variables de entorno cuando utiliza Postman. En su lugar, crea la ubicación de la URL con los valores adecuados en la URL. Por ejemplo, a continuación se muestra una URL apropiada para usar en Postman, que contiene la cuenta y la identificación del jugador.</p>
+    <p>Postman proporciona una interfaz de usuario más amigable para interactuar con la API. Si no está familiarizado con Postman, lea el <a href="/general/use-postman-api-requests.html">Utilice Postman para solicitudes HTTP</a> doc para una comprensión básica. No crea variables de entorno cuando utiliza Postman. En su lugar, crea la ubicación de la URL con los valores adecuados en la URL. Por ejemplo, a continuación se muestra una URL apropiada para usar en Postman, que contiene la cuenta y la identificación del reproductor.</p>
     
     <pre class="line-numbers">
       <code class="language-http" translate="No">https://players.api.brightcove.com/v2/accounts/1507807800001/players/6aac508a-741e-41a2-bc7a-5805644cf089/embeds/default</code></pre>
@@ -105,17 +105,17 @@ grandparent: Player Management API
     </section>
     
     <section id="playerhistory" class="bcls-section">
-    <h2>Historial del jugador</h2>
+    <h2>Historial del reproductor</h2>
     
     <p>En esta sección usarás los comandos git. Para ver un breve tutorial sobre git, consulte la <a href="/delivery-system/delivery-system-api-git-overview.html">Descripción general de Git</a> documento.</p>
     
-    <aside class="bcls-aside bcls-aside--warning">Los repositorios de jugadores deben tratarse como <strong>SOLO LECTURA</strong>. El contenido de estos repositorios está completamente administrado por Player Management API. Nunca se deben realizar adiciones y ediciones personalizadas directamente al repositorio. Dichos cambios se eliminarán cada vez que se vuelvan a publicar los jugadores o se realicen actualizaciones internas, lo que puede suceder en cualquier momento. Si necesita agregar archivos para subtítulos, fuentes o complementos, debe crear un nuevo repositorio para ellos.</aside>
+    <aside class="bcls-aside bcls-aside--warning">Los repositorios de reproductores deben tratarse como <strong>SOLO LECTURA</strong>. El contenido de estos repositorios está completamente administrado por Player Management API. Nunca se deben realizar adiciones y ediciones personalizadas directamente al repositorio. Dichos cambios se eliminarán cada vez que se vuelvan a publicar los reproductores o se realicen actualizaciones internas, lo que puede suceder en cualquier momento. Si necesita agregar archivos para subtítulos, fuentes o complementos, debe crear un nuevo repositorio para ellos.</aside>
     
-    <p>Primero clonarás un repositorio de jugador. Se creará un directorio con el nombre de la ID del jugador, en el directorio donde emite el <code translate="No">git clone</code> mando.</p>
+    <p>Primero clonarás un repositorio de reproductor. Se creará un directorio con el nombre de la ID del reproductor, en el directorio donde emite el <code translate="No">git clone</code> mando.</p>
     
     <ol class="bcls-tasklist">
       <li>Abra una terminal / símbolo del sistema y navegue hasta la ubicación en la que desea crear la carpeta.</li>
-      <li>A continuación, cree una URL para el repositorio del jugador con el siguiente formato:
+      <li>A continuación, cree una URL para el repositorio del reproductor con el siguiente formato:
       <pre class="line-numbers">
       <code class="language-http" translate="No">https://repos.api.brightcove.com/v1/accounts/<span class="bcls-input">ACCOUNT_ID</span>/repos/<span class="bcls-input">PLAYER_ID</span>_default</code></pre>
     
@@ -125,7 +125,7 @@ grandparent: Player Management API
       <code class="language-http" translate="No">https://repos.api.brightcove.com/v1/accounts/1507807800001/repos/0d92f482-49d9-44e6-ba1d-e2360dab838a_default</code></pre>
       </li>
       <li>En el símbolo del sistema, cree o muévase a un directorio en el que desee clonar el repositorio del reproductor.</li>
-      <li>Una vez que esté en ese directorio, ingrese el siguiente comando git para clonar el repositorio del jugador, sustituyendo su propia cuenta e ID de jugador:
+      <li>Una vez que esté en ese directorio, ingrese el siguiente comando git para clonar el repositorio del reproductor, sustituyendo su propia cuenta e ID de reproductor:
       <pre class="line-numbers">
       <code class="language-git">clon de git https://repos.api.brightcove.com/v1/accounts/1507807800001/repos/0d92f482-49d9-44e6-ba1d-e2360dab838a_default</code></pre>
       y presione return / Enter.</li>
@@ -144,7 +144,7 @@ grandparent: Player Management API
       y presione return / Enter.</li>
       <li>Debería ver una respuesta similar a la siguiente:
       <pre class="line-numbers">
-      <code class="language-git">cometer b4ed1c2e3d429cc41b704fd44bebdc31f661a95c Autor: bc86ece6-b3dd-4d78-a67d-93b503dc1c2e &lt;mboles@brightcove.com&gt; Fecha: Jue 26 de febrero 16:29:43 2015 +0000 Solicitud de publicación del jugador confirmar 6c854213b2b2597225c36212dc8be545fcf2c104 Autor: bc86ece6-b3dd-4d78-a67d-93b503dc1c2e &lt;mboles@brightcove.com&gt; Fecha: Thu Feb 26 16:28:13 2015 +0000 Solicitud de publicación del jugador confirmar 7f78d49cb678259351f83a94e655f88607de077f Autor: 6b112bd1-987c-41a2-84ac-f9dd8302b567 &lt;mboles@brightcove.com&gt; Fecha: Lun 23 de febrero 18:36:49 2015 +0000 Jugador creado</code></pre>
+      <code class="language-git">cometer b4ed1c2e3d429cc41b704fd44bebdc31f661a95c Autor: bc86ece6-b3dd-4d78-a67d-93b503dc1c2e &lt;mboles@brightcove.com&gt; Fecha: Jue 26 de febrero 16:29:43 2015 +0000 Solicitud de publicación del reproductor confirmar 6c854213b2b2597225c36212dc8be545fcf2c104 Autor: bc86ece6-b3dd-4d78-a67d-93b503dc1c2e &lt;mboles@brightcove.com&gt; Fecha: Thu Feb 26 16:28:13 2015 +0000 Solicitud de publicación del reproductor confirmar 7f78d49cb678259351f83a94e655f88607de077f Autor: 6b112bd1-987c-41a2-84ac-f9dd8302b567 &lt;mboles@brightcove.com&gt; Fecha: Lun 23 de febrero 18:36:49 2015 +0000 reproductor creado</code></pre>
       </li>
       <li>Los ID de confirmación se utilizarán para obtener información más detallada. Consulte Información de compromiso para obtener más detalles.</li>
     </ol>
@@ -153,7 +153,7 @@ grandparent: Player Management API
     <section id="commitinformation" class="bcls-section">
     <h2>Confirmar información</h2>
     
-    <p>Lo siguiente se puede utilizar para recopilar información diferente sobre las confirmaciones de los jugadores. Por supuesto, deberá sustituir sus ID de confirmación particulares, que se pueden obtener de la respuesta del historial del jugador como se muestra en la sección anterior.</p>
+    <p>Lo siguiente se puede utilizar para recopilar información diferente sobre las confirmaciones de los reproductores. Por supuesto, deberá sustituir sus ID de confirmación particulares, que se pueden obtener de la respuesta del historial del reproductor como se muestra en la sección anterior.</p>
     
     <ul>
       <li>Mostrar detalles sobre una única confirmación (solicitud de publicación)

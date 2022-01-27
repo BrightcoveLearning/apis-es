@@ -32,7 +32,7 @@ grandparent: OAuth API
     <section class="bcls-section">
     <h2 id="Get_client_credentials">Obtenga las credenciales del cliente</h2>
     
-    <p>En estos pasos, usaremos un comando cURL para obtener las credenciales del cliente para la API de administración de jugadores.</p>
+    <p>En estos pasos, usaremos un comando cURL para obtener las credenciales del cliente para la API de administración de reproductores.</p>
     
     <h3>Pasos</h3>
     
@@ -122,7 +122,7 @@ grandparent: OAuth API
       <pre class="line-numbers">
         <code class="language-json" translate="No">{<strong>"access_token":"ACkkpftcuhyzqdf4ftxm304za3anhziG0Ni5-S_dplxMNYNrSrBZRgJL3sf_U38ZZVDdgkmWtrb0_GRZj-VzWOAFWgpEYwgwIWLjcGsTI-9QMUMNv2eFj33clsWFHnGLzgtdcILXpR-wPM0LzKKzRahodwofPfuExYCej18Wpt1x7DxOJDySEjCGOWiTuZVKp1QjG0_nqD9T3TpK3Cchv0suVRTGkYrs15qYSKdxh2-e5XbUiKKptNl8ryvMriavPN66fOh17c09Q0525OPqejkU6uERPTw-sTLU_QjJbRV6psxoSVYKRAetsBikH9XRJbZCSt2JP88O"</strong>,"token_type":"Bearer",<strong>"expires_in":300</strong>}</code></pre>
       </li>
-      <li>Este token se puede usar para autenticar llamadas a la API de administración de jugadores durante 5 minutos (luego debe obtener un nuevo token). El token se pasa en el encabezado de autorización con la solicitud HTTP:
+      <li>Este token se puede usar para autenticar llamadas a la API de administración de reproductores durante 5 minutos (luego debe obtener un nuevo token). El token se pasa en el encabezado de autorización con la solicitud HTTP:
       <pre class="line-numbers">
         <code class="language-http" translate="No">Authorization: Bearer <em>access_token value</em></code></pre>
       </li>

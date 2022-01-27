@@ -1,6 +1,6 @@
 ---
 title: "Implementación de DRM con servicio de autorización de reproducción"
-description: "En este tema, aprenderá a generar y registrar tokens cuando utilice el servicio de autorización de reproducción de Brightcove".
+description: "En este tema, aprenderá a generar y registrar tokens cuando utilice el servicio de autorización de reproducción de Brightcove."
 parent: Getting Started 
 grandparent: Playback Authorization
 layout: staging
@@ -32,7 +32,7 @@ layout: staging
     <a href="#Create_a_JSON_Web_Token">Crear un <span translate="No">Token web JSON</span></a>
   </li>
   <li>
-    <a href="#Configure_the_player">Configurar el jugador para usar el token</a>
+    <a href="#Configure_the_player">Configurar el reproductor para usar el token</a>
   </li>
 </ol>
 
@@ -48,7 +48,7 @@ layout: staging
 <section class="bcls-section">
 <h2 id="Configure_the_player">Configurar el reproductor</h2>
 
-<p>El token se pasa con la solicitud de reproducción. Si el token no es válido o ha caducado, se restringirá el acceso al contenido. El jugador debe estar configurado para usar el token.</p>
+<p>El token se pasa con la solicitud de reproducción. Si el token no es válido o ha caducado, se restringirá el acceso al contenido. El reproductor debe estar configurado para usar el token.</p>
 
 <h3>Reproductor web</h3>
 <p>
@@ -105,5 +105,5 @@ layout: staging
 </article>
 
 <script>
-  var h1 = document.querySelector ('h1'), path = location.pathname, new_location = 'https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html', mensaje = '<h3>Esta página se ha movido a <a href="' + new_location + '">' + new_location + '</a>. ¡Actualiza tu marcador! Serás redirigido en 5 segundos.<h3>'; console.log ('nueva_ubicación', nueva_ubicación); h1.insertAdjectedHTML ('post-tendencia', mensaje); redireccionar (); función redireccionar () { var t = window.setTimeout(go_to_new_location, 5000); } función go_to_new_location () { window.location.href = new_location; }
+  var h1 = document.querySelector ('h1'), path = location.pathname, new_location = 'https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html', message = '<h3>Esta página se ha movido a <a href="' + new_location + '">' + new_location + '</a>. ¡Actualiza tu marcador! Serás redirigido en 5 segundos.<h3>'; console.log ('nueva_ubicación', new_location); h1.insertAdjectedHTML ('post-tendencia', message); redireccionar (); function redireccionar () { var t = window.setTimeout(go_to_new_location, 5000); } function go_to_new_location () { window.location.href = new_location; }
 </script>

@@ -10,7 +10,7 @@ grandparent: Player Management API
     <section class="bcls-section">
     <h2 id="Introduction">Introducción</h2>
     
-    <p>En esta muestra no hay nada con lo que interactuar. Usando la API de administración de jugadores, el código proporcionado actualiza un conjunto filtrado de jugadores usando un HTTP <code translate="No">PATCH</code> método, luego publica automáticamente los reproductores actualizados.</p>
+    <p>En esta muestra no hay nada con lo que interactuar. Usando la API de administración de reproductores, el código proporcionado actualiza un conjunto filtrado de reproductores usando un HTTP <code translate="No">PATCH</code> método, luego publica automáticamente los reproductores actualizados.</p>
     
     <p>Al igual que con todas las muestras de API, se recomienda encarecidamente que primero estudie <a href="/getting-started/learning-guide-using-rest-apis.html">Guía de aprendizaje: Usando las API REST</a> para proporcionar una base sobre la cual construir más conocimiento de API REST.</p>
     
@@ -26,36 +26,36 @@ grandparent: Player Management API
     <p>La lógica básica detrás de esta aplicación es:</p>
     
     <ul>
-      <li>Recupere a todos los jugadores de una cuenta específica, luego filtre el conjunto de jugadores a aquellos que desea actualizar.</li>
-      <li>Cree una matriz con los ID del conjunto filtrado de jugadores.</li>
-      <li>Defina las actualizaciones deseadas en el conjunto filtrado de jugadores, solicitando que cada jugador se actualice en consecuencia.</li>
+      <li>Recupere a todos los reproductores de una cuenta específica, luego filtre el conjunto de reproductores a aquellos que desea actualizar.</li>
+      <li>Cree una matriz con los ID del conjunto filtrado de reproductores.</li>
+      <li>Defina las actualizaciones deseadas en el conjunto filtrado de reproductores, solicitando que cada reproductor se actualice en consecuencia.</li>
       <li>Publica cada uno de los reproductores actualizados.</li>
     </ul>
     
     <aside class="bcls-aside bcls-aside--information">los <code translate="No">makeRequest</code> La función es un código estándar que rara vez necesita ser modificado para su uso en el proceso de uso de las API REST de Brightcove. Por esta razón, no se trata en este documento, pero se detalla a fondo en el <a href="/getting-started/learning-guide-using-rest-apis.html">Guía de aprendizaje: Usando las API REST</a> documento.</aside>
     <!-- UPDATE task 1 -->
     
-    <h3>Recupere un conjunto filtrado de jugadores y cree una serie de sus ID</h3>
+    <h3>Recupere un conjunto filtrado de reproductores y cree una serie de sus ID</h3>
     
     <p>Encuentra el código que está etiquetado:</p>
     
     <pre>
     <code class="language-javascript" translate="No">// +++ Configure the request to get players and extract their IDs +++</code></pre>
     
-    <p>Después de definir las opciones para pasar al proxy para obtener todos los jugadores de una cuenta específica, la matriz de JavaScript <code translate="No">filter</code> La función se utiliza con la función personalizada. <code translate="No">filter_players</code> función para filtrar el conjunto de reproductores. Luego recorre el conjunto filtrado y coloca sus ID en otra matriz. Finalmente, llama a la función que solicita que se realicen actualizaciones.</p>
+    <p>Después de definir las opciones para pasar al proxy para obtener todos los reproductores de una cuenta específica, la matriz de JavaScript <code translate="No">filter</code> La función se utiliza con la función personalizada. <code translate="No">filter_players</code> función para filtrar el conjunto de reproductores. Luego recorre el conjunto filtrado y coloca sus ID en otra matriz. Finalmente, llama a la función que solicita que se realicen actualizaciones.</p>
     <!-- UPDATE task 2 -->
     
-    <h3>Solicite que las actualizaciones se realicen en el conjunto filtrado de jugadores</h3>
+    <h3>Solicite que las actualizaciones se realicen en el conjunto filtrado de reproductores</h3>
     
     <p>Encuentra el código que está etiquetado:</p>
     
     <pre>
     <code class="language-javascript" translate="No">// +++ Configure the request to update filtered players +++</code></pre>
     
-    <p>En el <code translate="No">options</code> objeto, define las opciones necesarias para pasar al proxy. Tenga en cuenta que esto incluye el <code translate="No">requestBody</code> , que define los cambios reales que desea realizar en el conjunto filtrado de reproductores. Debes recorrer cada uno de los ID de jugador en el <code translate="No">playerIDsAra</code> y haz la solicitud. Tenga en cuenta que la función se llama de forma recursiva. Finalmente llamas a la función que solicita que se publiquen los reproductores.</p>
+    <p>En el <code translate="No">options</code> objeto, define las opciones necesarias para pasar al proxy. Tenga en cuenta que esto incluye el <code translate="No">requestBody</code> , que define los cambios reales que desea realizar en el conjunto filtrado de reproductores. Debes recorrer cada uno de los ID de reproductor en el <code translate="No">playerIDsAra</code> y haz la solicitud. Tenga en cuenta que la función se llama de forma recursiva. Finalmente llamas a la función que solicita que se publiquen los reproductores.</p>
     <!-- UPDATE task 3 -->
     
-    <h3>Solicitar que se publiquen los jugadores actualizados</h3>
+    <h3>Solicitar que se publiquen los reproductores actualizados</h3>
     
     <p>Encuentra el código que está etiquetado:</p>
     

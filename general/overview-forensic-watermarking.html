@@ -1,6 +1,6 @@
 ---
-title: 'Visión general: Marca de agua forense'
-description: "En este tema, obtendrá una descripción general de alto nivel de la función de marca de agua forense de Brightcove".
+title: 'Visión general: Forensic Watermarking'
+description: "En este tema, obtendrá una descripción general de alto nivel de la función de Brightcove Forensic Watermarking."
 parent: Forensic Watermarking
 ---
  <h1>{{ page.title }}</h1>
@@ -24,7 +24,7 @@ parent: Forensic Watermarking
       </li>
       <li>Obtenga su clave de licencia de <a href="https://dtv.nagra.com/nexguard-forensic-watermarking">NAGRA</a>.</li>
       <li>Genere un par de claves pública-privada que será utilizada por el JWT de marca de agua forense y descifrada por la CDN. (vea abajo)</li>
-      <li>Utilice el script proporcionado por NAGRA para generar un token web JSON (JWT) para la marca de agua forense. Asegúrese de administrar cómo se vinculan el token de marca de agua forense y cada visor. Lo necesitarás cuando <a href="#Configure_your_player">configura tus jugadores</a> y en el caso de hacer un servicio de detección para saber qué espectador filtró el contenido de forma ilegal.</li>
+      <li>Utilice el script proporcionado por NAGRA para generar un token web JSON (JWT) para la marca de agua forense. Asegúrese de administrar cómo se vinculan el token de marca de agua forense y cada visor. Lo necesitarás cuando <a href="#Configure_your_player">configura tus reproductores</a> y en el caso de hacer un servicio de detección para saber qué espectador filtró el contenido de forma ilegal.</li>
     </ol>
     <p>
       Hay muchas formas de generar el par de claves pública-privada. Aquí hay unos ejemplos:
@@ -216,7 +216,7 @@ echo "Public key to saved in $PUBLIC_TXT"
       <!-- <li>In the <strong>Media</strong> module, you can enable/disable your videos for watermarking.</li> -->
       <li id="Configure_your_player">
         <p>Configura tu reproductor.</p>
-        <p>Aquí es donde pasará el token de marca de agua NAGRA y el ID de espectador al jugador. Puede utilizar el reproductor web Brightcove o los reproductores Native SDK:</p>
+        <p>Aquí es donde pasará el token de marca de agua NAGRA y el ID de espectador al reproductor. Puede utilizar el reproductor web Brightcove o los reproductores Native SDK:</p>
         <ul>
           <li><a href="https://player.support.brightcove.com/playback/forensic-watermarking-with-bcp.html">Marca de agua forense con Brightcove Player</a></li>
           <li><a href="https://sdks.support.brightcove.com/features/forensic-watermarking-with-sdks.html">Marca de agua forense con los SDK nativos</a></li>
@@ -444,7 +444,7 @@ echo "Public key to saved in $PUBLIC_TXT"
       <li>HLSv7 no es compatible. HLSv7 se usa para entregar HEVC, códecs mixtos y audio 5.1; por lo tanto, HEVC, video de códec mixto y audio 5.1 no son compatibles actualmente.</li>
       <li>Actualmente, no se admiten videos HLS cifrados (HLSe).</li>
       <li>Esta función requiere una clave de licencia NAGRA.</li>
-      <li>Los jugadores necesitarán un JWT de marca de agua forense que creará utilizando un script proporcionado por NAGRA.</li>
+      <li>Los reproductores necesitarán un JWT de marca de agua forense que creará utilizando un script proporcionado por NAGRA.</li>
       <li><a href="/delivery-rules/index.html">Reglas de entrega</a> no se puede usar con reproductores que se usan para entregar videos con marcas de agua forenses.</li>
       <li>Debe utilizar el CDN de Brightcove. BYO CDN no es compatible.</li>
       <!-- <li>You are responsible for generating and managing the tokens used to identify each viewer.</li> -->

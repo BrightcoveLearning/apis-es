@@ -28,7 +28,7 @@ grandparent: Player Management API
     <h2 id="Player_embed_dialog_behavior">Comportamiento del cuadro de diálogo de inserción del reproductor</h2>
     <p>Debe haber un cuadro de diálogo que permita al usuario controlar el formato del reproductor en la página web. Este cuadro de diálogo debería permitir al usuario configurar los campos que se enumeran a continuación. Se supone que el usuario ya ha seleccionado una cuenta de Brightcove y un video o lista de reproducción antes de que se muestre este cuadro de diálogo. De lo contrario, la selección de la cuenta de Brightcove y el video o la lista de reproducción debe ocurrir primero como se describe en <a href="#appendix_a">Apéndice A</a> debajo.</p>
     <ol>
-      <li><strong>Jugador</strong>: El usuario debería poder elegir un jugador entre los reproductores Brightcove disponibles. Si están incorporando un reproductor de video, solo los reproductores que no estén habilitados para listas de reproducción deberían estar disponibles para elegir. Si están incorporando un reproductor de lista de reproducción, solo los reproductores habilitados para la lista de reproducción deberían estar disponibles para elegir.</li>
+      <li><strong>reproductor</strong>: El usuario debería poder elegir un reproductor entre los reproductores Brightcove disponibles. Si están incorporando un reproductor de video, solo los reproductores que no estén habilitados para listas de reproducción deberían estar disponibles para elegir. Si están incorporando un reproductor de lista de reproducción, solo los reproductores habilitados para la lista de reproducción deberían estar disponibles para elegir.</li>
       <li><strong>Auto-reproducción</strong>: El usuario debería poder habilitar / deshabilitar la reproducción automática. El valor predeterminado está desactivado.</li>
       <li><strong>Silencio</strong>: El usuario debería poder habilitar / deshabilitar Silencio. El valor predeterminado está desactivado.</li>
       <li><strong>Tipo de incrustación</strong>: El usuario debe poder elegir entre iFrame y código de incrustación de Javascript.
@@ -77,18 +77,18 @@ grandparent: Player Management API
     <h2 id="Related_Brightcove_documentation">Documentación de Brightcove relacionada</h2>
     <h3>Ayuda general sobre la integración de Video Cloud con su CMS</h3>
     <p><a href="https://apis.support.brightcove.com/general/integrating-your-cms-video-cloud.html">Integrando su CMS con Video Cloud</a></p>
-    <h3>Obtener una lista de jugadores</h3>
+    <h3>Obtener una lista de reproductores</h3>
     <p><a href="https://apis.support.brightcove.com/player-management/references/reference.html#operation/GetPlayers">Referencia de la API de administración de reproductores</a></p>
-    <h3>Identificación de jugadores de listas de reproducción</h3>
+    <h3>Identificación de reproductores de listas de reproducción</h3>
     <ol>
-      <li>Repita la lista de jugadores devueltos por la solicitud de la API de administración de jugadores a la que se hace referencia anteriormente.</li>
+      <li>Repita la lista de reproductores devueltos por la solicitud de la API de administración de reproductores a la que se hace referencia anteriormente.</li>
       <li>Busca el <code translate="No">playlist</code> campo:
         <ol type="a">
           <li>Si el campo está presente y el valor es <code translate="No">true</code>, es un reproductor de listas de reproducción</li>
           <li>Si el valor es <code translate="No">false</code> o el <code translate="No">playlist</code> no existe, haz el siguiente paso.</li>
         </ol>
       </li>
-      <li>Recorra la <code translate="No">plugins</code> lista (si está presente) y busque un <code translate="No">registry_id</code> campo igual a <code translate="No">@brightcove/videojs-bc-playlist-ui</code>; si está presente, es un reproductor de listas de reproducción; si no, no lo es. Aquí hay una muestra de lo que se devuelve en la lista de jugadores:
+      <li>Recorra la <code translate="No">plugins</code> lista (si está presente) y busque un <code translate="No">registry_id</code> campo igual a <code translate="No">@brightcove/videojs-bc-playlist-ui</code>; si está presente, es un reproductor de listas de reproducción; si no, no lo es. Aquí hay una muestra de lo que se devuelve en la lista de reproductores:
         <pre class="line-numbers">
 <code class="language-json" translate="No">"items": [
    {

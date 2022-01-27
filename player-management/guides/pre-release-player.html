@@ -22,16 +22,16 @@ grandparent: Player Management API
   <section class="bcls-section">
     <h2 id="Why_a_pre-release_player">¿Por qué un reproductor de prelanzamiento?</h2>
     <p>Es posible que desee realizar pruebas frecuentes con la última versión de Brightcove Player, incluidas las versiones preliminares. Este documento le muestra cómo configurar un reproductor que se actualizará cada vez que esté disponible una nueva versión preliminar. Al establecer el <code translate="No">"version_alias": "prerelease"</code> opción de configuración, puede estar seguro de que este reproductor siempre tendrá la última versión preliminar.</p>
-    <p>En el estudio <strong translate="No">JUGADORES</strong> módulo que puede configurar un reproductor para que lo use siempre con la última versión preliminar:</p>
+    <p>En el estudio <strong translate="No">reproductorES</strong> módulo que puede configurar un reproductor para que lo use siempre con la última versión preliminar:</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="Set version alias in Studio" src="/assets/images/player-management/guides/studio-make-prerelease.png" /></figure>
   </section>
   <section class="bcls-section">
     <h2 id="How_it_works">Cómo funciona</h2>
-    <p>Siempre que se lanza una nueva versión preliminar para la versión principal actual, la API de administración de jugadores vuelve a publicar todos los jugadores que tienen el alias de la versión preliminar en su rama principal.</p>
+    <p>Siempre que se lanza una nueva versión preliminar para la versión principal actual, la API de administración de reproductores vuelve a publicar todos los reproductores que tienen el alias de la versión preliminar en su rama principal.</p>
   </section>
   <section class="bcls-section">
     <h2 id="Creating_a_pre-release_player">Creando un reproductor de prelanzamiento con una API</h2>
-    <p>La siguiente declaración de curl crea un jugador que usa la API de administración de jugadores para usar siempre la última versión preliminar:</p>
+    <p>La siguiente declaración de curl crea un reproductor que usa la API de administración de reproductores para usar siempre la última versión preliminar:</p>
     <pre class="line-numbers">
   <code class="language-bash" translate="No">curl \
     --header "Content-Type: application/json" \
@@ -72,7 +72,7 @@ grandparent: Player Management API
       "policy_key": "BCpkADaw...lB71l9h"
     }
   }</code></pre>
-    <aside class="bcls-aside bcls-aside--information">Nota: Configuración del jugador <code translate="No">GET</code> las solicitudes de jugadores con el alias de la versión no contendrán la versión del jugador asociada. Sin embargo, cuando se recibe una vista previa o una solicitud de publicación para un jugador con la versión preliminar <code translate="No">version_alias</code> , la versión preliminar correcta se extrae de la base de datos de la API de administración de reproductores y se agrega a la configuración del reproductor antes de que se produzca la publicación. Esto significa que la versión del reproductor se puede encontrar en el <strong translate="No">config.json</strong> archivo (como se muestra justo arriba). A continuación se muestra un ejemplo <code translate="No">GET</code> pedido:
+    <aside class="bcls-aside bcls-aside--information">Nota: Configuración del reproductor <code translate="No">GET</code> las solicitudes de reproductores con el alias de la versión no contendrán la versión del reproductor asociada. Sin embargo, cuando se recibe una vista previa o una solicitud de publicación para un reproductor con la versión preliminar <code translate="No">version_alias</code> , la versión preliminar correcta se extrae de la base de datos de la API de administración de reproductores y se agrega a la configuración del reproductor antes de que se produzca la publicación. Esto significa que la versión del reproductor se puede encontrar en el <strong translate="No">config.json</strong> archivo (como se muestra justo arriba). A continuación se muestra un ejemplo <code translate="No">GET</code> pedido:
       <pre class="line-numbers">
   <code class="language-json" translate="No">{
     "video_cloud": {

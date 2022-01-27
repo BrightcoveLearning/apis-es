@@ -2,7 +2,7 @@
   name: Inicio de documentación
   url: 'https://support.brightcove.com' 
 - VideoCloud:
-  name: - NUBE DE VIDEO -
+  name: 'NUBE DE VIDEO'
   url: '' 
 - Studio:
   name: '&nbsp;&nbsp;&nbsp;&nbsp;Estudio de Video Cloud'
@@ -23,7 +23,7 @@
   name: '&nbsp;&nbsp;&nbsp;&nbsp;Información general de Video Cloud'
   url: 'https://general.support.brightcove.com' 
 - VideoEssentials:
-  name: - VIDEO ESENCIALES -
+  name: 'VIDEO ESENCIALES'
   url: '' 
 - Beacon:
   name: '&nbsp;&nbsp;&nbsp;&nbsp;Baliza Brightcove'
@@ -35,7 +35,7 @@
   name: '&nbsp;&nbsp;&nbsp;&nbsp;Zencoder'
   url: 'https://zencoder.support.brightcove.com' 
 - VideoCloudAddOns:
-  name: - COMPLEMENTOS DE VIDEO NUBE -
+  name: 'COMPLEMENTOS DE VIDEO NUBE'
   url: '' 
 - Campaign:
   name: '&nbsp;&nbsp;&nbsp;&nbsp;Campaña Brightcove'

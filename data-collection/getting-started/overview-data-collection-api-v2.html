@@ -47,7 +47,7 @@ parent: Data Collection API
 
     <p>Se deben incluir ciertos parámetros con los eventos para que el sistema de análisis pueda analizarlos con éxito</p>
 
-    <aside class="bcls-aside bcls-aside--warning">Debería <strong>no</strong> enviar <code translate="No">player</code> (ID de jugador) o <code translate="No">player_name</code> información para jugadores que no son de Brightcove. En su lugar, utilice el <code translate="No">destination</code> parámetro para rastrear dónde se vio el video.</aside>
+    <aside class="bcls-aside bcls-aside--warning">Debería <strong>no</strong> enviar <code translate="No">player</code> (ID de reproductor) o <code translate="No">player_name</code> información para reproductores que no son de Brightcove. En su lugar, utilice el <code translate="No">destination</code> parámetro para rastrear dónde se vio el video.</aside>
   </section>
 
   <section class="bcls-section">
@@ -198,7 +198,7 @@ parent: Data Collection API
       <dt><code translate="No">player_load</code></dt>
       <dd>
         <h5>Intención / Significado</h5>
-        <p>Un usuario final ha iniciado una sesión de jugador. Esto marca el comienzo de la sesión de análisis y debe enviarse antes de cualquier otro evento.</p>
+        <p>Un usuario final ha iniciado una sesión de reproductor. Esto marca el comienzo de la sesión de análisis y debe enviarse antes de cualquier otro evento.</p>
         <h5>Ejemplo</h5>
         <pre><code class="language-http" translate="No">http://metrics.brightcove.com/tracker
   ?event=player_load
@@ -529,7 +529,7 @@ parent: Data Collection API
 
     <ul>
       <li>Utiliza la sintaxis estándar para crear un complemento de Brightcove Player con el nombre del complemento definido como <code translate="No">uniqueUserForAnalyticsPlugin</code>. El complemento también acepta un <code translate="No">options</code> objeto, que contiene datos pasados al complemento.</li>
-      <li>La <code translate="No">myPlayer</code> A la variable se le asigna una referencia al jugador. Además, se crean otras dos variables.</li>
+      <li>La <code translate="No">myPlayer</code> A la variable se le asigna una referencia al reproductor. Además, se crean otras dos variables.</li>
       <li>La <code translate="No">userPath</code> A la variable se le asigna la ruta pasada al complemento a través de la <code translate="No">options</code> objeto.</li>
       <li>La <code translate="No">uniqueViewer</code> A la variable se le asigna la versión analizada del <code translate="No">userPath</code> , por lo que solo se asignan a la variable los dígitos de ID de usuario.</li>
       <li>Se agrega una propiedad de usuario al complemento de Analytics <code translate="No">settings</code> objeto.</li>
@@ -896,14 +896,14 @@ parent: Data Collection API
           <td><code translate="No">player_width</code> <span class="label label-optional" style="float:right;">Opcional</span></td>
           <td>Cuerda</td>
           <td>
-            <p>El ancho de píxel actual del jugador al final del rango de interacción</p>
+            <p>El ancho de píxel actual del reproductor al final del rango de interacción</p>
           </td>
         </tr>
         <tr>
           <td><code translate="No">player_height</code> <span class="label label-optional" style="float:right;">Opcional</span></td>
           <td>Cuerda</td>
           <td>
-            <p>La altura de píxel actual del jugador al final del rango de interacción</p>
+            <p>La altura de píxel actual del reproductor al final del rango de interacción</p>
           </td>
         </tr>
         <tr>
@@ -1047,8 +1047,8 @@ parent: Data Collection API
       <li><strong>rebuffering_count</strong>: El número de veces que se detuvo la reproducción debido al almacenamiento en búfer durante el período de participación representado.</li>
       <li><strong>forward_buffer_seconds</strong>: La cantidad de segundos de video que residen actualmente en el búfer de reenvío.</li>
       <li><strong>mid_bps</strong>: La relación entre el número de bits incluidos en el segmento descargado más recientemente y el tiempo dedicado a descargar ese segmento, en bits por segundo.</li>
-      <li><strong>player_width</strong> El ancho de píxel actual del jugador al final del rango de interacción.</li>
-      <li><strong>player_height</strong> La altura de píxel actual del jugador al final del rango de interacción.</li>
+      <li><strong>player_width</strong> El ancho de píxel actual del reproductor al final del rango de interacción.</li>
+      <li><strong>player_height</strong> La altura de píxel actual del reproductor al final del rango de interacción.</li>
       <li><strong>drop_frames</strong>: La cantidad de fotogramas que se eliminaron de la reproducción de video durante este período de participación</li>
     </ul>
   </section>

@@ -1,6 +1,6 @@
 ---
-title: Implementación de la descripción del servicio de administración de derechos de reproducción
-description: "En este tema, aprenderá a administrar la reproducción de video mediante el servicio de administración de derechos de reproducción de Brightcove".
+title: Implementación del servicio de administración de derechos de reproducción
+description: "En este tema, aprenderá a administrar la reproducción de video mediante el servicio de administración de derechos de reproducción de Brightcove."
 parent: Getting Started 
 grandparent: Playback Rights
 layout: staging
@@ -555,7 +555,7 @@ window.prompt(&quot;BC_TOKEN:&quot;, cookiesObj.BC_TOKEN);</code></pre>
 <p>
   Para configurar el reproductor nativo para iOS, consulte la <a href="/playback-rights/guides/using-epa-with-sdks.html">Uso de derechos de reproducción con los SDK nativos</a> documento.
 </p>
-<h3>Tu propio jugador</h3>
+<h3>Tu propio reproductor</h3>
 <p>
   Si su contenido está en la biblioteca de Video Cloud, pero está utilizando su propio reproductor, puede realizar llamadas a la API de reproducción como se muestra en la <a href="https://support.brightcove.com/overview-playback-api">Descripción general: API de reproducción</a> documento. Reemplace la URL base con lo siguiente:
 </p>
@@ -594,5 +594,5 @@ window.prompt(&quot;BC_TOKEN:&quot;, cookiesObj.BC_TOKEN);</code></pre>
 </article>
 
 <script>
-  var h1 = document.querySelector ('h1'), path = location.pathname, new_location = 'https://apis.support.brightcove.com/playback-restrictions/getting-started/implementing-playback-rights.html', mensaje = '<h3>Esta página se ha movido a <a href="' + new_location + '">' + new_location + '</a>. ¡Actualiza tu marcador! Serás redirigido en 5 segundos.<h3>'; console.log ('nueva_ubicación', nueva_ubicación); h1.insertAdjectedHTML ('post-tendencia', mensaje); redireccionar (); función redireccionar () { var t = window.setTimeout(go_to_new_location, 5000); } función go_to_new_location () { window.location.href = new_location; }
+  var h1 = document.querySelector ('h1'), path = location.pathname, new_location = 'https://apis.support.brightcove.com/playback-restrictions/getting-started/implementing-playback-rights.html', message = '<h3>Esta página se ha movido a <a href="' + new_location + '">' + new_location + '</a>. ¡Actualiza tu marcador! Serás redirigido en 5 segundos.<h3>'; console.log ('nueva_ubicación', new_location); h1.insertAdjectedHTML ('post-tendencia', mensaje); redireccionar (); function redireccionar () { var t = window.setTimeout(go_to_new_location, 5000); } function go_to_new_location () { window.location.href = new_location; }
 </script>

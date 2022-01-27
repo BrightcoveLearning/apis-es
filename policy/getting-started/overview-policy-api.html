@@ -83,7 +83,7 @@ grandparent: Policy API
       <li>
       <p>Obtenga sus credenciales de cliente ( <code translate="No">client_id </code> y <code translate="No">client_secret </code> ) mediante <a href="/general/managing-api-authentication-credentials.html">Estudio de Video Cloud</a> (recomendado).</p>
     
-      <p>Para los tokens de acceso que se pueden usar con solicitudes de creación de claves de políticas, se requieren sus credenciales de cliente para tener los siguientes permisos en Studio: <strong>Los jugadores leen y leen / escriben</strong></p>
+      <p>Para los tokens de acceso que se pueden usar con solicitudes de creación de claves de políticas, se requieren sus credenciales de cliente para tener los siguientes permisos en Studio: <strong>Los reproductores leen y leen / escriben</strong></p>
     
       <figure class="bcls-figure"><img class="bcls-image--no-border" alt="Authentication permissions" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/policy-api/overview/authentication-permissions.png" />
       <figcaption class="bcls-caption--image">Permisos de autenticación</figcaption>
@@ -147,7 +147,7 @@ grandparent: Policy API
     <aside class="bcls-aside bcls-aside--warning">
     <ul>
       <li>Los dominios deben contener el protocolo y el nombre de dominio, y el puerto, a menos que sea el puerto predeterminado para el protocolo (por ejemplo, http://www.abc.com, https://www.def.com:8888), pero <strong>no rutas ni barras al final ("/")</strong></li>
-      <li>Se puede usar cualquier clave de su cuenta para acceder al contenido de la cuenta a través de la API de reproducción, por lo que si está usando la restricción de dominio, le recomendamos que restrinja el dominio de todos sus jugadores.</li>
+      <li>Se puede usar cualquier clave de su cuenta para acceder al contenido de la cuenta a través de la API de reproducción, por lo que si está usando la restricción de dominio, le recomendamos que restrinja el dominio de todos sus reproductores.</li>
       <li>Porque el <a href="https://sdks.support.brightcove.com">SDK de reproductores nativos de Brightcove</a> no envíe un encabezado de origen, no puede usar una clave de política restringida por dominio. Si prueba esto, obtendrá un <code translate="No">403 Forbidden</code> respuesta cuando intenta obtener contenido de su biblioteca de Video Cloud.</li>
     </ul>
     </aside>
@@ -156,12 +156,12 @@ grandparent: Policy API
     <section class="bcls-section">
     <h2 id="Geo_restriction">Restricción geográfica</h2>
     
-    <p>La API de políticas se puede utilizar para implementar el filtrado geográfico para un jugador en lugar de o además de <a href="/cms/managing-videos/using-cms-api-add-geo-filtering.html">videos individuales.</a></p>
+    <p>La API de políticas se puede utilizar para implementar el filtrado geográfico para un reproductor en lugar de o además de <a href="/cms/managing-videos/using-cms-api-add-geo-filtering.html">videos individuales.</a></p>
     
     <aside class="bcls-aside bcls-aside--information">
     <ul>
       <li>Una política puede restringir la reproducción según el país detectado por el espectador. Para crear y utilizar una clave con esta política, la cuenta debe poder utilizar funciones de filtrado geográfico. Esta política también denegará el acceso si el usuario final parece estar haciendo su solicitud a través o desde un proxy anonimizado.</li>
-      <li>Se aplican las restricciones geográficas aplicadas en una clave de política <strong>solo</strong> por los jugadores que usan esa clave de política.</li>
+      <li>Se aplican las restricciones geográficas aplicadas en una clave de política <strong>solo</strong> por los reproductores que usan esa clave de política.</li>
       <li>La restricción geográfica también puede ser <a href="/cms/managing-videos/using-cms-api-add-geo-filtering.html">aplicado a videos individuales</a>. Video Cloud aplica políticas de filtrado geográfico tanto a nivel de reproductor como de video, por lo que si un país está excluido por cualquiera de las dos, el video no estará disponible en ese país.</li>
     </ul>
     </aside>

@@ -27,7 +27,7 @@ grandparent: Home
         <h2>Prerrequisitos</h2>
 
         <div class="BCL-concept">
-            <p>Para comenzar con estas instrucciones paso a paso, se asume que ha completado el <a href="/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de jugadores</a>. Al completar dicha actividad, ha definido las siguientes variables de entorno en su sistema de línea de comandos:</p>
+            <p>Para comenzar con estas instrucciones paso a paso, se asume que ha completado el <a href="/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de reproductores</a>. Al completar dicha actividad, ha definido las siguientes variables de entorno en su sistema de línea de comandos:</p>
 
             <ul>
                 <li>{account_id}</li>
@@ -87,7 +87,7 @@ grandparent: Home
     <section id="createplugin" class="bcls-section">
         <h2>Crear complemento</h2>
 
-        <p>Ahora creará un complemento en su carpeta para copiarlo al repositorio. Utilice el mismo complemento del paso a paso: Gestión de jugadores, excepto cambiar el texto que se muestra. Cree el archivo, pegue el texto de abajo en el archivo y luego guárdelo. Utilice el mismo nombre de archivo que se utilizó en el paso a paso: Gestión de jugadores, <code translate="No">first-plugin.js</code>.</p>
+        <p>Ahora creará un complemento en su carpeta para copiarlo al repositorio. Utilice el mismo complemento del paso a paso: Gestión de reproductores, excepto cambiar el texto que se muestra. Cree el archivo, pegue el texto de abajo en el archivo y luego guárdelo. Utilice el mismo nombre de archivo que se utilizó en el paso a paso: Gestión de reproductores, <code translate="No">first-plugin.js</code>.</p>
 
         <pre class="line-numbers">
     <code class="language-javascript" translate="No">videojs.registerPlugin('firstPlugin', function() {
@@ -133,7 +133,7 @@ grandparent: Home
         <h2>Usar nuevo complemento</h2>
 
         <div class="BCL-concept">
-            <p>En el paso a paso: Gestión del jugador usó una declaración curl para decirle al jugador la ubicación del código JavaScript para el complemento, junto con la ubicación de CSS y el nombre del complemento. Hará lo mismo nuevamente, excepto que esta vez la ruta al complemento utilizará la nueva ruta que se encuentra en la respuesta de la copia del archivo (que se muestra en la línea 2 anterior en la respuesta de la copia). Ejecute la siguiente instrucción curl para apuntar a la nueva ubicación del complemento.</p>
+            <p>En el paso a paso: Gestión del reproductor usó una declaración curl para decirle al reproductor la ubicación del código JavaScript para el complemento, junto con la ubicación de CSS y el nombre del complemento. Hará lo mismo nuevamente, excepto que esta vez la ruta al complemento utilizará la nueva ruta que se encuentra en la respuesta de la copia del archivo (que se muestra en la línea 2 anterior en la respuesta de la copia). Ejecute la siguiente instrucción curl para apuntar a la nueva ubicación del complemento.</p>
 
             <aside class="bcls-aside bcls-aside--information">Nota: Incluso si no está proporcionando ninguna opción, debe ingresar el nombre del complemento, como se muestra aquí.</aside>
 

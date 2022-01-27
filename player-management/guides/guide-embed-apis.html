@@ -1,7 +1,7 @@
 ---
 title: 'Insertar API'
 description: '<p>Este tema le ayudará a decidir cuándo y cómo utilizar las API de inserción. La decisión de elegir entre usar las API de configuración del reproductor o las API de inserción es importante y el contenido de este documento lo guiará en estas decisiones.</p>
-<aside class="bcls-aside bcls-aside--information">Las declaraciones de curl en esta guía se basan en el trabajo realizado en el <a href="/player-management/getting-started/step-step-player-management.html">Inicio rápido: Gestión de jugadores</a>. Trabajar a través de esta guía después de hacer el Inicio rápido a la Administración de jugadores le permite ver los cambios realizados en un reproductor secundario y, lo que es más importante, las características heredadas del reproductor principal.</aside>'
+<aside class="bcls-aside bcls-aside--information">Las declaraciones de curl en esta guía se basan en el trabajo realizado en el <a href="/player-management/getting-started/step-step-player-management.html">Inicio rápido: Gestión de reproductores</a>. Trabajar a través de esta guía después de hacer el Inicio rápido a la Administración de reproductores le permite ver los cambios realizados en un reproductor secundario y, lo que es más importante, las características heredadas del reproductor principal.</aside>'
 parent: Guides 
 grandparent: Player Management API
 ---
@@ -11,9 +11,9 @@ grandparent: Player Management API
   <section class="bcls-section">
     <h2 id="whatisembed">¿Por qué utilizar las API de inserción?</h2>
     
-    <p>Las API de inserción le permiten crear varias instancias de un reproductor en particular. Una buena forma de pensar en esta relación jugador / instancia es como una relación padre / hijo. El jugador único es el padre, y los reproductores creados con las API incorporadas son hijos del jugador padre. El reproductor principal tiene la mayor parte de las propiedades que desea que tenga su reproductor, y luego puede usar las API de inserción para personalizar subconjuntos de propiedades en diferentes reproductores secundarios. Por ejemplo, puede cargar diferentes medios o usar diferentes complementos y estilos con diferentes reproductores infantiles.</p>
+    <p>Las API de inserción le permiten crear varias instancias de un reproductor en particular. Una buena forma de pensar en esta relación reproductor / instancia es como una relación padre / hijo. El reproductor único es el padre, y los reproductores creados con las API incorporadas son hijos del reproductor padre. El reproductor principal tiene la mayor parte de las propiedades que desea que tenga su reproductor, y luego puede usar las API de inserción para personalizar subconjuntos de propiedades en diferentes reproductores secundarios. Por ejemplo, puede cargar diferentes medios o usar diferentes complementos y estilos con diferentes reproductores infantiles.</p>
     
-    <p>Los siguientes diagramas ayudan a aclarar la funcionalidad. Debajo, el padre se muestra a la izquierda y dos jugadores secundarios a la derecha. Observa eso:</p>
+    <p>Los siguientes diagramas ayudan a aclarar la funcionalidad. Debajo, el padre se muestra a la izquierda y dos reproductores secundarios a la derecha. Observa eso:</p>
     
     <ul>
       <li>El cartel es heredado por ambos hijos.</li>
@@ -31,7 +31,7 @@ grandparent: Player Management API
     <figcaption class="bcls-caption--image">Los niños heredan los cambios</figcaption>
     </figure>
     
-    <aside class="bcls-aside bcls-aside--information">Nota: De forma predeterminada, está limitado a 50 jugadores secundarios por cada jugador principal. Si tiene un caso de uso para obtener más información, comuníquese con el soporte y analice la situación con ellos.</aside>
+    <aside class="bcls-aside bcls-aside--information">Nota: De forma predeterminada, está limitado a 50 reproductores secundarios por cada reproductor principal. Si tiene un caso de uso para obtener más información, comuníquese con el soporte y analice la situación con ellos.</aside>
     </section>
     
     <section id="When_not_to_use" class="bcls-section">
@@ -40,8 +40,8 @@ grandparent: Player Management API
     <p>Si bien hay algunas buenas razones para usar las API de inserción si su caso de uso lo necesita, también hay algunas buenas razones para seguir con los reproductores habituales. A continuación, presentamos algunos:</p>
     
     <ul>
-      <li>Los reproductores infantiles no se pueden editar con Video Cloud Studio. Solo puede editar jugadores infantiles a través de la API de administración de jugadores. Puede editar el reproductor principal de un reproductor secundario en Video Cloud Studio; sin embargo, un cambio realizado en el reproductor principal afecta a todos los reproductores secundarios.</li>
-      <li>La publicación de un reproductor principal puede llevar mucho tiempo si tiene muchos reproductores secundarios asociados con ese reproductor principal. Cada reproductor secundario se publica por separado, y si tiene más de 30 reproductores secundarios, puede esperar algunos retrasos en la publicación de su reproductor secundario. Este sería exactamente el mismo caso que publicar 30 jugadores regulares al mismo tiempo.</li>
+      <li>Los reproductores infantiles no se pueden editar con Video Cloud Studio. Solo puede editar reproductores infantiles a través de la API de administración de reproductores. Puede editar el reproductor principal de un reproductor secundario en Video Cloud Studio; sin embargo, un cambio realizado en el reproductor principal afecta a todos los reproductores secundarios.</li>
+      <li>La publicación de un reproductor principal puede llevar mucho tiempo si tiene muchos reproductores secundarios asociados con ese reproductor principal. Cada reproductor secundario se publica por separado, y si tiene más de 30 reproductores secundarios, puede esperar algunos retrasos en la publicación de su reproductor secundario. Este sería exactamente el mismo caso que publicar 30 reproductores regulares al mismo tiempo.</li>
     </ul>
     
     <p>Dadas las razones anteriores, puede tener sentido comenzar con el uso de reproductores normales y luego probar las incrustaciones cuando vea la necesidad de reproductores infantiles.</p>
@@ -61,9 +61,9 @@ grandparent: Player Management API
       data-application-id=""
       class="vjs-fluid"&gt;&lt;/video-js&gt;</code></pre>
     
-    <p>La <code translate="No">data-embed</code> El atributo determina si el jugador es padre o hijo. Si el valor es <code translate="No">default</code> , el jugador es padre. Si el jugador es un niño, el <code translate="No">data-embed</code> El atributo contendrá la ID del jugador padre. Un ejemplo de eso sigue:</p>
+    <p>La <code translate="No">data-embed</code> El atributo determina si el reproductor es padre o hijo. Si el valor es <code translate="No">default</code> , el reproductor es padre. Si el reproductor es un niño, el <code translate="No">data-embed</code> El atributo contendrá la ID del reproductor padre. Un ejemplo de eso sigue:</p>
     
-    <p>La <code translate="No">data-embed</code> El atributo determina si el jugador es padre o hijo. Si el valor es <code translate="No">default</code> , el jugador es padre. Si el jugador es un niño, el <code translate="No">data-embed</code> El atributo contendrá la ID del jugador padre. Un ejemplo de eso sigue:</p>
+    <p>La <code translate="No">data-embed</code> El atributo determina si el reproductor es padre o hijo. Si el valor es <code translate="No">default</code> , el reproductor es padre. Si el reproductor es un niño, el <code translate="No">data-embed</code> El atributo contendrá la ID del reproductor padre. Un ejemplo de eso sigue:</p>
     
     <pre class="line-numbers">
     <code class="language-html" translate="No">&lt;video-js
@@ -73,13 +73,13 @@ grandparent: Player Management API
       data-application-id=""
       class="video-js" controls&gt;&lt;/video-js&gt;</code></pre>
     
-    <p>Tenga en cuenta que el <code translate="No">data-player</code> , ese es el ID del jugador, es el mismo, pero el <code translate="No">data-embed</code> ha cambiado de <code translate="No">default</code> a la identificación del jugador infantil.</p>
+    <p>Tenga en cuenta que el <code translate="No">data-player</code> , ese es el ID del reproductor, es el mismo, pero el <code translate="No">data-embed</code> ha cambiado de <code translate="No">default</code> a la identificación del reproductor infantil.</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="notation">URL de reproductores secundarios</h2>
     
-    <p>¿Cómo diferencia entre el jugador padre y el jugador hijo? Las URL serán diferentes. Por ejemplo, la URL de un jugador padre es:</p>
+    <p>¿Cómo diferencia entre el reproductor padre y el reproductor hijo? Las URL serán diferentes. Por ejemplo, la URL de un reproductor padre es:</p>
     
     <pre class="line-numbers">
     <code class="language-http" translate="No">//players.brightcove.net/1507807800001/HiAdwRZ7kK<span class="bcls-highlight">_default</span>/index.min.js</code></pre>
@@ -93,35 +93,35 @@ grandparent: Player Management API
     <section class="bcls-section">
     <h2 id="why">Caso de uso padre / hijo</h2>
     
-    <p>Suponga que usa varios reproductores de video. A menudo, las características comunes de los reproductores son casi las mismas, pero en algunos casos querrá modificar el reproductor para casos especiales. Puede crear varios jugadores utilizando las API de configuración del jugador con <code translate="No">POST</code> y <code translate="No">PATCH</code> métodos, pero esto podría dar lugar a problemas de mantenimiento importantes. Por ejemplo, supongamos que desea cambiar el cartel de todos los jugadores. Esto significaría usar <code translate="No">PATCH</code> en todos los diferentes jugadores. Mientras que si creara reproductores infantiles, solo <code translate="No">PATCH</code> el jugador padre, y todos los jugadores secundarios tendrían automáticamente el nuevo cartel.</p>
+    <p>Suponga que usa varios reproductores de video. A menudo, las características comunes de los reproductores son casi las mismas, pero en algunos casos querrá modificar el reproductor para casos especiales. Puede crear varios reproductores utilizando las API de configuración del reproductor con <code translate="No">POST</code> y <code translate="No">PATCH</code> métodos, pero esto podría dar lugar a problemas de mantenimiento importantes. Por ejemplo, supongamos que desea cambiar el cartel de todos los reproductores. Esto significaría usar <code translate="No">PATCH</code> en todos los diferentes reproductores. Mientras que si creara reproductores infantiles, solo <code translate="No">PATCH</code> el reproductor padre, y todos los reproductores secundarios tendrían automáticamente el nuevo cartel.</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="creationprocess">Proceso de creación</h2>
     
-    <p>Si ha hecho el <a href="/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de jugadores</a> ha visto el proceso de usar declaraciones curl para comunicar métodos HTTP a la API de administración de jugadores. Aquí se utilizará el mismo enfoque.</p>
+    <p>Si ha hecho el <a href="/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de reproductores</a> ha visto el proceso de usar declaraciones curl para comunicar métodos HTTP a la API de administración de reproductores. Aquí se utilizará el mismo enfoque.</p>
     
     <p>Para crear un reproductor, lo más probable es que haya utilizado algunos métodos HTTP con las API de configuración del reproductor, como:</p>
     
     <ul>
-      <li>Crea el jugador usando un <code translate="No">POST</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} jugadores</em></li>
-      <li>Actualice el reproductor usando un <code translate="No">PATCH</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} jugadores /{player_id}/configuración</em></li>
-      <li>Publique el reproductor actualizado usando un <code translate="No">POST</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} jugadores /{player_id}/publicar</em></li>
+      <li>Crea el reproductor usando un <code translate="No">POST</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} reproductores</em></li>
+      <li>Actualice el reproductor usando un <code translate="No">PATCH</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} reproductores /{player_id}/configuración</em></li>
+      <li>Publique el reproductor actualizado usando un <code translate="No">POST</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} reproductores /{player_id}/publicar</em></li>
     </ul>
     
-    <p>Se utilizará un enfoque similar para los jugadores infantiles que utilizan las API de inserción. A un nivel muy alto:</p>
+    <p>Se utilizará un enfoque similar para los reproductores infantiles que utilizan las API de inserción. A un nivel muy alto:</p>
     
     <ul>
-      <li>Crea un jugador infantil usando un <code translate="No">POST</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} jugadores /{player_id}/<strong>incrusta</strong></em>. Nota: Los reproductores secundarios creados con las API incorporadas se publican automáticamente en la creación, por lo que no es necesario publicar en la creación del reproductor secundario, solo en la actualización del reproductor secundario.</li>
-      <li>Actualiza el reproductor infantil usando un <code translate="No">PATCH</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} jugadores /{player_id}/<strong>embeds / $ EMBED_ID / configuration</strong></em></li>
-      <li>Publique el reproductor secundario usando un <code translate="No">POST</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} jugadores /{player_id}/<strong>embeds / $ EMBED_ID / publish</strong></em></li>
+      <li>Crea un reproductor infantil usando un <code translate="No">POST</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} reproductores /{player_id}/<strong>incrusta</strong></em>. Nota: Los reproductores secundarios creados con las API incorporadas se publican automáticamente en la creación, por lo que no es necesario publicar en la creación del reproductor secundario, solo en la actualización del reproductor secundario.</li>
+      <li>Actualiza el reproductor infantil usando un <code translate="No">PATCH</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} reproductores /{player_id}/<strong>embeds / $ EMBED_ID / configuration</strong></em></li>
+      <li>Publique el reproductor secundario usando un <code translate="No">POST</code> para <em>https://players.api.brightcove.com/v2/accounts/{account_id} reproductores /{player_id}/<strong>embeds / $ EMBED_ID / publish</strong></em></li>
     </ul>
     
     <p>El siguiente contenido describe el proceso en detalle.</p>
     </section>
     
     <section class="bcls-section">
-    <h2 id="createembed">Crear jugador hijo</h2>
+    <h2 id="createembed">Crear reproductor hijo</h2>
     
     <p>Para crear un reproductor infantil, usa un HTTP <code translate="No">POST</code> método, como se muestra aquí:</p>
     
@@ -161,7 +161,7 @@ grandparent: Player Management API
     
     <p class="BCL-aside">Nota: El reproductor secundario se publica automáticamente en la creación, por lo que no es necesario publicar el reproductor secundario después de la creación. Aún debe publicar el reproductor secundario si se modifica con un <code translate="No">PATCH</code> método. En este punto, la información de vista previa no es útil, ya que puede usar el reproductor secundario publicado inmediatamente después de la creación.</p>
     
-    <p>Ahora puede usar el <code translate="No">url</code> propiedad del reproductor secundario para ver los resultados. En el siguiente ejemplo, el reproductor secundario se agregó al reproductor principal creado en el Paso a paso: Gestión de jugadores. Verá el póster y el video nuevos, pero el complemento de superposición del reproductor principal todavía está presente.</p>
+    <p>Ahora puede usar el <code translate="No">url</code> propiedad del reproductor secundario para ver los resultados. En el siguiente ejemplo, el reproductor secundario se agregó al reproductor principal creado en el Paso a paso: Gestión de reproductores. Verá el póster y el video nuevos, pero el complemento de superposición del reproductor principal todavía está presente.</p>
     
     <figure class="bcls-figure"><img class="bcls-image" alt="Child Player with Parent's Overlay" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/player-management-api/guides/embeds/embed-guide-robin.png" />
     <figcaption class="bcls-caption--image">Reproductor secundario con superposición de los padres</figcaption>
@@ -225,7 +225,7 @@ grandparent: Player Management API
     <section class="bcls-section">
     <h2 id="displayembed">Mostrar información del niño</h2>
     
-    <p>Puede utilizar HTTP <code translate="No">GET</code> método para recuperar la información sobre un jugador infantil. Un ejemplo de declaración curl es:</p>
+    <p>Puede utilizar HTTP <code translate="No">GET</code> método para recuperar la información sobre un reproductor infantil. Un ejemplo de declaración curl es:</p>
     
     <pre class="line-numbers">
     <code class="language-bash" translate="No">curl
@@ -238,9 +238,9 @@ grandparent: Player Management API
     <p>Se devuelve una cantidad bastante grande de datos JSON.</p>
     
     <section class="bcls-section">
-    <h2 id="deletingembeds">Eliminar jugadores secundarios</h2>
+    <h2 id="deletingembeds">Eliminar reproductores secundarios</h2>
     
-    <p>También puede eliminar un reproductor secundario utilizando el <code translate="No">DELETE</code> método. Aquí hay un ejemplo de declaración curl para eliminar un jugador secundario:</p>
+    <p>También puede eliminar un reproductor secundario utilizando el <code translate="No">DELETE</code> método. Aquí hay un ejemplo de declaración curl para eliminar un reproductor secundario:</p>
     
     <pre class="line-numbers">
     <code class="language-bash" translate="No">curl
@@ -250,5 +250,5 @@ grandparent: Player Management API
     https://players.api.brightcove.com/v2/accounts/{account_id}/players/$PLAYER_ID/embeds/$EMBED_ID</code></pre>
     <!-- <p><code data-gist-id="11401488" data-gist-hide-footer="true" data-gist-line="314-318"></code></p> -->
     
-    <p>Por supuesto, esto afectará solo al jugador hijo y no al jugador padre.</p>
+    <p>Por supuesto, esto afectará solo al reproductor hijo y no al reproductor padre.</p>
     </section>

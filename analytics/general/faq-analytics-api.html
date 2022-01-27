@@ -70,14 +70,14 @@ grandparent: Analytics API
       <dd class="bcls-answer">El nuevo nombre se registrará para cualquier nuevo evento de análisis, pero no cambiamos el nombre en los datos históricos; el nombre del video devuelto será el nombre que tenía en el momento en que se vio.</dd>
       <dt class="bcls-question">¿Por qué no siempre veo números enteros para los valores de participación?</dt>
       <dd class="bcls-answer">Es posible que los números de compromiso regresen con puntos decimales. El motivo es que la participación está normalizada, lo que significa que es una proporción de "video_percent_viewed * (video_engagement_25 / video_engagement_sum)", por lo que, según el intervalo de tiempo seleccionado para la consulta, es posible que vea números de punto flotante en los casos en que no se dividen exactamente.</dd>
-      <dt class="bcls-question">¿Cómo filtro los resultados por jugador?</dt>
+      <dt class="bcls-question">¿Cómo filtro los resultados por reproductor?</dt>
       <dd class="bcls-answer">
       <aside class="bcls-aside bcls-aside--warning">
-      <p>Tenga en cuenta lo siguiente cuando utilice <code translate="No">where</code> filtros en los jugadores:</p>
+      <p>Tenga en cuenta lo siguiente cuando utilice <code translate="No">where</code> filtros en los reproductores:</p>
     
       <ul>
-        <li><strong>Jugadores de Brightcove</strong> - Ingrese la URL del jugador en este formato: <code translate="No">players.brightcove.com/account id/playerID<strong>_default</strong></code></li>
-        <li>Jugadores inteligentes: ingrese el ID del jugador</li>
+        <li><strong>reproductores de Brightcove</strong> - Ingrese la URL del reproductor en este formato: <code translate="No">players.brightcove.com/account id/playerID<strong>_default</strong></code></li>
+        <li>reproductores inteligentes: ingrese el ID del reproductor</li>
       </ul>
       </aside>
       </dd>
@@ -88,8 +88,8 @@ grandparent: Analytics API
     <h2>Reportando</h2>
     
     <dl>
-      <dt class="bcls-question">¿Por qué veo 0 GB cuando miro el ancho de banda utilizado por un jugador?</dt>
-      <dd class="bcls-answer">En el pasado, Brightcove informó el ancho de banda por jugador, por lo que los clientes que querían desglosar las cosas por jugador podían usar estas métricas como un medio para asignar costos de ancho de banda. Sin embargo, a medida que avanzamos hacia una entrega más basada en manifiestos (HLS hoy y DASH en el futuro), la naturaleza del video segmentado hará que el seguimiento del ancho de banda por jugador sea impreciso. Por lo tanto, desaprobaremos el ancho de banda por dimensión de jugador en el informe de Utilización. Por lo tanto, en el futuro, recomendamos usar los segundos vistos por jugador en el informe de rendimiento para asignar costos por jugador.</dd>
+      <dt class="bcls-question">¿Por qué veo 0 GB cuando miro el ancho de banda utilizado por un reproductor?</dt>
+      <dd class="bcls-answer">En el pasado, Brightcove informó el ancho de banda por reproductor, por lo que los clientes que querían desglosar las cosas por reproductor podían usar estas métricas como un medio para asignar costos de ancho de banda. Sin embargo, a medida que avanzamos hacia una entrega más basada en manifiestos (HLS hoy y DASH en el futuro), la naturaleza del video segmentado hará que el seguimiento del ancho de banda por reproductor sea impreciso. Por lo tanto, desaprobaremos el ancho de banda por dimensión de reproductor en el informe de Utilización. Por lo tanto, en el futuro, recomendamos usar los segundos vistos por reproductor en el informe de rendimiento para asignar costos por reproductor.</dd>
     </dl>
     </section>
     

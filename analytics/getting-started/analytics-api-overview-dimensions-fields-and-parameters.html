@@ -118,7 +118,7 @@ grandparent: Analytics API
 			<th class="rotate-90"><code style="word-break:unset;font-weight:normal;">device_manufacturer</code></th>
 			<th class="rotate-90"><code style="word-break:unset;font-weight:normal;">tipo de dispositivo</code></th>
 			<th class="rotate-90"><code style="word-break:unset;font-weight:normal;">live_stream</code></th>
-			<th class="rotate-90"><code style="word-break:unset;font-weight:normal;">jugador</code></th>
+			<th class="rotate-90"><code style="word-break:unset;font-weight:normal;">reproductor</code></th>
 			<th class="rotate-90"><code style="word-break:unset;font-weight:normal;">referrer_domain</code></th>
 			<th class="rotate-90"><code style="word-break:unset;font-weight:normal;">región</code></th>
 			<th class="rotate-90"><code style="word-break:unset;font-weight:normal;">términos_de_búsqueda</code></th>
@@ -592,7 +592,7 @@ grandparent: Analytics API
 <pre>
 <code class="language-http" translate="No">https://analytics.api.brightcove.com/v1?accounts=<span class="bcls-input">account_id(s)</span>&amp;dimensions=device_type&amp;where=video==<span class="bcls-input">video_id</span>;device_type==tablet</code></pre>
 
-<p>Las comas se tratan como OR lógicos y los puntos y comas como AND lógicos. Por ejemplo, <code class="language-http" translate="No">where=video==1234,5678;player==9876</code> se interpreta como "donde video = 1234 <strong>O</strong> 5678 <strong>Y</strong> jugador = 9876 "</p>
+<p>Las comas se tratan como OR lógicos y los puntos y comas como AND lógicos. Por ejemplo, <code class="language-http" translate="No">where=video==1234,5678;player==9876</code> se interpreta como "donde video = 1234 <strong>O</strong> 5678 <strong>Y</strong> reproductor = 9876 "</p>
 
 <h3>Espacios y personajes especiales</h3>
 
@@ -607,9 +607,9 @@ grandparent: Analytics API
 <p>Tenga en cuenta lo siguiente cuando esté filtrando por reproductores:</p>
 
 <ul>
-	<li><strong>Jugadores de Brightcove</strong> - Ingrese la URL del jugador en este formato: <code translate="No">players.brightcove.com/account_id/player_id <span class="bcls-highlight">_default</span> </code></li>
-	<li>Si usaste un <a href="https://studio.support.brightcove.com/publish/adding-application-id-player-embed-code.html">ID de aplicación</a> para identificar al jugador, luego ingrese la URL del jugador en este formato: <code translate="No">players.brightcove.com/account_id/player_id_default/ <span class="bcls-highlight">application-id</span> </code> - por ejemplo: <code translate="No">players.brightcove.com/1752604059001/BJFYWrtUl_default/AlltimeViewsPlayerSample</code></li>
-	<li>Jugadores inteligentes: ingrese el ID del jugador</li>
+	<li><strong>reproductores de Brightcove</strong> - Ingrese la URL del reproductor en este formato: <code translate="No">players.brightcove.com/account_id/player_id <span class="bcls-highlight">_default</span> </code></li>
+	<li>Si usaste un <a href="https://studio.support.brightcove.com/publish/adding-application-id-player-embed-code.html">ID de aplicación</a> para identificar al reproductor, luego ingrese la URL del reproductor en este formato: <code translate="No">players.brightcove.com/account_id/player_id_default/ <span class="bcls-highlight">application-id</span> </code> - por ejemplo: <code translate="No">players.brightcove.com/1752604059001/BJFYWrtUl_default/AlltimeViewsPlayerSample</code></li>
+	<li>reproductores inteligentes: ingrese el ID del reproductor</li>
 </ul>
 </aside>
 

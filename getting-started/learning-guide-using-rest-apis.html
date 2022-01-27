@@ -50,7 +50,7 @@ parent: Getting Started
   <section class="bcls-section">
     <h2 id="Example_code_walkthrough">Tutorial de código de ejemplo</h2>
     <p>En lugar de considerar el código como una pieza, se presentará y discutirá en secciones. Algunas de las secciones se relacionarán con el diagrama anterior.</p>
-    <h3>Código de jugador estándar</h3>
+    <h3>Código de reproductor estándar</h3>
     <p>Esta sección de código contiene el código de inserción in-page básico de Brightcove Player.</p>
     <ul>
       <li>Líneas 11-21: Código estándar de Brightcove Player con la adición de un&nbsp;<code translate="No">id</code> atributo agregado.</li>
@@ -92,7 +92,7 @@ parent: Getting Started
     </ol>
     <p>A continuación se muestra un ejemplo:</p>
     <ul>
-      <li>Línea 1: Código estándar para esperar hasta que el jugador esté listo para interactuar.</li>
+      <li>Línea 1: Código estándar para esperar hasta que el reproductor esté listo para interactuar.</li>
       <li>Líneas 2-4: Cree / establezca valores para las variables necesarias más adelante en el código.</li>
       <li>Líneas 7-12: Esperen al <code translate="No">loadstart</code> evento para que el <code translate="No">mediainfo</code> el objeto está poblado. Asignar variables para contener los valores necesarios para la <span translate="No">API de análisis</span> punto final.</li>
       <li>Línea 13: Configure el método HTTP para la llamada.</li>
@@ -288,16 +288,16 @@ parent: Getting Started
 	https://analytics.api.brightcove.com/v1/alltime/accounts/1752604059001/videos/4093643993001</code></pre>
       </li>
     </ul>
-    <p>Es posible que se requieran otras propiedades en el objeto de opciones según la solicitud de API. Aquí hay un ejemplo de lo que vería en la consola al registrar el objeto de opciones para realizar una solicitud para todos los jugadores en una cuenta específica:</p>
+    <p>Es posible que se requieran otras propiedades en el objeto de opciones según la solicitud de API. Aquí hay un ejemplo de lo que vería en la consola al registrar el objeto de opciones para realizar una solicitud para todos los reproductores en una cuenta específica:</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="debugging options simple" src="//learning-services-media.brightcove.com/doc-assets/player-development/architecture/proxy-API-call/debugging-options-simple.png" /></figure>
-    <p>Aquí hay un objeto de opciones de registro un poco más complejo que se usa al actualizar jugadores:</p>
+    <p>Aquí hay un objeto de opciones de registro un poco más complejo que se usa al actualizar reproductores:</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="debugging options" src="//learning-services-media.brightcove.com/doc-assets/player-development/architecture/proxy-API-call/debugging-options.png" /></figure>
     <h3>Ver datos devueltos</h3>
     <p>Lo que se devuelva variará según los datos que haya solicitado y si se devuelve un error. Pero no importa lo que se devuelva, lo más probable es que desee ver qué datos se devuelven. Una forma sencilla de hacer esto es registrar en la consola el <code translate="No">response</code> datos justo después de la llamada al <code translate="No">makeRequest</code> función:</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="debugging code log options" src="//learning-services-media.brightcove.com/doc-assets/player-development/architecture/proxy-API-call/debugging-code-log-response.png" /></figure>
-    <p>Lo que se devolverá tiene posibilidades casi infinitas, pero a continuación se muestran algunos ejemplos. El primero muestra el inicio de una respuesta al preguntar por todos los jugadores en una cuenta:</p>
+    <p>Lo que se devolverá tiene posibilidades casi infinitas, pero a continuación se muestran algunos ejemplos. El primero muestra el inicio de una respuesta al preguntar por todos los reproductores en una cuenta:</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="debugging response on players request" src="//learning-services-media.brightcove.com/doc-assets/player-development/architecture/proxy-API-call/debugging-response-multiple-players.png" /></figure>
-    <aside class="bcls-aside bcls-aside--tip">Este es un buen ejemplo de cuándo ver la respuesta puede ser sumamente útil, ya que muestra que la información del jugador está almacenada en una matriz llamada <code translate="No">items</code>.</aside>
+    <aside class="bcls-aside bcls-aside--tip">Este es un buen ejemplo de cuándo ver la respuesta puede ser sumamente útil, ya que muestra que la información del reproductor está almacenada en una matriz llamada <code translate="No">items</code>.</aside>
     <p>Aquí está la respuesta después de actualizar los reproductores, usando el <code translate="No">PATCH</code> Método HTTP:</p>
     <figure class="bcls-figure"><img class="bcls-image" alt="debugging response on player patch" src="//learning-services-media.brightcove.com/doc-assets/player-development/architecture/proxy-API-call/debugging-response-on-player-patch.png" /></figure>
     <p>Aquí hay una vista con un formato más agradable de los datos en la primera respuesta:</p>

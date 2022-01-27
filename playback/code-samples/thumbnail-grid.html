@@ -34,7 +34,7 @@ grandparent: Playback API
     <p>Una mejor opción es utilizar el método de búsqueda de videos, que nos permite encontrar todos los videos por id y devolverlos con una sola solicitud. El parámetro de búsqueda para la solicitud se verá así:</p>
     <pre><code class="language-http" translate="No">q=<span class="bcls-highlight">id:6543217890</span>%20<span class="bcls-highlight">id:1234567890</span>%20<span class="bcls-highlight">id:987654321</span>...</code></pre>
     <p>La <strong><code translate="No">%20</code></strong> en esta cadena de búsqueda hay un espacio codificado por URI. Para obtener más información sobre la sintaxis de búsqueda, consulte <a href="https://apis.support.brightcove.com/cms/searching/cmsplayback-api-videos-search.html">CMS / API de reproducción: Búsqueda de vídeos</a>.</p>
-    <h3>El jugador</h3>
+    <h3>El reproductor</h3>
     <p>No hay requisitos especiales para el reproductor: el Brightcove Player predeterminado funcionaría bien.</p>
     <p>Es posible que algunos usuarios no vean ningún video, por lo que no tiene sentido usar ancho de banda para cargar un reproductor hasta que sea necesario. Usaremos el <a href="https://player.support.brightcove.com/publish/brightcove-player-loader.html">Cargador de reproductores Brightcove</a> para cargar un reproductor dinámicamente la primera vez que se selecciona un video para su reproducción. Para maximizar el rendimiento, también precargará Brightcove Player JavaScript, pero el cargador del reproductor lo hará automáticamente si aún no está presente.</p>
   </section>

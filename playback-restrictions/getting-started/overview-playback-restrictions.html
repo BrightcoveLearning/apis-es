@@ -583,7 +583,7 @@ grandparent: Playback Restrictions
       </li>
       <li>
         <p>Configurar el reproductor</p>
-        <p>El token se pasa con la solicitud de reproducción. Si el token no es válido o ha caducado, se restringirá el acceso al contenido. El jugador debe estar configurado para usar el token.</p>
+        <p>El token se pasa con la solicitud de reproducción. Si el token no es válido o ha caducado, se restringirá el acceso al contenido. El reproductor debe estar configurado para usar el token.</p>
 
         <strong>Reproductor web</strong>
         <p>
@@ -593,7 +593,7 @@ grandparent: Playback Restrictions
         <p>
           Para obtener detalles sobre la configuración del reproductor nativo para Android o iOS, consulte la <a href="https://sdks.support.brightcove.com/features/license-protection-with-sdks.html">Protección de clave / licencia con los SDK nativos</a> documento.
         </p>
-        <strong>Tu propio jugador</strong>
+        <strong>Tu propio reproductor</strong>
         <p>
           Si solo está utilizando el JWT con su reproductor, no se necesita ninguna configuración adicional. Si está utilizando derechos de reproducción con su reproductor, consulte la <a href="/playback-restrictions/getting-started/implementing-playback-rights.html#Configure_your_player">Configura tu reproductor</a> sección del documento Implementación de derechos de reproducción.
         </p>
@@ -652,7 +652,7 @@ grandparent: Playback Restrictions
       </li>
       <li>
         <p>Configurar el reproductor</p>
-        <p>El token se pasa con la solicitud de reproducción. Si el token no es válido o ha caducado, se restringirá el acceso al contenido. El jugador debe estar configurado para usar el token.</p>
+        <p>El token se pasa con la solicitud de reproducción. Si el token no es válido o ha caducado, se restringirá el acceso al contenido. El reproductor debe estar configurado para usar el token.</p>
 
         <strong>Reproductor web</strong>
         <p>
@@ -662,7 +662,7 @@ grandparent: Playback Restrictions
         <p>
           Para obtener detalles sobre la configuración del reproductor nativo para Android o iOS, consulte la <a href="https://sdks.support.brightcove.com/features/license-protection-with-sdks.html">Protección de clave / licencia con los SDK nativos</a> documento.
         </p>
-        <strong>Tu propio jugador</strong>
+        <strong>Tu propio reproductor</strong>
         <p>
           Para usar el JWT con su reproductor, no se necesita ninguna configuración adicional.
         </p>
@@ -683,7 +683,7 @@ grandparent: Playback Restrictions
         Para HLSe (AES-128), el token se agregará a la solicitud del manifiesto maestro y se propagará a la URL de la clave de cifrado. Debido a que estas URL se adjuntan al manifiesto maestro, los clientes deben considerar restringir la cantidad de usos para minimizar la exposición de su contenido.
       </li>
       <li>
-        Para HLSe (AES-128), los jugadores realizarán múltiples solicitudes al reproducir un video, generalmente una por reproducción. La <a href="https://general.support.brightcove.com/developer/create-json-web-token.html#Claims_for_Playback_Restrictions">reclamo maxu</a> debe establecerse lo suficientemente alto para tener en cuenta estas solicitudes. Debe considerar afirmaciones adicionales para minimizar la exposición de su contenido. El cambio de versiones requerirá una nueva licencia.
+        Para HLSe (AES-128), los reproductores realizarán múltiples solicitudes al reproducir un video, generalmente una por reproducción. La <a href="https://general.support.brightcove.com/developer/create-json-web-token.html#Claims_for_Playback_Restrictions">reclamo maxu</a> debe establecerse lo suficientemente alto para tener en cuenta estas solicitudes. Debe considerar afirmaciones adicionales para minimizar la exposición de su contenido. El cambio de versiones requerirá una nueva licencia.
       </li>
       <li>
         Seguimiento de la <a href="https://general.support.brightcove.com/developer/create-json-web-token.html#Claims_for_Playback_Restrictions">Reclamaciones maxu y maxip</a> eventualmente es consistente. Esto significa que si un token que usa estos reclamos se reutiliza muchas veces en rápida sucesión, es posible ver que el token se acepta más veces de lo que declaran esos reclamos. El seguimiento se vuelve consistente en unos pocos segundos y después de esa ventana, el token se bloqueará como se esperaba.

@@ -37,7 +37,7 @@ grandparent: Player Management API
     <p>Puede utilizar Studio para ver la configuración JSON del reproductor. El siguiente paso detalla el proceso:</p>
 
     <ol class="bcls-tasklist">
-      <li>Abre el <strong>JUGADORES</strong> módulo y localice el reproductor cuya configuración desea ver.</li>
+      <li>Abre el <strong>reproductorES</strong> módulo y localice el reproductor cuya configuración desea ver.</li>
       <li>Haga clic en el enlace del reproductor para abrir las propiedades del reproductor.</li>
       <li>Hacer clic <strong>Editor JSON</strong> en el menú de navegación de la izquierda.</li>
       <li>Puede ver la configuración del reproductor, similar a la siguiente:
@@ -59,15 +59,15 @@ grandparent: Player Management API
     <p>Algunas de las propiedades en la configuración del reproductor definen lo siguiente:</p>
 
     <ul>
-      <li>El nombre y la versión del jugador.</li>
+      <li>El nombre y la versión del reproductor.</li>
       <li>Los videos que reproducirá el reproductor</li>
-      <li>La cuenta a la que pertenece el jugador</li>
-      <li>La identificación del jugador</li>
+      <li>La cuenta a la que pertenece el reproductor</li>
+      <li>La identificación del reproductor</li>
       <li>Cualquier complemento que el reproductor pueda usar, así como las URL de las ubicaciones del código del complemento.</li>
       <li class="player-only">Un póster para mostrar antes de la reproducción de video.</li>
     </ul>
 
-    <p>Un ejemplo de archivo de configuración de reproductor, para un reproductor del paso a paso: La gestión de jugadores es la siguiente:</p>
+    <p>Un ejemplo de archivo de configuración de reproductor, para un reproductor del paso a paso: La gestión de reproductores es la siguiente:</p>
 
     <pre class="line-numbers player-only">
     <code class="language-json" translate="No">{
@@ -135,11 +135,11 @@ grandparent: Player Management API
         }]
     }</code></pre>
 
-    <aside class="bcls-aside bcls-aside--warning">Nota: Este documento usa declaraciones curl para realizar operaciones usando la API de administración de jugadores. En las declaraciones curl verá valores de <strong>$ CORREO ELECTRÓNICO</strong> , <strong>{account_id}</strong> y <strong>{player_id}</strong>. Debe crear variables de entorno con esos nombres y asignar los valores correspondientes, o proporcionar los valores literales para las variables.</aside>
+    <aside class="bcls-aside bcls-aside--warning">Nota: Este documento usa declaraciones curl para realizar operaciones usando la API de administración de reproductores. En las declaraciones curl verá valores de <strong>$ CORREO ELECTRÓNICO</strong> , <strong>{account_id}</strong> y <strong>{player_id}</strong>. Debe crear variables de entorno con esos nombres y asignar los valores correspondientes, o proporcionar los valores literales para las variables.</aside>
 
     <h3>Obtener con <code translate="No">{player_id}/configuration</code> punto final</h3>
 
-    <p>Puede recuperar la misma información que se acaba de mostrar utilizando HTTP <code translate="No">GET</code> método. Utilizando <code translate="No">GET</code> con el <code translate="No">/{player_id}/configuration</code> punto final puede recuperar el <em>jugador publicado</em> información de configuración. Aquí se muestra un ejemplo de declaración curl y el JSON recuperado:</p>
+    <p>Puede recuperar la misma información que se acaba de mostrar utilizando HTTP <code translate="No">GET</code> método. Utilizando <code translate="No">GET</code> con el <code translate="No">/{player_id}/configuration</code> punto final puede recuperar el <em>reproductor publicado</em> información de configuración. Aquí se muestra un ejemplo de declaración curl y el JSON recuperado:</p>
 
     <pre class="line-numbers">
     <code class="language-bash" translate="No">curl \
@@ -208,7 +208,7 @@ grandparent: Player Management API
 
     <h3>Método GET <code translate="No">{player_id}</code> punto final</h3>
 
-    <p>El HTTP <code translate="No">GET</code> método utilizado con el <code translate="No">/{player_id}</code> endpoint es la forma de recuperar información completa del jugador. Este enfoque proporciona un superconjunto de configuraciones de reproductor que acaba de ver. Puede pensar en este punto final que le muestra la información de configuración "un nivel superior" e incluye información de configuración actual tanto para la versión preliminar como para las versiones publicadas del reproductor. Aquí se muestra un ejemplo de declaración curl y el JSON recuperado:</p>
+    <p>El HTTP <code translate="No">GET</code> método utilizado con el <code translate="No">/{player_id}</code> endpoint es la forma de recuperar información completa del reproductor. Este enfoque proporciona un superconjunto de configuraciones de reproductor que acaba de ver. Puede pensar en este punto final que le muestra la información de configuración "un nivel superior" e incluye información de configuración actual tanto para la versión preliminar como para las versiones publicadas del reproductor. Aquí se muestra un ejemplo de declaración curl y el JSON recuperado:</p>
 
     <pre class="line-numbers">
     <code class="language-bash" translate="No">curl \
@@ -382,7 +382,7 @@ grandparent: Player Management API
 
     <p>Para modificar la configuración del reproductor, utilice el <code translate="No">/{account_id}/players/{player_id}/configuration</code> endpoint, y ese es el énfasis de este documento. Sin embargo, hay dos propiedades que puede cambiar usando solo el <code translate="No">/{account_id}/players/{player_id}</code> punto final. Esas dos propiedades son <code translate="No">name</code> y <code translate="No">description</code>.</p>
 
-    <p>Nota la <code translate="No">name</code> que ingrese para que el jugador se devuelva como <code translate="No">player_name</code> cuando obtienes la configuración poniendo <code translate="No">config.json</code> al final de la URL de vista previa del reproductor (se devuelve como <code translate="No">name</code> cuando obtiene la configuración a través de Player Management API. Pero debes usar <code translate="No">name</code> cuando crea o actualiza el reproductor.</p>
+    <p>Nota la <code translate="No">name</code> que ingrese para que el reproductor se devuelva como <code translate="No">player_name</code> cuando obtienes la configuración poniendo <code translate="No">config.json</code> al final de la URL de vista previa del reproductor (se devuelve como <code translate="No">name</code> cuando obtiene la configuración a través de Player Management API. Pero debes usar <code translate="No">name</code> cuando crea o actualiza el reproductor.</p>
 
     <p>El primer bloque de código muestra un ejemplo de declaración curl que cambia la <code translate="No">name</code> y <code translate="No">description</code>. Tenga en cuenta que la respuesta JSON muestra que las versiones de vista previa del reproductor se generan mediante el método PATCH, por lo que deberá publicar el reproductor para obtener las versiones optimizadas.</p>
 
@@ -408,7 +408,7 @@ grandparent: Player Management API
     <section class="bcls-section">
     <h2 id="settingvalues">Establecer valores</h2>
 
-    <p>Puede establecer los valores de configuración del reproductor utilizando cualquier herramienta que emita llamadas al método HTTP O utilizando el <strong>Editor JSON</strong> que es parte de Studio's <strong>JUGADORES</strong> módulo. Se puede utilizar la herramienta Curl, y las declaraciones de ejemplo se muestran en el <a href="https://apis.support.brightcove.com/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de jugadores</a> y el uso de AJAX explicado en muchos de los <a href="/getting-started/learning-guide-using-rest-apis.html">Ejemplos de Brightcove Player</a>.</p>
+    <p>Puede establecer los valores de configuración del reproductor utilizando cualquier herramienta que emita llamadas al método HTTP O utilizando el <strong>Editor JSON</strong> que es parte de Studio's <strong>reproductorES</strong> módulo. Se puede utilizar la herramienta Curl, y las declaraciones de ejemplo se muestran en el <a href="https://apis.support.brightcove.com/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de reproductores</a> y el uso de AJAX explicado en muchos de los <a href="/getting-started/learning-guide-using-rest-apis.html">Ejemplos de Brightcove Player</a>.</p>
 
     <p>Un ejemplo de cambio usando el <strong>Editor JSON</strong> se muestra aquí:</p>
 
@@ -461,10 +461,10 @@ grandparent: Player Management API
       <li><a href="#muted">apagado</a></li>
       <li><a href="#picture_in_picture_control">picture_in_picture_control</a></li>
       <li><a href="#playback_rates">tasas_de_reproducción</a></li>
-      <li><a href="#player">jugador</a></li>
+      <li><a href="#player">reproductor</a></li>
       <li><a href="#play_button">botón de play</a></li>
       <li><a href="#player_id">player_id</a></li>
-      <li><a href="#player_name">Nombre del jugador</a></li>
+      <li><a href="#player_name">Nombre del reproductor</a></li>
       <li><a href="#playsinline">juegos en linea</a></li>
     </ul>
 
@@ -529,7 +529,7 @@ grandparent: Player Management API
     <ul>
       <li>Tipo de datos: cadena</li>
       <li>Defecto: <code translate="No">undefined</code></li>
-      <li>El ID de la aplicación se utiliza para diferenciar los usos múltiples de un solo jugador en las métricas. Es invisible para el usuario.</li>
+      <li>El ID de la aplicación se utiliza para diferenciar los usos múltiples de un solo reproductor en las métricas. Es invisible para el usuario.</li>
     </ul>
     </section>
 
@@ -555,18 +555,18 @@ grandparent: Player Management API
     <ul>
       <li>Tipo de datos: booleano o cadena</li>
       <li>Defecto: <code translate="No">false</code></li>
-      <li>Indica que el jugador debe comenzar a jugar de inmediato, en plataformas donde esté permitido.</li>
+      <li>Indica que el reproductor debe comenzar a jugar de inmediato, en plataformas donde esté permitido.</li>
     </ul>
 
     <p>Si <code translate="No">autoplay</code> se establece en un valor booleano que se utiliza el comportamiento de reproducción automática nativo del navegador. Si se establece en uno de los siguientes tres valores de cadena válidos, ocurre lo siguiente:</p>
 
     <ul>
-      <li><code translate="No">play</code>: El jugador intentará manualmente llamar al juego.</li>
-      <li><code translate="No">muted</code>: El jugador silenciará manualmente al jugador y llamará a reproducir.</li>
-      <li><code translate="No">any</code>: El jugador primero intentará llamar al juego. Si eso falla, silencia al jugador y llama al juego.</li>
+      <li><code translate="No">play</code>: El reproductor intentará manualmente llamar al juego.</li>
+      <li><code translate="No">muted</code>: El reproductor silenciará manualmente al reproductor y llamará a reproducir.</li>
+      <li><code translate="No">any</code>: El reproductor primero intentará llamar al juego. Si eso falla, silencia al reproductor y llama al juego.</li>
     </ul>
 
-    <p>Si alguno de los anteriores falla, el jugador mostrará el "Botón de reproducción grande" como si la reproducción automática estuviera configurada como falsa.</p>
+    <p>Si alguno de los anteriores falla, el reproductor mostrará el "Botón de reproducción grande" como si la reproducción automática estuviera configurada como falsa.</p>
 
     <p>A continuación se muestra una declaración curl para establecer el <code translate="No">autoplay</code> valor:</p>
 
@@ -611,11 +611,11 @@ grandparent: Player Management API
       <li>Cuando llega a Edge desde FUERA de América del Norte, pasa a través de Cloudfront por razones de CDN de almacenamiento en caché local / equilibrio de carga. Eso es importante, porque como resultado de esto, Edge ve la IP de Cloudfront en lugar de la IP del usuario, y niega a todos, porque Cloudfront no está en la lista blanca (y nunca debería estarlo, porque entonces cualquiera que use Cloudfront tendría acceso).</li>
     </ul>
 
-    <p>Para resolver este problema, puede configurar el reproductor para que utilice un punto de conexión Edge alternativo, <strong>edge-elb.api.brightcove.com</strong>. Este cambio se debe realizar a todos los jugadores que necesiten acceder a la cuenta de IP restringida desde fuera de Norteamérica.</p>
+    <p>Para resolver este problema, puede configurar el reproductor para que utilice un punto de conexión Edge alternativo, <strong>edge-elb.api.brightcove.com</strong>. Este cambio se debe realizar a todos los reproductores que necesiten acceder a la cuenta de IP restringida desde fuera de Norteamérica.</p>
 
     <aside class="bcls-aside bcls-aside--information">Hay una desventaja en este enfoque. Se introducirá un retraso muy leve en la recuperación de contenido en caché desde fuera de los EE. UU. Porque las solicitudes de catálogo se enviarán a Virginia en lugar de a través de la red global de Cloudfront con servidores locales. Es probable que esto apenas se note.</aside>
 
-    <p>El cambio de configuración real implica establecer un valor para Video Cloud <code translate="No">base_url</code>. Recuerde, esto SOLO debe cambiarse si se utilizan restricciones de IP con Brightcove Players fuera de Norteamérica. Para un jugador existente, usaría el siguiente comando curl que usa el <code translate="No">PATCH</code> Método HTTP (debe sustituir sus datos por las variables de entorno <code translate="No">$EMAIL</code> , <code translate="No">{account_id}</code> y <code translate="No">{player_id}</code>):</p>
+    <p>El cambio de configuración real implica establecer un valor para Video Cloud <code translate="No">base_url</code>. Recuerde, esto SOLO debe cambiarse si se utilizan restricciones de IP con Brightcove Players fuera de Norteamérica. Para un reproductor existente, usaría el siguiente comando curl que usa el <code translate="No">PATCH</code> Método HTTP (debe sustituir sus datos por las variables de entorno <code translate="No">$EMAIL</code> , <code translate="No">{account_id}</code> y <code translate="No">{player_id}</code>):</p>
 
     <pre class="line-numbers">
     <code class="language-bash" translate="No">curl
@@ -632,7 +632,7 @@ grandparent: Player Management API
     <p>Si eres nuevo en curl, los siguientes documentos te serán de ayuda:</p>
 
     <ul>
-      <li><a href="https://apis.support.brightcove.com/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de jugadores</a></li>
+      <li><a href="https://apis.support.brightcove.com/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de reproductores</a></li>
       <li><a href="https://general.support.brightcove.com/developer/concepts-cors.html">Configurar cURL</a></li>
       <li><a href="https://apis.support.brightcove.com/general/use-postman-api-requests.html">Utilice Postman para solicitudes HTTP</a></li>
     </ul>
@@ -707,7 +707,7 @@ grandparent: Player Management API
       <li>No es necesario definir todas las claves. Puede anular fácilmente un solo punto de interrupción pasando un objeto con un par clave / valor. Los puntos de interrupción personalizados se fusionarán con los puntos de interrupción predeterminados cuando se cree el reproductor.</li>
     </ul>
 
-    <p>Cuando el tamaño del jugador cambia, los puntos de interrupción combinados se inspeccionarán en el orden de tamaño hasta que se encuentre un punto de interrupción coincidente. El nombre de la clase asociada a ese punto de interrupción se agregará como una clase al jugador. Se eliminará la clase del punto de interrupción anterior.</p>
+    <p>Cuando el tamaño del reproductor cambia, los puntos de interrupción combinados se inspeccionarán en el orden de tamaño hasta que se encuentre un punto de interrupción coincidente. El nombre de la clase asociada a ese punto de interrupción se agregará como una clase al reproductor. Se eliminará la clase del punto de interrupción anterior.</p>
     </section>
 
     <section class="bcls-section">
@@ -760,7 +760,7 @@ grandparent: Player Management API
     <section class="bcls-section">
     <h3 id="debugger">depurador</h3>
 
-    <p>El depurador muestra la información del jugador en una ventana modal. Ver el <a href="https://player.support.brightcove.com/troubleshooting/brightcove-player-information-modal.html">Modal de información del jugador</a> documento para obtener información completa.</p>
+    <p>El depurador muestra la información del reproductor en una ventana modal. Ver el <a href="https://player.support.brightcove.com/troubleshooting/brightcove-player-information-modal.html">Modal de información del reproductor</a> documento para obtener información completa.</p>
     </section>
 
     <section class="bcls-section">
@@ -771,7 +771,7 @@ grandparent: Player Management API
     <ul>
       <li>Tipo de datos: booleano</li>
       <li>Predeterminado: verdadero</li>
-      <li>Si explícitamente <code translate="No">false</code> , el jugador no incluirá el llamado <strong>muelle</strong> donde se pueden mostrar el título y la descripción del video.</li>
+      <li>Si explícitamente <code translate="No">false</code> , el reproductor no incluirá el llamado <strong>muelle</strong> donde se pueden mostrar el título y la descripción del video.</li>
     </ul>
     </section>
 
@@ -783,7 +783,7 @@ grandparent: Player Management API
     <ul>
       <li>Tipo de datos: cadena</li>
       <li>Defecto: <code translate="No">undefined</code></li>
-      <li>El ID de incrustación de Video Cloud asociado con este reproductor. Si el valor es <code translate="No">default</code> significa que el jugador no es un niño. Si el valor no es <code translate="No">default</code> , es un valor que representa al padre del jugador.</li>
+      <li>El ID de incrustación de Video Cloud asociado con este reproductor. Si el valor es <code translate="No">default</code> significa que el reproductor no es un niño. Si el valor no es <code translate="No">default</code> , es un valor que representa al padre del reproductor.</li>
     </ul>
     </section>
 
@@ -795,7 +795,7 @@ grandparent: Player Management API
     <ul>
       <li>Tipo de datos: Objeto o booleano</li>
       <li>Predeterminado: verdadero</li>
-      <li>Establecer explícitamente <code translate="No">false</code> evitará que el jugador incluya <strong>errores de videojs</strong> , que es el complemento de mensajes de error. Si hace que este valor sea falso, el reproductor no mostrará mensajes de error detallados a los espectadores cuando se produzca un error. Los errores que impiden la reproducción seguirán apareciendo en la consola del desarrollador web.</li>
+      <li>Establecer explícitamente <code translate="No">false</code> evitará que el reproductor incluya <strong>errores de videojs</strong> , que es el complemento de mensajes de error. Si hace que este valor sea falso, el reproductor no mostrará mensajes de error detallados a los espectadores cuando se produzca un error. Los errores que impiden la reproducción seguirán apareciendo en la consola del desarrollador web.</li>
     </ul>
     </section>
 
@@ -839,11 +839,11 @@ grandparent: Player Management API
     <p>Las siguientes dos capturas de pantalla muestran el reproductor con y sin el control de pantalla completa:</p>
 
     <figure class="bcls-figure"><img class="bcls-image" alt="Player with Fullscreen Control" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/player-management-api/guides/player-configuration/config-with-fullscreencontrol.png" />
-    <figcaption class="bcls-caption--image">Jugador con control de pantalla completa</figcaption>
+    <figcaption class="bcls-caption--image">reproductor con control de pantalla completa</figcaption>
     </figure>
 
     <figure class="bcls-figure"><img class="bcls-image" alt="Player with No Fullscreen Control" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/player-management-api/guides/player-configuration/config-no-fullscreencontrol.png" />
-    <figcaption class="bcls-caption--image">Jugador sin control de pantalla completa</figcaption>
+    <figcaption class="bcls-caption--image">reproductor sin control de pantalla completa</figcaption>
     </figure>
     </section>
 
@@ -855,14 +855,14 @@ grandparent: Player Management API
     <ul>
       <li>Tipo de datos: Objeto o booleano</li>
       <li>Defecto: <code translate="No">{}</code></li>
-      <li>Si <code translate="No">false</code> , el jugador no incluirá <strong>videojs-http-streaming</strong>. De lo contrario, se pasará un objeto como opciones para <strong>videojs-http-streaming</strong>.</li>
+      <li>Si <code translate="No">false</code> , el reproductor no incluirá <strong>videojs-http-streaming</strong>. De lo contrario, se pasará un objeto como opciones para <strong>videojs-http-streaming</strong>.</li>
     </ul>
     </section>
 
     <section class="bcls-section">
-    <h3 id="inactive">Jugador inactivo</h3>
+    <h3 id="inactive">reproductor inactivo</h3>
 
-    <p>Es posible hacer inactivos a los jugadores. Es posible que desee hacer esto para que un reproductor deje de ofrecer contenido, pero que no aparezca un error 404 si se busca un reproductor eliminado.</p>
+    <p>Es posible hacer inactivos a los reproductores. Es posible que desee hacer esto para que un reproductor deje de ofrecer contenido, pero que no aparezca un error 404 si se busca un reproductor eliminado.</p>
 
     <p>Para desactivar un reproductor, configure el <code translate="No">player</code> campos <code translate="No">inactive</code> propiedad a <code translate="No">true</code> , como sigue:</p>
 
@@ -883,10 +883,10 @@ grandparent: Player Management API
     <p>Una vez que el reproductor está desactivado, si un usuario navega por el reproductor, aparecerá el siguiente mensaje:</p>
 
     <figure class="bcls-figure"><img class="bcls-image" alt="Deactivated Player" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/player-management-api/guides/player-configuration/deactivated.png" />
-    <figcaption class="bcls-caption--image">Jugador desactivado</figcaption>
+    <figcaption class="bcls-caption--image">reproductor desactivado</figcaption>
     </figure>
 
-    <aside class="bcls-aside bcls-aside--information">Esta es una captura de pantalla de un jugador inactivo. Se supone que muestra un error.</aside>
+    <aside class="bcls-aside bcls-aside--information">Esta es una captura de pantalla de un reproductor inactivo. Se supone que muestra un error.</aside>
     </section>
 
     <section class="bcls-section">
@@ -1100,13 +1100,13 @@ grandparent: Player Management API
     </section>
 
     <section class="bcls-section">
-    <h3 id="player">jugador</h3>
+    <h3 id="player">reproductor</h3>
 
     <p><code translate="No">player</code> información:</p>
 
     <ul>
       <li>Tipo de datos: Objeto</li>
-      <li>Defecto: Completar con información específica del jugador</li>
+      <li>Defecto: Completar con información específica del reproductor</li>
       <li>Contiene varios metadatos sobre este reproductor, por ejemplo <code translate="No">inactive</code> y <code translate="No">template.version</code>.</li>
     </ul>
     </section>
@@ -1161,13 +1161,13 @@ grandparent: Player Management API
     </section>
 
     <section class="bcls-section">
-    <h3 id="player_name">Nombre del jugador</h3>
+    <h3 id="player_name">Nombre del reproductor</h3>
 
     <p><code translate="No">player_name</code> información:</p>
 
     <ul>
       <li>Tipo de datos: cadena</li>
-      <li>El nombre del reproductor de Video Cloud asociado con un reproductor; nota: el <code translate="No">name</code> que ingrese para que el jugador se devuelva como <code translate="No">player_name</code> cuando obtienes la configuración poniendo <code translate="No">config.json</code> al final de la URL de vista previa del reproductor (se devuelve como <code translate="No">name</code> cuando obtiene la configuración a través de Player Management API. Pero debes usar <code translate="No">name</code> cuando crea o actualiza el reproductor.</li>
+      <li>El nombre del reproductor de Video Cloud asociado con un reproductor; nota: el <code translate="No">name</code> que ingrese para que el reproductor se devuelva como <code translate="No">player_name</code> cuando obtienes la configuración poniendo <code translate="No">config.json</code> al final de la URL de vista previa del reproductor (se devuelve como <code translate="No">name</code> cuando obtiene la configuración a través de Player Management API. Pero debes usar <code translate="No">name</code> cuando crea o actualiza el reproductor.</li>
     </ul>
     </section>
 
@@ -1254,7 +1254,7 @@ grandparent: Player Management API
     <p>Además de <code translate="No">autoadvance</code> y <code translate="No">playOnSelect</code> otras dos propiedades que se utilizan para configurar el uso de las listas de reproducción versión 1. Ellos son:</p>
 
     <ul>
-      <li><code translate="No">playlist</code>: Asignado <code translate="No">true</code> para que un jugador use listas de reproducción.</li>
+      <li><code translate="No">playlist</code>: Asignado <code translate="No">true</code> para que un reproductor use listas de reproducción.</li>
       <li><code translate="No">adjusted</code>: Asignado <code translate="No">true</code> para que el reproductor ajuste las dimensiones del reproductor para la lista de reproducción.</li>
     </ul>
 
@@ -1302,7 +1302,7 @@ grandparent: Player Management API
 
     <p>Si está comprobando la presencia de un complemento de lista de reproducción y no en una página con un reproductor (por ejemplo, al comprobar una lista de reproductores para su uso con un conector), debe utilizar un proceso un poco más complicado. Debería leer la configuración del reproductor y luego verificar si el <strong>complementos</strong> sección del JSON del reproductor contiene <strong>"nombre": "bcPlaylistUi"</strong>. A continuación, se presenta una solución para esa tarea:</p>
 
-    <aside class="bcls-aside bcls-aside--information">NOTA: los <code translate="No">the JSON String</code> La variable simplemente contiene una versión reducida de la configuración JSON de un jugador.</aside>
+    <aside class="bcls-aside bcls-aside--information">NOTA: los <code translate="No">the JSON String</code> La variable simplemente contiene una versión reducida de la configuración JSON de un reproductor.</aside>
 
     <pre class="line-numbers">
     <code class="language-javascript" translate="No">var theJSON = {},
@@ -1508,7 +1508,7 @@ description: Una matriz de nombres de propiedad del objeto de ventana, que se co
     <ul>
       <li>Tipo de datos: booleano o cadena</li>
       <li>Predeterminado: indefinido</li>
-      <li>Determina la variante de estilo visual que usará el jugador. Este valor también se refleja en el acceso global <code translate="No">bc.SKIN</code> propiedad en el navegador. Reconoce los siguientes valores:
+      <li>Determina la variante de estilo visual que usará el reproductor. Este valor también se refleja en el acceso global <code translate="No">bc.SKIN</code> propiedad en el navegador. Reconoce los siguientes valores:
       <table class="bcls-table">
         <thead class="bcls-table__head">
           <tr>
@@ -1532,7 +1532,7 @@ description: Una matriz de nombres de propiedad del objeto de ventana, que se co
           <tr>
             <td>indefinido</td>
             <td>"luna"</td>
-            <td>Dejando esto <code translate="No">undefined</code> hará que el jugador use la máscara predeterminada (también conocida como Luna).</td>
+            <td>Dejando esto <code translate="No">undefined</code> hará que el reproductor use la máscara predeterminada (también conocida como Luna).</td>
             <td>&nbsp;</td>
           </tr>
         </tbody>
@@ -1563,7 +1563,7 @@ description: Una matriz de nombres de propiedad del objeto de ventana, que se co
     <ul>
       <li>Tipo de datos: Formación</li>
       <li>Predeterminado: ['html5', 'flash']</li>
-      <li>De forma predeterminada, Brightcove Player realiza <strong>primero en tecnología</strong> ordenar cuando busca una combinación de fuente / tecnología para reproducir videos. Esto significa que si tiene dos fuentes y dos técnicos, el jugador intentará reproducir cada video con la primera tecnología en el <code translate="No">techOrder</code> propiedad de la opción antes de pasar a probar la siguiente tecnología de reproducción. Ver el <a href="https://player.support.brightcove.com/playback/guide-playback-technology.html">Guía: Tecnología de reproducción</a> documento para obtener más información.</li>
+      <li>De forma predeterminada, Brightcove Player realiza <strong>primero en tecnología</strong> ordenar cuando busca una combinación de fuente / tecnología para reproducir videos. Esto significa que si tiene dos fuentes y dos técnicos, el reproductor intentará reproducir cada video con la primera tecnología en el <code translate="No">techOrder</code> propiedad de la opción antes de pasar a probar la siguiente tecnología de reproducción. Ver el <a href="https://player.support.brightcove.com/playback/guide-playback-technology.html">Guía: Tecnología de reproducción</a> documento para obtener más información.</li>
     </ul>
 
     <p>Puede utilizar la siguiente declaración curl para cambiar el <code translate="No">techOrder</code> desde el defecto de <code translate="No">['html5','flash']</code> a <code translate="No">['flash','html5']</code>:</p>
@@ -1582,7 +1582,7 @@ description: Una matriz de nombres de propiedad del objeto de ventana, que se co
     <section class="bcls-section">
     <h3 id="version">versión</h3>
 
-    <p>Puede configurar manualmente la versión del reproductor con el <strong>JUGADORES</strong> módulo <strong>Editor JSON</strong>.</p>
+    <p>Puede configurar manualmente la versión del reproductor con el <strong>reproductorES</strong> módulo <strong>Editor JSON</strong>.</p>
 
     <figure class="bcls-figure"><img class="bcls-image" alt="version" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/player-management-api/guides/player-configuration/version.png" /></figure>
 

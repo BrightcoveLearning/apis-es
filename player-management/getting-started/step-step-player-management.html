@@ -1,6 +1,6 @@
 ---
-title: 'Paso a paso: Gestión de jugadores'
-description: 'Este documento proporciona una introducción práctica a las operaciones básicas de la API de administración de jugadores.'
+title: 'Paso a paso: Gestión de reproductores'
+description: 'Este documento proporciona una introducción práctica a las operaciones básicas de la API de administración de reproductores.'
 parent: Getting Started 
 grandparent: Player Management API
 ---
@@ -13,13 +13,13 @@ grandparent: Player Management API
     <p>En este documento paso a paso, realizará las siguientes tareas:</p>
     
     <ul>
-      <li>Crea un jugador</li>
+      <li>Crea un reproductor</li>
       <li>Actualiza el reproductor para reproducir automáticamente el video</li>
       <li>Personaliza un reproductor agregando un complemento</li>
-      <li>Mostrar la configuración de un jugador</li>
+      <li>Mostrar la configuración de un reproductor</li>
     </ul>
     
-    <aside class="bcls-aside bcls-aside--information">Para obtener detalles sobre la API utilizada en este documento, puede ver la <a href="/player-management/getting-started/overview-player-management-api.html">Descripción general de la API de administración de jugadores</a> documento y el <a href="/player-management/references/reference.html">API de gestión de jugadores</a> referencia.</aside> <aside class="bcls-aside bcls-aside--warning">Los pasos del documento implican curl y otras herramientas de línea de comandos que son nativas de los sistemas Mac y Linux, pero que no forman parte del sistema operativo Windows. Si está en Windows, puede obtener estas herramientas instalando <a href="//cygwin.com">cygwin</a>. Durante la instalación, se le pedirá que instale los paquetes. Abre el <strong>Neto</strong> paquete, luego verifique el <strong>rizo</strong> opción y luego finalizar la instalación. Una vez que haya hecho esto, podrá seguir el paso a paso: Documento de gestión de jugadores correctamente escrito mediante la línea de comandos cygwin. Hay herramientas disponibles para ejecutar curl en la línea de comando normal de Windows, pero no se detallan en este documento.</aside>
+    <aside class="bcls-aside bcls-aside--information">Para obtener detalles sobre la API utilizada en este documento, puede ver la <a href="/player-management/getting-started/overview-player-management-api.html">Descripción general de la API de administración de reproductores</a> documento y el <a href="/player-management/references/reference.html">API de gestión de reproductores</a> referencia.</aside> <aside class="bcls-aside bcls-aside--warning">Los pasos del documento implican curl y otras herramientas de línea de comandos que son nativas de los sistemas Mac y Linux, pero que no forman parte del sistema operativo Windows. Si está en Windows, puede obtener estas herramientas instalando <a href="//cygwin.com">cygwin</a>. Durante la instalación, se le pedirá que instale los paquetes. Abre el <strong>Neto</strong> paquete, luego verifique el <strong>rizo</strong> opción y luego finalizar la instalación. Una vez que haya hecho esto, podrá seguir el paso a paso: Documento de gestión de reproductores correctamente escrito mediante la línea de comandos cygwin. Hay herramientas disponibles para ejecutar curl en la línea de comando normal de Windows, pero no se detallan en este documento.</aside>
     </section>
     
     <section class="bcls-section">
@@ -27,12 +27,12 @@ grandparent: Player Management API
     
     <p>El enfoque que adopta este documento paso a paso es utilizar declaraciones curl para comunicarse con la API de Player Service. La herramienta curl se utiliza en la línea de comandos para transferir datos con sintaxis URL. Puede obtener más información sobre curl en <a href="http://curl.haxx.se/">http://curl.haxx.se</a>.</p>
     
-    <p>Ciertamente no tiene que usar curl como lo hace en este documento paso a paso para simplificar' motivo. Por supuesto, puede utilizar su idioma favorito para comunicarse con las API. Revisar la <a href="/player-management/code-samples/setup-player-management-samples.html">Configuración para muestras de gestión de jugadores</a> que demuestra cómo usar la autenticación básica, AJAX y JavaScript para escribir algunas mini-aplicaciones para tareas básicas como crear un reproductor, mostrar todos sus jugadores, eliminar jugadores, etc.</p>
+    <p>Ciertamente no tiene que usar curl como lo hace en este documento paso a paso para simplificar' motivo. Por supuesto, puede utilizar su idioma favorito para comunicarse con las API. Revisar la <a href="/player-management/code-samples/setup-player-management-samples.html">Configuración para muestras de gestión de reproductores</a> que demuestra cómo usar la autenticación básica, AJAX y JavaScript para escribir algunas mini-aplicaciones para tareas básicas como crear un reproductor, mostrar todos sus reproductores, eliminar reproductores, etc.</p>
     
     <p>Es necesario realizar algunos pasos preliminares antes de que pueda comenzar a utilizar la API. Estos son:</p>
     
     <ul>
-      <li>Inicie sesión en Studio. Si tiene varias cuentas, use el menú desplegable para seleccionar aquella en la que le gustaría crear sus nuevos jugadores. Para que el sistema de credenciales funcione correctamente, debe tener derechos de administrador en esta cuenta. Si no está seguro de si un usuario tiene derechos de administrador, vaya a la página Configuración de usuarios para ver los usuarios enumerados junto con su función.</li>
+      <li>Inicie sesión en Studio. Si tiene varias cuentas, use el menú desplegable para seleccionar aquella en la que le gustaría crear sus nuevos reproductores. Para que el sistema de credenciales funcione correctamente, debe tener derechos de administrador en esta cuenta. Si no está seguro de si un usuario tiene derechos de administrador, vaya a la página Configuración de usuarios para ver los usuarios enumerados junto con su función.</li>
       <li>En Studio, asegúrese de haber seleccionado <strong>CASA</strong> de las listas de módulos. En la esquina superior izquierda de la página, justo debajo del nombre de la cuenta, podrá copiar su <strong>ID de la cuenta</strong>.
       <figure class="bcls-figure"><img class="bcls-image" alt="Account ID to copy" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/player-management-api/getting-started/quick-start/acct-id.png" /></figure>
       </li>
@@ -56,16 +56,16 @@ grandparent: Player Management API
     </section>
     
     <section class="bcls-section">
-    <h2 id="createPlayer">Crea un jugador</h2>
+    <h2 id="createPlayer">Crea un reproductor</h2>
     
-    <p>Ahora puede crear un reproductor con una llamada a la API de administración de jugadores. Esta llamada a la API se explica con todo detalle en la <a href="/player-management/getting-started/overview-player-management-api.html">Descripción general de la API de administración de jugadores</a> documento. Se sugiere que copie y pegue las siguientes declaraciones curl en la línea de comando.</p>
+    <p>Ahora puede crear un reproductor con una llamada a la API de administración de reproductores. Esta llamada a la API se explica con todo detalle en la <a href="/player-management/getting-started/overview-player-management-api.html">Descripción general de la API de administración de reproductores</a> documento. Se sugiere que copie y pegue las siguientes declaraciones curl en la línea de comando.</p>
     
     <p>Los siguientes pasos le ayudarán a crear un reproductor.</p>
     
     <aside class="bcls-aside bcls-aside--information">Nota: Si no se siente cómodo usando declaraciones curl y la línea de comando, existen muchas aplicaciones de cliente REST. La información sobre el uso de un complemento de navegador Chrome para cliente REST llamado Postman se detalla en el <a href="/general/use-postman-api-requests.html">Uso de Postman para solicitudes HTTP</a> documento.</aside>
     
     <ol class="bcls-tasklist">
-      <li>La primera declaración de curl crea al jugador y le asigna un nombre y una descripción. Después de pegar esta declaración en la línea de comando y presionar <em>Ingresar</em>, se le pedirá su contraseña.
+      <li>La primera declaración de curl crea al reproductor y le asigna un nombre y una descripción. Después de pegar esta declaración en la línea de comando y presionar <em>Ingresar</em>, se le pedirá su contraseña.
     
       <pre class="line-numbers">
         <code class="language-bash" translate="No">curl \
@@ -148,7 +148,7 @@ grandparent: Player Management API
         </code>
         </pre>
     
-    <p>Puede ver la configuración del reproductor navegando por el valor de URL devuelto y cambiando el <strong>index.html</strong> a <strong>config.json</strong>. Para el jugador creado por la declaración curl anterior, verá lo siguiente:</p>
+    <p>Puede ver la configuración del reproductor navegando por el valor de URL devuelto y cambiando el <strong>index.html</strong> a <strong>config.json</strong>. Para el reproductor creado por la declaración curl anterior, verá lo siguiente:</p>
     
     <pre class="line-numbers">
         <code class="language-json" translate="No">{
@@ -174,11 +174,11 @@ grandparent: Player Management API
     
     <p>La <code translate="No">policy_key </code> se agrega automáticamente a la configuración del reproductor. Esto se crea utilizando la API de políticas y permitirá que se coloquen restricciones especiales en su reproductor para acceder a diferentes videos. En otras palabras, la clave de política controla qué videos se pueden ver y cuándo.</p>
     
-    <aside class="bcls-aside bcls-aside--information">También puede agregar su propia clave de política a una configuración en lugar de generar una. Las reglas normales para la interacción de la configuración del jugador y el hijo del jugador se aplican aquí: una clave de política que se establece en el nivel del hijo del jugador anulará cualquier clave de política establecida en el nivel del jugador.</aside>
+    <aside class="bcls-aside bcls-aside--information">También puede agregar su propia clave de política a una configuración en lugar de generar una. Las reglas normales para la interacción de la configuración del reproductor y el hijo del reproductor se aplican aquí: una clave de política que se establece en el nivel del hijo del reproductor anulará cualquier clave de política establecida en el nivel del reproductor.</aside>
     </section>
     
     <section class="bcls-section">
-    <h2 id="updatePlayer">Actualizar un jugador</h2>
+    <h2 id="updatePlayer">Actualizar un reproductor</h2>
     
     <p>Ahora ha realizado los conceptos básicos para crear un reproductor. A continuación, aprenderá a realizar una sencilla actualización del reproductor. En este caso, configurará el reproductor para que reproduzca automáticamente el video en el reproductor, si el navegador lo permite.</p>
     
@@ -253,7 +253,7 @@ grandparent: Player Management API
     </section>
     
     <section class="bcls-section">
-    <h2 id="customizePlayer">Personaliza un jugador</h2>
+    <h2 id="customizePlayer">Personaliza un reproductor</h2>
     
     <aside class="bcls-aside bcls-aside--warning">Esta sección asume que ha asociado un video con el reproductor, ya sea a través de Studio o mediante la API de administración de reproductores. Dependiendo de su enfoque, las configuraciones de reproductor resultantes pueden variar de lo que se muestra.</aside>
     
@@ -290,7 +290,7 @@ grandparent: Player Management API
         </pre>
     <!-- <p><code data-gist-id="8759542" data-gist-hide-footer="true" data-gist-line="88-97"></code></p> -->
     
-    <p>Así como usó una declaración curl para asignar la fuente de video y la imagen del póster, usará una declaración curl para decirle al jugador lo siguiente:</p>
+    <p>Así como usó una declaración curl para asignar la fuente de video y la imagen del póster, usará una declaración curl para decirle al reproductor lo siguiente:</p>
     
     <ul>
       <li>Ubicación del archivo JavaScript que contiene el código del complemento</li>
