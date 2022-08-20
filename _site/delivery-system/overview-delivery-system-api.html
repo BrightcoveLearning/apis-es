@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="En este tema, obtendrá una descripción general de las API del sistema de entrega, que permiten la administración y la implementación de un grupo de archivos, llamado repositorio. Este sistema se configuró como un área de almacenamiento para archivos relacionados con el reproductor, como los archivos JavaScript y CSS para complementos personalizados.">
+  <meta name="description" content="En este tema, obtendrá una descripción general de las Delivery System API, que permiten la administración y la implementación de un grupo de archivos, llamado repositorio. Este sistema se configuró como un área de almacenamiento para archivos relacionados con el reproductor, como los archivos JavaScript y CSS para complementos personalizados.">
   
-  <title>Visión general: API del sistema de entrega</title>
+  <title>Visión general: Delivery System API</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -60,7 +60,7 @@
      
         <li class="breadcrumb-item"><a href="/delivery-system/">Delivery system</a></li>
         
-        <li class="breadcrumb-item active" aria-current="page">Visión general: API del sistema de entrega</li>
+        <li class="breadcrumb-item active" aria-current="page">Visión general: Delivery System API</li>
        
   </nav>
 </header>
@@ -572,16 +572,16 @@
                    
               </ul>
               
-              <h5 class="submenu-header"><a href="/delivery-system/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;API del sistema de entrega</a></h5>
+              <h5 class="submenu-header"><a href="/delivery-system/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;Delivery System API</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                  
-                    <li><a href="/delivery-system/overview-delivery-system-api.html">Descripción general: API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/overview-delivery-system-api.html">Descripción general: Delivery System API</a></li>
                     
-                    <li><a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: Delivery System API</a></li>
                     
                     <li><a href="/delivery-system/delivery-system-api-git-overview.html">Descripción general de Git</a></li>
                     
-                    <li><a href="/delivery-system/references/reference.html">Referencia de la API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/references/reference.html">Referencia de la Delivery System API</a></li>
                    
               </ul>
               
@@ -1296,17 +1296,17 @@
 </details>
 <!-- open in new tab/window -->
 <a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
- <h1>Visión general: API del sistema de entrega</h1>
+ <h1>Visión general: Delivery System API</h1>
 <article class="bcls-article">
-  <summary>En este tema, obtendrá una descripción general de las API del sistema de entrega, que permiten la administración y la implementación de un grupo de archivos, llamado repositorio. Este sistema se configuró como un área de almacenamiento para archivos relacionados con el reproductor, como los archivos JavaScript y CSS para complementos personalizados.</summary>
+  <summary>En este tema, obtendrá una descripción general de las Delivery System API, que permiten la administración y la implementación de un grupo de archivos, llamado repositorio. Este sistema se configuró como un área de almacenamiento para archivos relacionados con el reproductor, como los archivos JavaScript y CSS para complementos personalizados.</summary>
     <section id="Overview" class="bcls-section">
     <h2>Descripción general</h2>
     
     <p>Los archivos asociados con el sistema de entrega se administran a través de las API REST y, opcionalmente, a través de Git. Estos archivos se envían a <strong>players.brightcove.net</strong> ya sea a través de una llamada a la API o un "git push".</p>
     
-    <aside class="bcls-aside bcls-aside--information">La API del sistema de entrega no es necesaria para la mayoría de la creación y publicación de Brightcove Players. Esta API se recomienda solo para desarrolladores avanzados.</aside>
+    <aside class="bcls-aside bcls-aside--information">La Delivery System API no es necesaria para la mayoría de la creación y publicación de Brightcove Players. Esta API se recomienda solo para desarrolladores avanzados.</aside>
     
-    <p>Si no ha pasado por el <a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: API del sistema de entrega</a> , se recomienda encarecidamente que empiece por ahí. Obtendrá la configuración de seguridad, aprenderá algunos de los conceptos básicos del sistema y luego estará listo para profundizar más aquí.</p>
+    <p>Si no ha pasado por el <a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: Delivery System API</a> , se recomienda encarecidamente que empiece por ahí. Obtendrá la configuración de seguridad, aprenderá algunos de los conceptos básicos del sistema y luego estará listo para profundizar más aquí.</p>
     
     <p>También vea el <a href="/delivery-system/references/reference.html">Referencia de API</a>.</p>
     </section>
@@ -1314,7 +1314,7 @@
     <section id="Delivery_System_REST_APIs" class="bcls-section">
     <h2>API de REST del sistema de entrega</h2>
     
-    <p>Las API del sistema de entrega se centran en repositorios, también conocidos como repositorios. Puede administrar repositorios a través de un grupo de API REST que le permiten agregar, obtener y enumerar sus repositorios. También puede utilizar llamadas a la API REST para manipular archivos en repositorios.</p>
+    <p>Las Delivery System API se centran en repositorios, también conocidos como repositorios. Puede administrar repositorios a través de un grupo de API REST que le permiten agregar, obtener y enumerar sus repositorios. También puede utilizar llamadas a la API REST para manipular archivos en repositorios.</p>
     
     <p>Puede usar la herramienta de línea de comandos curl para usar las API REST. Las API REST devuelven respuestas en formato JSON que contienen la siguiente información sobre el éxito:</p>
     
@@ -1323,7 +1323,7 @@
       <li>public_url: La URL base donde se pueden ver los archivos de repositorio.</li>
     </ul>
     
-    <p>La <a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: Sistema de entrega</a> proporciona una guía práctica sobre el uso de las API del sistema de entrega.</p>
+    <p>La <a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: Sistema de entrega</a> proporciona una guía práctica sobre el uso de las Delivery System API.</p>
     </section>
     
     <section class="bcls-section" id="authentication">

@@ -1,6 +1,6 @@
 ---
-title: 'Paso a paso: API del sistema de entrega'
-description: 'Este documento proporciona una introducción práctica al uso de la API del sistema de entrega para crear un repositorio (repositorio), y en el repositorio guardará y actualizará un complemento.'
+title: 'Paso a paso: Delivery System API'
+description: 'Este documento proporciona una introducción práctica al uso de la Delivery System API para crear un repositorio (repositorio), y en el repositorio guardará y actualizará un complemento.'
 parent: Delivery System API 
 grandparent: Home
 ---
@@ -13,7 +13,7 @@ grandparent: Home
         <p>Estos son los pasos que realizará:</p>
 
         <ul>
-            <li>Cree un repositorio con la API del sistema de entrega</li>
+            <li>Cree un repositorio con la Delivery System API</li>
             <li>Cree una carpeta local para el almacenamiento de archivos</li>
             <li>Crea un complemento y cópialo en el repositorio.</li>
             <li>Modifique el reproductor para usar el nuevo complemento</li>
@@ -41,7 +41,7 @@ grandparent: Home
         <h2>Crear repositorio</h2>
 
         <div class="BCL-concept">
-            <p>Ahora utilizará la API del sistema de entrega para crear un repositorio y copiar archivos en ese repositorio. Una vez que se crea el repositorio, también puede usar la API para enumerar repositorios, mostrar detalles de un repositorio, eliminar repositorios, etc., pero en muchos flujos de trabajo esto no es necesario.</p>
+            <p>Ahora utilizará la Delivery System API para crear un repositorio y copiar archivos en ese repositorio. Una vez que se crea el repositorio, también puede usar la API para enumerar repositorios, mostrar detalles de un repositorio, eliminar repositorios, etc., pero en muchos flujos de trabajo esto no es necesario.</p>
 
             <p>En una declaración curl para crear el nuevo repositorio, usará un HTTP <code translate="No">PUT</code> e incluya el nombre del nuevo repositorio en la URL. Ejecute esta declaración curl para crear un repositorio llamado <code translate="No">firstRepo</code>.</p>
 
@@ -126,7 +126,7 @@ grandparent: Home
 
         <p>También puede ver el archivo navegando por el <code translate="No">public_url</code> devuelto de la copia del archivo.</p>
 
-        <aside class="bcls-aside bcls-aside--information">Si está realizando cambios en su complemento, puede haber una demora en ver los resultados, ya que todos los archivos alojados a través de la API del sistema de entrega están sujetos a un almacenamiento en caché de cinco minutos. Esto significa que pueden pasar hasta cinco minutos antes de que se lea y utilice su complemento. Si esta es su prueba inicial, no habrá demora.</aside>
+        <aside class="bcls-aside bcls-aside--information">Si está realizando cambios en su complemento, puede haber una demora en ver los resultados, ya que todos los archivos alojados a través de la Delivery System API están sujetos a un almacenamiento en caché de cinco minutos. Esto significa que pueden pasar hasta cinco minutos antes de que se lea y utilice su complemento. Si esta es su prueba inicial, no habrá demora.</aside>
     </section>
 
     <section id="usenewplugin" class="bcls-section">

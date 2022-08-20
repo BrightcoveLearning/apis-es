@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="En este tema, aprenderá cómo la API de administración de reproductores utiliza la API del sistema de entrega para almacenar y mantener información sobre Brightcove Players.">
+  <meta name="description" content="En este tema, aprenderá cómo la API de administración de reproductores utiliza la Delivery System API para almacenar y mantener información sobre Brightcove Players.">
   
   <title>Repositorios de reproductores</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -574,16 +574,16 @@
                    
               </ul>
               
-              <h5 class="submenu-header"><a href="/delivery-system/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;API del sistema de entrega</a></h5>
+              <h5 class="submenu-header"><a href="/delivery-system/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;Delivery System API</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                  
-                    <li><a href="/delivery-system/overview-delivery-system-api.html">Descripción general: API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/overview-delivery-system-api.html">Descripción general: Delivery System API</a></li>
                     
-                    <li><a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: Delivery System API</a></li>
                     
                     <li><a href="/delivery-system/delivery-system-api-git-overview.html">Descripción general de Git</a></li>
                     
-                    <li><a href="/delivery-system/references/reference.html">Referencia de la API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/references/reference.html">Referencia de la Delivery System API</a></li>
                    
               </ul>
               
@@ -1300,11 +1300,11 @@
 <a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
  <h1>Repositorios de reproductores</h1>
 <article class="bcls-article">
-  <summary>En este tema, aprenderá cómo la API de administración de reproductores utiliza la API del sistema de entrega para almacenar y mantener información sobre Brightcove Players.</summary>
+  <summary>En este tema, aprenderá cómo la API de administración de reproductores utiliza la Delivery System API para almacenar y mantener información sobre Brightcove Players.</summary>
   <section id="Overview" class="bcls-section">
     <h2>Descripción general</h2>
     
-    <p>Para publicar reproductores en una CDN, la API de administración de reproductores utiliza la <a href="/delivery-system/references/reference.html">API del sistema de entrega</a>. La API del sistema de entrega le permite crear un repositorio de git, cuyo contenido se aloja en <strong>players.brightcove.net</strong>. Cuando se crea un reproductor, Brightcove crea un repositorio detrás de escena. Cada vez que se vuelve a publicar el reproductor, ya sea que lo solicite directamente un editor o cuando se lanza una actualización del reproductor Brightcove, hay una confirmación y envío correspondientes a ese repositorio.</p>
+    <p>Para publicar reproductores en una CDN, la API de administración de reproductores utiliza la <a href="/delivery-system/references/reference.html">Delivery System API</a>. La Delivery System API le permite crear un repositorio de git, cuyo contenido se aloja en <strong>players.brightcove.net</strong>. Cuando se crea un reproductor, Brightcove crea un repositorio detrás de escena. Cada vez que se vuelve a publicar el reproductor, ya sea que lo solicite directamente un editor o cuando se lanza una actualización del reproductor Brightcove, hay una confirmación y envío correspondientes a ese repositorio.</p>
     
     <p>Los repositorios de Git, entre otras cosas, proporcionan un historial de cambios a lo largo del tiempo. Mientras se depura un reproductor, a veces puede resultar muy útil obtener una copia de este repositorio para que pueda examinar el historial de cambios usted mismo. Primero, aprenderá cómo recuperar información general sobre su reproductor, utilizando la herramienta de línea de comandos curl y / o el complemento de Chrome Postman. A continuación, aprenderá a ver el historial del reproductor para su creación y publicación.</p>
     </section>

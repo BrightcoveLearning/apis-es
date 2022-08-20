@@ -374,16 +374,16 @@
         - name: 'Referencia de la API de reglas de entrega'
           url: '/delivery-rules/references/reference.html'
 - section: 
-  name: 'API del sistema de entrega'
+  name: 'Delivery System API'
   url: '/delivery-system/index.html'
   docs:
-    - name: 'Descripción general: API del sistema de entrega'
+    - name: 'Descripción general: Delivery System API'
       url: '/delivery-system/overview-delivery-system-api.html'
-    - name: 'Paso a paso: API del sistema de entrega'
+    - name: 'Paso a paso: Delivery System API'
       url: '/delivery-system/step-step-delivery-system-api.html'
     - name: 'Descripción general de Git'
       url: '/delivery-system/delivery-system-api-git-overview.html'
-    - name: 'Referencia de la API del sistema de entrega'
+    - name: 'Referencia de la Delivery System API'
       url: '/delivery-system/references/reference.html'
 - section: 
   name: 'API de ingesta dinámica'

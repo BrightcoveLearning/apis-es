@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="En este tema, aprenderá los conceptos básicos del uso de Git, que es una parte esencial de la API del sistema de entrega.">
+  <meta name="description" content="En este tema, aprenderá los conceptos básicos del uso de Git, que es una parte esencial de la Delivery System API.">
   
   <title>Descripción general de Git</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -572,16 +572,16 @@
                    
               </ul>
               
-              <h5 class="submenu-header"><a href="/delivery-system/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;API del sistema de entrega</a></h5>
+              <h5 class="submenu-header"><a href="/delivery-system/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;Delivery System API</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                  
-                    <li><a href="/delivery-system/overview-delivery-system-api.html">Descripción general: API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/overview-delivery-system-api.html">Descripción general: Delivery System API</a></li>
                     
-                    <li><a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: Delivery System API</a></li>
                     
                     <li><a href="/delivery-system/delivery-system-api-git-overview.html">Descripción general de Git</a></li>
                     
-                    <li><a href="/delivery-system/references/reference.html">Referencia de la API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/references/reference.html">Referencia de la Delivery System API</a></li>
                    
               </ul>
               
@@ -1298,13 +1298,13 @@
 <a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
  <h1>Descripción general de Git</h1>
 <article class="bcls-article">
-  <summary>En este tema, aprenderá los conceptos básicos del uso de Git, que es una parte esencial de la API del sistema de entrega.</summary>
+  <summary>En este tema, aprenderá los conceptos básicos del uso de Git, que es una parte esencial de la Delivery System API.</summary>
     <section class="bcls-section">
     <h2 id="Overview">Usando Git: Descripción general</h2>
     
     <p>Git es una parte esencial del sistema de entrega, y alentamos a todos los usuarios que aún no están familiarizados con sus conceptos a aprender más sobre <a href="//git-scm.com/documentation">el sitio web de Git</a>. También hay algunos útiles <a href="//services.github.com/resources/">Hojas de trucos de Git</a> por ahí para usar.</p>
     
-    <p>Git debe estar instalado para usar las API del sistema de entrega, y puede hacerlo en <a href="//git-scm.com/documentation">el sitio web de Git</a>. Sin embargo, los ejemplos de línea de comandos que damos no se pueden usar directamente como están escritos, ya que se usan varios marcadores de posición. Sustituya en la variable de entorno o valor por lo siguiente: <em>ID DE LA CUENTA</em>, <em>REPO_NAME</em>, <em>ACCESS_TOKEN</em>, <em>NOMBRE DE USUARIO</em></p>
+    <p>Git debe estar instalado para usar las Delivery System API, y puede hacerlo en <a href="//git-scm.com/documentation">el sitio web de Git</a>. Sin embargo, los ejemplos de línea de comandos que damos no se pueden usar directamente como están escritos, ya que se usan varios marcadores de posición. Sustituya en la variable de entorno o valor por lo siguiente: <em>ID DE LA CUENTA</em>, <em>REPO_NAME</em>, <em>ACCESS_TOKEN</em>, <em>NOMBRE DE USUARIO</em></p>
     </section>
     
     <section class="bcls-section">
@@ -1346,7 +1346,7 @@
     
     <p>Los detalles de dónde se insertan los diferentes archivos se dan en la salida del <strong>git push</strong>. También puede encontrar la URL base para cualquier repositorio dentro de las llamadas a la API REST a la URL del repositorio. Todos los archivos se almacenan en un CDN para que todos los usuarios puedan verlos rápidamente.</p>
     
-    <p>Si está creando su propio reproductor completamente personalizado, debe tener en cuenta que no podemos garantizar que las actualizaciones de todos los archivos se realicen simultáneamente dentro de un cliente típico como un navegador. Por lo tanto, se recomienda encarecidamente que los usuarios de las API del sistema de entrega utilicen una estrategia de control de versiones que garantice que los archivos estrechamente acoplados se soliciten juntos después de realizar una actualización. Una estrategia para lograr esto es realizar actualizaciones en una ubicación completamente nueva en lugar de sobrescribir los archivos existentes. Esto obliga a que los archivos solicitados sean las fuentes originales, ya que no hay posibilidad de que haya una copia en caché en nuestro servicio. Sin embargo, debe esperar que las primeras solicitudes de estas copias no almacenadas en caché tarden más de lo habitual. Para ser claros, si está creando reproductores usando las API de administración de reproductores y no usando las API del sistema de entrega directamente, no necesita preocuparse por esto, ya que los problemas de caché se manejan por usted.</p>
+    <p>Si está creando su propio reproductor completamente personalizado, debe tener en cuenta que no podemos garantizar que las actualizaciones de todos los archivos se realicen simultáneamente dentro de un cliente típico como un navegador. Por lo tanto, se recomienda encarecidamente que los usuarios de las Delivery System API utilicen una estrategia de control de versiones que garantice que los archivos estrechamente acoplados se soliciten juntos después de realizar una actualización. Una estrategia para lograr esto es realizar actualizaciones en una ubicación completamente nueva en lugar de sobrescribir los archivos existentes. Esto obliga a que los archivos solicitados sean las fuentes originales, ya que no hay posibilidad de que haya una copia en caché en nuestro servicio. Sin embargo, debe esperar que las primeras solicitudes de estas copias no almacenadas en caché tarden más de lo habitual. Para ser claros, si está creando reproductores usando las API de administración de reproductores y no usando las Delivery System API directamente, no necesita preocuparse por esto, ya que los problemas de caché se manejan por usted.</p>
     
     <p>El tiempo total que le lleva ver las actualizaciones reflejadas en su sitio en vivo depende de varios factores. Lo más importante es que estos factores incluyen el almacenamiento en caché del navegador y el tiempo que lleva completar una solicitud de purga de nuestros nodos de borde. Por lo general, no debería tomar más de cinco minutos desde la última vez que presionó a un repositorio. Esto se debe a que los archivos que servimos están configurados para almacenar en caché en un navegador durante cinco minutos de forma predeterminada y solo toma alrededor de un minuto en promedio para que se borren todos nuestros nodos de borde. Sin embargo, en condiciones de máxima carga de servicio, el tiempo de purga puede ser mucho mayor, hasta 10 minutos. En el peor de los casos, tomaría (aún determinando este tiempo) que todas las capas de almacenamiento en caché se borren y que las actualizaciones finalmente se activen. Esto nunca debería suceder a menos que la solicitud de purga haya fallado o se haya agotado el tiempo de espera y nuestro controlador de caché de respaldo fuera necesario para actualizar su contenido.</p>
     </section>

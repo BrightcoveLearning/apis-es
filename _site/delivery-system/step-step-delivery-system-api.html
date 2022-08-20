@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Este documento proporciona una introducción práctica al uso de la API del sistema de entrega para crear un repositorio (repositorio), y en el repositorio guardará y actualizará un complemento.">
+  <meta name="description" content="Este documento proporciona una introducción práctica al uso de la Delivery System API para crear un repositorio (repositorio), y en el repositorio guardará y actualizará un complemento.">
   
-  <title>Paso a paso: API del sistema de entrega</title>
+  <title>Paso a paso: Delivery System API</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -60,7 +60,7 @@
      
         <li class="breadcrumb-item"><a href="/delivery-system/">Delivery system</a></li>
         
-        <li class="breadcrumb-item active" aria-current="page">Paso a paso: API del sistema de entrega</li>
+        <li class="breadcrumb-item active" aria-current="page">Paso a paso: Delivery System API</li>
        
   </nav>
 </header>
@@ -572,16 +572,16 @@
                    
               </ul>
               
-              <h5 class="submenu-header"><a href="/delivery-system/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;API del sistema de entrega</a></h5>
+              <h5 class="submenu-header"><a href="/delivery-system/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;Delivery System API</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                  
-                    <li><a href="/delivery-system/overview-delivery-system-api.html">Descripción general: API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/overview-delivery-system-api.html">Descripción general: Delivery System API</a></li>
                     
-                    <li><a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: Delivery System API</a></li>
                     
                     <li><a href="/delivery-system/delivery-system-api-git-overview.html">Descripción general de Git</a></li>
                     
-                    <li><a href="/delivery-system/references/reference.html">Referencia de la API del sistema de entrega</a></li>
+                    <li><a href="/delivery-system/references/reference.html">Referencia de la Delivery System API</a></li>
                    
               </ul>
               
@@ -1296,16 +1296,16 @@
 </details>
 <!-- open in new tab/window -->
 <a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
- <h1>Paso a paso: API del sistema de entrega</h1>
+ <h1>Paso a paso: Delivery System API</h1>
 <article class="bcls-article">
-    <summary>Este documento proporciona una introducción práctica al uso de la API del sistema de entrega para crear un repositorio (repositorio), y en el repositorio guardará y actualizará un complemento.</summary>
+    <summary>Este documento proporciona una introducción práctica al uso de la Delivery System API para crear un repositorio (repositorio), y en el repositorio guardará y actualizará un complemento.</summary>
     <section id="Overview" class="bcls-section">
         <h2>Descripción general</h2>
 
         <p>Estos son los pasos que realizará:</p>
 
         <ul>
-            <li>Cree un repositorio con la API del sistema de entrega</li>
+            <li>Cree un repositorio con la Delivery System API</li>
             <li>Cree una carpeta local para el almacenamiento de archivos</li>
             <li>Crea un complemento y cópialo en el repositorio.</li>
             <li>Modifique el reproductor para usar el nuevo complemento</li>
@@ -1333,7 +1333,7 @@
         <h2>Crear repositorio</h2>
 
         <div class="BCL-concept">
-            <p>Ahora utilizará la API del sistema de entrega para crear un repositorio y copiar archivos en ese repositorio. Una vez que se crea el repositorio, también puede usar la API para enumerar repositorios, mostrar detalles de un repositorio, eliminar repositorios, etc., pero en muchos flujos de trabajo esto no es necesario.</p>
+            <p>Ahora utilizará la Delivery System API para crear un repositorio y copiar archivos en ese repositorio. Una vez que se crea el repositorio, también puede usar la API para enumerar repositorios, mostrar detalles de un repositorio, eliminar repositorios, etc., pero en muchos flujos de trabajo esto no es necesario.</p>
 
             <p>En una declaración curl para crear el nuevo repositorio, usará un HTTP <code translate="No">PUT</code> e incluya el nombre del nuevo repositorio en la URL. Ejecute esta declaración curl para crear un repositorio llamado <code translate="No">firstRepo</code>.</p>
 
@@ -1418,7 +1418,7 @@
 
         <p>También puede ver el archivo navegando por el <code translate="No">public_url</code> devuelto de la copia del archivo.</p>
 
-        <aside class="bcls-aside bcls-aside--information">Si está realizando cambios en su complemento, puede haber una demora en ver los resultados, ya que todos los archivos alojados a través de la API del sistema de entrega están sujetos a un almacenamiento en caché de cinco minutos. Esto significa que pueden pasar hasta cinco minutos antes de que se lea y utilice su complemento. Si esta es su prueba inicial, no habrá demora.</aside>
+        <aside class="bcls-aside bcls-aside--information">Si está realizando cambios en su complemento, puede haber una demora en ver los resultados, ya que todos los archivos alojados a través de la Delivery System API están sujetos a un almacenamiento en caché de cinco minutos. Esto significa que pueden pasar hasta cinco minutos antes de que se lea y utilice su complemento. Si esta es su prueba inicial, no habrá demora.</aside>
     </section>
 
     <section id="usenewplugin" class="bcls-section">

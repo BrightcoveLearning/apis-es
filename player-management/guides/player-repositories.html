@@ -1,6 +1,6 @@
 ---
 title: 'Repositorios de reproductores'
-description: 'En este tema, aprenderá cómo la API de administración de reproductores utiliza la API del sistema de entrega para almacenar y mantener información sobre Brightcove Players.'
+description: 'En este tema, aprenderá cómo la API de administración de reproductores utiliza la Delivery System API para almacenar y mantener información sobre Brightcove Players.'
 parent: Guides 
 grandparent: Player Management API
 ---
@@ -10,7 +10,7 @@ grandparent: Player Management API
   <section id="Overview" class="bcls-section">
     <h2>Descripción general</h2>
     
-    <p>Para publicar reproductores en una CDN, la API de administración de reproductores utiliza la <a href="/delivery-system/references/reference.html">API del sistema de entrega</a>. La API del sistema de entrega le permite crear un repositorio de git, cuyo contenido se aloja en <strong>players.brightcove.net</strong>. Cuando se crea un reproductor, Brightcove crea un repositorio detrás de escena. Cada vez que se vuelve a publicar el reproductor, ya sea que lo solicite directamente un editor o cuando se lanza una actualización del reproductor Brightcove, hay una confirmación y envío correspondientes a ese repositorio.</p>
+    <p>Para publicar reproductores en una CDN, la API de administración de reproductores utiliza la <a href="/delivery-system/references/reference.html">Delivery System API</a>. La Delivery System API le permite crear un repositorio de git, cuyo contenido se aloja en <strong>players.brightcove.net</strong>. Cuando se crea un reproductor, Brightcove crea un repositorio detrás de escena. Cada vez que se vuelve a publicar el reproductor, ya sea que lo solicite directamente un editor o cuando se lanza una actualización del reproductor Brightcove, hay una confirmación y envío correspondientes a ese repositorio.</p>
     
     <p>Los repositorios de Git, entre otras cosas, proporcionan un historial de cambios a lo largo del tiempo. Mientras se depura un reproductor, a veces puede resultar muy útil obtener una copia de este repositorio para que pueda examinar el historial de cambios usted mismo. Primero, aprenderá cómo recuperar información general sobre su reproductor, utilizando la herramienta de línea de comandos curl y / o el complemento de Chrome Postman. A continuación, aprenderá a ver el historial del reproductor para su creación y publicación.</p>
     </section>
