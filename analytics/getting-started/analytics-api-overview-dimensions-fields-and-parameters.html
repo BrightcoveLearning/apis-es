@@ -1,6 +1,6 @@
 ---
 title: 'Visión general: Dimensiones, campos y parámetros'
-description: 'Las dimensiones son las categorías de datos clave para <span translate="No">API de análisis</span> informes de datos. Este tema proporciona una guía interactiva de las dimensiones y los campos que se pueden devolver para ellas. También muestra qué dimensiones se pueden combinar en un informe y los campos disponibles para las diferentes combinaciones.'
+description: 'Las dimensiones son las categorías de datos clave para <span translate="No">Analytics API</span> informes de datos. Este tema proporciona una guía interactiva de las dimensiones y los campos que se pueden devolver para ellas. También muestra qué dimensiones se pueden combinar en un informe y los campos disponibles para las diferentes combinaciones.'
 parent: Getting Started 
 grandparent: Analytics API
 ---
@@ -69,7 +69,7 @@ grandparent: Analytics API
 
 <h3>Solicitud de ejemplo</h3>
 
-<p>Un caso de uso típico para obtener un informe en múltiples dimensiones: desea un desglose de las vistas de video entre dispositivos de escritorio y dispositivos móviles, y también desea saber cuántas de las vistas de dispositivos móviles se realizaron en dispositivos iOS en comparación con dispositivos Android, y cuántas de los dispositivos de escritorio las vistas estaban en Macs frente a máquinas con Windows. Actualmente no hay un informe estándar en el módulo de análisis de Studio que proporcione esta información, pero puede obtenerlo a través de este <span translate="No">API de análisis</span> llama:</p>
+<p>Un caso de uso típico para obtener un informe en múltiples dimensiones: desea un desglose de las vistas de video entre dispositivos de escritorio y dispositivos móviles, y también desea saber cuántas de las vistas de dispositivos móviles se realizaron en dispositivos iOS en comparación con dispositivos Android, y cuántas de los dispositivos de escritorio las vistas estaban en Macs frente a máquinas con Windows. Actualmente no hay un informe estándar en el módulo de análisis de Studio que proporcione esta información, pero puede obtenerlo a través de este <span translate="No">Analytics API</span> llama:</p>
 
 <pre>
   <code class="language-http" translate="No">https://analytics.api.brightcove.com/v1/data?accounts=57838016001&amp;dimensions=video,device_type,device_os&amp;from=2014-01-01&amp;to=2014-04-01&amp;fields=video_view</code></pre>
@@ -553,7 +553,7 @@ grandparent: Analytics API
 <section class="bcls-section">
 <h2 id="params">Parámetros</h2>
 
-<p>A continuación se muestra una tabla que resume los parámetros disponibles en el <span translate="No">API de análisis</span>. El uso de los parámetros se analiza con más detalle en las secciones siguientes.</p>
+<p>A continuación se muestra una tabla que resume los parámetros disponibles en el <span translate="No">Analytics API</span>. El uso de los parámetros se analiza con más detalle en las secciones siguientes.</p>
 
 <table class="bcls-table">
 	<thead class="bcls-table__head">

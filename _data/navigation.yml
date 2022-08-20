@@ -44,13 +44,13 @@
     - name: 'Problemas conocidos de las API de la plataforma'
       url: '/general/known-issues.html'
 - section: 
-  name: 'API de análisis'
+  name: 'Analytics API'
   url: '/analytics/index.html'
   docs:
     - name: 'Empezando'
       url: '/analytics/getting-started/index.html'
       docs:
-        - name: 'Descripción general: API de análisis'
+        - name: 'Descripción general: Analytics API'
           url: '/analytics/getting-started/overview-analytics-api-v1.html'
         - name: 'Explorador de API de Analytics'
           url: '/analytics/getting-started/analytics-api-explorer.html'
@@ -61,7 +61,7 @@
     - name: 'Información general'
       url: '/analytics/general/index.html'
       docs: 
-        - name: 'PREGUNTAS MÁS FRECUENTES: API de análisis'
+        - name: 'PREGUNTAS MÁS FRECUENTES: Analytics API'
           url: '/analytics/general/faq-analytics-api.html'
         - name: 'Glosario de API de Analytics'
           url: '/analytics/general/analytics-api-glossary.html'

@@ -1,6 +1,6 @@
 ---
 title: 'Guía de aprendizaje: Usando las API REST'
-description: 'En este tema, primero obtendrá una descripción general de alto nivel sobre el uso de las API REST en aplicaciones web a través de <code translate="No">XMLHttpRequest()</code> y un proxy. Luego, más adelante en el documento, una inmersión más profunda discutirá el código de ejemplo. El primer ejemplo usa el <span translate="No">API de análisis</span> para recuperar y mostrar en la barra de control del reproductor de Brightcove el número de visualizaciones que ha tenido el video actualmente en el reproductor. El segundo ejemplo, un poco más complejo, utiliza la <span translate="No">API de análisis</span> junto con el catálogo de Brightcove Player para recuperar los videos más populares de una cuenta y mostrarlos en una lista de reproducción. La discusión del código en este documento se centrará en recuperar los datos deseados de la API REST correcta.'
+description: 'En este tema, primero obtendrá una descripción general de alto nivel sobre el uso de las API REST en aplicaciones web a través de <code translate="No">XMLHttpRequest()</code> y un proxy. Luego, más adelante en el documento, una inmersión más profunda discutirá el código de ejemplo. El primer ejemplo usa el <span translate="No">Analytics API</span> para recuperar y mostrar en la barra de control del reproductor de Brightcove el número de visualizaciones que ha tenido el video actualmente en el reproductor. El segundo ejemplo, un poco más complejo, utiliza la <span translate="No">Analytics API</span> junto con el catálogo de Brightcove Player para recuperar los videos más populares de una cuenta y mostrarlos en una lista de reproducción. La discusión del código en este documento se centrará en recuperar los datos deseados de la API REST correcta.'
 parent: Getting Started
 ---
 
@@ -94,7 +94,7 @@ parent: Getting Started
     <ul>
       <li>Línea 1: Código estándar para esperar hasta que el reproductor esté listo para interactuar.</li>
       <li>Líneas 2-4: Cree / establezca valores para las variables necesarias más adelante en el código.</li>
-      <li>Líneas 7-12: Esperen al <code translate="No">loadstart</code> evento para que el <code translate="No">mediainfo</code> el objeto está poblado. Asignar variables para contener los valores necesarios para la <span translate="No">API de análisis</span> punto final.</li>
+      <li>Líneas 7-12: Esperen al <code translate="No">loadstart</code> evento para que el <code translate="No">mediainfo</code> el objeto está poblado. Asignar variables para contener los valores necesarios para la <span translate="No">Analytics API</span> punto final.</li>
       <li>Línea 13: Configure el método HTTP para la llamada.</li>
     </ul>
     <pre class="line-numbers">
@@ -330,7 +330,7 @@ parent: Getting Started
       <ul>
         <li>Vea el elemento anterior: intentar analizar una picadura vacía arrojará una excepción JSON</li>
         <li>
-          <p>Mire la respuesta y asegúrese de que sea una cadena JSON (comenzando con un <code translate="No">{</code> o un <code translate="No">[</code>). Hay algunos casos en los que es posible que una solicitud no devuelva JSON, una <span translate="No">API de análisis</span> llamar, por ejemplo, si configura el <code translate="No">format</code> parámetro a <code translate="No">csv</code> o <code translate="No">xlxs</code>. Nuevamente, si realiza ese tipo de solicitudes, deberá ajustar su código para manejar respuestas que no sean JSON.</p>
+          <p>Mire la respuesta y asegúrese de que sea una cadena JSON (comenzando con un <code translate="No">{</code> o un <code translate="No">[</code>). Hay algunos casos en los que es posible que una solicitud no devuelva JSON, una <span translate="No">Analytics API</span> llamar, por ejemplo, si configura el <code translate="No">format</code> parámetro a <code translate="No">csv</code> o <code translate="No">xlxs</code>. Nuevamente, si realiza ese tipo de solicitudes, deberá ajustar su código para manejar respuestas que no sean JSON.</p>
         </li>
         <li>En la mayoría de los casos, los errores devueltos por las API también están en formato JSON, pero hay algunas excepciones en las que el error se devuelve como texto sin formato o HTML.</li>
       </ul>
@@ -523,8 +523,8 @@ parent: Getting Started
     <h2 id="Example_2">Ejemplo 2</h2>
     <p>Este segundo ejemplo es más complejo que el detallado anteriormente. Este ejemplo muestra los 10 videos más populares de una cuenta en una lista de reproducción. Los principales pasos del código son:</p>
     <ol>
-      <li>Solicitud del <span translate="No">API de análisis</span> los 10 videos con más vistas en una cuenta. Este paso implica una llamada asincrónica mediante una función de devolución de llamada.</li>
-      <li>De los devueltos <span translate="No">API de análisis</span> datos, extraiga solo las ID de video y colóquelas en una matriz. Se escribe una función auxiliar para realizar la extracción de ID de los datos devueltos.</li>
+      <li>Solicitud del <span translate="No">Analytics API</span> los 10 videos con más vistas en una cuenta. Este paso implica una llamada asincrónica mediante una función de devolución de llamada.</li>
+      <li>De los devueltos <span translate="No">Analytics API</span> datos, extraiga solo las ID de video y colóquelas en una matriz. Se escribe una función auxiliar para realizar la extracción de ID de los datos devueltos.</li>
       <li>Solicite los objetos de video completos para cada uno de los videos en la lista de ID en la matriz. Este paso implica recorrer la matriz y solicitar los objetos de video usando <code translate="No">player.catalog.getVideo()</code>. Por supuesto, esto implica múltiples llamadas asincrónicas usando el <code translate="No">catalog</code>. Se escribe una función auxiliar para recuperar los objetos de video basados en ID y colocar los objetos en una matriz.</li>
       <li>Coloque la matriz de objetos de video en la lista de reproducción para un reproductor habilitado para lista de reproducción.</li>
     </ol>
@@ -534,7 +534,7 @@ parent: Getting Started
       </li>
       <li>Línea 3: Cree una variable para contener los datos devueltos analizados JSON.</li>
       <li>Línea 5: Analice los datos devueltos para convertirlos de una cadena a un objeto.</li>
-      <li>Línea 7: Utilice la función auxiliar para extraer ID de video de los datos devueltos. Desafortunadamente, el <span translate="No">API de análisis</span> no devuelve los objetos de vídeo completos, por lo que se necesitan ID para acceder a los objetos completos.</li>
+      <li>Línea 7: Utilice la función auxiliar para extraer ID de video de los datos devueltos. Desafortunadamente, el <span translate="No">Analytics API</span> no devuelve los objetos de vídeo completos, por lo que se necesitan ID para acceder a los objetos completos.</li>
       <li>Líneas 9-12: Llama a <code translate="No">getVideoData</code> función auxiliar que utiliza una función de devolución de llamada para rellenar el <code translate="No">videoObjects</code> matriz basada en los ID pasados.</li>
       <li>Línea 11: Complete la lista de reproducción con la variedad de objetos de video.</li>
     </ul>

@@ -154,7 +154,7 @@ parent: Data Collection API
     <ol>
       <li>Cree el script de recopilación de datos para su reproductor.</li>
       <li>Pruebe en un ambiente controlado durante al menos un día.</li>
-      <li>Verifique los datos de análisis a través del Módulo de análisis o el <span translate="No">API de análisis</span> para asegurarse de que lo que se recopiló coincide con sus expectativas.</li>
+      <li>Verifique los datos de análisis a través del Módulo de análisis o el <span translate="No">Analytics API</span> para asegurarse de que lo que se recopiló coincide con sus expectativas.</li>
     </ol>
 
     <h3>Envío de la solicitud: evitar problemas de CORS</h3>
@@ -1000,17 +1000,17 @@ parent: Data Collection API
 
     <h3>Nuevos eventos para V2</h3>
 
-    <p><strong>catalog_request</strong>: Se envía cuando se realiza una solicitud a la API del catálogo de videoclips; tenga en cuenta que este evento es para uso interno y no se expone en el Módulo de análisis ni a través de la API de análisis.</p>
+    <p><strong>catalog_request</strong>: Se envía cuando se realiza una solicitud a la API del catálogo de videoclips; tenga en cuenta que este evento es para uso interno y no se expone en el Módulo de análisis ni a través de la Analytics API.</p>
 
     <ul>
-      <li><strong>catalog_url</strong>: La URL de destino asociada con el <code translate="No">catalog_request</code> evento: tenga en cuenta que este evento es para uso interno y no se expone en el Módulo de análisis ni a través de la API de análisis.</li>
+      <li><strong>catalog_url</strong>: La URL de destino asociada con el <code translate="No">catalog_request</code> evento: tenga en cuenta que este evento es para uso interno y no se expone en el Módulo de análisis ni a través de la Analytics API.</li>
     </ul>
 
-    <p><strong>catalog_response</strong>: Enviado cuando una respuesta a un anterior <code translate="No">catalog_request</code> se recibe: tenga en cuenta que este evento es para uso interno y no se expone en el Módulo de análisis ni a través de la API de análisis.</p>
+    <p><strong>catalog_response</strong>: Enviado cuando una respuesta a un anterior <code translate="No">catalog_request</code> se recibe: tenga en cuenta que este evento es para uso interno y no se expone en el Módulo de análisis ni a través de la Analytics API.</p>
 
     <ul>
-      <li><strong>catalog_url</strong>: La URL de destino asociada con el <code translate="No">catalog_request</code> evento que inició esta respuesta: tenga en cuenta que este evento es para uso interno y no se expone en el Módulo de análisis ni a través de la API de análisis.</li>
-      <li><strong>response_time_ms</strong>: El tiempo, en milisegundos, entre el <code translate="No">catalog_request</code> evento y el <code translate="No">catalog_response</code> evento: tenga en cuenta que este evento es para uso interno y no se expone en el Módulo de análisis ni a través de la API de análisis.</li>
+      <li><strong>catalog_url</strong>: La URL de destino asociada con el <code translate="No">catalog_request</code> evento que inició esta respuesta: tenga en cuenta que este evento es para uso interno y no se expone en el Módulo de análisis ni a través de la Analytics API.</li>
+      <li><strong>response_time_ms</strong>: El tiempo, en milisegundos, entre el <code translate="No">catalog_request</code> evento y el <code translate="No">catalog_response</code> evento: tenga en cuenta que este evento es para uso interno y no se expone en el Módulo de análisis ni a través de la Analytics API.</li>
     </ul>
 
     <p><strong>play_request</strong>: Se envía cuando la reproducción es iniciada por el usuario haciendo clic expresamente en el botón de reproducción o automáticamente cuando la plataforma activa la reproducción en un escenario de reproducción automática.</p>

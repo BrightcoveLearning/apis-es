@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="A continuación, se muestran algunas preguntas frecuentes sobre la API de Analytics. Para obtener respuestas a algunas de las preguntas habituales sobre el módulo de análisis de Video Cloud Studio, consulte PREGUNTAS MÁS FRECUENTES: Módulo de análisis">
   
-  <title>PREGUNTAS MÁS FRECUENTES: API de análisis</title>
+  <title>PREGUNTAS MÁS FRECUENTES: Analytics API</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -62,7 +62,7 @@
         
         <li class="breadcrumb-item"><a href="/analytics/general/">General</a></li>
         
-        <li class="breadcrumb-item active" aria-current="page">PREGUNTAS MÁS FRECUENTES: API de análisis</li>
+        <li class="breadcrumb-item active" aria-current="page">PREGUNTAS MÁS FRECUENTES: Analytics API</li>
        
   </nav>
 </header>
@@ -157,14 +157,14 @@
                    
               </ul>
               
-              <h5 class="submenu-header"><a href="/analytics/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;API de análisis</a></h5>
+              <h5 class="submenu-header"><a href="/analytics/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;Analytics API</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                  
                     <li class="submenu-header">
                       <a href="/analytics/getting-started/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;Empezando</a>
                       <ul class="sidenav-subsubmenu" style="display:none;">
                          
-                            <li><a href="/analytics/getting-started/overview-analytics-api-v1.html">Descripción general: API de análisis</a></li>
+                            <li><a href="/analytics/getting-started/overview-analytics-api-v1.html">Descripción general: Analytics API</a></li>
                             
                             <li><a href="/analytics/getting-started/analytics-api-explorer.html">Explorador de API de Analytics</a></li>
                             
@@ -179,7 +179,7 @@
                       <a href="/analytics/general/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;Información general</a>
                       <ul class="sidenav-subsubmenu" style="display:none;">
                          
-                            <li><a href="/analytics/general/faq-analytics-api.html">PREGUNTAS MÁS FRECUENTES: API de análisis</a></li>
+                            <li><a href="/analytics/general/faq-analytics-api.html">PREGUNTAS MÁS FRECUENTES: Analytics API</a></li>
                             
                             <li><a href="/analytics/general/analytics-api-glossary.html">Glosario de API de Analytics</a></li>
                             
@@ -1298,7 +1298,7 @@
 </details>
 <!-- open in new tab/window -->
 <a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
- <h1>PREGUNTAS MÁS FRECUENTES: API de análisis</h1>
+ <h1>PREGUNTAS MÁS FRECUENTES: Analytics API</h1>
 <article class="bcls-article">
   <summary>A continuación, se muestran algunas preguntas frecuentes sobre la API de Analytics. Para obtener respuestas a algunas de las preguntas habituales sobre el módulo de análisis de Video Cloud Studio, consulte <a href="https://studio.support.brightcove.com/analytics/faq-analytics-module.html">PREGUNTAS MÁS FRECUENTES: Módulo de análisis</a></summary>
     <section class="bcls-section" id="dateRanges">
@@ -1309,7 +1309,7 @@
       <dd class="bcls-answer">Set <code translate="No">from=alltime</code> in the request. You can also set <code translate="No">to=now</code>, but this isn't necessary, since <code translate="No">now</code> is the default value. Note: <code translate="No">alltime</code> does <em>not</em> work for a <strong>Rollup</strong> - instead you will need to set <code translate="No">from</code> to a date far enough in the past.</dd> -->
       <dt class="bcls-question">¿Cómo obtengo datos para un día específico?</dt>
       <dd class="bcls-answer">Establecer tanto el <code translate="No">from</code> y <code translate="No">to</code> valores a esa fecha. Por ejemplo: <code translate="No">from=2013-05-12&amp;to=2013-05-12</code>. Además, puede consultar por el <a href="/analytics/dimension-guides/dimension-date.html"><code translate="No">date</code> dimensión</a> , que se puede combinar con otras dimensiones.</dd>
-      <dt class="bcls-question">¿Deberían el módulo de análisis y el <span translate="No">API de análisis</span> darme datos de identificación para el mismo rango de fechas?</dt>
+      <dt class="bcls-question">¿Deberían el módulo de análisis y el <span translate="No">Analytics API</span> darme datos de identificación para el mismo rango de fechas?</dt>
       <dd class="bcls-answer">Sí, pero pueden ser diferentes si está comparando datos que son relativamente recientes y obtiene datos de Studio y la API en diferentes momentos:
       <ol>
         <li>Los datos tienen menos de 3 días. Los datos analíticos con menos de 3 días de antigüedad son provisionales y están sujetos a cambios en cualquier momento.</li>
@@ -1324,7 +1324,7 @@
     
     <dl>
       <dt class="bcls-question">¿Cuál es la granularidad de los datos de Analytics recientes?</dt>
-      <dd class="bcls-answer">Para los 32 días más recientes (incluido el día actual), el <span translate="No">API de análisis</span> informa una granularidad de una hora, porque guarda los valores en depósitos por hora. Sin embargo, la hora actual todavía se está llenando, por lo que esto puede dar a la API la apariencia de tener más granularidad que una hora cuando solicita datos que caen en la hora actual.
+      <dd class="bcls-answer">Para los 32 días más recientes (incluido el día actual), el <span translate="No">Analytics API</span> informa una granularidad de una hora, porque guarda los valores en depósitos por hora. Sin embargo, la hora actual todavía se está llenando, por lo que esto puede dar a la API la apariencia de tener más granularidad que una hora cuando solicita datos que caen en la hora actual.
       <p>Por ejemplo:</p>
     
       <ol>
@@ -1335,7 +1335,7 @@
       <dt class="bcls-question">¿Cuál es el intervalo de actualización para los datos analíticos?</dt>
       <dd class="bcls-answer">El punto final / data actualmente se almacena en caché durante 5 minutos entre consultas, por lo que para las listas de videos con tráfico en la última hora, los intervalos de 5 minutos es el retraso más pequeño que le dará un delta para trabajar.</dd>
       <dt class="bcls-question">¿Cuál es la granularidad de los datos históricos de Analytics?</dt>
-      <dd class="bcls-answer">Para fechas anteriores a los últimos 32 días, el <span translate="No">API de análisis</span> informa valores de día completo. Esto significa que si lo solicitaste <code translate="No">from=1368334306919&amp;to=1378446336919</code> (desde el domingo 12 de mayo de 2013 a las 04:51:46 GMT hasta el viernes 06 de septiembre de 2013 a las 05:45:36 GMT), obtendría los mismos resultados que si hubiera solicitado <code translate="No">from=2013-05-12&amp;to=2013-09-06</code></dd>
+      <dd class="bcls-answer">Para fechas anteriores a los últimos 32 días, el <span translate="No">Analytics API</span> informa valores de día completo. Esto significa que si lo solicitaste <code translate="No">from=1368334306919&amp;to=1378446336919</code> (desde el domingo 12 de mayo de 2013 a las 04:51:46 GMT hasta el viernes 06 de septiembre de 2013 a las 05:45:36 GMT), obtendría los mismos resultados que si hubiera solicitado <code translate="No">from=2013-05-12&amp;to=2013-09-06</code></dd>
     </dl>
     </section>
     

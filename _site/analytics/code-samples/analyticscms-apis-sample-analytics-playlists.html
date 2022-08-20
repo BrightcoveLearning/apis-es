@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="En este ejemplo, aprenderá a utilizar el CMS API y API de análisis juntos para seleccionar una lista de reproducción de su cuenta y obtener datos analíticos de todos los videos de la lista de reproducción.">
+  <meta name="description" content="En este ejemplo, aprenderá a utilizar el CMS API y Analytics API juntos para seleccionar una lista de reproducción de su cuenta y obtener datos analíticos de todos los videos de la lista de reproducción.">
   
   <title>Análisis por listas de reproducción</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -157,14 +157,14 @@
                    
               </ul>
               
-              <h5 class="submenu-header"><a href="/analytics/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;API de análisis</a></h5>
+              <h5 class="submenu-header"><a href="/analytics/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;Analytics API</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
                  
                     <li class="submenu-header">
                       <a href="/analytics/getting-started/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;Empezando</a>
                       <ul class="sidenav-subsubmenu" style="display:none;">
                          
-                            <li><a href="/analytics/getting-started/overview-analytics-api-v1.html">Descripción general: API de análisis</a></li>
+                            <li><a href="/analytics/getting-started/overview-analytics-api-v1.html">Descripción general: Analytics API</a></li>
                             
                             <li><a href="/analytics/getting-started/analytics-api-explorer.html">Explorador de API de Analytics</a></li>
                             
@@ -179,7 +179,7 @@
                       <a href="/analytics/general/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;Información general</a>
                       <ul class="sidenav-subsubmenu" style="display:none;">
                          
-                            <li><a href="/analytics/general/faq-analytics-api.html">PREGUNTAS MÁS FRECUENTES: API de análisis</a></li>
+                            <li><a href="/analytics/general/faq-analytics-api.html">PREGUNTAS MÁS FRECUENTES: Analytics API</a></li>
                             
                             <li><a href="/analytics/general/analytics-api-glossary.html">Glosario de API de Analytics</a></li>
                             
@@ -1300,7 +1300,7 @@
 <a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
  <h1>Análisis por listas de reproducción</h1>
 <article class="bcls-article">
-  <summary>En este ejemplo, aprenderá a utilizar el <span translate="No">CMS API</span> y <span translate="No">API de análisis</span> juntos para seleccionar una lista de reproducción de su cuenta y obtener datos analíticos de todos los videos de la lista de reproducción.</summary>
+  <summary>En este ejemplo, aprenderá a utilizar el <span translate="No">CMS API</span> y <span translate="No">Analytics API</span> juntos para seleccionar una lista de reproducción de su cuenta y obtener datos analíticos de todos los videos de la lista de reproducción.</summary>
   <section class="bcls-section">
     <h2 id="Notes">Limitaciones</h2>
 
@@ -1318,7 +1318,7 @@
   <section class="bcls-section">
     <h2 id="logic">Lógica de la aplicación</h2>
 
-    <p>Esta es una aplicación híbrida que usa el <span translate="No">CMS API</span> para recuperar la información de la lista de reproducción, y luego <span translate="No">API de análisis</span> para recuperar análisis de los videos en la lista de reproducción. Hay un pequeño giro: para la lista de reproducción EXPLÍCITA (manual), los metadatos incluyen los identificadores de video, por lo que podemos llevarlos directamente a la API de Analytics; para las listas de reproducción inteligentes, sin embargo, debemos volver a <span translate="No">CMS API</span> utilizando los criterios de búsqueda, clasificación y límite de la lista de reproducción para obtener la información del video, que luego podemos llevar a la API de Analytics:</p>
+    <p>Esta es una aplicación híbrida que usa el <span translate="No">CMS API</span> para recuperar la información de la lista de reproducción, y luego <span translate="No">Analytics API</span> para recuperar análisis de los videos en la lista de reproducción. Hay un pequeño giro: para la lista de reproducción EXPLÍCITA (manual), los metadatos incluyen los identificadores de video, por lo que podemos llevarlos directamente a la API de Analytics; para las listas de reproducción inteligentes, sin embargo, debemos volver a <span translate="No">CMS API</span> utilizando los criterios de búsqueda, clasificación y límite de la lista de reproducción para obtener la información del video, que luego podemos llevar a la API de Analytics:</p>
 
     <figure class="bcls-figure"><img class="bcls-image" alt="App Logic" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/analytics-api/code-samples/analytics-by-playlist/get-analytics-by-playlist.png" />
       <figcaption class="bcls-caption--image">Lógica de la aplicación</figcaption>

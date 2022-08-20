@@ -10,7 +10,7 @@ grandparent: Analytics API
     <section class="bcls-section">
     <h2 id="Introduction">Introducción</h2>
     
-    <p>El punto final de datos de video proporciona una forma rápida de obtener datos específicos para un video en particular. Las solicitudes actuales devolverán las vistas de todos los tiempos del video. En el futuro, es posible que se devuelvan datos adicionales. El caso de uso principal para este punto final sería entregar información de visualizaciones en todo momento a los reproductores en páginas de alto tráfico, donde se realizan grandes volúmenes de solicitudes regulares al <span translate="No">API de análisis</span> sería demasiado lento.</p>
+    <p>El punto final de datos de video proporciona una forma rápida de obtener datos específicos para un video en particular. Las solicitudes actuales devolverán las vistas de todos los tiempos del video. En el futuro, es posible que se devuelvan datos adicionales. El caso de uso principal para este punto final sería entregar información de visualizaciones en todo momento a los reproductores en páginas de alto tráfico, donde se realizan grandes volúmenes de solicitudes regulares al <span translate="No">Analytics API</span> sería demasiado lento.</p>
     </section>
     
     <section class="bcls-section">
@@ -27,14 +27,14 @@ grandparent: Analytics API
     <div class="bcls-section">
     <h2 id="authentication">Autenticación</h2>
     
-    <p>Todas las solicitudes al <span translate="No">API de análisis</span> se autentican a través del servicio OAuth de Brightcove.</p>
+    <p>Todas las solicitudes al <span translate="No">Analytics API</span> se autentican a través del servicio OAuth de Brightcove.</p>
     
     <p>La autenticación se basa en un token de acceso pasado en un encabezado de autorización:</p>
     
     <pre class="line-numbers">
     <code class="language-bash" translate="No">Authorization: Bearer {your token}</code></pre>
     
-    <p>Puede obtener credenciales de cliente para <span translate="No">API de análisis</span> y utilícelos para recuperar tokens de acceso temporal; consulte el <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de OAuth</a> para obtener una explicación de los diferentes enfoques que puede utilizar para obtener las credenciales del cliente y los tokens de acceso, y <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de la API</a> para obtener información sobre cómo obtener credenciales de cliente a través de Studio</p>
+    <p>Puede obtener credenciales de cliente para <span translate="No">Analytics API</span> y utilícelos para recuperar tokens de acceso temporal; consulte el <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de OAuth</a> para obtener una explicación de los diferentes enfoques que puede utilizar para obtener las credenciales del cliente y los tokens de acceso, y <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de la API</a> para obtener información sobre cómo obtener credenciales de cliente a través de Studio</p>
     
     <div class="bcls-section">
     <h2 id="response">Respuesta</h2>
