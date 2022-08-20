@@ -1,6 +1,6 @@
 ---
-title: 'Visión general: API de CMS'
-description: 'En este tema, obtendrá una descripción general de la API de CMS. los <span translate="No">API de CMS</span> proporciona acceso de lectura sin caché a los datos. Esto es importante para los flujos de trabajo de publicación urgentes porque realiza cambios en los videos y las listas de reproducción con el <span translate="No">API de CMS</span> y lea rápidamente los datos para verificar que sean correctos.'
+title: 'Visión general: CMS API'
+description: 'En este tema, obtendrá una descripción general de la CMS API. los <span translate="No">CMS API</span> proporciona acceso de lectura sin caché a los datos. Esto es importante para los flujos de trabajo de publicación urgentes porque realiza cambios en los videos y las listas de reproducción con el <span translate="No">CMS API</span> y lea rápidamente los datos para verificar que sean correctos.'
 
 parent: 'Getting Started' 
 grandparent: CMS API
@@ -19,7 +19,7 @@ grandparent: CMS API
   
   <h3>URL base</h3>
   
-  <p>La URL base para el <span translate="No">API de CMS</span> es:</p>
+  <p>La URL base para el <span translate="No">CMS API</span> es:</p>
   
   <pre class="line-numbers">
         <code class="language-http" translate="No">https://cms.api.brightcove.com/v1</code></pre>
@@ -46,7 +46,7 @@ grandparent: CMS API
   
   <h3>Operaciones</h3>
   
-  <p>Cuando solicite credenciales de cliente, deberá especificar el tipo de acceso a la cuenta o las operaciones que desea. La siguiente es una lista de las operaciones admitidas actualmente para el <span translate="No">API de CMS</span> :</p>
+  <p>Cuando solicite credenciales de cliente, deberá especificar el tipo de acceso a la cuenta o las operaciones que desea. La siguiente es una lista de las operaciones admitidas actualmente para el <span translate="No">CMS API</span> :</p>
   
   <ul>
     <li>Datos de video:
@@ -56,7 +56,7 @@ grandparent: CMS API
     <code translate="No">video-cloud/video/delete</code><br />
     o<br />
     <code translate="No">video-cloud/video/all</code><br />
-    <code translate="No">video-cloud/video/assets/delete</code>(Solo es necesario si desea eliminar los maestros digitales; tenga en cuenta que <strong>no poder</strong> obtenga este permiso cuando cree credenciales en Studio. Debe realizarse a través de la API de OAuth o la <a href="/oauth/code-samples/oauth-api-sample-create-client-credentials.html">Aplicación de muestra creada por Brightcove Learning Services</a>.)</p>
+    <code translate="No">video-cloud/video/assets/delete</code>(Solo es necesario si desea eliminar los maestros digitales; tenga en cuenta que <strong>no poder</strong> obtenga este permiso cuando cree credenciales en Studio. Debe realizarse a través de la OAuth API o la <a href="/oauth/code-samples/oauth-api-sample-create-client-credentials.html">Aplicación de muestra creada por Brightcove Learning Services</a>.)</p>
     </li>
     <li>Datos de la lista de reproducción:
     <p><code translate="No">video-cloud/playlist/read</code><br />
@@ -77,21 +77,21 @@ grandparent: CMS API
   <section class="bcls-section">
   <h2 id="Rate_limiting">Limitación de velocidad</h2>
   
-  <p>Esta <span translate="No">API de CMS</span> proporciona acceso de lectura sin caché a los datos. Esto es importante para los flujos de trabajo de publicación urgentes porque realiza cambios en los videos y las listas de reproducción con el <span translate="No">API de CMS</span> y lea rápidamente los datos para verificar que sean correctos.</p>
+  <p>Esta <span translate="No">CMS API</span> proporciona acceso de lectura sin caché a los datos. Esto es importante para los flujos de trabajo de publicación urgentes porque realiza cambios en los videos y las listas de reproducción con el <span translate="No">CMS API</span> y lea rápidamente los datos para verificar que sean correctos.</p>
   
-  <p>los <span translate="No">API de CMS</span> no es apropiado para el uso de tiempo de ejecución a gran escala (como acceder a videos en una página web pública de alto tráfico). Para aplicaciones de alto tráfico, debe utilizar una interfaz almacenada en caché como: <span translate="No">API de reproducción</span> , La galería, los reproductores o los SDK nativos.</p>
+  <p>los <span translate="No">CMS API</span> no es apropiado para el uso de tiempo de ejecución a gran escala (como acceder a videos en una página web pública de alto tráfico). Para aplicaciones de alto tráfico, debe utilizar una interfaz almacenada en caché como: <span translate="No">Playback API</span> , La galería, los reproductores o los SDK nativos.</p>
   
-  <p>Para asegurar el desempeño de la <span translate="No">Video Cloud</span> sistema, no más de 20 llamadas simultáneas al <span translate="No">API de CMS</span> están permitidos por cuenta. La frecuencia de acceso debe ser inferior a 10 solicitudes por segundo.</p>
+  <p>Para asegurar el desempeño de la <span translate="No">Video Cloud</span> sistema, no más de 20 llamadas simultáneas al <span translate="No">CMS API</span> están permitidos por cuenta. La frecuencia de acceso debe ser inferior a 10 solicitudes por segundo.</p>
   
   <aside class="bcls-aside bcls-aside--information">Las llamadas simultáneas se producen cuando varios procesos o aplicaciones que se ejecutan en paralelo realizan solicitudes de API. Dado que una solicitud puede tardar más de un segundo en completarse, es posible que supere el límite de simultaneidad aunque no realice más de 10 solicitudes por segundo.</aside>
   
-  <p>Si varias aplicaciones se integrarán al <span translate="No">API de CMS</span> para una cuenta, estas aplicaciones deben tener una lógica de retroceso y reintento para manejar instancias en las que se alcanzan límites de simultaneidad o límites de tasa.</p>
+  <p>Si varias aplicaciones se integrarán al <span translate="No">CMS API</span> para una cuenta, estas aplicaciones deben tener una lógica de retroceso y reintento para manejar instancias en las que se alcanzan límites de simultaneidad o límites de tasa.</p>
   
   <p>Si se excede el límite de tasa o de simultaneidad, <code translate="No">429 - TOO_MANY_REQUESTS</code> se devolverá el error.</p>
   
   <h3>Conflictos de ID de referencia</h3>
   
-  <p>Para asegurar la unicidad de los identificadores de referencia, el <span translate="No">API de CMS</span> bloquea la identificación hasta 3 minutos después de cualquier operación en el video al que está asignado. Esto puede provocar que se devuelvan errores 409 cuando intentas reintentar una solicitud que falla demasiado rápido, o cuando intentas reutilizar una identificación de referencia demasiado pronto después de eliminar el video al que se asignó previamente. Ver el <a href="/cms/references/cms-api-error-message-reference.html#409_conflict">Referencia de mensaje de error</a> para más detalles.</p>
+  <p>Para asegurar la unicidad de los identificadores de referencia, el <span translate="No">CMS API</span> bloquea la identificación hasta 3 minutos después de cualquier operación en el video al que está asignado. Esto puede provocar que se devuelvan errores 409 cuando intentas reintentar una solicitud que falla demasiado rápido, o cuando intentas reutilizar una identificación de referencia demasiado pronto después de eliminar el video al que se asignó previamente. Ver el <a href="/cms/references/cms-api-error-message-reference.html#409_conflict">Referencia de mensaje de error</a> para más detalles.</p>
   </section>
   
   <section class="bcls-section">
@@ -104,13 +104,13 @@ grandparent: CMS API
   <h2 id="Notes_on_usage">Notas de uso</h2>
   
   <aside class="bcls-aside bcls-aside--information">
-  <p>los <span translate="No">API de CMS</span> está destinado a integraciones y flujos de trabajo de publicación. No puede realizar llamadas del lado del cliente a esta API desde una página web pública, ya que hacerlo implicaría exponer sus credenciales de cliente para la API (por ese motivo, la API no está habilitada para CORS). Puede realizar llamadas desde una aplicación del lado del cliente (web), siempre que enrute las llamadas de la API a través de un proxy del lado del servidor. <span translate="No">Servicios de aprendizaje de Brightcove</span> proporciona varios <a href="/cms/code-samples/">aplicaciones de muestra</a> que utilizan este enfoque, y un <a href="/getting-started/learning-guide-using-rest-apis.html">guía para crear este tipo de aplicación</a>.</p>
+  <p>los <span translate="No">CMS API</span> está destinado a integraciones y flujos de trabajo de publicación. No puede realizar llamadas del lado del cliente a esta API desde una página web pública, ya que hacerlo implicaría exponer sus credenciales de cliente para la API (por ese motivo, la API no está habilitada para CORS). Puede realizar llamadas desde una aplicación del lado del cliente (web), siempre que enrute las llamadas de la API a través de un proxy del lado del servidor. <span translate="No">Servicios de aprendizaje de Brightcove</span> proporciona varios <a href="/cms/code-samples/">aplicaciones de muestra</a> que utilizan este enfoque, y un <a href="/getting-started/learning-guide-using-rest-apis.html">guía para crear este tipo de aplicación</a>.</p>
   
   <p>Si va a recuperar todos sus videos o grandes conjuntos de videos, asegúrese de ver la <a href="#largeDataSets">nota sobre grandes conjuntos de datos</a>.</p>
   
   <h4>Evite las URL codificadas de forma rígida</h4>
   
-  <p>Las URL de miniaturas, carteles, archivos de video y otros medios nunca deben codificarse en sus páginas o aplicaciones. los <span translate="No">API de CMS</span> siempre devolverá las URL actuales para los archivos multimedia, pero las URL en sí están sujetas a cambios. Deberías usar el <span translate="No">API de CMS</span> ( o <span translate="No">API de reproducción</span> ) solicita recuperar estas URL cada vez que se carga la página, o almacenarlas en caché durante no más de seis horas.</p>
+  <p>Las URL de miniaturas, carteles, archivos de video y otros medios nunca deben codificarse en sus páginas o aplicaciones. los <span translate="No">CMS API</span> siempre devolverá las URL actuales para los archivos multimedia, pero las URL en sí están sujetas a cambios. Deberías usar el <span translate="No">CMS API</span> ( o <span translate="No">Playback API</span> ) solicita recuperar estas URL cada vez que se carga la página, o almacenarlas en caché durante no más de seis horas.</p>
   
   <h5>Almacenamiento en caché de URL de imágenes y videos</h5>
   
@@ -167,7 +167,7 @@ grandparent: CMS API
   
   <h3 id="search">Buscar videos</h3>
   
-  <p>Brightcove's <span translate="No">API de CMS</span> proporciona una forma programática de buscar videos en su <span translate="No"> <span translate="No">Video Cloud</span> </span> Biblioteca.</p>
+  <p>Brightcove's <span translate="No">CMS API</span> proporciona una forma programática de buscar videos en su <span translate="No"> <span translate="No">Video Cloud</span> </span> Biblioteca.</p>
   
   <p>Para realizar búsquedas básicas y complejas en sus datos de video, utilizará el <code translate="No">q</code> parámetro:</p>
   
@@ -213,7 +213,7 @@ grandparent: CMS API
   
   <h4>Mejores prácticas de paginación</h4>
   
-  <p>Debido a que puede haber operaciones de modificación simultáneas en curso con la API de CMS, se recomienda seguir estos pasos al desplazarse por el conjunto de resultados:</p>
+  <p>Debido a que puede haber operaciones de modificación simultáneas en curso con la CMS API, se recomienda seguir estos pasos al desplazarse por el conjunto de resultados:</p>
   
   <ol class="bcls-tasklist">
     <li>Hacer una <code translate="No"> <a href="/cms/references/reference.html#api-videoGroup-Get_Video_Count">count</a> </code> Solicite obtener la cantidad total de videos en su conjunto de resultados.
@@ -328,7 +328,7 @@ grandparent: CMS API
   <section class="bcls-section">
   <h2 id="Assets">Activos</h2>
   
-  <p>Las operaciones de activos le permiten administrar activos, incluidas representaciones, manifiestos, imágenes y pistas de texto. Para ingerir activos, debe utilizar el <a translate="No" href="/dynamic-ingest/index.html">API de ingesta dinámica</a>. los <code translate="No">POST</code> y <code translate="No">PATCH</code> operaciones para el <a href="/cms/references/reference.html#api-assetGroup"> <span translate="No">API de CMS</span> </a> <code translate="No">/assets</code> se puede utilizar para agregar y actualizar <strong>activos remotos</strong>. <span translate="No">API de CMS</span> Las operaciones GET funcionarán para <strong>ambos</strong> activos ingeridos y remotos.</p>
+  <p>Las operaciones de activos le permiten administrar activos, incluidas representaciones, manifiestos, imágenes y pistas de texto. Para ingerir activos, debe utilizar el <a translate="No" href="/dynamic-ingest/index.html">API de ingesta dinámica</a>. los <code translate="No">POST</code> y <code translate="No">PATCH</code> operaciones para el <a href="/cms/references/reference.html#api-assetGroup"> <span translate="No">CMS API</span> </a> <code translate="No">/assets</code> se puede utilizar para agregar y actualizar <strong>activos remotos</strong>. <span translate="No">CMS API</span> Las operaciones GET funcionarán para <strong>ambos</strong> activos ingeridos y remotos.</p>
   
   <ul>
     <li>Agregar, actualizar o eliminar representaciones</li>

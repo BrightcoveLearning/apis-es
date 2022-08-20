@@ -19,7 +19,7 @@ grandparent: Dynamic Ingest API
 
     <ul>
       <li>Para utilizar el cifrado DRM o HLS, su cuenta debe estar habilitada para estas funciones. Comuníquese con su gerente de cuenta para obtener más información.</li>
-      <li>Cuando los videos están habilitados para DRM, las fuentes / representaciones de MP4 se ocultan automáticamente (lo que significa que existen, pero no se envían al reproductor como fuentes) en Studio, la API de CMS y la API de reproducción.</li>
+      <li>Cuando los videos están habilitados para DRM, las fuentes / representaciones de MP4 se ocultan automáticamente (lo que significa que existen, pero no se envían al reproductor como fuentes) en Studio, la CMS API y la Playback API.</li>
       <li>
       <p>Actualmente, DRM es compatible con los siguientes navegadores de sistemas operativos móviles:</p>
 
@@ -42,7 +42,7 @@ grandparent: Dynamic Ingest API
 
     <aside class="bcls-aside bcls-aside--information">Si tiene videos más antiguos en una cuenta de Dynamic Delivery que fueron ingeridos usando el <strong>sistema de ingesta heredado</strong> (no Dynamic Delivery), deberán volver a transcodificarse mediante un perfil de Dynamic Delivery antes de que se aplique DRM. Vídeos existentes que ya se han ingerido para Dynamic Delivery <strong>no es necesario volver a codificar</strong> , pero como se indicó anteriormente, debe comunicarse con el Soporte y pedirles que apliquen protección DRM a esos videos.</aside>
 
-    <p>Si su cuenta está habilitada para DRM y desea entregar algunos títulos sin DRM, configure el <code translate="No">drm_disabled</code> bandera a través de <span translate="No">API de CMS</span> para <code translate="No">true</code> usando un <a href="/cms/references/reference.html#api-videoGroup-Update_Video">Actualizar solicitud de video</a>.</p>
+    <p>Si su cuenta está habilitada para DRM y desea entregar algunos títulos sin DRM, configure el <code translate="No">drm_disabled</code> bandera a través de <span translate="No">CMS API</span> para <code translate="No">true</code> usando un <a href="/cms/references/reference.html#api-videoGroup-Update_Video">Actualizar solicitud de video</a>.</p>
 
     <h3>Solicitud de muestra</h3>
 

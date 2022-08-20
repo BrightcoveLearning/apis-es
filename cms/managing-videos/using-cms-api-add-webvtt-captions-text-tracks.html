@@ -1,6 +1,6 @@
 ---
 title: 'Agregar subtítulos de WebVTT (pistas de texto)'
-description: 'En este tema, aprenderá a utilizar la <span translate="No">API de CMS</span> para agregar pistas de texto WebVTT para subtítulos o capítulos a sus videos.'
+description: 'En este tema, aprenderá a utilizar la <span translate="No">CMS API</span> para agregar pistas de texto WebVTT para subtítulos o capítulos a sus videos.'
 parent: Managing Videos/Assets 
 grandparent: CMS API
 ---
@@ -14,12 +14,12 @@ grandparent: CMS API
     
     <ul>
       <li>Para que las pistas de texto se ingieran en Video Cloud, las pistas se pueden incluir en la solicitud de Ingesta dinámica para ingerir el video; consulte <a href="/dynamic-ingest/ingest-guides/ingesting-webvtt-files-text-trackscaptions.html">Ingesta de archivos WebVTT</a> para detalles.</li>
-      <li>Si las pistas de texto se van a alojar en alguna ubicación remota, se pueden agregar al video usando un <code translate="No">PATCH</code> solicitud para actualizar los metadatos del video. Ver el <a href="/cms/code-samples/cms-api-sample-update-videos.html">Ejemplo de API de CMS: Actualizar videos</a> para ver un ejemplo de una solicitud de actualización.</li>
+      <li>Si las pistas de texto se van a alojar en alguna ubicación remota, se pueden agregar al video usando un <code translate="No">PATCH</code> solicitud para actualizar los metadatos del video. Ver el <a href="/cms/code-samples/cms-api-sample-update-videos.html">Ejemplo de CMS API: Actualizar videos</a> para ver un ejemplo de una solicitud de actualización.</li>
     </ul>
     
     <p>Ya sea que las pistas de texto sean ingeridas o remotas, puede usar un <code translate="No">PATCH</code> solicitud para actualizar los metadatos asociados con las pistas de texto (como el <code translate="No">scrlang</code> o <code translate="No">label</code> , o si las pistas de texto son las <code translate="No">default</code> para el video).</p>
 
-		<p>Ver también <a href="/cms/managing-videos/managing-text-tracks.html">Administrar pistas de texto con la API de CMS</a> para obtener más información sobre las diferencias en la forma en que se manejan los metadatos de las pistas de texto en función de si las pistas de texto son remotas, se ingieren con un perfil de ingesta estático o se ingieren con un perfil de ingesta dinámico.</p>
+		<p>Ver también <a href="/cms/managing-videos/managing-text-tracks.html">Administrar pistas de texto con la CMS API</a> para obtener más información sobre las diferencias en la forma en que se manejan los metadatos de las pistas de texto en función de si las pistas de texto son remotas, se ingieren con un perfil de ingesta estático o se ingieren con un perfil de ingesta dinámico.</p>
     
     <h3>Notas</h3>
     
@@ -39,7 +39,7 @@ grandparent: CMS API
     <section class="section">
     <h2 id="authorization">Autorización</h2>
     
-    <p class="BCL-aside">Solicitudes al <span translate="No">API de CMS</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</p>
+    <p class="BCL-aside">Solicitudes al <span translate="No">CMS API</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</p>
     
     <p>Las operaciones que necesitará para actualizar los metadatos de video son <code translate="No">video-cloud/video/update</code> o <code translate="No">video-cloud/video/all</code>.</p>
     </section>
@@ -102,7 +102,7 @@ grandparent: CMS API
     <p>Reemplazar las pistas de texto existentes (ya sea cargadas o remotas) es un proceso de dos pasos:</p>
     
     <ol class="bcls-tasklist">
-      <li>Elimine las pistas de texto existentes mediante un <span translate="No">API de CMS</span> actualizar (PARCHE):
+      <li>Elimine las pistas de texto existentes mediante un <span translate="No">CMS API</span> actualizar (PARCHE):
       <h4>Solicitud de API (PATCH)</h4>
     
       <pre class="line-numbers">
@@ -115,7 +115,7 @@ grandparent: CMS API
           "text_tracks": []
       }</code></pre>
       </li>
-      <li>Si está agregando pistas de texto remotas, agréguelas a través de otra <span translate="No">API de CMS</span> actualizar (PATCH) (opcional - si está cargando pistas de texto, salte al siguiente paso):
+      <li>Si está agregando pistas de texto remotas, agréguelas a través de otra <span translate="No">CMS API</span> actualizar (PATCH) (opcional - si está cargando pistas de texto, salte al siguiente paso):
       <h4>Solicitud de API (PATCH)</h4>
     
       <pre class="line-numbers">
@@ -171,7 +171,7 @@ grandparent: CMS API
         ]
     }</code></pre>
       </li>
-      <li>Realice una solicitud GET al <span translate="No">API de CMS</span> para verificar que sus nuevas pistas de texto estén asociadas con el video:
+      <li>Realice una solicitud GET al <span translate="No">CMS API</span> para verificar que sus nuevas pistas de texto estén asociadas con el video:
       <pre class="line-numbers">
               <code class="language-http" translate="No">https://cms.api.brightcove.com/v1/accounts/<span class="bcls-input">account_id</span>/videos/<span class="bcls-input">video_id</span></code></pre>
       </li>

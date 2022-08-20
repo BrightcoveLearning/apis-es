@@ -1,6 +1,6 @@
 ---
-title: 'API de CMS: Búsqueda de listas de reproducción'
-description: 'En este tema, aprenderá a buscar listas de reproducción en su cuenta de Video Cloud. los <span translate="No">API de CMS</span> proporciona una forma programática de buscar listas de reproducción en su biblioteca de Video Cloud. Aquí veremos la sintaxis de búsqueda.'
+title: 'CMS API: Búsqueda de listas de reproducción'
+description: 'En este tema, aprenderá a buscar listas de reproducción en su cuenta de Video Cloud. los <span translate="No">CMS API</span> proporciona una forma programática de buscar listas de reproducción en su biblioteca de Video Cloud. Aquí veremos la sintaxis de búsqueda.'
 parent: Searching 
 grandparent: CMS API
 ---
@@ -20,7 +20,7 @@ grandparent: CMS API
       <li>Una lista de reproducción con un <code translate="No">reference_id</code> de <code translate="No">news 2016</code></li>
     </ul>
 
-    <aside class="bcls-aside bcls-aside--information"><code translate="No">+</code> se usa como un espacio codificado en los ejemplos (no un literal "+")</aside> <aside class="bcls-aside bcls-aside--information">Solicitudes al <span translate="No">API de CMS</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</aside>
+    <aside class="bcls-aside bcls-aside--information"><code translate="No">+</code> se usa como un espacio codificado en los ejemplos (no un literal "+")</aside> <aside class="bcls-aside bcls-aside--information">Solicitudes al <span translate="No">CMS API</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</aside>
 
     <p>Como se implica arriba, varios términos proporcionados son <code translate="No">OR</code>'ed juntos, y se devolverán las cadenas que contengan uno o más de los términos proporcionados. Los valores proporcionados son <a href="#stemming">derivado</a> , por lo que las variaciones de las palabras coincidirán. La coincidencia de prefijo es <strong>no</strong> actualmente soportado. Entonces, por ejemplo, una búsqueda de <code translate="No">p*</code> no devolverá resultados que comiencen con "p" ni tampoco una búsqueda de <code translate="No">play*</code> devuelve resultados que contienen "lista de reproducción".</p>
     </section>

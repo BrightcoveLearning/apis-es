@@ -1,6 +1,6 @@
 ---
 title: 'Arquitectura de búsqueda de catálogo'
-description: 'En este tema, aprenderá sobre la arquitectura de la tecnología de búsqueda de catálogos que se usa tanto para el CMS como para las API de reproducción.'
+description: 'En este tema, aprenderá sobre la arquitectura de la tecnología de búsqueda de catálogos que se usa tanto para el CMS como para las Playback API.'
 parent: Guides 
 grandparent: Playback API
 ---
@@ -10,7 +10,7 @@ grandparent: Playback API
     <section class="bcls-section">
     <h2 id="Overview">Descripción general</h2>
     
-    <p >A partir de abril de 2019, la funcionalidad de búsqueda de catálogo se actualizó a Elasticsearch. Esta actualización proporciona una serie de beneficios, entre los que se encuentran la relevancia y la precisión mejoradas, y el rendimiento drásticamente mejorado: el tiempo de respuesta es mucho más consistente y generalmente el doble de rápido. Esta nueva funcionalidad afectará la API de CMS, la API de reproducción, la búsqueda interactiva de Studio y los métodos de búsqueda de catálogo.</p>
+    <p >A partir de abril de 2019, la funcionalidad de búsqueda de catálogo se actualizó a Elasticsearch. Esta actualización proporciona una serie de beneficios, entre los que se encuentran la relevancia y la precisión mejoradas, y el rendimiento drásticamente mejorado: el tiempo de respuesta es mucho más consistente y generalmente el doble de rápido. Esta nueva funcionalidad afectará la CMS API, la Playback API, la búsqueda interactiva de Studio y los métodos de búsqueda de catálogo.</p>
     
     <p >Si bien Brightcove ha invertido una cantidad sustancial de esfuerzo en hacer que los resultados de Elasticsearch sean consistentes, existen diferencias y existe una pequeña posibilidad de que si ha codificado dependencias específicas en los resultados de búsqueda, es posible que su integración no se comporte como se esperaba.</p>
     </section>
@@ -92,7 +92,7 @@ grandparent: Playback API
       <code class="language-html" translate="No">Video#1: has the title “Don’t look into the light”
       Video#2: has the title “Using a lighter to make a campfire”</code></pre>
     
-    <p >El usuario desea devolver todos los videos que deben tener la palabra “light”. Con la API de CMS, la consulta se vería así:</p>
+    <p >El usuario desea devolver todos los videos que deben tener la palabra “light”. Con la CMS API, la consulta se vería así:</p>
     
     <pre>
       <code class="language-html" translate="No">q=%2Blight or q=+light</code></pre>
@@ -124,7 +124,7 @@ grandparent: Playback API
     
     <h3>Ejemplo 2</h3>
     
-    <p >Como se describe en nuestro <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html#Stemming">Documentación de la API de CMS para la derivación</a> , se admite la derivación, pero no las búsquedas de palabras parciales. Digamos que hay 5 videos con los siguientes títulos:</p>
+    <p >Como se describe en nuestro <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html#Stemming">Documentación de la CMS API para la derivación</a> , se admite la derivación, pero no las búsquedas de palabras parciales. Digamos que hay 5 videos con los siguientes títulos:</p>
     
     <pre>
       <code class="language-html" translate="No">Video#1 - "Parking Ban Announced"
@@ -133,7 +133,7 @@ grandparent: Playback API
       Video#4 - "Bank Holiday"
       Video#5 - "Bandit Captured"</code></pre>
     
-    <p >El usuario desea devolver todos los videos que deben tener la palabra <strong>prohibición</strong> en el campo de nombre. Con la API de CMS, la consulta se vería así:</p>
+    <p >El usuario desea devolver todos los videos que deben tener la palabra <strong>prohibición</strong> en el campo de nombre. Con la CMS API, la consulta se vería así:</p>
     
     <pre>
       <code class="language-html" translate="No">q=%2Bname%3Aban or q=+name:ban</code></pre>

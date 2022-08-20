@@ -182,54 +182,54 @@
           url: '/cloud-playout-apis/references/reference-epg.html'
         - name: 'Referencia de la API de canales'
           url: '/cloud-playout-apis/references/reference-channels.html'
-        - name: 'Referencia de la API de CMS para Cloud Playout'
+        - name: 'Referencia de la CMS API para Cloud Playout'
           url: '/cloud-playout-apis/references/reference-cms-interactions.html'
         - name: 'Notas de la versión de las API de Cloud Playout'
           url: '/cloud-playout-apis/references/release-notes.html'
 - section: 
-  name: 'API de CMS'
+  name: 'CMS API'
   url: '/cms/index.html'
   docs:
     - name: 'Empezando'
       url: '/cms/getting-started/index.html'
       docs:
-        - name: 'Descripción general: API de CMS'
+        - name: 'Descripción general: CMS API'
           url: '/cms/getting-started/overview-cms-api.html'
-        - name: 'Área de práctica: API de CMS'
+        - name: 'Área de práctica: CMS API'
           url: '/cms/getting-started/practice-area-cms-api.html'
-        - name: 'Mejores prácticas: API de reproducción y CMS'
+        - name: 'Mejores prácticas: Playback API y CMS'
           url: '/cms/getting-started/best-practices-cms-and-playback-apis.html'
-        - name: 'Notificaciones de la API de CMS'
+        - name: 'Notificaciones de la CMS API'
           url: '/cms/getting-started/cms-api-notifications.html'
     - name: 'Referencias'
       url: '/cms/references/index.html'
       docs:
-        - name: 'Referencia de la API de CMS'
+        - name: 'Referencia de la CMS API'
           url: '/cms/references/reference.html'
-        - name: 'Notas de la versión de CMS / API de reproducción'
+        - name: 'Notas de la versión de CMS / Playback API'
           url: '/cms/references/catalog-apis-cms-api-and-playback-api-release-notes.html'
         - name: 'Problemas conocidos'
           url: '/cms/references/known-issues.html'
-        - name: 'Referencia de campos de video de la API de CMS'
+        - name: 'Referencia de campos de video de la CMS API'
           url: '/cms/references/cms-api-video-fields-reference.html'
-        - name: 'Referencia de campos de la lista de reproducción de la API de CMS'
+        - name: 'Referencia de campos de la lista de reproducción de la CMS API'
           url: '/cms/references/cms-api-playlist-fields-reference.html'
-        - name: 'Referencia de campos personalizados de la API de CMS'
+        - name: 'Referencia de campos personalizados de la CMS API'
           url: '/cms/references/cms-api-custom-fields-reference.html'
-        - name: 'Referencia de campos de carpeta de API de CMS'
+        - name: 'Referencia de campos de carpeta de CMS API'
           url: '/cms/references/cms-api-folder-fields-reference.html'
-        - name: 'Referencia de mensajes de error de la API de CMS'
+        - name: 'Referencia de mensajes de error de la CMS API'
           url: '/cms/references/cms-api-error-message-reference.html'
     - name: 'buscando'
       url: '/cms/searching/index.html'
       docs:
-        - name: 'API de CMS: Búsqueda de vídeos v2'
+        - name: 'CMS API: Búsqueda de vídeos v2'
           url: '/cms/searching/cms-and-playback-apis-video-search-v2.html'
-        - name: 'API de CMS: Búsqueda de listas de reproducción'
+        - name: 'CMS API: Búsqueda de listas de reproducción'
           url: '/cms/searching/cms-api-playlists-search.html'
         - name: 'Resultados de búsqueda de página'
           url: '/cms/searching/using-cms-api-page-search-results.html'
-        - name: 'API de reproducción y CMS: Búsqueda de vídeos v1'
+        - name: 'Playback API y CMS: Búsqueda de vídeos v1'
           url: '/cms/searching/cmsplayback-api-videos-search.html'
         - name: 'Arquitectura de búsqueda de catálogo'
           url: '/playback/guides/catalog-search-architecture.html'
@@ -246,7 +246,7 @@
           url: /cms/managing-videos/deleting-videos.html
         - name: Obtener recuentos de videos y listas de reproducción
           url: /cms/managing-videos/getting-counts-videos-and-playlists.html
-        - name: Administrar listas de reproducción con la API de CMS
+        - name: Administrar listas de reproducción con la CMS API
           url: /cms/managing-videos/managing-playlists-using-cms-api.html
         - name: Gestión de clips
           url: /cms/managing-videos/using-cms-api-managing-clips.html
@@ -262,7 +262,7 @@
           url: /cms/managing-videos/using-cms-api-remote-assets.html
         - name: Agregar subtítulos de WebVTT (pistas de texto)
           url: /cms/managing-videos/using-cms-api-add-webvtt-captions-text-tracks.html
-        - name: Administrar pistas de texto con la API de CMS
+        - name: Administrar pistas de texto con la CMS API
           url: /cms/managing-videos/managing-text-tracks.html
         - name: Generar sitemaps de vídeo
           url: /cms/managing-videos/generate-video-sitemaps.html
@@ -537,13 +537,13 @@
         - name: 'Referencia de errores de la API de experiencia en la página'
           url: '/ipx/references/page-experience-api-error-reference.html'
 - section:
-  name: 'API en vivo'
+  name: 'Live API'
   url: '/live-api/index.html'
   docs:
     - name: 'Empezando'
       url: '/live-api/getting-started/index.html'
       docs:
-      - name: 'Descripción general: API en vivo'
+      - name: 'Descripción general: Live API'
         url: '/live-api/getting-started/overview-brightcove-live-api.html'
       - name: 'Crear una transmisión en vivo usando la API'
         url: '/live-api/getting-started/quick-start-create-live-stream-using-brightcove-live-api.html'
@@ -563,7 +563,7 @@
         url: /live-api/references/live-api-error-messages.html
       - name: Notas de lanzamiento
         url: /live-api/references/live-api-release-notes.html
-      - name: Referencia de API en vivo
+      - name: Referencia de Live API
         url: /live-api/references/reference.html
     - name: 'SSAI'
       url: '/live-api/ssai/index.html'
@@ -591,7 +591,7 @@
         url: /live-api/guides/live-api-insert-id3-timed-metadata.html
       - name: Live DRM a través de Live API
         url: /live-api/guides/live-drm-live-api.html
-      - name: Administrar credenciales para la API en vivo
+      - name: Administrar credenciales para la Live API
         url: /live-api/guides/managing-credentials-live-api.html
       - name: Notificaciones
         url: /live-api/guides/live-api-notifications.html
@@ -618,15 +618,15 @@
       - name: Notificaciones del programador en vivo
         url: /live-api/guides/live-scheduler-notifications.html
 - section: 
-  name: 'API de OAuth'
+  name: 'OAuth API'
   url: '/oauth/index.html'
   docs:
     - name: 'Empezando'
       url: '/oauth/getting-started/index.html'
       docs:
-        - name: 'Descripción general: API de OAuth'
+        - name: 'Descripción general: OAuth API'
           url: '/oauth/getting-started/overview-oauth-api-v4.html'
-        - name: 'Inicio rápido: API de OAuth'
+        - name: 'Inicio rápido: OAuth API'
           url: '/oauth/getting-started/quick-start-oauth.html'
     - name: 'Guías'
       url: '/oauth/guides/index.html'
@@ -644,9 +644,9 @@
     - name: 'Referencias'
       url: '/oauth/references/index.html'
       docs:
-        - name: 'Referencia de la API de OAuth'
+        - name: 'Referencia de la OAuth API'
           url: '/oauth/references/reference.html'
-        - name: 'Referencia de mensajes de error de la API de OAuth'
+        - name: 'Referencia de mensajes de error de la OAuth API'
           url: '/oauth/references/oauth-api-error-message-reference.html'
     - name: 'Muestras de código'
       url: '/oauth/code-samples/index.html'
@@ -656,22 +656,22 @@
         - name: 'Obtenga un token de acceso'
           url: '/oauth/code-samples/oauth-api-sample-get-access-token.html'
 - section:
-  name: 'API de reproducción'
+  name: 'Playback API'
   url: '/playback/index.html'
   docs:
     - name: 'Empezando'
       url: '/playback/getting-started/index.html'
       docs:
-        - name: 'Descripción general: API de reproducción'
+        - name: 'Descripción general: Playback API'
           url: '/playback/getting-started/overview-playback-api.html'
-        - name: 'Inicio rápido: API de reproducción'
+        - name: 'Inicio rápido: Playback API'
           url: '/playback/getting-started/quick-start-playback-api.html'
-        - name: 'Mejores prácticas: API de reproducción y CMS'
+        - name: 'Mejores prácticas: Playback API y CMS'
           url: '/cms/getting-started/best-practices-cms-and-playback-apis.html'
     - name: 'Guías'
       url: '/playback/guides/index.html'
       docs:
-        - name: 'API de reproducción y CMS: Búsqueda de videos'
+        - name: 'Playback API y CMS: Búsqueda de videos'
           url: '/cms/searching/cmsplayback-api-videos-search.html'
         - name: 'Arquitectura de búsqueda de catálogo'
           url: '/cms/getting-started/best-practices-cms-and-playback-apis.html'
@@ -680,9 +680,9 @@
     - name: 'Referencias'
       url: '/playback/references/index.html'
       docs:
-        # - name: 'Referencia de la API de reproducción v1'
+        # - name: 'Referencia de la Playback API v1'
         #   url: '/playback/references/reference_v1.html'
-        - name: 'Referencia de la API de reproducción'
+        - name: 'Referencia de la Playback API'
           url: '/playback/references/reference_v2.html'
         - name: 'Referencia de campos de video'
           url: '/playback/references/playback-api-video-fields-reference.html'
@@ -690,7 +690,7 @@
           url: '/playback/references/playback-api-playlist-fields-reference.html'
         - name: 'Referencia de error'
           url: '/playback/references/playback-api-error-reference.html'
-        - name: 'Notas de la versión de CMS / API de reproducción'
+        - name: 'Notas de la versión de CMS / Playback API'
           url: '/cms/references/catalog-apis-cms-api-and-playback-api-release-notes.html'
     - name: 'Muestras de código'
       url: '/playback/code-samples/index.html'
@@ -702,13 +702,13 @@
         - name: 'Feed JSON / MRSS de una lista de reproducción'
           url: '/playback/code-samples/playback-api-sample-jsonmrss-feed-playlist.html'
 - section:
-  name: 'API de gestión de reproductores'
+  name: 'Player Management API'
   url: '/player-management/index.html'
   docs:
     - name: 'Empezando'
       url: '/player-management/getting-started/index.html'
       docs:
-        - name: 'Descripción general: API de gestión de reproductores'
+        - name: 'Descripción general: Player Management API'
           url: '/player-management/getting-started/overview-player-management-api.html'
         - name: 'Paso a paso: Gestión de reproductores'
           url: '/player-management/getting-started/step-step-player-management.html'
@@ -787,7 +787,7 @@
           url: 'https://sdks.support.brightcove.com/features/playback-restrictions-with-sdks.html'
         - name: 'Restricciones de reproducción con transmisiones en vivo'
           url: '/live-api/guides/live-playback-restrictions.html'
-    - name: 'Autenticación'
+    - name: 'Referencias'
       url: '/playback-restrictions/references/index.html'
       docs:
         - name: 'Referencia clave de API'
@@ -801,20 +801,20 @@
       docs:
         - name: 'Referencia de la API de derechos de reproducción'
           url: '/playback-restrictions/references/playback-rights/reference.html'
-        - name: 'Referencia de la API de CMS'
+        - name: 'Referencia de la CMS API'
           url: '/cms/references/reference.html'
         - name: 'Referencia de API de dispositivos'
           url: '/playback-restrictions/references/devices-api/reference.html'
         - name: 'Errores de restricciones de reproducción'
           url: '/playback-restrictions/references/playback-rights-errors.html'
 - section:
-  name: 'API de política'
+  name: 'Policy API'
   url: '/policy/index.html'
   docs:
     - name: 'Empezando'
       url: '/policy/getting-started/index.html'
       docs:
-        - name: 'Descripción general: API de política'
+        - name: 'Descripción general: Policy API'
           url: '/policy/getting-started/overview-policy-api.html'
         - name: 'Ejemplo de código: Generar una clave de política'
           url: '/policy/getting-started/quick-start-policy-api.html'
@@ -823,7 +823,7 @@
     - name: 'Referencias'
       url: '/policy/references/index.html'
       docs:
-        - name: 'Referencia de la API de políticas'
+        - name: 'Referencia de la Policy APIs'
           url: '/policy/references/reference.html'
         - name: 'Notas de lanzamiento'
           url: '/policy/references/policy-api-release-notes.html'
@@ -846,7 +846,7 @@
         - name: 'API social: Referencia de error'
           url: '/social/references/social-api-error-reference.html'
 - section:
-  name: 'API de distribución social'
+  name: 'Social Syndication API'
   url: '/social-syndication/index.html'
   docs:
     - name: 'Empezando'
@@ -858,7 +858,7 @@
           url: '/social-syndication/getting-started/feed-syndication-api-overview.html'
         - name: 'Plantillas para distribución universal'
           url: '/social-syndication/getting-started/sample-templates-universal-syndication.html'
-        - name: 'API de reproducción y CMS: Búsqueda de vídeos v2'
+        - name: 'Playback API y CMS: Búsqueda de vídeos v2'
           url: '/cms/searching/cms-and-playback-apis-video-search-v2.html'
     - name: 'Referencias'
       url: '/social-syndication/references/index.html'

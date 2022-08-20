@@ -15,7 +15,7 @@ layout: staging
   <section class="bcls-section">
     <h2 id="Introduction">Introducción</h2>
     <p>
-      De forma predeterminada, los SDK nativos se comunican con la API de reproducción de Brightcove para recuperar el contenido de su video y lista de reproducción. Un nuevo sistema para administrar los derechos de reproducción y las restricciones se encuentra frente a la API de reproducción y proporciona autorización de reproducción mediante licencias DRM.
+      De forma predeterminada, los SDK nativos se comunican con la Playback API de Brightcove para recuperar el contenido de su video y lista de reproducción. Un nuevo sistema para administrar los derechos de reproducción y las restricciones se encuentra frente a la Playback API y proporciona autorización de reproducción mediante licencias DRM.
     </p>
     <p>Si no está familiarizado con esta función, consulte la <a href="/playback-rights/getting-started/overview-epa.html">Descripción general: Servicio de gestión de derechos de reproducción</a> documento.</p>
     <p>
@@ -35,7 +35,7 @@ layout: staging
     <h2 id="Android_implementation">Implementación de Android</h2>
     <aside class="bcls-aside bcls-aside--information">Nota: con esta implementación, se ignorará cualquier restricción de contenido configurada con claves de política.</aside>
     <p>
-      Para realizar solicitudes de API de reproducción que verifiquen los derechos y restricciones de reproducción, siga estos pasos:
+      Para realizar solicitudes de Playback API que verifiquen los derechos y restricciones de reproducción, siga estos pasos:
     </p>
     <ol class="bcls-tasklist__restart">
       <li>
@@ -49,7 +49,7 @@ layout: staging
       </li>
       <li>
         <p>
-          De forma predeterminada, el SDK nativo para Android realiza una solicitud a la API de reproducción si tiene una clave de política. Para utilizar los derechos de reproducción, no envíe la clave de política con su solicitud.
+          De forma predeterminada, el SDK nativo para Android realiza una solicitud a la Playback API si tiene una clave de política. Para utilizar los derechos de reproducción, no envíe la clave de política con su solicitud.
         </p>
         <p>
           Crea una instancia de <code translate="No">com.brightcove.player.edge.Catalog</code> , sin proporcionar una clave de política. Aquí hay un ejemplo:
@@ -83,7 +83,7 @@ layout: staging
     <aside class="bcls-aside bcls-aside--information">Nota: con esta implementación, se ignorará cualquier restricción de contenido configurada con claves de política.</aside>
 
     <p>
-      Para realizar solicitudes de API de reproducción que verifiquen los derechos y restricciones de reproducción, siga estos pasos:
+      Para realizar solicitudes de Playback API que verifiquen los derechos y restricciones de reproducción, siga estos pasos:
     </p>
     <ol class="bcls-tasklist__restart">
       <li>
@@ -94,7 +94,7 @@ layout: staging
       </li>
       <li>
         <p>
-          De forma predeterminada, el SDK nativo para iOS realiza una solicitud a la API de reproducción si tiene una clave de política. Para utilizar los derechos de reproducción, no envíe la clave de política con su solicitud.
+          De forma predeterminada, el SDK nativo para iOS realiza una solicitud a la Playback API si tiene una clave de política. Para utilizar los derechos de reproducción, no envíe la clave de política con su solicitud.
         </p>
         <p>
           Crea una instancia de <code translate="No">BCOVPlaybackService</code> , estableciendo la clave de política en <code translate="No">nil</code>. Aquí hay un ejemplo:

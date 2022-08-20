@@ -13,7 +13,7 @@ layout: staging
     <h2 id="Introduction">Introducción</h2>
     <p>Se puede habilitar PAS o EPA para un trabajo en vivo para extender las protecciones proporcionadas por DRM. PAS proporciona un conjunto limitado de restricciones: limitar la reproducción a un agente de usuario en particular o limitar el número de cambios de dirección IP o usos totales. En el caso de Live, también permite a un cliente anular el DRM CRT para ese usuario. Estas restricciones se especifican directamente en la autorización de reproducción. <a href="https://general.support.brightcove.com/developer/create-jwt-stage.html#Claims_for_Playback_Authorization">JWT</a>.</p>
     <p>La EPA proporciona un conjunto de restricciones mucho más completo. Un conjunto de estas restricciones se configura a través de la API de gestión de derechos de reproducción, y se hace referencia a ellas mediante un derecho de reproducción <code translate="No">id</code>. Esto <code translate="No">id</code> se puede asociar con el video (usando el <code translate="No">playback_rights_id</code> atributo que se muestra a continuación) o incluido en el <a href="https://general.support.brightcove.com/developer/create-jwt-stage.html#Claims_for_Playback_Rights">JWT</a>. El segundo conjunto implica restricciones a nivel de usuario, como límites de simultaneidad y número de dispositivos. Estos se especifican directamente en las reclamaciones de JWT (que también deben incluir una identificación de usuario [v<code translate="No">uid</code> afirmar]).</p>
-    <p>Para cualquier modo, la solicitud de trabajo debe incluir un <code translate="No">videocloud.video</code> atributo para que se cree un video de Video Cloud y se vincule al trabajo en vivo. La <code translate="No">playback_rights_id</code> El atributo se puede actualizar en el video de Video Cloud para cambiar las restricciones de reproducción a través del <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo">API de CMS</a>.</p>
+    <p>Para cualquier modo, la solicitud de trabajo debe incluir un <code translate="No">videocloud.video</code> atributo para que se cree un video de Video Cloud y se vincule al trabajo en vivo. La <code translate="No">playback_rights_id</code> El atributo se puede actualizar en el video de Video Cloud para cambiar las restricciones de reproducción a través del <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo">CMS API</a>.</p>
     <p>También necesitará <a href="https://general.support.brightcove.com/developer/create-jwt-stage.html">crear un JWT</a> con declaraciones apropiadas para PAS o EPA, dependiendo de cuál esté utilizando. El JWT deberá incluirse en cualquier solicitud del servidor de licencias. Si está implementando su propio reproductor, deberá pasar este valor en un <code translate="No">BCOV-Auth</code> encabezado o <code translate="No">bcov_auth</code> parámetro de consulta (además del token DRM).</p>
   </section>
   <section class="bcls-section">
@@ -27,7 +27,7 @@ layout: staging
       <dd>Habilita EPA. Se requerirá la autenticación de reproducción JWT al solicitar la licencia. Utiliza la identificación de los derechos de reproducción asociados con el video o JWT para hacer cumplir las restricciones.</dd>
     </dl>
     <h3>Nuevo campo para el <code translate="No">videocloud.video</code> objeto:</h3>
-    <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que este campo debe agregarse al video usando la API de CMS <em>después</em> crea el trabajo en vivo, porque no se puede agregar cuando se crea el vídeo.</aside>
+    <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que este campo debe agregarse al video usando la CMS API <em>después</em> crea el trabajo en vivo, porque no se puede agregar cuando se crea el vídeo.</aside>
     <dl>
       <dt><code translate="No">playback_rights_id</code>(cadena)</dt>
       <dd>Los asociados especificaron los derechos de reproducción de la EPA con video.</dd>
@@ -35,7 +35,7 @@ layout: staging
   </section>
   <section class="bcls-section">
     <h2 id="Sample_request_response">Ejemplo de solicitud y respuesta</h2>
-    <p>A continuación se muestra un cuerpo de solicitud de API en vivo de muestra para crear un trabajo en vivo con EPA. Nota También hay una solicitud de API de CMS para actualizar el video creado para el trabajo en vivo con el <code translate="No">playback_rights_id</code>. (Este campo solo se puede agregar con un <strong>actualizar video</strong> solicitud, por lo que debe agregarse después de que la solicitud de API en vivo crea el video).</p>
+    <p>A continuación se muestra un cuerpo de solicitud de Live API de muestra para crear un trabajo en vivo con EPA. Nota También hay una solicitud de CMS API para actualizar el video creado para el trabajo en vivo con el <code translate="No">playback_rights_id</code>. (Este campo solo se puede agregar con un <strong>actualizar video</strong> solicitud, por lo que debe agregarse después de que la solicitud de Live API crea el video).</p>
     <h3>Cuerpo de solicitud de muestra</h3>
 <pre class="line-numbers"><code class="language-json" translate="No">{
   "live_stream": true,
@@ -154,8 +154,8 @@ layout: staging
   }
 }</code></pre>
     </details>
-    <h3>Solicitud de API de CMS</h3>
-    <p>Para agregar la identificación de los derechos de reproducción al video, envíe un <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo">Actualizar video</a> solicitud a la API de CMS con el siguiente cuerpo de solicitud:</p>
+    <h3>Solicitud de CMS API</h3>
+    <p>Para agregar la identificación de los derechos de reproducción al video, envíe un <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo">Actualizar video</a> solicitud a la CMS API con el siguiente cuerpo de solicitud:</p>
 <pre class="line-numbers"><code class="language-json" translate="No">{
 	"playback_rights_id": "<span class="bcls-input">your playback_rights_id</span>"
 }</code></pre>

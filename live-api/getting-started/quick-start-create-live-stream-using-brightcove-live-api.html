@@ -1,6 +1,6 @@
 ---
 title: 'Inicio rápido: Cree una transmisión en vivo utilizando Brightcove Live API'
-description: 'Este tutorial lo guiará a través de la creación de un trabajo de transmisión en vivo utilizando la API en vivo.'
+description: 'Este tutorial lo guiará a través de la creación de un trabajo de transmisión en vivo utilizando la Live API.'
 parent: Getting Started 
 grandparent: Live API
 ---
@@ -17,7 +17,7 @@ grandparent: Live API
 	<li>Una cuenta configurada para Live API</li>
 	<li>Una clave de API para Live API (que se le proporciona cuando se configura la cuenta)</li>
 	<li>Una cuenta de Video Cloud (no es necesaria para crear el trabajo de transmisión en vivo, pero es necesaria para configurar la reproducción en Brightcove Player)</li>
-	<li>Si va a utilizar el <span translate="No">API de CMS</span> Para crear el video de Video Cloud en lugar de Studio, necesitará credenciales de cliente con permisos de video / lectura y video / escritura; si no está familiarizado con el proceso de obtención de credenciales de cliente, consulte la <a href="#authentication">autenticación</a> sección siguiente.</li>
+	<li>Si va a utilizar el <span translate="No">CMS API</span> Para crear el video de Video Cloud en lugar de Studio, necesitará credenciales de cliente con permisos de video / lectura y video / escritura; si no está familiarizado con el proceso de obtención de credenciales de cliente, consulte la <a href="#authentication">autenticación</a> sección siguiente.</li>
 	<li>La capacidad de realizar solicitudes de API REST a través de <a href="/oauth/guides/oauth-create-client-credentials-using-curl.html">rizo</a> o un cliente REST como <a href="/general/use-insomnia-api-requests.html">Insomnio</a> o <a href="/oauth/guides/oauth-create-client-credentials-using-postman.html">Cartero</a>.
 	<p>Para ayudarlo, hemos preparado algunas importaciones de Insomnia y Postman que puede usar para el ejercicio (en Brightcove Learning Services, preferimos y usamos Insomnia, pero Postman también funcionará si eso es lo que tiene):</p>
 
@@ -28,15 +28,15 @@ grandparent: Live API
 		<li><a href="/assets/downloads/postman-imports.zip">Colección de cartero y importación de entornos</a></li>
 	</ul>
 	</li>
-	<li>Para crear una transmisión en vivo real, necesitará un codificador de software o hardware para la transmisión en vivo. Las instrucciones que aparecen a continuación incluirán pasos para configurar la transmisión en directo mediante Wirecast ( <a href="http://www.telestream.net/controls/wirecast/download-wirecast.htm">regístrate para una prueba</a>). Si está utilizando un codificador diferente, el proceso será diferente pero debería ser similar en términos de la información que necesita de la respuesta de la API en vivo.</li>
+	<li>Para crear una transmisión en vivo real, necesitará un codificador de software o hardware para la transmisión en vivo. Las instrucciones que aparecen a continuación incluirán pasos para configurar la transmisión en directo mediante Wirecast ( <a href="http://www.telestream.net/controls/wirecast/download-wirecast.htm">regístrate para una prueba</a>). Si está utilizando un codificador diferente, el proceso será diferente pero debería ser similar en términos de la información que necesita de la respuesta de la Live API.</li>
 </ul>
 </section>
 
 <section class="bcls-section">
-<h2 id="getCredentials" class="bcls-expander-head">Obtenga credenciales para la API de CMS</h2>
+<h2 id="getCredentials" class="bcls-expander-head">Obtenga credenciales para la CMS API</h2>
 
 <div class="bcls-expander-content">
-<p>Usar el <span translate="No">API de CMS</span> necesitará las credenciales adecuadas.</p>
+<p>Usar el <span translate="No">CMS API</span> necesitará las credenciales adecuadas.</p>
 
 <p>La forma más fácil de obtener credenciales en la mayoría de los casos es a través de la sección Autenticación de la API de administrador de Studio (requiere permisos de administrador en su cuenta). Ver <a href="https://studio.support.brightcove.com/admin/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a> para detalles. En este caso, los permisos que necesita son para <strong>compartir relaciones</strong> - necesita permisos de lectura y escritura:</p>
 
@@ -44,7 +44,7 @@ grandparent: Live API
 <figcaption class="bcls-caption--image">Compartir permisos de relación</figcaption>
 </figure>
 
-<p>Si los permisos que necesita no están disponibles en Studio, o si prefiere obtenerlos directamente de la API de OAuth, utilice su elección de <strong>Obtener credenciales de cliente</strong> documentos que se enumeran a continuación. Cualquiera que sea la opción que elija, deberá solicitar los permisos de operación correctos. Lo siguiente se puede usar con cURL o Postman para obtener los permisos adecuados:</p>
+<p>Si los permisos que necesita no están disponibles en Studio, o si prefiere obtenerlos directamente de la OAuth API, utilice su elección de <strong>Obtener credenciales de cliente</strong> documentos que se enumeran a continuación. Cualquiera que sea la opción que elija, deberá solicitar los permisos de operación correctos. Lo siguiente se puede usar con cURL o Postman para obtener los permisos adecuados:</p>
 
 <pre class="line-numbers">
     <code class="language-json" translate="No">"operations": [
@@ -292,7 +292,7 @@ grandparent: Live API
 
 <p>Ahora crearemos una página HTML simple y le agregaremos un reproductor con el video que acabamos de crear.</p>
 
-<aside class="bcls-aside bcls-aside--information">Aquí nuevamente usaremos Studio para obtener el código de publicación del reproductor; también puede hacerlo usando el <a href="/player-management/getting-started/overview-player-management-api.html">API de gestión de reproductores</a> si tu prefieres.</aside>
+<aside class="bcls-aside bcls-aside--information">Aquí nuevamente usaremos Studio para obtener el código de publicación del reproductor; también puede hacerlo usando el <a href="/player-management/getting-started/overview-player-management-api.html">Player Management API</a> si tu prefieres.</aside>
 
 <ol class="bcls-tasklist-restart">
 	<li>Cree una página HTML simple para probar el reproductor de transmisión en vivo. Puede incluir cualquier otro contenido que desee o ninguno.</li>
@@ -393,7 +393,7 @@ grandparent: Live API
 	<figcaption class="bcls-caption--image">Agregar elemento de menú de video remoto</figcaption>
 	</figure>
 	</li>
-	<li>En el <strong>Agregar video remoto</strong> cuadro de diálogo, agregue un nombre de video y copie y pegue el valor para el <code translate="No">playback_url</code> de la respuesta de la API en vivo en el campo URL. Luego haga clic en <strong>Agregar reproducción</strong> , y <strong>Ahorrar</strong>:
+	<li>En el <strong>Agregar video remoto</strong> cuadro de diálogo, agregue un nombre de video y copie y pegue el valor para el <code translate="No">playback_url</code> de la respuesta de la Live API en el campo URL. Luego haga clic en <strong>Agregar reproducción</strong> , y <strong>Ahorrar</strong>:
 	<figure class="bcls-figure"><img class="bcls-image" alt="Add Rendition Dialog" src="/assets/images/get-started/remote-video-dialog.png" />
 	<figcaption class="bcls-caption--image">Cuadro de diálogo Agregar representación</figcaption>
 	</figure>

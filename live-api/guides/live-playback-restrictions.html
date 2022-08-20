@@ -25,7 +25,7 @@ grandparent: Live API
 
     <p>Con las transmisiones en vivo, también puede anular el DRM CRT de un usuario. Para obtener más detalles, consulte la <a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html#License_Keys_Protection">Protección de claves de licencia</a> sección de la descripción general: Restricciones de reproducción de Brightcove documento.</p>
 
-    <p>Independientemente del modo que elija, la solicitud de trabajo debe incluir un <code translate="No">videocloud.video</code> atributo para que se cree un video de Video Cloud y se vincule al trabajo en vivo. La <code translate="No">playback_rights_id</code> El atributo se puede actualizar en el video de Video Cloud para cambiar las restricciones de reproducción a través del <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo">API de CMS</a>.</p>
+    <p>Independientemente del modo que elija, la solicitud de trabajo debe incluir un <code translate="No">videocloud.video</code> atributo para que se cree un video de Video Cloud y se vincule al trabajo en vivo. La <code translate="No">playback_rights_id</code> El atributo se puede actualizar en el video de Video Cloud para cambiar las restricciones de reproducción a través del <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo">CMS API</a>.</p>
     <p>También necesitará <a href="https://general.support.brightcove.com/developer/create-json-web-token.html">crear un token web JSON (JWT)</a> con los reclamos correspondientes. El JWT deberá incluirse en cualquier solicitud del servidor de licencias. Si está implementando su propio reproductor, deberá pasar este valor en un <code translate="No">BCOV-Auth</code> encabezado o <code translate="No">bcov_auth</code> parámetro de consulta (además del token DRM).</p>
   </section>
 
@@ -47,7 +47,7 @@ grandparent: Live API
       </li>
       <li>
         <h4><code translate="No">videocloud.video</code> objeto:</h4>
-        <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que este campo debe agregarse al video usando la API de CMS <em>después</em> crea el trabajo en vivo, porque no se puede agregar cuando se crea el vídeo.</aside>
+        <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que este campo debe agregarse al video usando la CMS API <em>después</em> crea el trabajo en vivo, porque no se puede agregar cuando se crea el vídeo.</aside>
         <dl>
           <dt><code translate="No">playback_rights_id</code>(cadena)</dt>
           <dd>Asocia restricciones de reproducción especificadas con un video.</dd>
@@ -56,8 +56,8 @@ grandparent: Live API
     </ul>
 
     <h3 id="Sample_request_response">Ejemplo de solicitud y respuesta</h3>
-    <p>A continuación, se muestra un cuerpo de solicitud de API en vivo de muestra para crear un trabajo en vivo con restricciones de reproducción.</p>
-    <aside class="bcls-aside bcls-aside--information">También hay una solicitud de API de CMS para actualizar el video creado para el trabajo en vivo con el <code translate="No">playback_rights_id</code>. (Este campo solo se puede agregar con un <strong>actualizar video</strong> solicitud, por lo que debe agregarse después de que la solicitud de API en vivo crea el video).</aside>
+    <p>A continuación, se muestra un cuerpo de solicitud de Live API de muestra para crear un trabajo en vivo con restricciones de reproducción.</p>
+    <aside class="bcls-aside bcls-aside--information">También hay una solicitud de CMS API para actualizar el video creado para el trabajo en vivo con el <code translate="No">playback_rights_id</code>. (Este campo solo se puede agregar con un <strong>actualizar video</strong> solicitud, por lo que debe agregarse después de que la solicitud de Live API crea el video).</aside>
 
     <h3>Cuerpo de solicitud de muestra</h3>
 <pre class="line-numbers"><code class="language-json" translate="No">{
@@ -216,10 +216,10 @@ grandparent: Live API
 
   <section class="bcls-section">
     <h2 id="Add_restrictions_to_the_live_job">Agregar restricciones al trabajo en vivo</h2>
-    <p>Después de crear la transmisión en vivo, puede agregar restricciones de reproducción al video creado para el trabajo en vivo usando el <a href="https://apis.support.brightcove.com/cms/getting-started/overview-cms-api.html">API de CMS</a>.</p>
+    <p>Después de crear la transmisión en vivo, puede agregar restricciones de reproducción al video creado para el trabajo en vivo usando el <a href="https://apis.support.brightcove.com/cms/getting-started/overview-cms-api.html">CMS API</a>.</p>
     
-    <h3>Solicitud de API de CMS</h3>
-    <p>Para agregar la identificación de los derechos de reproducción al video, envíe un <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo">Actualizar video</a> solicitud a la API de CMS con el siguiente cuerpo de solicitud:</p>
+    <h3>Solicitud de CMS API</h3>
+    <p>Para agregar la identificación de los derechos de reproducción al video, envíe un <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo">Actualizar video</a> solicitud a la CMS API con el siguiente cuerpo de solicitud:</p>
 <pre class="line-numbers"><code class="language-json" translate="No">{
 	"playback_rights_id": "<span class="bcls-input">your playback_rights_id</span>"
 }</code></pre>

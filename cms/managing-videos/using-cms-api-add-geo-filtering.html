@@ -1,6 +1,6 @@
 ---
 title: 'Agregar filtrado geográfico'
-description: 'En este tema, aprenderá cómo administrar las propiedades de restricción geográfica para videos usando la API de CMS. los <span translate="No">API de CMS</span> le permite agregar propiedades de filtrado geográfico a los videos para proporcionar una lista de países en los que se pueden (o no) ver.'
+description: 'En este tema, aprenderá cómo administrar las propiedades de restricción geográfica para videos usando la CMS API. los <span translate="No">CMS API</span> le permite agregar propiedades de filtrado geográfico a los videos para proporcionar una lista de países en los que se pueden (o no) ver.'
 parent: Managing Videos/Assets 
 grandparent: CMS API
 ---
@@ -10,7 +10,7 @@ grandparent: CMS API
     <section class="bcls-section">
     <h2 id="introduction">Introducción</h2>
     
-    <p>Las propiedades de filtrado geográfico se pueden agregar al crear inicialmente el vídeo mediante una solicitud POST o mediante una solicitud PATCH para actualizar los metadatos de vídeo. Ver <a href="/cms/code-samples/cms-api-sample-update-videos.html">Actualizar videos usando <span translate="No">API de CMS</span></a> para ver un ejemplo de una solicitud de actualización.</p>
+    <p>Las propiedades de filtrado geográfico se pueden agregar al crear inicialmente el vídeo mediante una solicitud POST o mediante una solicitud PATCH para actualizar los metadatos de vídeo. Ver <a href="/cms/code-samples/cms-api-sample-update-videos.html">Actualizar videos usando <span translate="No">CMS API</span></a> para ver un ejemplo de una solicitud de actualización.</p>
     
     <aside class="bcls-aside bcls-aside--information">En lugar de aplicar filtrado geográfico a nivel de video, o además de hacerlo, puede <a href="/policy/getting-started/policy-keys.html#geoRestriction">aplicar el filtrado geográfico a los reproductores de Brightcove a través de claves de política</a>. Video Cloud examina las políticas de filtrado geográfico de vídeo y reproductor, y aplicará ambas. Si un país está excluido por cualquiera de las políticas, el vídeo no estará disponible en el país.
     
@@ -29,7 +29,7 @@ grandparent: CMS API
     <section class="bcls-section">
     <h2 id="authorization">Autorización</h2>
     
-    <aside class="bcls-aside bcls-aside--information">Solicitudes al <span translate="No">API de CMS</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</aside>
+    <aside class="bcls-aside bcls-aside--information">Solicitudes al <span translate="No">CMS API</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</aside>
     
     <p>Las operaciones para las que necesitará permisos para actualizar los metadatos de video son <code translate="No">video-cloud/video/update</code> o <code translate="No">video-cloud/video/all</code>.</p>
     </section>

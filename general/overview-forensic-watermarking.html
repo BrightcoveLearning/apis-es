@@ -314,7 +314,7 @@ echo "Public key to saved in $PUBLIC_TXT"
     "capture-images": true
 }</code></pre>
     
-    <h3><a href="/cms/index.html">API de CMS</a></h3>
+    <h3><a href="/cms/index.html">CMS API</a></h3>
     <p>De forma predeterminada, las versiones forenses con marca de agua se entregarán si se solicitó la marca de agua forense durante la ingestión. La presencia de marcas de agua forenses se indicará mediante el campo de solo lectura <code translate="No">forensic_watermarking</code>. Si el campo tiene un valor de <code translate="No">ACTIVE</code> , la marca de agua forense se agregó a VOD. Si el campo tiene un valor de <code translate="No">UNAVAILABLE</code> o <code translate="No">null</code> , el VOD no tiene la marca de agua forense.</p>
       
       <!-- <p>You can disable this using a video update request to the CMS API and setting <code translate="No">forensic_watermarking</code> to <code translate="No">INACTIVE</code>. To enable delivery of forensic watermarked renditions again, send another update request setting <code translate="No">forensic_watermarking</code> to <code translate="No">ACTIVE</code>.</p>
@@ -324,7 +324,7 @@ echo "Public key to saved in $PUBLIC_TXT"
   "forensic_watermarking": "INACTIVE"
 }</code></pre> -->
 
-    <h3>API de reproducción</h3>
+    <h3>Playback API</h3>
     <p>Las respuestas de video GET de Playback API también contendrán un <code translate="No">forensic_watermarking</code> (si la cuenta está habilitada para marcas de agua forenses). Si el valor es <code translate="No">ACTIVE</code> , las versiones con marcas de agua forenses se entregarán como fuentes al reproductor. De lo contrario, se entregarán versiones sin marca de agua.</p>
     <h3><a href="https://zencoder.support.brightcove.com/index.html">Zencoder</a></h3>
       <p>Para generar salidas con marca de agua forense en Zencoder, debe especificar 2 salidas por video, una con <code translate="no">"forensic_watermark": "A"</code> y el otro con <code translate="no">"forensic_watermark": "B"</code> (estos son los dos únicos valores que <code translate="no">forensic_watermark</code> campo puede tener).</p>

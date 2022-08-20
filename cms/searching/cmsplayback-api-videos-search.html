@@ -1,6 +1,6 @@
 ---
-title: 'CMS / API de reproducción: Búsqueda de vídeos v1'
-description: 'En este tema, aprenderá a buscar videos en su cuenta usando la API de CMS. los <span translate="No">API de CMS</span> proporciona una forma programática de buscar videos en su biblioteca de Video Cloud. Este tema proporciona detalles sobre la sintaxis de búsqueda. <strong>Nota: esta es la sintaxis de búsqueda original; le recomendamos que utilice la más simple <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">Sintaxis de búsqueda de video v2</a></strong>'
+title: 'CMS / Playback API: Búsqueda de vídeos v1'
+description: 'En este tema, aprenderá a buscar videos en su cuenta usando la CMS API. los <span translate="No">CMS API</span> proporciona una forma programática de buscar videos en su biblioteca de Video Cloud. Este tema proporciona detalles sobre la sintaxis de búsqueda. <strong>Nota: esta es la sintaxis de búsqueda original; le recomendamos que utilice la más simple <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">Sintaxis de búsqueda de video v2</a></strong>'
 parent: Searching 
 grandparent: CMS API
 ---
@@ -29,13 +29,13 @@ grandparent: CMS API
     <section class="bcls-section">
     <h2 id="API_usage">Uso de API</h2>
 
-    <p>La función de búsqueda se puede utilizar con el <span translate="No">API de CMS</span> o la API de reproducción.</p>
+    <p>La función de búsqueda se puede utilizar con el <span translate="No">CMS API</span> o la Playback API.</p>
 
     <aside class="bcls-aside bcls-aside--information">Las cadenas de búsqueda para cualquiera de las API deben contener al menos 3 caracteres.</aside>
 
-    <h3>API de CMS</h3>
+    <h3>CMS API</h3>
 
-    <p>Al utilizar la búsqueda con la API de CMS, se aplica lo siguiente:</p>
+    <p>Al utilizar la búsqueda con la CMS API, se aplica lo siguiente:</p>
 
     <ul>
       <li>Todas las solicitudes (incluida la búsqueda) requieren un encabezado de autorización que contiene sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</li>
@@ -43,23 +43,23 @@ grandparent: CMS API
       <li>Los resultados de la búsqueda incluyen todos los videos de su cuenta, ya sean reproducibles o no, y / o restringidos geográficamente.</li>
     </ul>
 
-    <p>Para obtener detalles sobre la solicitud / respuesta de la API, consulte la <strong>Obtener videos</strong> sección de la <a href="/cms/references/reference.html#api-videoGroup-Get_Videos">Referencia de la API de CMS</a>.</p>
+    <p>Para obtener detalles sobre la solicitud / respuesta de la API, consulte la <strong>Obtener videos</strong> sección de la <a href="/cms/references/reference.html#api-videoGroup-Get_Videos">Referencia de la CMS API</a>.</p>
 
-    <h3>API de reproducción</h3>
+    <h3>Playback API</h3>
 
-    <p>Cuando se utiliza la búsqueda con la API de reproducción, se aplica lo siguiente:</p>
+    <p>Cuando se utiliza la búsqueda con la Playback API, se aplica lo siguiente:</p>
 
     <ul>
-      <li>Las solicitudes de búsqueda con la API de reproducción requieren una clave de política que sea <a href="/policy/getting-started/policy-keys.html">habilitado para búsqueda</a>.</li>
+      <li>Las solicitudes de búsqueda con la Playback API requieren una clave de política que sea <a href="/policy/getting-started/policy-keys.html">habilitado para búsqueda</a>.</li>
       <li>Hay un <a href="/playback/references/reference_v1.html#api-videoGroup-Get_Videos">límite</a> en el número máximo de videos devueltos de una búsqueda.</li>
       <li>Los resultados de la búsqueda solo mostrarán videos que se puedan reproducir (videos con <code translate="No">state:inactive</code> será ignorado).</li>
       <li>Las búsquedas hacen cumplir las restricciones de la política de reproducción, como la omisión de videos restringidos geográficamente de los resultados.</li>
       <li>El almacenamiento en caché de los resultados proporciona tasas de solicitud más altas y respuestas más rápidas, y no hay limitación de velocidad.</li>
     </ul>
 
-    <aside class="bcls-aside bcls-aside--information">La búsqueda de la API de reproducción tiene un límite de 100 videos por solicitud con un límite de 1000 videos. Aprender como <a href="/playback/getting-started/overview-playback-api.html#Search_videos">página a través de los resultados de búsqueda</a>. Cuando necesite devolver más de 1000 videos, debe usar la API de CMS.</aside>
+    <aside class="bcls-aside bcls-aside--information">La búsqueda de la Playback API tiene un límite de 100 videos por solicitud con un límite de 1000 videos. Aprender como <a href="/playback/getting-started/overview-playback-api.html#Search_videos">página a través de los resultados de búsqueda</a>. Cuando necesite devolver más de 1000 videos, debe usar la CMS API.</aside>
 
-    <p>Para obtener detalles sobre la solicitud / respuesta de la API, consulte la <strong>Obtener videos</strong> sección de la <a href="/playback/references/reference_v1.html">Referencia de la API de reproducción</a>.</p>
+    <p>Para obtener detalles sobre la solicitud / respuesta de la API, consulte la <strong>Obtener videos</strong> sección de la <a href="/playback/references/reference_v1.html">Referencia de la Playback API</a>.</p>
     </section>
     <!-- Basic Search -->
 
@@ -186,7 +186,7 @@ grandparent: CMS API
       <li id="note2-2"><sup><strong>[2-2]</strong></sup> cuando creas un nuevo video, el <code translate="No">complete</code> la propiedad se establece automáticamente en <code translate="No">false</code>. Tan pronto como exista una versión del video, el <code translate="No">complete</code> la propiedad se establecerá automáticamente en <code translate="No">true</code>.</li>
       <li id="note2-3"><sup>[2-3]<strong></strong></sup> Las siguientes limitaciones se aplican a la búsqueda de videos ELIMINADOS:
       <ul>
-        <li>La búsqueda de videos eliminados es <strong>solo</strong> disponible usando la API de CMS; la API de reproducción <strong>no</strong> devolver videos eliminados</li>
+        <li>La búsqueda de videos eliminados es <strong>solo</strong> disponible usando la CMS API; la Playback API <strong>no</strong> devolver videos eliminados</li>
         <li>Solo <strong>los videos eliminados durante los 10 días anteriores (la hora actual menos 10 días) serán devueltos</strong></li>
       </ul>
       </li>
@@ -612,7 +612,7 @@ grandparent: CMS API
     <h3>Notas</h3>
 
     <ul>
-      <li id="note3"><sup><strong>[3]</strong></sup> La búsqueda de videos BORRADOS solo está disponible para videos eliminados en los últimos 10 días (la hora actual menos 10 días), y solo a través del <span translate="No">API de CMS</span> (no la API de reproducción).</li>
+      <li id="note3"><sup><strong>[3]</strong></sup> La búsqueda de videos BORRADOS solo está disponible para videos eliminados en los últimos 10 días (la hora actual menos 10 días), y solo a través del <span translate="No">CMS API</span> (no la Playback API).</li>
     </ul>
     </section>
     <!-- Stemming -->
@@ -627,7 +627,7 @@ grandparent: CMS API
     <section class="bcls-section">
     <h2 id="url_encoding">Espacios / Caracteres especiales</h2>
 
-    <p>los <span translate="No">API de CMS</span> generalmente maneja caracteres especiales en cadenas de búsqueda, con un par de excepciones:</p>
+    <p>los <span translate="No">CMS API</span> generalmente maneja caracteres especiales en cadenas de búsqueda, con un par de excepciones:</p>
 
     <ul>
       <li>Los espacios no están permitidos y deben codificarse como <code translate="No">%20</code>. (Sin codificar <code translate="No">+</code> Los letreros también pueden reemplazar espacios, pero esto puede generar confusión en sus consultas, ya que <code translate="No">+</code> también puede indicar que se requiere un término. Ver <a href="#requiredexcludedterms">sintaxis requerida / excluida</a>)

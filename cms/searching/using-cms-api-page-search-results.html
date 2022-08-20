@@ -1,6 +1,6 @@
 ---
 title: 'Resultados de búsqueda de página'
-description: 'En este tema, aprenderá cómo implementar la paginación para los resultados de <span translate="No">API de CMS</span> solicitudes, cuando la solicitud coincide con más elementos de los que puede devolver a la vez. Esto le permite manejar grandes conjuntos de resultados en grupos más pequeños, lo que mejora el rendimiento. Se devolverá un máximo de 100 registros de una sola solicitud a la API de CMS, pero para conjuntos de resultados grandes, recomendamos obtener 25 elementos por solicitud para un mejor rendimiento.'
+description: 'En este tema, aprenderá cómo implementar la paginación para los resultados de <span translate="No">CMS API</span> solicitudes, cuando la solicitud coincide con más elementos de los que puede devolver a la vez. Esto le permite manejar grandes conjuntos de resultados en grupos más pequeños, lo que mejora el rendimiento. Se devolverá un máximo de 100 registros de una sola solicitud a la CMS API, pero para conjuntos de resultados grandes, recomendamos obtener 25 elementos por solicitud para un mejor rendimiento.'
 parent: Searching 
 grandparent: CMS API
 ---
@@ -15,10 +15,10 @@ grandparent: CMS API
     <ul>
       <li>Obtenga un recuento del número total de registros en el conjunto de resultados.</li>
       <li>Calcule el número de páginas de su conjunto de resultados.</li>
-      <li>Haz un bucle y llama al <span translate="No">API de CMS</span> para cada página de datos.</li>
+      <li>Haz un bucle y llama al <span translate="No">CMS API</span> para cada página de datos.</li>
     </ul>
     
-    <aside class="bcls-aside bcls-aside--information">Solicitudes al <span translate="No">API de CMS</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</aside>
+    <aside class="bcls-aside bcls-aside--information">Solicitudes al <span translate="No">CMS API</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</aside>
     </section>
     
     <section class="bcls-section" id="getrecordcount">
@@ -38,7 +38,7 @@ grandparent: CMS API
         "count" : 74
     }</code></pre>
     
-    <p>También puede limitar el recuento utilizando el opcional <code translate="No">q</code> parámetro. Para obtener detalles sobre el uso de criterios de búsqueda con este parámetro, consulte la <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">Usando la API de CMS: Buscar videos</a> documento.</p>
+    <p>También puede limitar el recuento utilizando el opcional <code translate="No">q</code> parámetro. Para obtener detalles sobre el uso de criterios de búsqueda con este parámetro, consulte la <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">Usando la CMS API: Buscar videos</a> documento.</p>
     
     <p>Ejemplo: Aquí obtenemos la cantidad de videos que tienen un valor de etiqueta de <strong>fauna silvestre</strong>.</p>
     
@@ -69,14 +69,14 @@ grandparent: CMS API
     <section class="bcls-section" id="retrievepages">
     <h2>Recuperar páginas</h2>
     
-    <p>Recorra el número de páginas que calculó en el paso anterior y llame al <span translate="No">API de CMS</span> con el <code translate="No">limit</code> y <code translate="No">offset</code> parámetros para recuperar subconjuntos sucesivos de datos.</p>
+    <p>Recorra el número de páginas que calculó en el paso anterior y llame al <span translate="No">CMS API</span> con el <code translate="No">limit</code> y <code translate="No">offset</code> parámetros para recuperar subconjuntos sucesivos de datos.</p>
     
     <p>Este ejemplo devuelve 10 videos que comienzan con el video 21 en su conjunto de resultados.</p>
     
     <pre class="line-numbers">
     <code class="language-http" translate="No">https://cms.api.brightcove.com/v1/accounts/921483702001/videos?limit=10&amp;offset=20</code></pre>
     
-    <p>También puede incluir el opcional <code translate="No">q</code> parámetro. Para obtener detalles sobre el uso de criterios de búsqueda con este parámetro, consulte la <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">Usando la API de CMS: Buscar videos</a> documento.</p>
+    <p>También puede incluir el opcional <code translate="No">q</code> parámetro. Para obtener detalles sobre el uso de criterios de búsqueda con este parámetro, consulte la <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">Usando la CMS API: Buscar videos</a> documento.</p>
     
     <p>Esta solicitud devuelve 2 videos que comienzan con el quinto video del conjunto de resultados de videos que tienen un valor de etiqueta de <strong>fauna silvestre</strong>.</p>
     

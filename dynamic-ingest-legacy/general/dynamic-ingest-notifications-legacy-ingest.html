@@ -18,7 +18,7 @@ grandparent: 'Dynamic Ingest API'
     <ul>
       <li>Se admiten hasta 10 suscriptores para notificaciones de error. Puede incluir más de 10 URL para recibir notificaciones, pero solo se procesarán las primeras 10</li>
       <li>No se aceptarán las URL que terminen en una barra (/); por ejemplo, la URL "https://my.domain.com/notification-receiver" funciona, pero "https://my.domain.com/notification-receiver/" no</li>
-      <li>Alternativamente, puede utilizar el <a href="/cms/references/reference.html#api-videoGroup-Get_Status_of_Ingest_Jobs">API de estado de la API de CMS</a> para obtener el estado de los trabajos de ingesta de un video en particular.</li>
+      <li>Alternativamente, puede utilizar el <a href="/cms/references/reference.html#api-videoGroup-Get_Status_of_Ingest_Jobs">API de estado de la CMS API</a> para obtener el estado de los trabajos de ingesta de un video en particular.</li>
       <li>Los manejadores de notificaciones en servidores construidos en HTTP2 no son actualmente compatibles. Es posible que las notificaciones enviadas a los servidores HTTP2 no se entreguen sin devolver ningún error.</li>
     </ul>
     </aside>
@@ -133,8 +133,8 @@ grandparent: 'Dynamic Ingest API'
           <ul>
             <li><code translate="No">HlsManifest</code> para un manifiesto de HLS NG</li>
             <li><code translate="No">HdsManifest</code> para un manifiesto HDS</li>
-            <li><code translate="No">DashManifest</code> para manifiestos DASH (2 - uno de los activos del manifiesto se usa para consumo en el MAPI, el otro se usa para consumo en la API de CMS)</li>
-            <li><code translate="No">SmoothIsmManifest</code> para un manifiesto suave (2: uno de los activos del manifiesto se usa para consumo en MAPI, el otro se usa para consumo en la API de CMS)</li>
+            <li><code translate="No">DashManifest</code> para manifiestos DASH (2 - uno de los activos del manifiesto se usa para consumo en el MAPI, el otro se usa para consumo en la CMS API)</li>
+            <li><code translate="No">SmoothIsmManifest</code> para un manifiesto suave (2: uno de los activos del manifiesto se usa para consumo en MAPI, el otro se usa para consumo en la CMS API)</li>
           </ul>
           </td>
         </tr>

@@ -1,6 +1,6 @@
 ---
-title: 'Inicio rápido: API de OAuth'
-description: 'Este tutorial lo guía a través de los pasos para obtener credenciales de cliente y un token de acceso mediante la API de OAuth.'
+title: 'Inicio rápido: OAuth API'
+description: 'Este tutorial lo guía a través de los pasos para obtener credenciales de cliente y un token de acceso mediante la OAuth API.'
 parent: Getting Started 
 grandparent: OAuth API
 ---
@@ -26,7 +26,7 @@ grandparent: OAuth API
       <li>Conseguir un <code translate="No">access_token</code> que proporciona autorización para realizar una llamada a la API: el access_token es válido durante 5 minutos, por lo que en la mayoría de los casos obtendrá uno por cada llamada a la API que realice</li>
     </ul>
     
-    <p class="bcls-aside bcls-aside--information">También hay una interfaz de usuario en Studio que puede usar para <a href="/general/managing-api-authentication-credentials.html">obtener y administrar las credenciales del cliente</a>. Se recomienda que utilice la interfaz de usuario siempre que sea posible. Para las API nuevas, es posible que las credenciales no estén disponibles a través de la interfaz de usuario durante algún tiempo, en cuyo caso puede obtener las credenciales directamente de la API de OAuth, como aprenderá a hacerlo en los pasos siguientes.</p>
+    <p class="bcls-aside bcls-aside--information">También hay una interfaz de usuario en Studio que puede usar para <a href="/general/managing-api-authentication-credentials.html">obtener y administrar las credenciales del cliente</a>. Se recomienda que utilice la interfaz de usuario siempre que sea posible. Para las API nuevas, es posible que las credenciales no estén disponibles a través de la interfaz de usuario durante algún tiempo, en cuyo caso puede obtener las credenciales directamente de la OAuth API, como aprenderá a hacerlo en los pasos siguientes.</p>
     </section>
     
     <section class="bcls-section">
@@ -112,7 +112,7 @@ grandparent: OAuth API
     <pre class="line-numbers">
         <code class="language-http" translate="No">Authorization: Basic {client_id:client_secret}</code></pre>
     
-    <p class="BCL-aside">Nota: el client_id completo: client_secret <em>debe</em> estar codificado en Base64 para ser aceptado por la API de OAuth. cURL codificará en Base64 las credenciales de usuario automáticamente, pero en otros idiomas necesitará codificarlas en Base64 usted mismo.</p>
+    <p class="BCL-aside">Nota: el client_id completo: client_secret <em>debe</em> estar codificado en Base64 para ser aceptado por la OAuth API. cURL codificará en Base64 las credenciales de usuario automáticamente, pero en otros idiomas necesitará codificarlas en Base64 usted mismo.</p>
     
     <h3>Pasos</h3>
     

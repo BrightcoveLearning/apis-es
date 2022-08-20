@@ -656,7 +656,7 @@ grandparent: SSAI API
 <pre>
 <code class="language-html" translate="No">{% raw %}https://adserver.com/{{page.document.referrer}}/{{page.pageVariable.whateverIwant}}{% endraw %}</code></pre>
 
-<p>Vuelve la API de reproducción <code translate="No">document.referrer</code> y <code translate="No">pageVariable.whateverIwant</code> adjunto a las URL de VMAP y SRC. El reproductor de Brightcove luego ejecuta su lógica de reemplazo de macros del lado del cliente para reemplazar los valores apropiados, antes de enviar la solicitud:</p>
+<p>Vuelve la Playback API <code translate="No">document.referrer</code> y <code translate="No">pageVariable.whateverIwant</code> adjunto a las URL de VMAP y SRC. El reproductor de Brightcove luego ejecuta su lógica de reemplazo de macros del lado del cliente para reemplazar los valores apropiados, antes de enviar la solicitud:</p>
 
 <pre>
 <code class="language-html" translate="No">{% raw %}https://bolt-prefix/blah.vmap?document.referrer={document.referrer}&amp;pageVariable.whateverIwant={pageVariable.whateverIwant}{% endraw %}</code></pre>

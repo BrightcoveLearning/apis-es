@@ -1,6 +1,6 @@
 ---
 title: 'Agregar puntos de referencia'
-description: 'En esta muestra, aprenderá a agregar puntos de referencia a un video mediante programación utilizando la API de CMS.'
+description: 'En esta muestra, aprenderá a agregar puntos de referencia a un video mediante programación utilizando la CMS API.'
 
 parent: 'Code Samples' 
 grandparent: CMS API
@@ -26,7 +26,7 @@ grandparent: CMS API
   <section class="bcls-section">
     <h2 id="implementation_overview">Descripción general de la implementación</h2>
 
-    <p>Puede agregar puntos de referencia en <a href="https://studio.support.brightcove.com/media/working-cue-points-media-module.html">el módulo Studio Media</a>. También puede agregarlos usando la API de CMS, que es el método que usaremos en esta muestra.</p>
+    <p>Puede agregar puntos de referencia en <a href="https://studio.support.brightcove.com/media/working-cue-points-media-module.html">el módulo Studio Media</a>. También puede agregarlos usando la CMS API, que es el método que usaremos en esta muestra.</p>
 
     <h3>Método HTTP</h3>
 
@@ -125,15 +125,15 @@ grandparent: CMS API
       <summary>
         <h2 id="getCredentials">Obtener credenciales de autenticación</h2>
       </summary>
-      <p>Usar el <span translate="No">API de CMS</span> necesitará las credenciales adecuadas.</p>
+      <p>Usar el <span translate="No">CMS API</span> necesitará las credenciales adecuadas.</p>
 
-      <p>La forma más fácil de obtener credenciales en la mayoría de los casos es a través de la sección Autenticación de la API de administrador de Studio (requiere permisos de administrador en su cuenta). Ver <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a> para detalles. En la mayoría de los casos, probablemente solo desee obtener permisos para todos <span translate="No">API de CMS</span> operación:</p>
+      <p>La forma más fácil de obtener credenciales en la mayoría de los casos es a través de la sección Autenticación de la API de administrador de Studio (requiere permisos de administrador en su cuenta). Ver <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a> para detalles. En la mayoría de los casos, probablemente solo desee obtener permisos para todos <span translate="No">CMS API</span> operación:</p>
 
       <figure class="bcls-figure"><img class="bcls-image" alt="CMS API Permissions" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/cms-api/cms-permissions.png" />
-        <figcaption class="bcls-caption--image">Permisos de la API de CMS</figcaption>
+        <figcaption class="bcls-caption--image">Permisos de la CMS API</figcaption>
       </figure>
 
-      <p>Si los permisos que necesita no están disponibles en Studio, o si prefiere obtenerlos directamente de la API de OAuth, utilice su elección de <strong>Obtener credenciales de cliente</strong> documentos que se enumeran a continuación. Cualquiera que sea la opción que elija, deberá solicitar los permisos de operación correctos. Lo siguiente se puede usar con cURL o Postman para obtener todos los permisos para la API de CMS:</p>
+      <p>Si los permisos que necesita no están disponibles en Studio, o si prefiere obtenerlos directamente de la OAuth API, utilice su elección de <strong>Obtener credenciales de cliente</strong> documentos que se enumeran a continuación. Cualquiera que sea la opción que elija, deberá solicitar los permisos de operación correctos. Lo siguiente se puede usar con cURL o Postman para obtener todos los permisos para la CMS API:</p>
 
       <pre class="line-numbers">
           <code class="language-json" translate="No">"operations": [
@@ -154,7 +154,7 @@ grandparent: CMS API
     <h2 id="sample_app">Aplicación de muestra</h2>
     Encuentre todo el código asociado con esta muestra en este <a href="https://github.com/BrightcoveLearning/18030-cms-api-sample-add-cue-points">Repositorio de GitHub</a>.
 
-    <p data-height="1200" data-theme-id="34967" data-slug-hash="bvqJEp" data-default-tab="result" data-user="rcrooks1969" data-embed-version="2" data-pen-title="CMS API Sample: Add Cue Points" class="codepen">Ver la pluma <a href="https://codepen.io/team/rcrooks1969/pen/bvqJEp/">Ejemplo de API de CMS: Agregar puntos de referencia</a> por Brightcove Learning Services ( <a href="https://codepen.io/rcrooks1969"> rcrooks1969</a> ) en <a href="https://codepen.io">CodePen</a>.</p>
+    <p data-height="1200" data-theme-id="34967" data-slug-hash="bvqJEp" data-default-tab="result" data-user="rcrooks1969" data-embed-version="2" data-pen-title="CMS API Sample: Add Cue Points" class="codepen">Ver la pluma <a href="https://codepen.io/team/rcrooks1969/pen/bvqJEp/">Ejemplo de CMS API: Agregar puntos de referencia</a> por Brightcove Learning Services ( <a href="https://codepen.io/rcrooks1969"> rcrooks1969</a> ) en <a href="https://codepen.io">CodePen</a>.</p>
     <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
   </section>
 

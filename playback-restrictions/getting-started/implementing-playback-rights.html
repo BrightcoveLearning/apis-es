@@ -151,7 +151,7 @@ window.prompt(";BC_TOKEN:", cookiesObj.BC_TOKEN);</code></pre>
       <figcaption class="bcls-caption--image">Permisos de derechos de reproducción</figcaption>
     </figure>
   </li>
-  <li>Si prefiere generar sus credenciales usando la API de OAuth directamente, continúe con los siguientes pasos.</li>
+  <li>Si prefiere generar sus credenciales usando la OAuth API directamente, continúe con los siguientes pasos.</li>
   <li>
     <p>
   A continuación, se muestra un ejemplo de una solicitud de cliente OAuth con los permisos necesarios. Ver <a href="/oauth/guides/get-your-bc-token.html">Obteniendo tu BC_TOKEN</a> para obtener información sobre cómo obtener su BC_TOKEN.
@@ -492,11 +492,11 @@ window.prompt(";BC_TOKEN:", cookiesObj.BC_TOKEN);</code></pre>
 <section class="bcls-section">
 <h2 id="Associate_restrictions_with_a_video">Asociar restricciones con un video</h2>
 
-<p>Utilizar el <span translate="No">API de CMS</span> para asociar un ID de derechos de reproducción con un video. Utilizará el ID de derechos de reproducción que creó en el paso anterior.</p>
+<p>Utilizar el <span translate="No">CMS API</span> para asociar un ID de derechos de reproducción con un video. Utilizará el ID de derechos de reproducción que creó en el paso anterior.</p>
 
 <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que si las restricciones no están a nivel de usuario, el JWT no es necesario y puede desactivarse con <code translate="No">allow_insecure</code> configuración de la derecha de reproducción.</aside>
 
-<h3 id="CMS_API">API de CMS</h3>
+<h3 id="CMS_API">CMS API</h3>
 <p>
   Cada objeto de restricción de derechos de reproducción se puede usar con uno o más videos.
 </p>
@@ -537,7 +537,7 @@ window.prompt(";BC_TOKEN:", cookiesObj.BC_TOKEN);</code></pre>
 
 <h3>Administrar restricciones</h3>
 <p>
-  los <span translate="No">API de CMS</span> admite los muchos tipos de solicitudes. Para actualizar un video, use lo siguiente:
+  los <span translate="No">CMS API</span> admite los muchos tipos de solicitudes. Para actualizar un video, use lo siguiente:
 </p>
 
   <h4>Actualizar un video:</h4>
@@ -564,7 +564,7 @@ window.prompt(";BC_TOKEN:", cookiesObj.BC_TOKEN);</code></pre>
 <pre><code class="language-http" translate="No">GET /v1/accounts/{account_id}/videos/{video_ids}</code></pre>
 
 <p>
-  Para obtener detalles completos sobre el uso de la API, consulte la <a href="/cms/references/reference.html">Referencia de la API de CMS</a>.
+  Para obtener detalles completos sobre el uso de la API, consulte la <a href="/cms/references/reference.html">Referencia de la CMS API</a>.
 </p>
 </section>
 
@@ -618,7 +618,7 @@ window.prompt(";BC_TOKEN:", cookiesObj.BC_TOKEN);</code></pre>
 <section class="bcls-section">
 <h2 id="Configure_your_player">Configura tu reproductor</h2>
 <p>
-  De forma predeterminada, Brightcove Player se comunica con Brightcove Playback API (PAPI). Un nuevo sistema para administrar las restricciones de reproducción se encuentra frente a la API de reproducción. Para configurar su reproductor, consulte lo siguiente:
+  De forma predeterminada, Brightcove Player se comunica con Brightcove Playback API (PAPI). Un nuevo sistema para administrar las restricciones de reproducción se encuentra frente a la Playback API. Para configurar su reproductor, consulte lo siguiente:
 </p>
 <h3>Reproductor web</h3>
 <p>
@@ -631,7 +631,7 @@ window.prompt(";BC_TOKEN:", cookiesObj.BC_TOKEN);</code></pre>
 
 <h3>Tu propio reproductor</h3>
 <p>
-  Si su contenido está en la biblioteca de Video Cloud, pero está utilizando su propio reproductor, puede realizar llamadas a la API de reproducción como se muestra en la <a href="/playback/getting-started/overview-playback-api.html">Descripción general: API de reproducción</a> documento. Reemplace la URL base con lo siguiente:
+  Si su contenido está en la biblioteca de Video Cloud, pero está utilizando su propio reproductor, puede realizar llamadas a la Playback API como se muestra en la <a href="/playback/getting-started/overview-playback-api.html">Descripción general: Playback API</a> documento. Reemplace la URL base con lo siguiente:
 </p>
 <pre ><code class="language-http" translate="No">https://edge-auth.api.brigthcove.com</code></pre>
 <p>

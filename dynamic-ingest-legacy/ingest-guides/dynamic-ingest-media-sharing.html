@@ -1,6 +1,6 @@
 ---
 title: 'Ingesta dinámica con uso compartido de medios'
-description: 'Para compartir videos creados con Dynamic Ingest, el <span translate="No">API de CMS</span> se utiliza. La cuenta para compartir debe tener habilitado el uso compartido de medios; comuníquese con el soporte de Brightcove para verificar esto. El video compartido <span translate="No">API de CMS</span> La solicitud se puede realizar antes de que se complete la transcodificación.'
+description: 'Para compartir videos creados con Dynamic Ingest, el <span translate="No">CMS API</span> se utiliza. La cuenta para compartir debe tener habilitado el uso compartido de medios; comuníquese con el soporte de Brightcove para verificar esto. El video compartido <span translate="No">CMS API</span> La solicitud se puede realizar antes de que se complete la transcodificación.'
 
 parent: 
 grandparent: Dynamic Ingest API
@@ -17,7 +17,7 @@ layout: staging
     <ol>
       <li><a href="#Create_video">Crear video</a></li>
       <li><a href="#Create_the_ingest_request">Crea la solicitud de ingesta</a></li>
-      <li><a href="#Share_video_with_CMS_API">Comparte video con la API de CMS</a></li>
+      <li><a href="#Share_video_with_CMS_API">Comparte video con la CMS API</a></li>
     </ol>
     </section>
     
@@ -30,7 +30,7 @@ layout: staging
     <section class="bcls-section">
     <h2 id="Create_video">Crear video</h2>
     
-    <p>El objeto de video en el sistema Video Cloud se crea usando el <a href="/cms/references/reference.html#api-videoGroup-Create_Video">API de CMS</a>. Aquí hay un ejemplo de rizo:</p>
+    <p>El objeto de video en el sistema Video Cloud se crea usando el <a href="/cms/references/reference.html#api-videoGroup-Create_Video">CMS API</a>. Aquí hay un ejemplo de rizo:</p>
     
     <pre class="line-numbers">
     <code class="language-bash" translate="No">curl --request POST \
@@ -52,7 +52,7 @@ layout: staging
     <section class="bcls-section">
     <h2 id="Create_the_ingest_request">Crea la solicitud de ingesta</h2>
     
-    <p>Luego, el video se puede ingerir usando el <a href="/dynamic-ingest/references/reference.html#api-Ingest-Ingest_Media_Asset">API de ingesta dinámica</a> con la identificación de video devuelta por <span translate="No">API de CMS</span> solicitud. Aquí hay un ejemplo de curl de la solicitud:</p>
+    <p>Luego, el video se puede ingerir usando el <a href="/dynamic-ingest/references/reference.html#api-Ingest-Ingest_Media_Asset">API de ingesta dinámica</a> con la identificación de video devuelta por <span translate="No">CMS API</span> solicitud. Aquí hay un ejemplo de curl de la solicitud:</p>
     
     <pre class="line-numbers">
     <code class="language-bash" translate="No">curl --request POST \
@@ -63,11 +63,11 @@ layout: staging
     </section>
     
     <section class="bcls-section">
-    <h2 id="Share_video_with_CMS_API">Comparte video con la API de CMS</h2>
+    <h2 id="Share_video_with_CMS_API">Comparte video con la CMS API</h2>
     
-    <p>Una vez que se haya ingerido el video, puede compartirlo con otra cuenta usando el <a href="/cms/code-samples/cms-api-sample-share-multiple-videos.html">API de CMS</a>.</p>
+    <p>Una vez que se haya ingerido el video, puede compartirlo con otra cuenta usando el <a href="/cms/code-samples/cms-api-sample-share-multiple-videos.html">CMS API</a>.</p>
     
-    <p>Tenga en cuenta que antes de poder compartir un video con otra cuenta, primero debe configurar la relación para compartir; consulte <a href="/cms/managing-videos/media-sharing-cms-api.html">Uso compartido de medios con la API de CMS</a> para más detalles.</p>
+    <p>Tenga en cuenta que antes de poder compartir un video con otra cuenta, primero debe configurar la relación para compartir; consulte <a href="/cms/managing-videos/media-sharing-cms-api.html">Uso compartido de medios con la CMS API</a> para más detalles.</p>
     
     <p>Aquí hay un ejemplo de curl de la solicitud:</p>
     

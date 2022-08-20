@@ -152,7 +152,7 @@ grandparent: Dynamic Ingest API
 
     <h3>Nuevo video con múltiples pistas de audio</h3>
 
-    <h4>Crea el objeto de video (<span translate="No">API de CMS</span>)</h4>
+    <h4>Crea el objeto de video (<span translate="No">CMS API</span>)</h4>
 
     <ol class="blcs-tasklist">
       <li>Puede agregar varios elementos de metadatos de video cuando crea el objeto de video, pero aquí solo agregaremos el mínimo: a <code translate="No">name</code> para el video:
@@ -215,7 +215,7 @@ grandparent: Dynamic Ingest API
 
     <h3 id="Add_audio_tracks_to_an_existing_video">Agregar pistas de audio a un video existente</h3>
 
-    <p>Para agregar pistas de audio adicionales a un video existente, el procedimiento es el mismo, excepto que no necesita realizar la solicitud al <span translate="No">API de CMS</span> para crear el video, porque ya existe. Y en la solicitud al <span translate="No">Ingesta dinámica</span> API, no necesitará incluir la URL del archivo de video o el <code translate="No">audio_tracks</code> debajo <code translate="No">master</code> proporcionando los metadatos para el audio muxed. Sin embargo, sí desea incluir los metadatos para la pista de audio muxed en el video existente. También es importante recordar que la pista de audio debe comprimirse siguiendo las reglas de <a href="https://zencoder.support.brightcove.com/general-information/supported-video-and-audio-formats-codecs-and-containers.html#audio_concerns">Formatos de audio</a>. Entonces, el JSON para la solicitud de ingesta se verá así:</p>
+    <p>Para agregar pistas de audio adicionales a un video existente, el procedimiento es el mismo, excepto que no necesita realizar la solicitud al <span translate="No">CMS API</span> para crear el video, porque ya existe. Y en la solicitud al <span translate="No">Ingesta dinámica</span> API, no necesitará incluir la URL del archivo de video o el <code translate="No">audio_tracks</code> debajo <code translate="No">master</code> proporcionando los metadatos para el audio muxed. Sin embargo, sí desea incluir los metadatos para la pista de audio muxed en el video existente. También es importante recordar que la pista de audio debe comprimirse siguiendo las reglas de <a href="https://zencoder.support.brightcove.com/general-information/supported-video-and-audio-formats-codecs-and-containers.html#audio_concerns">Formatos de audio</a>. Entonces, el JSON para la solicitud de ingesta se verá así:</p>
 
     <pre class="line-numbers">
       <code class="language-json" translate="No">{
@@ -328,7 +328,7 @@ grandparent: Dynamic Ingest API
     <section class="bcls-section">
     <h2 id="Managing_audio_tracks">Administrar pistas de audio</h2>
 
-    <p>Una vez que haya ingerido las pistas de audio, puede administrarlas a través del <span translate="No">API de CMS</span>.</p>
+    <p>Una vez que haya ingerido las pistas de audio, puede administrarlas a través del <span translate="No">CMS API</span>.</p>
 
     <h3>Obtener todos los metadatos de la pista de audio de un video</h3>
 
@@ -493,7 +493,7 @@ grandparent: Dynamic Ingest API
       <dt ><code translate="No">HLSv3</code>, <code translate="No">HLS</code> con audio y video en el mismo segmento</dt>
       <dd >
       <ul>
-        <li>La API de reproducción no volverá <code translate="No">HLSv3</code> manifiesta</li>
+        <li>La Playback API no volverá <code translate="No">HLSv3</code> manifiesta</li>
         <li>Todas <code translate="No">HLS</code> Los manifiestos incluirán video / audio desmultiplicado.</li>
       </ul>
       </dd>
@@ -511,7 +511,7 @@ grandparent: Dynamic Ingest API
       <dt >Orden de pistas de audio más allá de la pista "predeterminada"</dt>
       <dd >
       <ul>
-        <li>Puede elegir una pista de audio predeterminada con <span translate="No">API de CMS</span> por título configurando el <code translate="No">is_default</code> campo a <code translate="No">true</code></li>
+        <li>Puede elegir una pista de audio predeterminada con <span translate="No">CMS API</span> por título configurando el <code translate="No">is_default</code> campo a <code translate="No">true</code></li>
         <li>También hay una cuenta predeterminada, que puede ser configurada por Soporte</li>
         <li>Esto solo afectará a la pista "predeterminada" en los manifiestos de HLS</li>
         <li>Ningún otro pedido es posible</li>
@@ -532,7 +532,7 @@ grandparent: Dynamic Ingest API
       </ul>
       </dd>
       <dt >Video "<code translate="No">duration</code>"</dt>
-      <dd >El video <code translate="No">duration</code> informado por el catálogo / API de reproducción puede ser incorrecto si las pistas de audio tienen diferentes duraciones.</dd>
+      <dd >El video <code translate="No">duration</code> informado por el catálogo / Playback API puede ser incorrecto si las pistas de audio tienen diferentes duraciones.</dd>
     </dl>
     </section>
     </article>

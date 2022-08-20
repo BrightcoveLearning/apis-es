@@ -1,6 +1,6 @@
 ---
 title: 'API de eliminación maestra digital'
-description: 'Este tema explica cómo puede eliminar los archivos maestros digitales de sus videos usando la API de CMS.'
+description: 'Este tema explica cómo puede eliminar los archivos maestros digitales de sus videos usando la CMS API.'
 parent: Managing Videos/Assets 
 grandparent: CMS API
 ---
@@ -10,7 +10,7 @@ grandparent: CMS API
     <section class="bcls-section">
     <h2 id="Introduction">Introducción</h2>
 
-    <p>La <a href="/cms/references/reference.html#operation/DeleteDigitalMaster">API de CMS</a> tiene una función para eliminar el maestro digital (archivo de origen de un video) en el catálogo de Video Cloud. Esto le permitirá realizar tareas de limpieza únicas para disminuir el tamaño de su contenido administrado.</p>
+    <p>La <a href="/cms/references/reference.html#operation/DeleteDigitalMaster">CMS API</a> tiene una función para eliminar el maestro digital (archivo de origen de un video) en el catálogo de Video Cloud. Esto le permitirá realizar tareas de limpieza únicas para disminuir el tamaño de su contenido administrado.</p>
 
     <p>Para comprender cómo se archivan los masters y cómo puede evitar que se archiven, si eso es lo que desea hacer, consulte <a href="/ingest-profiles/guides/archiving-masters.html">Maestros de archivo</a>.</p>
     </section>
@@ -19,7 +19,7 @@ grandparent: CMS API
     <h2 id="Requirements">Requisitos</h2>
 
     <ul>
-      <li>La eliminación de másters digitales se puede realizar utilizando el <span translate="No">API de CMS</span> <strong>solamente</strong> - esta opción no estará disponible en Studio.</li>
+      <li>La eliminación de másters digitales se puede realizar utilizando el <span translate="No">CMS API</span> <strong>solamente</strong> - esta opción no estará disponible en Studio.</li>
     </ul>
     </section>
 
@@ -50,7 +50,7 @@ grandparent: CMS API
           "video-cloud/video/read"
       ]</code></pre>
 
-      <p>Estos permisos son <strong>no</strong> disponible en la interfaz de usuario de Studio, por lo que deberá utilizar la <a href="/oauth/guides/oauth-create-client-credentials-using-curl.html">API de OAuth</a> para obtenerlos. A continuación se muestra un comando cURL que hará el trabajo si reemplaza los elementos resaltados con su propia información:</p>
+      <p>Estos permisos son <strong>no</strong> disponible en la interfaz de usuario de Studio, por lo que deberá utilizar la <a href="/oauth/guides/oauth-create-client-credentials-using-curl.html">OAuth API</a> para obtenerlos. A continuación se muestra un comando cURL que hará el trabajo si reemplaza los elementos resaltados con su propia información:</p>
 
       <pre class="line-numbers">
       <code class="language-bash" translate="No">curl --request POST \

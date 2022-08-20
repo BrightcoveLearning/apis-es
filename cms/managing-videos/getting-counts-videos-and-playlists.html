@@ -1,6 +1,6 @@
 ---
 title: 'Obtener recuentos de videos y listas de reproducción'
-description: 'Este tema describe cómo obtener la cantidad de videos o listas de reproducción en una cuenta usando la API de CMS.'
+description: 'Este tema describe cómo obtener la cantidad de videos o listas de reproducción en una cuenta usando la CMS API.'
 parent: Managing Videos/Assets 
 grandparent: CMS API
 ---
@@ -10,13 +10,13 @@ grandparent: CMS API
     <section id="intro" class="bcls-section">
     <h2>Introducción</h2>
     
-    <p>A veces es útil obtener un recuento de videos o listas de reproducción en su cuenta, o cuántos videos se agregaron en el último mes o año. Puede obtener fácilmente este tipo de recuentos utilizando el <code translate="No">/counts/</code> punto final para la API de CMS.</p>
+    <p>A veces es útil obtener un recuento de videos o listas de reproducción en su cuenta, o cuántos videos se agregaron en el último mes o año. Puede obtener fácilmente este tipo de recuentos utilizando el <code translate="No">/counts/</code> punto final para la CMS API.</p>
     </section>
     
     <section id="authentication" class="bcls-section">
     <h2>Autenticación</h2>
     
-    <p class="BCL-aside">Solicitudes al <span translate="No">API de CMS</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</p>
+    <p class="BCL-aside">Solicitudes al <span translate="No">CMS API</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</p>
     </section>
     
     <section class="section" id="Get_video_counts">
@@ -34,7 +34,7 @@ grandparent: CMS API
       "count": 4999
     }</code></pre>
     
-    <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que los videos eliminados no se incluyen en los recuentos ni en <span translate="No">API de CMS</span> respuesta.</aside>
+    <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que los videos eliminados no se incluyen en los recuentos ni en <span translate="No">CMS API</span> respuesta.</aside>
     
     <p>Lo que hace que el punto final del recuento de videos sea tan poderoso es que también agrega un <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">parámetro de búsqueda</a> a la solicitud. Esto le permite obtener un recuento de los videos que devolvería la búsqueda. Debido a que el parámetro de búsqueda es tan flexible, esto le permite obtener un recuento de muchas cosas, como:</p>
     

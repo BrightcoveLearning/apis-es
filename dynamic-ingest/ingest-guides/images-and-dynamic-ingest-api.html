@@ -311,7 +311,7 @@ layout: staging
 
 		<details>
 			<summary>Respuesta de muestra</summary>
-			<p>A continuación se muestra una respuesta a un <a href="/cms/references/reference.html#operation/GetVideoImages">Solicitud de obtención de imágenes de vídeo de la API de CMS</a>. Ver <a href="#Retrieving_image_data">Recuperando datos de imagen</a> debajo.</p>
+			<p>A continuación se muestra una respuesta a un <a href="/cms/references/reference.html#operation/GetVideoImages">Solicitud de obtención de imágenes de vídeo de la CMS API</a>. Ver <a href="#Retrieving_image_data">Recuperando datos de imagen</a> debajo.</p>
 <pre class="line-numbers"><code class="language-json" translate="No">{
   "thumbnail.en": {
     "src": "https://cf-images.us-east-1.prod.boltdns.net/v1/static/3676484086001/4fb9012e-7b20-4744-9fff-512634d7b2a5/5b593403-01a7-4a18-978e-cad13647cf99/292x108/match/image.jpg",
@@ -563,8 +563,8 @@ layout: staging
 
   <section class="bcls-section">
     <h2 id="Retrieving_image_data">Recuperando datos de imagen</h2>
-    <p>Puede recuperar datos de imágenes usando el <a href="/cms/index.html">API de CMS</a>.</p>
-    <p>los <span translate="No">API de CMS</span> devolverá los datos de la imagen en un <code translate="No">GET</code> solicitud de <code translate="No">https://cms.api.brightcove.com/v1/accounts/{account_id}/videos/{video_id}</code> o, si solo desea los datos de la imagen, <code translate="No">https://cms.api.brightcove.com/v1/accounts/{account_id}/videos/{video_id}/images</code></p>
+    <p>Puede recuperar datos de imágenes usando el <a href="/cms/index.html">CMS API</a>.</p>
+    <p>los <span translate="No">CMS API</span> devolverá los datos de la imagen en un <code translate="No">GET</code> solicitud de <code translate="No">https://cms.api.brightcove.com/v1/accounts/{account_id}/videos/{video_id}</code> o, si solo desea los datos de la imagen, <code translate="No">https://cms.api.brightcove.com/v1/accounts/{account_id}/videos/{video_id}/images</code></p>
     <p>En cualquier caso, los datos de la imagen en la respuesta se verán así:</p>
 <pre class="line-numbers"><code class="language-json" translate="No">{
   "thumbnail": {
@@ -655,7 +655,7 @@ layout: staging
 
     <ul>
       <li><strong>El sistema de ingestión no permite trabajos simultáneos en el mismo video</strong>.</li>
-      <li>Actualmente, los datos de imagen para las variantes ancha, cuadrada, vertical y ultraancha son devueltos solo por la API de CMS. <strong><em>no</em></strong> por solicitudes de video de la API de reproducción.</li>
+      <li>Actualmente, los datos de imagen para las variantes ancha, cuadrada, vertical y ultraancha son devueltos solo por la CMS API. <strong><em>no</em></strong> por solicitudes de video de la Playback API.</li>
     </ul>
   </section>
 </article>

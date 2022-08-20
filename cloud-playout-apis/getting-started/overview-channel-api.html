@@ -12,7 +12,7 @@ grandparent: Cloud Playout APIs
     <ul>
       <li>Una aplicación registrada con los alcances de autenticación de la API de Cloud Playout habilitados en la nube de video. (<code>Interfaz de usuario de Studio -&gt; Administrador -&gt; Autenticación de API</code>)</li>
     </ul>
-    <aside class="bcls-aside bcls-aside--information language-editable"> Tenga en cuenta que, además de las operaciones de canal de Cloud Playout, deberá utilizar la API de CMS también para administrar ese contenido, por lo que le recomendamos obtener todos los permisos necesarios para sus credenciales de cliente:
+    <aside class="bcls-aside bcls-aside--information language-editable"> Tenga en cuenta que, además de las operaciones de canal de Cloud Playout, deberá utilizar la CMS API también para administrar ese contenido, por lo que le recomendamos obtener todos los permisos necesarios para sus credenciales de cliente:
       <figure class="bcls-figure">
         <img class="bcls-image" src="/assets/images/cloud-playout/permissions-channel-api.png" alt="Cloud Player and CMS API Permissions">
         <figcaption class="bcls-caption--image">Permisos de la API de Cloud Player y CMS</figcaption>
@@ -112,7 +112,7 @@ Authorization: Bearer <span class="bc-input">{token}</span></code></pre>
   </section>
   <section class="bcls-section">
     <h2 id="Add_content">Agregar contenido a la lista de reproducción</h2>
-    <p>El siguiente paso es agregar contenido al contenido del canal. Para esto usarás el <a href="/cloud-playout-apis/references/reference-cms-interactions.html">API de CMS</a> (tenga en cuenta que esta es una versión abreviada del conjunto <a href="/cms/references/reference.html">Referencia de la API de CMS</a> incluyendo solo las operaciones relevantes para Cloud Playout y con descripciones que son más apropiadas para Cloud Playout).</p>
+    <p>El siguiente paso es agregar contenido al contenido del canal. Para esto usarás el <a href="/cloud-playout-apis/references/reference-cms-interactions.html">CMS API</a> (tenga en cuenta que esta es una versión abreviada del conjunto <a href="/cms/references/reference.html">Referencia de la CMS API</a> incluyendo solo las operaciones relevantes para Cloud Playout y con descripciones que son más apropiadas para Cloud Playout).</p>
     <p>Obtenga el playlist_id del canal (de la respuesta a la solicitud de creación de canal o de una solicitud de obtención de canal). Esta es la lista de reproducción en la que administramos nuestros activos para nuestro canal Cloud Playout.</p>
     <h3>Solicitud de muestra</h3>
     <h4>Pedido</h4>
@@ -155,7 +155,7 @@ Authorization: Bearer <span class="bc-input">{token}</span></code></pre>
   </section>
   <section class="bcls-section">
     <h2 id="add_live_event">Agregar evento en vivo</h2>
-    <p>Para agregar un evento en vivo a un canal, crea un <strong>crear video</strong> solicitud a la API de CMS, teniendo cuidado de incluir algunas etiquetas especiales que lo identificarán como un evento en vivo de Cloud Playout.</p>
+    <p>Para agregar un evento en vivo a un canal, crea un <strong>crear video</strong> solicitud a la CMS API, teniendo cuidado de incluir algunas etiquetas especiales que lo identificarán como un evento en vivo de Cloud Playout.</p>
     <h3>Solicitud de muestra</h3>
     <h4>Pedido</h4>
     <p>Hacer una <code translate="No">POST</code> solicitud de:</p>
@@ -227,7 +227,7 @@ Authorization: Bearer <span class="bc-input">{token}</span></code></pre>
   "playback_rights_id": "primary"
 }</code></pre>
 </details>
-    <p>Consulte el <a href="/cloud-playout-apis/references/reference-cms-interactions.html">Referencia de la API de CMS para Cloud Playout</a> para obtener más ejemplos relacionados con la gestión de activos en Cloud Playout.</p>
+    <p>Consulte el <a href="/cloud-playout-apis/references/reference-cms-interactions.html">Referencia de la CMS API para Cloud Playout</a> para obtener más ejemplos relacionados con la gestión de activos en Cloud Playout.</p>
   </section>
   <section class="bcls-section">
     <h2 id="get-channel">Obtener canal</h2>

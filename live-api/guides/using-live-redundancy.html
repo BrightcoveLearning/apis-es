@@ -1,6 +1,6 @@
 ---
 title: 'Uso de redundancia en vivo'
-description: 'Los grupos redundantes le permiten combinar 2 o más trabajos en vivo en una sola transmisión con conmutación por error automática para una reproducción confiable ininterrumpida. Esta guía lo guiará para crear un grupo redundante, agregar trabajos y forzar una conmutación por error mediante la API en vivo.'
+description: 'Los grupos redundantes le permiten combinar 2 o más trabajos en vivo en una sola transmisión con conmutación por error automática para una reproducción confiable ininterrumpida. Esta guía lo guiará para crear un grupo redundante, agregar trabajos y forzar una conmutación por error mediante la Live API.'
 parent: Guides 
 grandparent: Live API
 ---
@@ -12,7 +12,7 @@ grandparent: Live API
     
     <p>La función de redundancia de Brightcove Live ayuda a asegurar un rendimiento confiable para sus eventos en vivo mediante la creación de una transmisión de respaldo a la que Live realizará una conmutación por error automáticamente en caso de que la primera transmisión deje de funcionar.</p>
     
-    <p>Tenga en cuenta que todas las solicitudes a la API en vivo requieren los siguientes encabezados:</p>
+    <p>Tenga en cuenta que todas las solicitudes a la Live API requieren los siguientes encabezados:</p>
     
     <table class="bcls-table">
       <caption class="bcls-caption--table">Encabezados de solicitud de API</caption>
@@ -77,7 +77,7 @@ grandparent: Live API
       "live_dvr_sliding_window_duration": 1800
     }</code></pre>
     
-    <p>La siguiente tabla contiene una lista completa de campos para el cuerpo de la solicitud. En varios casos, son idénticos a los campos utilizados para crear un trabajo en vivo. Ver el <a href="/live-api/references/reference.html">Referencia de API en vivo</a> para obtener más detalles sobre los campos.</p>
+    <p>La siguiente tabla contiene una lista completa de campos para el cuerpo de la solicitud. En varios casos, son idénticos a los campos utilizados para crear un trabajo en vivo. Ver el <a href="/live-api/references/reference.html">Referencia de Live API</a> para obtener más detalles sobre los campos.</p>
     
     <table class="bcls-table">
       <caption class="bcls-caption--table">Crear campos de grupo redundantes</caption>

@@ -21,7 +21,7 @@ grandparent: Dynamic Ingest API
     <p>Se utilizan varios sistemas / tecnologías en la transcodificación y almacenamiento generales de medios. Ellos son:</p>
 
     <ul>
-      <li><strong>API de CMS</strong>: Crea un objeto de video para usar en la API de DI</li>
+      <li><strong>CMS API</strong>: Crea un objeto de video para usar en la API de DI</li>
       <li><strong>Zencoder</strong>: Transcodifica el video creando múltiples versiones.</li>
       <li><strong>Amazon S3</strong>: Mueve el maestro y las representaciones al almacenamiento, según la configuración del perfil</li>
       <li><strong>Catalogar</strong>: Almacena la información necesaria asociada con el video.</li>
@@ -351,13 +351,13 @@ ftp://<span class="bcls-highlight">user%40example.com:pass%21word</span>@example
     <p>Hay dos solicitudes de API necesarias para la ingesta de videos:</p>
 
     <ol>
-      <li>Llama a <span translate="No">API de CMS</span> para crear un objeto de video en el sistema Video Cloud y obtener su identificación</li>
+      <li>Llama a <span translate="No">CMS API</span> para crear un objeto de video en el sistema Video Cloud y obtener su identificación</li>
       <li>Llama a <span translate="No">API de ingesta dinámica</span> para proporcionar la URL del archivo de origen del video y especificar otros archivos y configuraciones para la ingesta según sea necesario</li>
     </ol>
 
     <p>Un conjunto de muestra de solicitudes básicas tendría el siguiente aspecto:</p>
 
-    <h3>Solicitud de API de CMS</h3>
+    <h3>Solicitud de CMS API</h3>
 
     <dl>
       <dt>Método HTTP</dt>
@@ -375,7 +375,7 @@ ftp://<span class="bcls-highlight">user%40example.com:pass%21word</span>@example
       </dd>
     </dl>
 
-    <aside class="bcls-aside bcls-aside--information">Para obtener más información sobre <span translate="No">API de CMS</span> llamar para crear el vídeo en el sistema Video Cloud, consulte la <a href="/cms/getting-started/overview-cms-api.html#settingvalues">Descripción general de la API de CMS</a>. Tenga en cuenta que el video <code translate="No">name </code> es obligatorio, y que el nombre y cualquier otra cadena incluida para los metadatos de video (como el <code translate="No">description </code> ) <strong>debe estar codificado en URI</strong>.</aside>
+    <aside class="bcls-aside bcls-aside--information">Para obtener más información sobre <span translate="No">CMS API</span> llamar para crear el vídeo en el sistema Video Cloud, consulte la <a href="/cms/getting-started/overview-cms-api.html#settingvalues">Descripción general de la CMS API</a>. Tenga en cuenta que el video <code translate="No">name </code> es obligatorio, y que el nombre y cualquier otra cadena incluida para los metadatos de video (como el <code translate="No">description </code> ) <strong>debe estar codificado en URI</strong>.</aside>
 
     <p>Los datos de respuesta incluirán el video. <code translate="No">id </code> , que se utiliza en la siguiente solicitud.</p>
 
@@ -415,15 +415,15 @@ ftp://<span class="bcls-highlight">user%40example.com:pass%21word</span>@example
 
     <p>Puede ver las versiones de su video yendo a la <a href="https://studio.support.brightcove.com/media/editing-video-properties-using-media-module.html#videofiles">Módulo de medios en Studio</a>.</p>
 
-    <p>Para ver las propiedades completas de las representaciones, puede utilizar la <a href="#retrieveRenditions">Solicitud de API de CMS detallada a continuación</a>.</p>
+    <p>Para ver las propiedades completas de las representaciones, puede utilizar la <a href="#retrieveRenditions">Solicitud de CMS API detallada a continuación</a>.</p>
 
-    <p>Para recuperar las URL para su reproducción, puede utilizar el <a href="#retrieveRenditions2">Solicitud de API de reproducción que se detalla a continuación</a>.</p>
+    <p>Para recuperar las URL para su reproducción, puede utilizar el <a href="#retrieveRenditions2">Solicitud de Playback API que se detalla a continuación</a>.</p>
     </section>
 
     <section class="bcls-section">
     <h2 id="replaceVideo">Reemplazar un video</h2>
 
-    <p>Para reemplazar un video con una nueva versión o un nuevo conjunto de representaciones, el <span translate="No">API de ingesta dinámica</span> la llamada es exactamente la misma que sería para <a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-ingesting-videos-dynamic-delivery.html">ingiriendo nuevos videos</a> - la única diferencia es que no es necesario realizar una llamada previa al <span translate="No">API de CMS</span> para crear el objeto de video en el sistema Video Cloud y obtener una identificación para él. Si el archivo de video de origen en la URL especificada es el mismo que se ingirió originalmente, simplemente obtendrá un nuevo conjunto de representaciones. Si el archivo de origen es nuevo, reemplazará el video existente. Todos los videos se seguirán reproduciendo con las interpretaciones existentes hasta que se complete la retranscodificación.</p>
+    <p>Para reemplazar un video con una nueva versión o un nuevo conjunto de representaciones, el <span translate="No">API de ingesta dinámica</span> la llamada es exactamente la misma que sería para <a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-ingesting-videos-dynamic-delivery.html">ingiriendo nuevos videos</a> - la única diferencia es que no es necesario realizar una llamada previa al <span translate="No">CMS API</span> para crear el objeto de video en el sistema Video Cloud y obtener una identificación para él. Si el archivo de video de origen en la URL especificada es el mismo que se ingirió originalmente, simplemente obtendrá un nuevo conjunto de representaciones. Si el archivo de origen es nuevo, reemplazará el video existente. Todos los videos se seguirán reproduciendo con las interpretaciones existentes hasta que se complete la retranscodificación.</p>
 
     <p>Ver el <a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-replacing-videos-dynamic-delivery.html">muestra de trabajo aquí</a>.</p>
     </section>

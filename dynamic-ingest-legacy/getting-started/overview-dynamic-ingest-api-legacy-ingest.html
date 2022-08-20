@@ -65,7 +65,7 @@ grandparent: 'Dynamic Ingest API'
 
     <aside class="bcls-aside bcls-aside--tip">
     <ul>
-      <li>Un límite de 20 solicitudes por segundo en cada cuenta para el total de solicitudes en DI y el <span translate="No">API de CMS</span> (API de CMS o solicitudes de API de ingesta)</li>
+      <li>Un límite de 20 solicitudes por segundo en cada cuenta para el total de solicitudes en DI y el <span translate="No">CMS API</span> (CMS API o solicitudes de API de ingesta)</li>
       <li>Un límite de 100 trabajos DI simultáneos por cuenta (hay opciones adicionales para grandes lotes de solicitudes de cuentas convertidas a <a href="/dynamic-ingest/getting-started/overview-dynamic-ingest-api-dynamic-delivery.html">Entrega dinámica</a>)</li>
       <li>Ingesta contenido de menos de 100 GB por archivo (si necesitas ingerir archivos más grandes, comunícate con tu administrador de cuentas)</li>
       <li>Si está ingiriendo archivos en lotes, limite los trabajos de prioridad normal concurrentes a 100 y espere a que un trabajo complete el procesamiento antes de agregar otro</li>
@@ -127,13 +127,13 @@ grandparent: 'Dynamic Ingest API'
     <p>Se requieren dos llamadas a la API para ingerir videos:</p>
 
     <ol>
-      <li>Llama a <span translate="No">API de CMS</span> para crear un objeto de video en el sistema Video Cloud y obtener su identificación</li>
+      <li>Llama a <span translate="No">CMS API</span> para crear un objeto de video en el sistema Video Cloud y obtener su identificación</li>
       <li>Llame a la API de DI para proporcionar la URL del archivo de origen del video y especifique el <a href="/ingest-profiles-legacy/references/standard-ingest-profiles-legacy-transcoding.html">perfil de ingesta</a> para ser utilizado</li>
     </ol>
 
     <p>Un conjunto de muestra de solicitudes básicas tendría el siguiente aspecto:</p>
 
-    <h3>Solicitud de API de CMS</h3>
+    <h3>Solicitud de CMS API</h3>
 
     <dl>
       <dt>Método HTTP</dt>
@@ -176,7 +176,7 @@ grandparent: 'Dynamic Ingest API'
 
     <p>Ver el <a href="/dynamic-ingest/getting-started/overview-dynamic-ingest-api-dynamic-delivery.html">Inicio rápido</a> para obtener detalles de las llamadas a la API, y también puede ver un <a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-ingesting-videos-legacy-ingest.html">muestra de trabajo</a>.</p>
 
-    <p>Para <span translate="No">API de CMS</span> llamar para crear el vídeo en el sistema Video Cloud, consulte la <a href="/cms/getting-started/overview-cms-api.html#settingvalues">Descripción general de la API de CMS</a>. Tenga en cuenta que el video <code translate="No">name </code> es obligatorio, y que el nombre y cualquier otra cadena incluida para los metadatos de video (como el <code translate="No">description </code> ) <strong>debe estar codificado en URI</strong>.</p>
+    <p>Para <span translate="No">CMS API</span> llamar para crear el vídeo en el sistema Video Cloud, consulte la <a href="/cms/getting-started/overview-cms-api.html#settingvalues">Descripción general de la CMS API</a>. Tenga en cuenta que el video <code translate="No">name </code> es obligatorio, y que el nombre y cualquier otra cadena incluida para los metadatos de video (como el <code translate="No">description </code> ) <strong>debe estar codificado en URI</strong>.</p>
     </section>
 
     <section class="bcls-section">
@@ -194,7 +194,7 @@ grandparent: 'Dynamic Ingest API'
     <section class="bcls-section">
     <h2 id="replaceVideo">Reemplazar un video</h2>
 
-    <p>Para reemplazar un video con una nueva versión o un nuevo conjunto de representaciones, el <span translate="No">API de ingesta dinámica</span> la llamada es exactamente la misma que sería para <a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-ingesting-videos-legacy-ingest.html">ingiriendo nuevos videos</a> - la única diferencia es que no es necesario realizar una llamada previa al <span translate="No">API de CMS</span> para crear el objeto de video en el sistema Video Cloud y obtener una identificación para él. Si el archivo de video de origen en la URL especificada es el mismo que se ingirió originalmente, simplemente obtendrá un nuevo conjunto de representaciones. Si el archivo de origen es nuevo, reemplazará el video existente. Todos los videos se seguirán reproduciendo con las interpretaciones existentes hasta que se complete la retranscodificación.</p>
+    <p>Para reemplazar un video con una nueva versión o un nuevo conjunto de representaciones, el <span translate="No">API de ingesta dinámica</span> la llamada es exactamente la misma que sería para <a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-ingesting-videos-legacy-ingest.html">ingiriendo nuevos videos</a> - la única diferencia es que no es necesario realizar una llamada previa al <span translate="No">CMS API</span> para crear el objeto de video en el sistema Video Cloud y obtener una identificación para él. Si el archivo de video de origen en la URL especificada es el mismo que se ingirió originalmente, simplemente obtendrá un nuevo conjunto de representaciones. Si el archivo de origen es nuevo, reemplazará el video existente. Todos los videos se seguirán reproduciendo con las interpretaciones existentes hasta que se complete la retranscodificación.</p>
 
     <p>Ver el <a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-re-transcoding-videos-legacy-ingest.html">muestra de trabajo aquí</a>.</p>
     </section>
@@ -246,7 +246,7 @@ grandparent: 'Dynamic Ingest API'
 
     <ol>
       <li>para imágenes y pistas de texto, solo se admiten las URL públicas HTTP o HTTPS o las URL de S3 firmadas</li>
-      <li>para las pistas de texto, Dynamic Ingest solo las agrega / agrega a la lista vtt del video, incluso si es una solicitud de re-transcodificación. el cliente debe utilizar el <span translate="No">API de CMS</span> para gestionarlos (actualizar / eliminar)</li>
+      <li>para las pistas de texto, Dynamic Ingest solo las agrega / agrega a la lista vtt del video, incluso si es una solicitud de re-transcodificación. el cliente debe utilizar el <span translate="No">CMS API</span> para gestionarlos (actualizar / eliminar)</li>
       <li>Dynamic Ingest acepta hasta 100 pistas de texto a la vez</li>
       <li>mime_type no es compatible</li>
     </ol>
@@ -270,6 +270,6 @@ grandparent: 'Dynamic Ingest API'
 
     <p>Puede especificar una o más URL de devolución de llamada para recibir notificaciones de los resultados del proceso de ingesta. Las URL que especifique deben ser para aplicaciones que puedan aceptar solicitudes POST. Las notificaciones se enviarán en formato JSON.</p>
 
-    <p>Los detalles sobre la recepción e interpretación de notificaciones se pueden encontrar en <a href="/dynamic-ingest/general/notifications-dynamic-delivery-video-cloud.html">Notificaciones: API de CMS e ingesta dinámica</a></p>
+    <p>Los detalles sobre la recepción e interpretación de notificaciones se pueden encontrar en <a href="/dynamic-ingest/general/notifications-dynamic-delivery-video-cloud.html">Notificaciones: CMS API e ingesta dinámica</a></p>
     </section>
     </article>

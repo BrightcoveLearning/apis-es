@@ -1,6 +1,6 @@
 ---
 title: 'Establecer propiedades de video de 360 grados'
-description: 'En este tema, aprenderá a configurar propiedades de video de 360 ° utilizando la API de CMS. Usaremos la interfaz Postman para enviar nuestras solicitudes y ver las respuestas de la API.'
+description: 'En este tema, aprenderá a configurar propiedades de video de 360 ° utilizando la CMS API. Usaremos la interfaz Postman para enviar nuestras solicitudes y ver las respuestas de la API.'
 parent: Managing Videos/Assets 
 grandparent: CMS API
 ---
@@ -12,7 +12,7 @@ grandparent: CMS API
     
     <p>Para identificar un video como un video de 360 °, se debe establecer la propiedad de proyección. Puede configurar esta propiedad <a href="https://studio.support.brightcove.com/media/editing-video-properties-using-media-module.html">usando el módulo de medios en Studio</a> , o puede hacerlo mediante programación como se muestra en este tema.</p>
     
-    <aside class="bcls-aside bcls-aside--tip">Este ejemplo usa la aplicación Postman para actualizar las propiedades de video con la API de CMS. Aprenda a comenzar con el <a href="/general/use-postman-api-requests.html">Utilice Postman para solicitudes HTTP</a> documento.</aside>
+    <aside class="bcls-aside bcls-aside--tip">Este ejemplo usa la aplicación Postman para actualizar las propiedades de video con la CMS API. Aprenda a comenzar con el <a href="/general/use-postman-api-requests.html">Utilice Postman para solicitudes HTTP</a> documento.</aside>
     
     <p>En este tema, realizará las siguientes tareas:</p>
     
@@ -47,7 +47,7 @@ grandparent: CMS API
     <section id="Retrieve_video_information" class="bcls-section">
     <h2>Recuperar información de video</h2>
     
-    <p>Una vez que haya subido su video a Video Cloud Studio, estará listo para recuperar la información de video de la API de CMS. Para obtener información sobre cómo cargar videos, consulte la <a href="https://studio.support.brightcove.com/media/uploading-videos-using-upload-module.html">Carga de videos usando el módulo de carga</a> documento.</p>
+    <p>Una vez que haya subido su video a Video Cloud Studio, estará listo para recuperar la información de video de la CMS API. Para obtener información sobre cómo cargar videos, consulte la <a href="https://studio.support.brightcove.com/media/uploading-videos-using-upload-module.html">Carga de videos usando el módulo de carga</a> documento.</p>
     
     <ol class="bcls-tasklist">
       <li>Abra la aplicación Postman.</li>
@@ -56,7 +56,7 @@ grandparent: CMS API
       <figcaption class="bcls-caption--image">Token de acceso</figcaption>
       </figure>
       </li>
-      <li>Hacer una <strong>OBTENER</strong> solicitud a la API de CMS, utilizando el <strong>Obtener video por ID</strong> sintaxis. Para hacerlo, ingrese la siguiente URL en el <strong>Ingrese la URL de la solicitud</strong> campo, sustituyendo su ID de cuenta por <code translate="No">{account_id}</code> y tu identificación de video para <code translate="No">{video_id}</code>:
+      <li>Hacer una <strong>OBTENER</strong> solicitud a la CMS API, utilizando el <strong>Obtener video por ID</strong> sintaxis. Para hacerlo, ingrese la siguiente URL en el <strong>Ingrese la URL de la solicitud</strong> campo, sustituyendo su ID de cuenta por <code translate="No">{account_id}</code> y tu identificación de video para <code translate="No">{video_id}</code>:
       <pre class="line-numbers">
     <code class="language-http" translate="No">https://cms.api.brightcove.com/v1/accounts/{account_id}/videos/{video_id}</code></pre>
       </li>

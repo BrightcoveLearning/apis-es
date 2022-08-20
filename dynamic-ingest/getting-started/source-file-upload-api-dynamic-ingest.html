@@ -84,7 +84,7 @@ grandparent: Dynamic Ingest API
       <li><span class="bcls-highlight">video-cloud / upload-urls / read</span></li>
     </ul>
     
-    <p>Estos permisos están disponibles en <a href="/getting-started/authentication-brightcove-api-requests.html">Estudio</a>. Alternativamente, puede obtener credenciales de cliente para usar la API de carga de archivos de origen directamente desde la API de OAuth haciendo una solicitud POST de la siguiente manera:</p>
+    <p>Estos permisos están disponibles en <a href="/getting-started/authentication-brightcove-api-requests.html">Estudio</a>. Alternativamente, puede obtener credenciales de cliente para usar la API de carga de archivos de origen directamente desde la OAuth API haciendo una solicitud POST de la siguiente manera:</p>
     
     <h3>Solicitar URL</h3>
     
@@ -133,14 +133,14 @@ grandparent: Dynamic Ingest API
     <p>Hay cuatro solicitudes de API involucradas en la ingestión basada en push:</p>
     
     <ol>
-      <li>Solicitud POST de la API de CMS para crear el objeto de video en Video Cloud (igual que para la ingestión basada en extracción)</li>
+      <li>Solicitud POST de la CMS API para crear el objeto de video en Video Cloud (igual que para la ingestión basada en extracción)</li>
       <li>Solicitud GET de ingesta dinámica para obtener las URL del bucket de Brightcove S3</li>
       <li>Solicitud PUT para cargar el archivo de origen en el depósito Brightcove S3</li>
       <li>Solicitud POST de ingesta dinámica para ingerir el archivo de origen (igual que para la ingestión basada en extracción)</li>
     </ol>
     
     <aside class="bcls-aside bcls-aside--information">
-    <p>los <span translate="No">API de CMS</span> y <span translate="No">API de ingesta dinámica</span> las solicitudes deben realizarse desde una aplicación del lado del servidor o <a href="/getting-started/learning-guide-using-rest-apis.html">apoderado</a>. Las solicitudes PUT para cargar los archivos en el bucket de S3 se pueden realizar directamente desde una aplicación cliente o desde una aplicación servidor.</p>
+    <p>los <span translate="No">CMS API</span> y <span translate="No">API de ingesta dinámica</span> las solicitudes deben realizarse desde una aplicación del lado del servidor o <a href="/getting-started/learning-guide-using-rest-apis.html">apoderado</a>. Las solicitudes PUT para cargar los archivos en el bucket de S3 se pueden realizar directamente desde una aplicación cliente o desde una aplicación servidor.</p>
     
     <p>Si está cargando videos desde un sitio web (del lado del cliente), esta biblioteca simplifica los pasos que necesita para una experiencia de usuario fluida: <a href="https://github.com/BrightcoveOS/evaporate-brightcove">https://github.com/BrightcoveOS/evaporate-brightcove</a>. Tenga en cuenta que esta biblioteca es de código abierto y no es oficialmente compatible con Brightcove.</p>
     </aside>
@@ -149,9 +149,9 @@ grandparent: Dynamic Ingest API
     </section>
     
     <section class="bcls-section">
-    <h2 id="CMS_API_request">Solicitud de API de CMS</h2>
+    <h2 id="CMS_API_request">Solicitud de CMS API</h2>
     
-    <p>los <span translate="No">API de CMS</span> La solicitud es la misma que para cualquier operación de Ingesta dinámica para agregar un nuevo video. Esta solicitud es necesaria para ingerir un nuevo video. Si está reemplazando o agregando activos a un video existente, no necesitará este paso; en su lugar, usará la identificación de video existente en las otras solicitudes.</p>
+    <p>los <span translate="No">CMS API</span> La solicitud es la misma que para cualquier operación de Ingesta dinámica para agregar un nuevo video. Esta solicitud es necesaria para ingerir un nuevo video. Si está reemplazando o agregando activos a un video existente, no necesitará este paso; en su lugar, usará la identificación de video existente en las otras solicitudes.</p>
     
     <h3>Solicitar sintaxis</h3>
     
@@ -211,7 +211,7 @@ grandparent: Dynamic Ingest API
     
     <ul>
       <li><code translate="No">{ACCOUNT_ID}</code>- su identificación de cuenta</li>
-      <li><code translate="No">{VIDEO_ID}</code>- la identificación de video regresó de <span translate="No">API de CMS</span> solicitud</li>
+      <li><code translate="No">{VIDEO_ID}</code>- la identificación de video regresó de <span translate="No">CMS API</span> solicitud</li>
       <li><code translate="No">{SOURCE_NAME}</code>- el nombre del archivo de fuente de video - <strong>el nombre no debe contener ningún carácter reservado para la URL, como <code translate="No">?</code> , <code translate="No">&amp;</code> , <code translate="No">#</code> o espacios</strong></li>
     </ul>
     
@@ -319,7 +319,7 @@ grandparent: Dynamic Ingest API
     
     <ul>
       <li><code translate="No">{ACCOUNT_ID}</code>- su identificación de cuenta</li>
-      <li><code translate="No">{VIDEO_ID}</code>- la identificación de video regresó de <span translate="No">API de CMS</span> solicitud</li>
+      <li><code translate="No">{VIDEO_ID}</code>- la identificación de video regresó de <span translate="No">CMS API</span> solicitud</li>
     </ul>
     
     <h4>Cuerpo de la solicitud</h4>

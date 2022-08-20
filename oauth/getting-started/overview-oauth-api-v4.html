@@ -1,5 +1,5 @@
 ---
-title: 'Visión general: API de OAuth'
+title: 'Visión general: OAuth API'
 description: 'La implementación de Brightcove de OAuth2 le permite obtener tokens de acceso para varias API de Brightcove.'
 parent: Getting Started 
 grandparent: OAuth API
@@ -14,7 +14,7 @@ grandparent: OAuth API
     
     <ul>
       <li>
-      <p>La API de OAuth: proporciona acceso a todas las funciones de OAuth disponibles.</p>
+      <p>La OAuth API: proporciona acceso a todas las funciones de OAuth disponibles.</p>
       </li>
       <li>
       <p>La interfaz de usuario de credenciales de OAuth: accesible a través de la interfaz de configuración de la cuenta en Studio, la interfaz de usuario proporciona una manera fácil de registrar aplicaciones que usarán las API de Brightcove y generarán una ID de cliente y un secreto de cliente para ellas. Ver <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a> para obtener instrucciones sobre el uso de la interfaz de usuario de OAuth.</p>
@@ -62,7 +62,7 @@ grandparent: OAuth API
     <section class="bcls-section">
     <h2 id="Base_URL">URL base</h2>
     
-    <p>La URL base de la API de OAuth es:</p>
+    <p>La URL base de la OAuth API es:</p>
     
     <pre class="line-numbers">
     <code class="language-http" translate="No">https://oauth.brightcove.com/v4
@@ -94,7 +94,7 @@ grandparent: OAuth API
       <p>Con la interfaz de usuario de OAuth o el servicio OAuth, obtenga una identificación de cliente y un secreto para su aplicación; la interfaz de usuario le permite obtener una identificación de cliente y un secreto para una sola cuenta o varias. Esta es una operación de una sola vez.</p>
       </li>
       <li>
-      <p>Agregue lógica a su aplicación del lado del servidor para realizar solicitudes a la API de OAuth para los tokens de acceso. La implementación dependerá del idioma de su aplicación (y le recomendamos que utilice una <a href="#Client_samples_and_libraries">Biblioteca OAuth2</a> para su idioma si es posible), pero la llamada que hará será una solicitud POST a:</p>
+      <p>Agregue lógica a su aplicación del lado del servidor para realizar solicitudes a la OAuth API para los tokens de acceso. La implementación dependerá del idioma de su aplicación (y le recomendamos que utilice una <a href="#Client_samples_and_libraries">Biblioteca OAuth2</a> para su idioma si es posible), pero la llamada que hará será una solicitud POST a:</p>
     
       <pre class="line-numbers">
     <code class="language-http" translate="No">https://oauth.brightcove.com/v4/access_token
@@ -266,7 +266,7 @@ grandparent: OAuth API
     
     <p>Hemos creado <a href="https://github.com/BrightcoveLearning/oauth-client-examples">implementaciones de cliente de muestra</a> en varios idiomas para ofrecerle modelos de implementación.</p>
     
-    <p>También hay bibliotecas OAuth2 disponibles para varios idiomas y, por lo general, le recomendamos que utilice estas bibliotecas siempre que sea posible, en lugar de crear una interacción con la API de OAuth. A continuación se muestra una lista parcial de bibliotecas disponibles. Para obtener una lista más extensa, consulte <a href="http://oauth.net/2/">http://oauth.net/2/</a></p>
+    <p>También hay bibliotecas OAuth2 disponibles para varios idiomas y, por lo general, le recomendamos que utilice estas bibliotecas siempre que sea posible, en lugar de crear una interacción con la OAuth API. A continuación se muestra una lista parcial de bibliotecas disponibles. Para obtener una lista más extensa, consulte <a href="http://oauth.net/2/">http://oauth.net/2/</a></p>
     
     <dl><!-- <dt>Node JS/JavaScript</dt>
     <dd>

@@ -1,6 +1,6 @@
 ---
 title: 'Uso compartido de medios'
-description: 'En este tema, aprenderá a compartir videos de una cuenta de Video Cloud a otra utilizando la API de CMS.'
+description: 'En este tema, aprenderá a compartir videos de una cuenta de Video Cloud a otra utilizando la CMS API.'
 parent: Managing Videos/Assets 
 grandparent: CMS API
 ---
@@ -17,7 +17,7 @@ grandparent: CMS API
     <aside class="bcls-aside bcls-aside--information"> También tenga en cuenta: 
       <ul>
         <li><strong>El uso compartido de medios solo está disponible para los clientes de Video Cloud Enterprise con varias cuentas.</strong> Si está interesado en actualizar su cuenta de Video Cloud, póngase en contacto con Brightcove para obtener más información.</li>
-        <li>Las operaciones de uso compartido de medios de la API de CMS deben estar habilitadas para el maestro y para cada cuenta de afiliado. <a href="https://supportportal.brightcove.com/s/login/?language=en_US">Póngase en contacto con el soporte de Brightcove</a> si necesita compartir habilitado.</li>
+        <li>Las operaciones de uso compartido de medios de la CMS API deben estar habilitadas para el maestro y para cada cuenta de afiliado. <a href="https://supportportal.brightcove.com/s/login/?language=en_US">Póngase en contacto con el soporte de Brightcove</a> si necesita compartir habilitado.</li>
         <li>El intercambio de medios puede ser bidireccional: cada cuenta puede ser maestra y afiliada de la otra.</li>
       </ul>
     </aside> <aside class="bcls-aside bcls-aside--information"></aside>
@@ -79,7 +79,7 @@ grandparent: CMS API
     <section class="bcls-section">
     <h2 id="base_URL">URL base</h2>
     
-    <p>Como para todos <span translate="No">API de CMS</span> solicitudes, la URL base para las operaciones que se describen a continuación es:</p>
+    <p>Como para todos <span translate="No">CMS API</span> solicitudes, la URL base para las operaciones que se describen a continuación es:</p>
     
     <pre>
       <code class="language-http" translate="No">https://cms.api.brightcove.com/v1</code></pre>
@@ -204,7 +204,7 @@ grandparent: CMS API
     
     <h5 id="Resharing_videos">Compartiendo videos</h5>
     
-    <p>Tenga en cuenta, sin embargo, que si el Maestro <strong>re-comparte</strong> el video (esto solo se puede hacer a través de la API de CMS, no en Studio), todos los activos y metadatos (aparte de los campos de datos / tiempo) se compartirán con los Afiliados, <strong>sobrescribir cualquier cambio que los afiliados hayan realizado</strong>.</p>
+    <p>Tenga en cuenta, sin embargo, que si el Maestro <strong>re-comparte</strong> el video (esto solo se puede hacer a través de la CMS API, no en Studio), todos los activos y metadatos (aparte de los campos de datos / tiempo) se compartirán con los Afiliados, <strong>sobrescribir cualquier cambio que los afiliados hayan realizado</strong>.</p>
     
     <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que hay dos formas de volver a compartir, que tienen diferentes consecuencias:
     <dl>
@@ -378,9 +378,9 @@ grandparent: CMS API
     </section>
     
     <section class="bcls-section">
-    <h2 id="CMS_API_operations">Solicitudes de API de CMS: configuración</h2>
+    <h2 id="CMS_API_operations">Solicitudes de CMS API: configuración</h2>
     
-    <p>Esta sección enumera los <span translate="No">API de CMS</span> operaciones involucradas en la configuración del uso compartido de medios.</p>
+    <p>Esta sección enumera los <span translate="No">CMS API</span> operaciones involucradas en la configuración del uso compartido de medios.</p>
     
     <h3>Operaciones maestras</h3>
     
@@ -820,9 +820,9 @@ grandparent: CMS API
     </section>
     
     <section class="bcls-section">
-    <h2 id="cms_operations_sharing">Solicitudes de API de CMS: compartir</h2>
+    <h2 id="cms_operations_sharing">Solicitudes de CMS API: compartir</h2>
     
-    <p>Esta sección detalla el <span translate="No">API de CMS</span> solicitudes utilizadas para compartir videos. Las operaciones de uso compartido de medios las realiza la cuenta principal. La cuenta de afiliado puede aceptar acciones si <code translate="No">auto_accept</code> esta apagado.</p>
+    <p>Esta sección detalla el <span translate="No">CMS API</span> solicitudes utilizadas para compartir videos. Las operaciones de uso compartido de medios las realiza la cuenta principal. La cuenta de afiliado puede aceptar acciones si <code translate="No">auto_accept</code> esta apagado.</p>
     
     <h3>Operaciones maestras</h3>
     
@@ -1147,7 +1147,7 @@ grandparent: CMS API
         }
       ]</code></pre>
     
-    <p>Ver <a href="/cms/references/cms-api-error-message-reference.html#Media_sharing_errors">los <span translate="No">API de CMS</span> Referencia de error</a> para más detalles.</p>
+    <p>Ver <a href="/cms/references/cms-api-error-message-reference.html#Media_sharing_errors">los <span translate="No">CMS API</span> Referencia de error</a> para más detalles.</p>
     </section>
     
     <section class="bcls-section">
@@ -1156,7 +1156,7 @@ grandparent: CMS API
     <p>Actualmente, el uso compartido de medios tiene las siguientes limitaciones:</p>
     
     <ul>
-      <li>DRM: uso compartido de medios a través del <span translate="No">API de CMS</span> actualmente no es compatible con cuentas habilitadas para DRM. Se admite compartir videos de una cuenta que no está habilitada para DRM a una cuenta que sí está habilitada para DRM, pero los videos compartidos <strong>no</strong> ser empaquetado para DRM.</li>
+      <li>DRM: uso compartido de medios a través del <span translate="No">CMS API</span> actualmente no es compatible con cuentas habilitadas para DRM. Se admite compartir videos de una cuenta que no está habilitada para DRM a una cuenta que sí está habilitada para DRM, pero los videos compartidos <strong>no</strong> ser empaquetado para DRM.</li>
       <li>
       <p>Si el canal definido por la cuenta maestra se ha establecido <code translate="No">enforce_custom_fields</code> a <code translate="No">true</code> y luego comparte un video que tiene un campo personalizado con un valor que no está permitido por la cuenta de afiliado, ese intento de compartir fallará. El estado del recurso compartido se actualizará con un mensaje de error similar a este:</p>
     

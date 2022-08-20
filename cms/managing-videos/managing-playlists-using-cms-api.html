@@ -1,6 +1,6 @@
 ---
-title: 'Administrar listas de reproducción con la API de CMS'
-description: 'Este tema describe cómo crear, actualizar o eliminar listas de reproducción mediante la API de CMS.'
+title: 'Administrar listas de reproducción con la CMS API'
+description: 'Este tema describe cómo crear, actualizar o eliminar listas de reproducción mediante la CMS API.'
 parent: Managing Videos/Assets 
 grandparent: CMS API
 ---
@@ -10,7 +10,7 @@ grandparent: CMS API
     <section class="bcls-section">
     <h2 id="intro">Introducción</h2>
     <img alt="Sample Playlist" style="float:right;" src="/assets/images/cms/managing-videos/sample-playlist.png" />
-    <p>Las listas de reproducción le permiten agrupar un conjunto de videos relacionados para que puedan cargarse en un reproductor y verse como un grupo. los <span translate="No">API de CMS</span> contiene un conjunto de métodos de escritura que puede utilizar para crear, actualizar o eliminar listas de reproducción:</p>
+    <p>Las listas de reproducción le permiten agrupar un conjunto de videos relacionados para que puedan cargarse en un reproductor y verse como un grupo. los <span translate="No">CMS API</span> contiene un conjunto de métodos de escritura que puede utilizar para crear, actualizar o eliminar listas de reproducción:</p>
     
     <ul>
       <li><a href="#create">Crea una lista de reproducción</a></li>
@@ -24,7 +24,7 @@ grandparent: CMS API
     <section id="authentication" class="bcls-section">
     <h2>Autenticación</h2>
     
-    <p class="BCL-aside">Solicitudes al <span translate="No">API de CMS</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</p>
+    <p class="BCL-aside">Solicitudes al <span translate="No">CMS API</span> requieren un encabezado de autorización que contenga sus tokens de acceso. Para obtener detalles sobre cómo obtener credenciales de cliente y usarlas para recuperar tokens de acceso, consulte la <a href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general de Brightcove OAuth</a>.</p>
     </section>
     
     <section class="section">
@@ -123,7 +123,7 @@ grandparent: CMS API
     <section class="bcls-section">
     <h2 id="Search_field">Campo de búsqueda</h2>
     
-    <p>Para todos los tipos de listas de reproducción inteligentes, la colección de videos se ensambla dinámicamente según el <code translate="No">search</code> valor de campo para la lista de reproducción. El valor del campo de búsqueda debe ser una cadena de búsqueda válida para una etiqueta. <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">cadena de búsqueda</a> para la API de CMS. A continuación se muestran algunos ejemplos con explicaciones de los videos que devolverán.</p>
+    <p>Para todos los tipos de listas de reproducción inteligentes, la colección de videos se ensambla dinámicamente según el <code translate="No">search</code> valor de campo para la lista de reproducción. El valor del campo de búsqueda debe ser una cadena de búsqueda válida para una etiqueta. <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">cadena de búsqueda</a> para la CMS API. A continuación se muestran algunos ejemplos con explicaciones de los videos que devolverán.</p>
     
     <aside class="bcls-aside bcls-aside--warning">Actualmente, las listas de reproducción solo se pueden crear a partir de una búsqueda de una o más etiquetas (separadas por comas). Además, no puede buscar videos que <strong>no</strong> tener una etiqueta particular.</aside>
     

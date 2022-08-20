@@ -42,7 +42,7 @@ parent: General Information
       <li>Cuando se carga un archivo de origen, el proceso de transcodificación utilizará el perfil de ingesta seleccionado para determinar el conjunto de representaciones que se crearán.</li>
       <li>Las reproducciones se almacenan como un conjunto de archivos MP4 contiguos y fragmentados de varias velocidades de bits y resoluciones que son independientes de cualquier formato de entrega específico.</li>
       <li>Cuando se realiza una solicitud para un video, el proceso de entrega dinámica realiza el empaquetado Just-in-Time o JIT, lo que significa que empaquetará dinámicamente el contenido en el formato apropiado según los requisitos especificados. Este paquete tendrá en cuenta el formato de entrega específico necesario, las pistas de audio y subtítulos necesarias, así como cualquier cifrado / DRM necesario.</li>
-      <li>Cuando el dispositivo de reproducción utiliza el manifiesto devuelto por la API de reproducción para solicitar que se reproduzcan los medios, realizamos un empaquetado justo a tiempo en los archivos MP4 fragmentados para proporcionar el formato de segmento, la duración y el cifrado adecuados. Estos fragmentos se almacenan en caché en una CDN para que la entrega de video siga teniendo un alto rendimiento.</li>
+      <li>Cuando el dispositivo de reproducción utiliza el manifiesto devuelto por la Playback API para solicitar que se reproduzcan los medios, realizamos un empaquetado justo a tiempo en los archivos MP4 fragmentados para proporcionar el formato de segmento, la duración y el cifrado adecuados. Estos fragmentos se almacenan en caché en una CDN para que la entrega de video siga teniendo un alto rendimiento.</li>
     </ol>
     
     <p>El proceso de Dynamic Delivery fue diseñado para ser un servicio basado en la nube totalmente administrado. Todos los componentes se ejecutan en la infraestructura de la nube en múltiples regiones para asegurar alta disponibilidad, redundancia y escalabilidad.</p>
@@ -166,9 +166,9 @@ parent: General Information
     
     <p>Sí, todos los nuevos editores (tanto Video Cloud como Once) se configurarán con Dynamic Delivery. Todas las cuentas existentes se han migrado a Dynamic Delivery y el sistema de ingesta heredado se ha desactivado.</p>
 
-		<p><strong>Algunas de mis representaciones de HLS tienen una tasa de bits más alta (según la API de CMS) que la especificada en el perfil de ingesta, ¿por qué?</strong></p>
+		<p><strong>Algunas de mis representaciones de HLS tienen una tasa de bits más alta (según la CMS API) que la especificada en el perfil de ingesta, ¿por qué?</strong></p>
 
-		<p>Lo que se especifica en el perfil de ingesta es el <strong>video</strong> tasa de bits. Lo que informa la API de CMS es la tasa de bits de video + la tasa de bits de audio + una sobrecarga del 10% para el procesamiento de entrega dinámica. Por lo tanto, la tasa de bits devuelta por la API de CMS siempre será mayor que la especificada en el perfil de ingesta, a menos que la tasa de bits del video de origen sea menor que eso.</p>
+		<p>Lo que se especifica en el perfil de ingesta es el <strong>video</strong> tasa de bits. Lo que informa la CMS API es la tasa de bits de video + la tasa de bits de audio + una sobrecarga del 10% para el procesamiento de entrega dinámica. Por lo tanto, la tasa de bits devuelta por la CMS API siempre será mayor que la especificada en el perfil de ingesta, a menos que la tasa de bits del video de origen sea menor que eso.</p>
     </section>
     
     <!-- <section class="bcls-section">

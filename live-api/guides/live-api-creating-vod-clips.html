@@ -1,5 +1,5 @@
 ---
-title: 'API en vivo: Creación de clips VOD'
+title: 'Live API: Creación de clips VOD'
 description: 'Este tema le muestra cómo crear clips de video a pedido (VOD) a partir de sus transmisiones en vivo.'
 parent: Guides 
 grandparent: Live API
@@ -63,7 +63,7 @@ grandparent: Live API
 <section class="bcls-section">
 <h2 id="credentials">Cartas credenciales</h2>
 
-<p>Si el destino al que está enviando el clip requiere credenciales para acceder, puede crearlas usando las operaciones de credenciales de Live API. Ver <a href="/live-api/guides/managing-credentials-live-api.html">Administrar credenciales para la API en vivo</a> para más detalles.</p>
+<p>Si el destino al que está enviando el clip requiere credenciales para acceder, puede crearlas usando las operaciones de credenciales de Live API. Ver <a href="/live-api/guides/managing-credentials-live-api.html">Administrar credenciales para la Live API</a> para más detalles.</p>
 
 <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que si está enviando el clip a una cuenta de Video Cloud que está asociada con la cuenta Live, debe <strong>no</strong> incluir las credenciales en el trabajo de recorte.</aside>
 </section>
@@ -237,7 +237,7 @@ grandparent: Live API
 
 <p>Para ver qué campos se pueden incluir en el <code translate="No">video</code> y <code translate="No">ingest</code> objetos, ver el <a translate="No" href="https://docs.brightcove.com/dynamic-ingest-api/v1/doc/index.html"><span translate="No">API de ingesta dinámica</span> Referencia</a>.</p>
 
-<aside class="bcls-aside bcls-aside--warning">Hacer <strong>no</strong> incluir la <code translate="No">master</code> campo en el <code translate="No">ingest</code> objeto, ya que esa información será proporcionada por la API en vivo.</aside>
+<aside class="bcls-aside bcls-aside--warning">Hacer <strong>no</strong> incluir la <code translate="No">master</code> campo en el <code translate="No">ingest</code> objeto, ya que esa información será proporcionada por la Live API.</aside>
 
 <section class="bcls-section">
 <h2 id="Request_body_s3">Cuerpo de la solicitud - S3</h2>
@@ -373,14 +373,14 @@ grandparent: Live API
 			<td><code translate="No"><a href="#video_fields">outputs.videocloud.video</a></code></td>
 			<td>Objeto</td>
 			<td>
-			<p>Un objeto que contiene entradas para <span translate="No"><span translate="No">Video Cloud</span></span> creación de objetos de vídeo: consulte la <a translate="No" href="https://docs.brightcove.com/cms-api/v1/doc/index.html#api-videoGroup-Create_Video">Referencia de la API de CMS para crear un video</a></p>
+			<p>Un objeto que contiene entradas para <span translate="No"><span translate="No">Video Cloud</span></span> creación de objetos de vídeo: consulte la <a translate="No" href="https://docs.brightcove.com/cms-api/v1/doc/index.html#api-videoGroup-Create_Video">Referencia de la CMS API para crear un video</a></p>
 			</td>
 		</tr>
 		<tr>
 			<td><code translate="No"><a href="#dynamic_ingest_fields">outputs.videocloud.ingest</a></code></td>
 			<td>Objeto</td>
 			<td>
-			<p>Un objeto que contiene entradas para <span translate="No"><span translate="No">Video Cloud</span></span> ingestión de vídeo: consulte la <a translate="No" href="https://docs.brightcove.com/dynamic-ingest-api/v1/doc/index.html#api-Ingest-Ingest_Media_Asset">Referencia de ingesta dinámica</a> - hacer <strong>no</strong> incluir la <code translate="No">master</code> campo, ya que esa información será proporcionada por la API en vivo. Si no se especifica ningún perfil de ingesta, se utilizará el perfil predeterminado de la cuenta.</p>
+			<p>Un objeto que contiene entradas para <span translate="No"><span translate="No">Video Cloud</span></span> ingestión de vídeo: consulte la <a translate="No" href="https://docs.brightcove.com/dynamic-ingest-api/v1/doc/index.html#api-Ingest-Ingest_Media_Asset">Referencia de ingesta dinámica</a> - hacer <strong>no</strong> incluir la <code translate="No">master</code> campo, ya que esa información será proporcionada por la Live API. Si no se especifica ningún perfil de ingesta, se utilizará el perfil predeterminado de la cuenta.</p>
 			</td>
 		</tr>
 	</tbody>
@@ -388,7 +388,7 @@ grandparent: Live API
 
 <h3 id="video_fields">Campos de video para <span translate="No">Video Cloud</span> ingestión</h3>
 
-<p>Ver el <a href="https://docs.brightcove.com/cms-api/v1/doc/index.html#operation/CreateVideo">Referencia de la API de CMS</a> para más detalles.</p>
+<p>Ver el <a href="https://docs.brightcove.com/cms-api/v1/doc/index.html#operation/CreateVideo">Referencia de la CMS API</a> para más detalles.</p>
 
 <table class="bcls-table">
 	<caption class="bcls-caption--table">Campos de video</caption>

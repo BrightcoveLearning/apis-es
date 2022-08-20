@@ -11,7 +11,7 @@ grandparent: Dynamic Ingest API
     <section class="bcls-section">
     <h2 id="introduction">Introducción</h2>
 
-    <p>Este documento explica cómo puede realizar un seguimiento del estado de los trabajos realizando solicitudes de estado al <span translate="No">API de CMS</span> o usando <span translate="No">API de ingesta dinámica</span> <a href="/dynamic-ingest/general/notifications-dynamic-delivery-video-cloud.html">notificaciones</a>. También proporcionamos una aplicación de panel de control de muestra que automatiza el proceso</p>
+    <p>Este documento explica cómo puede realizar un seguimiento del estado de los trabajos realizando solicitudes de estado al <span translate="No">CMS API</span> o usando <span translate="No">API de ingesta dinámica</span> <a href="/dynamic-ingest/general/notifications-dynamic-delivery-video-cloud.html">notificaciones</a>. También proporcionamos una aplicación de panel de control de muestra que automatiza el proceso</p>
 
     <p>Tenga en cuenta que el estado de los trabajos de ingesta solo está disponible para los trabajos enviados en los últimos 7 días.</p>
     </section>
@@ -19,7 +19,7 @@ grandparent: Dynamic Ingest API
     <section class="bcls-section">
     <h2 id="requesting_status">Solicitando estado</h2>
 
-    <p>Obtiene el estado de los trabajos de ingesta dinámica (ingesta, reemplazo o retransmisión) usando <a href="/cms/references/reference.html#operation/GetStatusOfIngestJob">estas <span translate="No">API de CMS</span> puntos finales</a> - tenga en cuenta que estos puntos finales funcionan para <strong>Solo trabajos de entrega dinámica</strong>:</p>
+    <p>Obtiene el estado de los trabajos de ingesta dinámica (ingesta, reemplazo o retransmisión) usando <a href="/cms/references/reference.html#operation/GetStatusOfIngestJob">estas <span translate="No">CMS API</span> puntos finales</a> - tenga en cuenta que estos puntos finales funcionan para <strong>Solo trabajos de entrega dinámica</strong>:</p>
 
     <h3>Obtener el estado de todos los trabajos</h3>
 
@@ -180,7 +180,7 @@ grandparent: Dynamic Ingest API
     <section class="bcls-section" id="sample">
     <h2>Panel de control de muestra</h2>
 
-    <p>Esta sección explica cómo se pueden juntar las notificaciones para construir un tablero simple para la API de Dynamic Ingest. El controlador de notificaciones analiza las notificaciones del <span translate="No">API de ingesta dinámica</span> para identificar el procesamiento de notificaciones completas. Luego agrega las notificaciones de video en una matriz de objetos para cada video en un archivo JSON. El tablero en sí es una página HTML que importa el archivo JSON para obtener los datos de notificación. Utiliza los identificadores para realizar una solicitud al <a href="/cms/getting-started/overview-cms-api.html">API de CMS</a> para obtener los metadatos del video.</p>
+    <p>Esta sección explica cómo se pueden juntar las notificaciones para construir un tablero simple para la API de Dynamic Ingest. El controlador de notificaciones analiza las notificaciones del <span translate="No">API de ingesta dinámica</span> para identificar el procesamiento de notificaciones completas. Luego agrega las notificaciones de video en una matriz de objetos para cada video en un archivo JSON. El tablero en sí es una página HTML que importa el archivo JSON para obtener los datos de notificación. Utiliza los identificadores para realizar una solicitud al <a href="/cms/getting-started/overview-cms-api.html">CMS API</a> para obtener los metadatos del video.</p>
     <!-- You can view the dashboard <a href="//solutions.brightcove.com/bcls/di-api/di-log.html">here</a> --><!-- <p>All the files for this app, along with instructions for setting it up for your account, are in <a href="https://github.com/BrightcoveLearning/dynamic-ingest-dashboard">this repository</a>.</p> -->
 
     <p>Aquí está la arquitectura de alto nivel de la aplicación:</p>
@@ -203,7 +203,7 @@ grandparent: Dynamic Ingest API
 
     <h4>Tablero</h4>
 
-    <p>El tablero incluye HTML y JavaScript para obtener los datos de notificación y datos de video adicionales del <span translate="No">API de CMS</span> y escribe los resultados en una tabla:</p>
+    <p>El tablero incluye HTML y JavaScript para obtener los datos de notificación y datos de video adicionales del <span translate="No">CMS API</span> y escribe los resultados en una tabla:</p>
 
     <pre class="line-numbers">
       <code class="language-html" translate="No">&lt;!DOCTYPE html&gt;

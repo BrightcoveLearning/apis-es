@@ -22,12 +22,12 @@ parent: General Information
     </figure>
     <p>Así es como se verá ese encabezado para las solicitudes con métodos de autenticación distintos de Oauth2:</p>
     <dl>
-      <dt ><a href="/playback/index.html"><span translate="No">API de reproducción</span></a></dt>
+      <dt ><a href="/playback/index.html"><span translate="No">Playback API</span></a></dt>
       <dd >
         <pre>
   <code class="language-http" translate="No">BCOV-Policy: <span class="bcls-input">YOUR_POLICY_KEY</span></code></pre>
       </dd>
-      <dt ><a href="https://live.support.brightcove.com/live-api/"><span translate="No">API en vivo</span></a></dt>
+      <dt ><a href="https://live.support.brightcove.com/live-api/"><span translate="No">Live API</span></a></dt>
       <dd >
         <pre>
   <code class="language-http" translate="No">X-API-KEY: <span class="bcls-input">YOUR_API_KEY</span></code></pre>
@@ -41,7 +41,7 @@ parent: General Information
   </section>
   <section class="bcls-section">
     <h2 id="getCredentials">Obtenga las credenciales del cliente</h2>
-    <p>Para trabajar con la mayoría de las API de Brightcove, necesitará las credenciales de cliente para la cuenta y las API que desea utilizar. Obtenga sus credenciales de cliente en Studio siguiendo las instrucciones en <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a>. En los pasos siguientes, haremos <span translate="No">API de CMS</span> solicitudes usando <span translate="No">Insomnio</span> , por lo que sus credenciales deben tener al menos los siguientes permisos:</p>
+    <p>Para trabajar con la mayoría de las API de Brightcove, necesitará las credenciales de cliente para la cuenta y las API que desea utilizar. Obtenga sus credenciales de cliente en Studio siguiendo las instrucciones en <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a>. En los pasos siguientes, haremos <span translate="No">CMS API</span> solicitudes usando <span translate="No">Insomnio</span> , por lo que sus credenciales deben tener al menos los siguientes permisos:</p>
     <ul>
       <li><strong>Videos</strong>: <strong>Leer escribir</strong></li>
     </ul>
@@ -50,11 +50,11 @@ parent: General Information
   </section>
   <section class="bcls-section">
     <h2 id="usingInsomnia">Utilizando <span translate="No">Insomnio</span></h2>
-    <p>Una vez que tenga sus credenciales de cliente, estará listo para comenzar a usar <span translate="No">Insomnio</span>. <span translate="No">Insomnio</span> hará mucho trabajo de configuración por usted si importa la especificación OpenAPI para la API de CMS, que ponemos a su disposición. Los pasos a continuación lo guiarán para hacer algunos <strong>API de CMS</strong> solicitudes usando <span translate="No">Insomnio</span>.</p>
-    <h3>Configurar un <span translate="No">Insomnio</span> colección para la API de CMS</h3>
-		<h4>Obtenga la especificación de OpenAPI para la API de CMS</h4>
+    <p>Una vez que tenga sus credenciales de cliente, estará listo para comenzar a usar <span translate="No">Insomnio</span>. <span translate="No">Insomnio</span> hará mucho trabajo de configuración por usted si importa la especificación OpenAPI para la CMS API, que ponemos a su disposición. Los pasos a continuación lo guiarán para hacer algunos <strong>CMS API</strong> solicitudes usando <span translate="No">Insomnio</span>.</p>
+    <h3>Configurar un <span translate="No">Insomnio</span> colección para la CMS API</h3>
+		<h4>Obtenga la especificación de OpenAPI para la CMS API</h4>
 		<ol class="bcls-tasklist-restart">
-			<li>Abre el <a href="/cms/references/reference.html">Referencia de la API de CMS</a>.</li>
+			<li>Abre el <a href="/cms/references/reference.html">Referencia de la CMS API</a>.</li>
 			<li>
 				Haga clic en el <strong>Descargar</strong> botón y guardar el <code translate="no">openapi.yaml</code> archivo en un lugar donde pueda encontrarlo nuevamente:
 				<figure class="bcls-figure">
@@ -97,15 +97,15 @@ parent: General Information
 				Haga clic en <strong>Tablero</strong> en la esquina superior izquierda para ver sus espacios de trabajo. Si creó un nuevo espacio de trabajo, verá que se muestra con el nombre apropiado:
 				<figure class="bcls-figure">
 					<img class="bcls-image" src="/assets/images/general/insomnia/cms-api-workspace.png" alt="CMS API Workspace">
-					<figcaption class="bcls-caption--image">Espacio de trabajo de la API de CMS</figcaption>
+					<figcaption class="bcls-caption--image">Espacio de trabajo de la CMS API</figcaption>
 				</figure>
 			</li>
       <li>Haga clic en el espacio de trabajo para abrirlo.</li>
 			<li>
-				Verá una lista de carpetas que contienen los diversos grupos de solicitudes para la API de CMS, y también un nuevo entorno OpenAPI:
+				Verá una lista de carpetas que contienen los diversos grupos de solicitudes para la CMS API, y también un nuevo entorno OpenAPI:
 				<figure class="bcls-figure">
 					<img class="bcls-image" src="/assets/images/general/insomnia/cms-api-evironment-and-request-folders.png" alt="CMS API Requests and Environment">
-					<figcaption class="bcls-caption--image">Solicitudes y entorno de API de CMS</figcaption>
+					<figcaption class="bcls-caption--image">Solicitudes y entorno de CMS API</figcaption>
 				</figure>
 			</li>
     </ol>
@@ -237,7 +237,7 @@ parent: General Information
 	</section>
   <section class="bcls-section">
     <h2 id="postRequest">Enviar una <code translate="No">POST</code> solicitud</h2>
-    <p>Ahora, enviaremos un <code translate="No">POST</code> solicitud con algunos datos. En este caso, crearemos un nuevo objeto de video usando la API de CMS. Empiece por seleccionar el <strong>Crear video</strong> solicitud en el <strong>Videos</strong> carpeta.</p>
+    <p>Ahora, enviaremos un <code translate="No">POST</code> solicitud con algunos datos. En este caso, crearemos un nuevo objeto de video usando la CMS API. Empiece por seleccionar el <strong>Crear video</strong> solicitud en el <strong>Videos</strong> carpeta.</p>
     <ol class="bcls-tasklist-restart">
 			<li>Repita todos los pasos del <a href="#Set_up_authentication">Configurar autenticación</a> sección anterior para configurar la autenticación para esta nueva solicitud.</li>
 			<li>

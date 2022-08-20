@@ -23,18 +23,18 @@ grandparent: Policy API
   <summary>{{ page.description }}</summary>
   <section class="bcls-section">
     <h2 id="Introduction">Introducción</h2>
-    <p>La clave de política se usa para recuperar contenido de video y listas de reproducción de su biblioteca de Video Cloud usando la API de reproducción. Dado que la clave de política está configurada en el reproductor, le permite restringir el acceso a su contenido a nivel de reproductor. También puede controlar la disponibilidad del contenido a nivel de video utilizando el <a href="https://studio.support.brightcove.com/media/configuring-video-availability.html">Módulo multimedia de Video Cloud Studio</a>.</p>
+    <p>La clave de política se usa para recuperar contenido de video y listas de reproducción de su biblioteca de Video Cloud usando la Playback API. Dado que la clave de política está configurada en el reproductor, le permite restringir el acceso a su contenido a nivel de reproductor. También puede controlar la disponibilidad del contenido a nivel de video utilizando el <a href="https://studio.support.brightcove.com/media/configuring-video-availability.html">Módulo multimedia de Video Cloud Studio</a>.</p>
     <p>Cuando crea un Brightcove Player, se genera automáticamente una clave de política para cada reproductor. Esta clave está asociada con su cuenta de Brightcove y controla qué videos se pueden ver y cuándo se pueden ver, con la condición de que los videos se almacenen en Video Cloud. Por ejemplo, se necesitan claves de política para limitar el acceso en función de:</p>
     <ul>
       <li>Cuenta</li>
       <li>Restricciones de dominio, si se utilizan</li>
       <li>Restricciones geográficas, si se utilizan</li>
     </ul>
-    <p>Para obtener información más detallada sobre las claves de política, consulte la <a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">Descripción general: API de política</a> documento.</p>
+    <p>Para obtener información más detallada sobre las claves de política, consulte la <a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">Descripción general: Policy API</a> documento.</p>
     <aside class="bcls-aside bcls-aside--information">Notas:
       <ul>
         <li>La clave de política solo se usa para controlar videos que se almacenan en Video Cloud. Si está utilizando Brightcove Player independiente, no es necesario acceder ni recuperar la clave de política.</li>
-        <li>Las claves de política generadas para los nuevos reproductores de Brightcove no están habilitadas para la búsqueda de forma predeterminada. Para buscar videos desde la API de reproducción, debe usar la API de políticas para crear una nueva clave de política que esté habilitada para la búsqueda. Para obtener más detalles, consulte la <a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">Descripción general de la API de políticas</a> documento.</li>
+        <li>Las claves de política generadas para los nuevos reproductores de Brightcove no están habilitadas para la búsqueda de forma predeterminada. Para buscar videos desde la Playback API, debe usar la Policy APIs para crear una nueva clave de política que esté habilitada para la búsqueda. Para obtener más detalles, consulte la <a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">Descripción general de la Policy APIs</a> documento.</li>
       </ul>
     </aside>
   </section>
@@ -61,18 +61,18 @@ grandparent: Policy API
   </section>
   <section class="bcls-section">
     <h2 id="Using_policy_keys">Usando claves de política</h2>
-    <p>La clave de política se puede utilizar para autenticar solicitudes a la API de reproducción. La API de reproducción se utiliza en tiempo de ejecución en páginas web o aplicaciones móviles para la gestión general de medios y la integración con otros sistemas. Para obtener más detalles, consulte la <a href="https://apis.support.brightcove.com/playback/">API de reproducción</a> Página de inicio.</p>
+    <p>La clave de política se puede utilizar para autenticar solicitudes a la Playback API. La Playback API se utiliza en tiempo de ejecución en páginas web o aplicaciones móviles para la gestión general de medios y la integración con otros sistemas. Para obtener más detalles, consulte la <a href="https://apis.support.brightcove.com/playback/">Playback API</a> Página de inicio.</p>
   </section>
   <section class="bcls-section">
     <h2 id="Policy_keys_vs_API_credentials">Claves de política frente a credenciales de API</h2>
-    <p>La clave de política se utiliza para acceder a la API de reproducción, mientras que las credenciales de la API se utilizan para acceder a su contenido en las otras API de Video Cloud.</p>
+    <p>La clave de política se utiliza para acceder a la Playback API, mientras que las credenciales de la API se utilizan para acceder a su contenido en las otras API de Video Cloud.</p>
     <h3>Claves de política</h3>
     <p>La clave de política se utiliza para la recuperación del lado del cliente de los activos de la biblioteca de Video Cloud. Aquí están los detalles:</p>
     <ul>
-      <li>Acceda a los datos de su video / lista de reproducción usando la API de reproducción</li>
+      <li>Acceda a los datos de su video / lista de reproducción usando la Playback API</li>
       <li>Solo lectura</li>
-      <li>Los datos de su video / lista de reproducción se almacenan en caché en el servidor mediante la API de reproducción</li>
-      <li>Utilizar el <a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">API de política</a> para hacer lo siguiente:
+      <li>Los datos de su video / lista de reproducción se almacenan en caché en el servidor mediante la Playback API</li>
+      <li>Utilizar el <a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">Policy API</a> para hacer lo siguiente:
         <ul>
           <li>Cree claves de política. Debe ponerse en contacto con el servicio de atención al cliente para revocar una clave de política.</li>
           <li>Establezca restricciones de dominio y establezca restricciones geográficas a nivel de política. Los reproductores que utilizan la clave de política hacen cumplir las restricciones.</li>
@@ -85,7 +85,7 @@ grandparent: Policy API
     <ul>
       <li><a href="https://apis.support.brightcove.com/getting-started/getting-started-brightcove-apis.html">Acceda a sus datos mediante las API de Video Cloud</a>. Necesitará las credenciales de cliente para la cuenta y las API que desea utilizar.</li>
       <li>Leer, insertar, actualizar, eliminar</li>
-      <li>Los datos de tu video / lista de reproducción no se almacenan en caché en el servidor por la API de CMS</li>
+      <li>Los datos de tu video / lista de reproducción no se almacenan en caché en el servidor por la CMS API</li>
       <li>Usar <a href="https://studio.support.brightcove.com/admin/managing-api-authentication-credentials.html">Interfaz de usuario de autenticación de API de Video Cloud</a> para crear y administrar credenciales de API</li>
     </ul>
   </section>
@@ -93,7 +93,7 @@ grandparent: Policy API
     <h2 id="Managing_policy_keys">Administrar claves de políticas</h2>
     <p>Puede administrar sus claves de póliza de la siguiente manera:</p>
     <h3>Obtención</h3>
-    <p>No hay forma de actualizar una clave de política. Tu también puedes <a href="#Getting_the_policy_key">obtener la clave de la política</a> desde un reproductor existente en su cuenta de Video Cloud, o puede crear una clave de política utilizando el <a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">API de política</a>.</p>
+    <p>No hay forma de actualizar una clave de política. Tu también puedes <a href="#Getting_the_policy_key">obtener la clave de la política</a> desde un reproductor existente en su cuenta de Video Cloud, o puede crear una clave de política utilizando el <a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">Policy API</a>.</p>
     <h3>Revocar</h3>
     <p>Para revocar una clave de política, debe comunicarse <a href="https://supportportal.brightcove.com/s/login/?language=en_US">Atención al cliente</a>.</p>
     <aside class="bcls-aside bcls-aside--information">Las claves de política NO se revocan cuando se elimina un reproductor. Esto significa que si usa una clave de política de un reproductor y luego elimina el reproductor, aún puede seguir usando la clave de política.</aside>

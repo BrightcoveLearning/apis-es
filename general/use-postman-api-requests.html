@@ -12,7 +12,7 @@ parent: General Information
   </section>
   <section class="bcls-section">
     <h2 id="getCredentials">Obtenga las credenciales del cliente</h2>
-    <p>Para trabajar con las API de Brightcove, necesitará las credenciales de cliente para la cuenta y las API que desea utilizar. Obtenga sus credenciales de cliente en Studio siguiendo las instrucciones en <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a>. En los pasos siguientes, realizaremos solicitudes de API de CMS utilizando <span translate="No">Cartero</span> , por lo que sus credenciales deben tener al menos los siguientes permisos:</p>
+    <p>Para trabajar con las API de Brightcove, necesitará las credenciales de cliente para la cuenta y las API que desea utilizar. Obtenga sus credenciales de cliente en Studio siguiendo las instrucciones en <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a>. En los pasos siguientes, realizaremos solicitudes de CMS API utilizando <span translate="No">Cartero</span> , por lo que sus credenciales deben tener al menos los siguientes permisos:</p>
     <ul>
       <li><code translate="No"><strong>Video</strong>: <strong>Read/Write</strong></code></li>
     </ul>
@@ -22,8 +22,8 @@ parent: General Information
   </section>
 	<section class="bcls-section">
 		<h2 id="get_openapi_spec">Obtenga la especificación de OpenAPI</h2>
-		<p>Aunque no es necesario, puede simplificar enormemente la configuración de <span translate="No">Cartero</span> es importar la especificación de OpenAPI para la API que desea utilizar. Puede hacer esto para cualquiera de las API de la plataforma Brightcove, pero para este tutorial usaremos la API de CMS.</p>
-		<p>Para obtener la especificación de OpenAPI, simplemente vaya a la <a href="/cms/references/reference.html">Referencia de la API de CMS</a> y haga clic en el <strong>Descargar</strong> botón:</p>
+		<p>Aunque no es necesario, puede simplificar enormemente la configuración de <span translate="No">Cartero</span> es importar la especificación de OpenAPI para la API que desea utilizar. Puede hacer esto para cualquiera de las API de la plataforma Brightcove, pero para este tutorial usaremos la CMS API.</p>
+		<p>Para obtener la especificación de OpenAPI, simplemente vaya a la <a href="/cms/references/reference.html">Referencia de la CMS API</a> y haga clic en el <strong>Descargar</strong> botón:</p>
 		<figure class="bcls-figure">
 			<img class="bcls-image" src="/assets/images/general/postman/download-cms-api-openapi-spec.png" alt="Download OpenAPI Spec">
 			<figcaption class="bcls-caption--image">Descargar la especificación de OpenAPI</figcaption>
@@ -58,13 +58,13 @@ parent: General Information
 				</figure>
 			</li>
 			<li>
-				Abre el <strong>Colecciones</strong> y haga clic en su nueva colección de API de CMS:
+				Abre el <strong>Colecciones</strong> y haga clic en su nueva colección de CMS API:
 			</li>
 			<li>
 				Expanda la colección y haga clic en el <strong>videos</strong> carpeta y seleccione la <strong>Obtener videos</strong> pedido.
 				<figure class="bcls-figure">
 					<img class="bcls-image" src="/assets/images/general/postman/view-collection.png" alt="CMS API Collection">
-					<figcaption class="bcls-caption--image">Colección de API de CMS</figcaption>
+					<figcaption class="bcls-caption--image">Colección de CMS API</figcaption>
 				</figure>
 				<figure class="bcls-figure">
 					<img class="bcls-image" src="/assets/images/general/postman/request-details.png" alt="Request Details">
@@ -85,7 +85,7 @@ parent: General Information
 	</section>
 	<section class="bcls-section">
 		<h2 id="create_enviroment">Crea un ambiente</h2>
-		<p>Los pasos a continuación lo guiarán a través de la configuración de un entorno para las solicitudes de API de CMS</p>
+		<p>Los pasos a continuación lo guiarán a través de la configuración de un entorno para las solicitudes de CMS API</p>
 		<ol class="bcls-tasklist-restart">
 			<li>
 				Hacer clic <strong>Ambientes</strong> , y entonces <strong>Crear entorno</strong>:
@@ -195,7 +195,7 @@ parent: General Information
 			</li>
 		</ol>
 		{% endraw %}
-		<p>Tenga en cuenta que los tokens de acceso de Brightcove caducan después de cinco minutos. Dependiendo de lo que esté haciendo y con qué rapidez, es posible que pueda usar el mismo token de acceso varias veces. Cuando caduque, la API de CMS devolverá un error no autorizado:</p>
+		<p>Tenga en cuenta que los tokens de acceso de Brightcove caducan después de cinco minutos. Dependiendo de lo que esté haciendo y con qué rapidez, es posible que pueda usar el mismo token de acceso varias veces. Cuando caduque, la CMS API devolverá un error no autorizado:</p>
 <pre class="line-numbers"><code class="language-json" translate="No">[
 	{
 			"error_code": "UNAUTHORIZED",

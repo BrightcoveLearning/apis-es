@@ -15,7 +15,7 @@ layout: staging
   <section class="bcls-section">
     <h2 id="Introduction">Introducción</h2>
     <p>
-      De forma predeterminada, Brightcove Player se comunica con la API de reproducción de Brightcove. Un nuevo sistema para administrar los derechos de reproducción y las restricciones se encuentra frente a la API de reproducción y proporciona autorización de reproducción mediante licencias DRM.
+      De forma predeterminada, Brightcove Player se comunica con la Playback API de Brightcove. Un nuevo sistema para administrar los derechos de reproducción y las restricciones se encuentra frente a la Playback API y proporciona autorización de reproducción mediante licencias DRM.
     </p>
     <aside class="bcls-aside bcls-aside--information">Notas:
       <ul>
@@ -34,7 +34,7 @@ layout: staging
     <ol class="bcls-tasklist__restart">
       <li>
         <p>
-          Brightcove Player realiza una solicitud a la API de reproducción si tiene una clave de política. Este es el valor predeterminado para todos los reproductores de Brightcove. El primer paso es eliminar la clave de política predeterminada integrada en el reproductor:
+          Brightcove Player realiza una solicitud a la Playback API si tiene una clave de política. Este es el valor predeterminado para todos los reproductores de Brightcove. El primer paso es eliminar la clave de política predeterminada integrada en el reproductor:
         </p>
         <pre>
 <code class="language-javascript" translate="No">player.catalog.setPolicyKey(null);</code></pre>
@@ -51,7 +51,7 @@ layout: staging
       </li>
       <li>
         <p>
-          Después de cambiar la clave de política y / o el token de autorización, está listo para solicitar datos de la API de reproducción de Brightcove y cargarlos en el reproductor. Este proceso es idéntico al caso predeterminado.
+          Después de cambiar la clave de política y / o el token de autorización, está listo para solicitar datos de la Playback API de Brightcove y cargarlos en el reproductor. Este proceso es idéntico al caso predeterminado.
         </p>
         <p>
           A continuación, se muestra un ejemplo de cómo obtener un solo video con restricciones de reproducción y un token de autorización:
@@ -111,7 +111,7 @@ layout: staging
 
   <section class="bcls-section">
     <h2 id="Request_without_playback_rights">Solicitar sin derechos de reproducción</h2>
-    <p>Este proceso se puede revertir para dirigir las solicitudes a la API de reproducción sin derechos ni restricciones.</p>
+    <p>Este proceso se puede revertir para dirigir las solicitudes a la Playback API sin derechos ni restricciones.</p>
     <p>
       Establezca la clave de política y el token de autorización de la siguiente manera:
     </p>

@@ -15,20 +15,20 @@ grandparent: Home
     <p>Primero, sin embargo, tenga en cuenta que dos API utilizan diferentes enfoques para la autenticación:</p>
 
     <section class="bcls-subsection">
-      <h3 id="policy_key">Autenticación de clave de política: API de reproducción</h3>
+      <h3 id="policy_key">Autenticación de clave de política: Playback API</h3>
 
       <p>La API de <a href="/playback/index.html">reproducción</a> utilizada principalmente para recuperar datos de vídeos y listas de reproducción de reproductores o portales web, utiliza un <code translate="No">policy_key</code>, para la autenticación, generalmente se pasa como argumento en un <code translate="No">Accept</code> encabezado:</p>
 
       <pre>
         <code class="language-http" translate="No">Accept: application/json;pk={policy_key}</code></pre>
 
-      <p>Las claves de política se generan automáticamente para los reproductores de Brightcove y se pueden tomar de un <a href="/policy/getting-started/policy-keys.html#Getting_the_policy_key">configuración del reproductor</a> , o generado usando el <a href="/policy/index.html">API de política</a></p>
+      <p>Las claves de política se generan automáticamente para los reproductores de Brightcove y se pueden tomar de un <a href="/policy/getting-started/policy-keys.html#Getting_the_policy_key">configuración del reproductor</a> , o generado usando el <a href="/policy/index.html">Policy API</a></p>
     </section>
 
     <section class="bcls-subsection">
-      <h3 id="authentication_api_key">Autenticación de clave API: API en vivo</h3>
+      <h3 id="authentication_api_key">Autenticación de clave API: Live API</h3>
 
-      <p>La <a href="https://live.support.brightcove.com/live-api/">API en vivo</a> utiliza una clave de API que se proporciona cuando su cuenta está configurada para autenticar solicitudes. La clave de API se pasa en un <code translate="No">X-API-KEY</code> encabezamiento:</p>
+      <p>La <a href="https://live.support.brightcove.com/live-api/">Live API</a> utiliza una clave de API que se proporciona cuando su cuenta está configurada para autenticar solicitudes. La clave de API se pasa en un <code translate="No">X-API-KEY</code> encabezamiento:</p>
 
       <pre>
         <code class="language-http" translate="No">X-API-KEY : {YOUR_APIKey}</code></pre>
@@ -53,9 +53,9 @@ grandparent: Home
     </ol>
   </section>
   <section class="bcls-section" id="stepsGetCredentials">
-    <h2>Credenciales de cliente a través de la API de OAuth</h2>
+    <h2>Credenciales de cliente a través de la OAuth API</h2>
 
-    <p>Si desea o necesita crear credenciales de cliente utilizando la API de OAuth, a continuación se muestran los pasos que lo guiarán para obtener sus credenciales de cliente. Primero deberá obtener su BC_TOKEN, que se utiliza para autenticarlo para la solicitud de credenciales del cliente.</p>
+    <p>Si desea o necesita crear credenciales de cliente utilizando la OAuth API, a continuación se muestran los pasos que lo guiarán para obtener sus credenciales de cliente. Primero deberá obtener su BC_TOKEN, que se utiliza para autenticarlo para la solicitud de credenciales del cliente.</p>
 
     <h3>Conseguir su <code translate="No">BC_TOKEN</code> y número de cuenta</h3>
 
@@ -163,7 +163,7 @@ grandparent: Home
   </section>
 
   <section class="bcls-section" id="accessToken">
-    <h2>Tokens de acceso a través de la API de OAuth</h2>
+    <h2>Tokens de acceso a través de la OAuth API</h2>
 
     <p>Los tokens de acceso, a diferencia de las credenciales de cliente, son de corta duración; actualmente caducan en 5 minutos. Deberá obtener uno nuevo para cada solicitud de API. Por supuesto, podría crear lógica en una aplicación para verificar el token de acceso más reciente para ver si se agotó el tiempo de espera, pero es probable que las solicitudes a la API de Ingest Profiles sean pocas y distantes entre sí, por lo que no hay una buena razón para hacerlo. .</p>
 

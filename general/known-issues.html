@@ -21,14 +21,14 @@ grandparent: Home
       </dl>
   </section>
   <section class="bcls-section">
-    <h2 id="CMS_API">API de CMS</h2>
+    <h2 id="CMS_API">CMS API</h2>
         <dl>
           <dt>En ciertos casos, el <code translate="No">original_filename </code> se corrompe</dt>
           <dd>En algunos casos, el <code translate="No">original_filename </code> El campo para videos se corrompe y no contendrá el nombre de archivo real.</dd>
           <dt>Las etiquetas no pueden contener comas</dt>
           <dd>Si intenta agregar una etiqueta a un video que contiene una coma (p. Ej. "SomeCo, Inc") la solicitud fallará con un error de "etiqueta ilegal"</dd>
         <dt>Videos programados</dt>
-        <dd>Debido a que la API de reproducción y el catálogo almacenan videos en caché durante un máximo de 10 a 15 minutos, es posible que un reproductor que solicite un video programado para estar disponible durante los próximos minutos (hasta 20) no pueda obtener un video reproducible hasta que se actualice la memoria caché.</dd>
+        <dd>Debido a que la Playback API y el catálogo almacenan videos en caché durante un máximo de 10 a 15 minutos, es posible que un reproductor que solicite un video programado para estar disponible durante los próximos minutos (hasta 20) no pueda obtener un video reproducible hasta que se actualice la memoria caché.</dd>
         <dt><code translate="No">has_digital_master</code></dt>
         <dd>
           <p>Si está utilizando este campo para probar si un video se puede volver a codificar, no es confiable para videos compartidos, ya que será cierto si el video original tiene un maestro, pero aún así la cuenta de afiliado no puede volver a codificarlo.</p>
@@ -45,6 +45,6 @@ if (video.sharing !== null) {
 }</code></pre>
         </dd>
         <dt>Se permite la identificación de referencia duplicada para las listas de reproducción al usar la actualización / PATCH</dt>
-        <dd>Cuando actualizas una lista de reproducción <code translate="No">reference_id</code> utilizando el <span translate="No">API de CMS</span> (o el módulo de Medios, ya que utiliza la misma solicitud de API), se permitirá una identificación de referencia que ya esté en uso para otra lista de reproducción.</dd>
+        <dd>Cuando actualizas una lista de reproducción <code translate="No">reference_id</code> utilizando el <span translate="No">CMS API</span> (o el módulo de Medios, ya que utiliza la misma solicitud de API), se permitirá una identificación de referencia que ya esté en uso para otra lista de reproducción.</dd>
       </dl>
   </section>

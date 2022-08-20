@@ -18,18 +18,18 @@ grandparent: 'Dynamic Ingest API'
     <h2 id="obtaincredentials" class="bcls-expander-head">Obtener credenciales</h2>
     
     <div class="bcls-expander-content">
-    <p>Como la mayoría de las API RESTful de Brightcove, la <span translate="No">API de ingesta dinámica</span> requiere tokens de acceso de OAuth para autorizar solicitudes. Para obtener tokens de acceso, primero debe obtener credenciales de cliente con permisos para los tipos de operaciones que desea solicitar. Este inicio rápido realiza solicitudes de API en una cuenta de muestra de Brightcove Learning Services, por lo que no necesitará obtener las credenciales aquí, pero debe comprender lo que está sucediendo. CodePen envía la información de solicitud de API a un proxy similar a <a href="/oauth/guides/getting-access-tokens.html#php">Éste</a>. El proxy accede a las credenciales del cliente desde una ubicación privada y las usa para generar un token de acceso temporal usando el <a href="/oauth/getting-started/overview-oauth-api-v4.html">API de OAuth</a> y luego realiza la solicitud de API y devuelve los datos de respuesta.</p>
+    <p>Como la mayoría de las API RESTful de Brightcove, la <span translate="No">API de ingesta dinámica</span> requiere tokens de acceso de OAuth para autorizar solicitudes. Para obtener tokens de acceso, primero debe obtener credenciales de cliente con permisos para los tipos de operaciones que desea solicitar. Este inicio rápido realiza solicitudes de API en una cuenta de muestra de Brightcove Learning Services, por lo que no necesitará obtener las credenciales aquí, pero debe comprender lo que está sucediendo. CodePen envía la información de solicitud de API a un proxy similar a <a href="/oauth/guides/getting-access-tokens.html#php">Éste</a>. El proxy accede a las credenciales del cliente desde una ubicación privada y las usa para generar un token de acceso temporal usando el <a href="/oauth/getting-started/overview-oauth-api-v4.html">OAuth API</a> y luego realiza la solicitud de API y devuelve los datos de respuesta.</p>
     
     <p>Para probar solicitudes en su propia cuenta, obtenga sus credenciales de cliente y use uno de nuestros <a href="/getting-started/concepts-testing-tools-brightcove-apis.html">Herramientas de prueba de API</a></p>
     
     <ol>
-      <li>Para obtener sus credenciales, siga las instrucciones en <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de la API</a>. Esta es la forma recomendada de obtener sus credenciales de cliente. Recuerde que usar Dyanamic Ingest requiere hacer uno <span translate="No">API de CMS</span> POST también, por lo que además del permiso de ingesta, necesita al menos <code translate="No">video/write</code> permisos:
+      <li>Para obtener sus credenciales, siga las instrucciones en <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de la API</a>. Esta es la forma recomendada de obtener sus credenciales de cliente. Recuerde que usar Dyanamic Ingest requiere hacer uno <span translate="No">CMS API</span> POST también, por lo que además del permiso de ingesta, necesita al menos <code translate="No">video/write</code> permisos:
     
       <figure class="bcls-figure"><img class="bcls-image" alt="Required Permissions" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/di-api/getting-started/quick-start/quick-start-required-permissions.png" />
       <figcaption class="bcls-caption--image">Permisos requeridos</figcaption>
       </figure>
     
-      <p>Utilizar el <a href="/general/managing-api-authentication-credentials.html">Herramientas de administración de Studio</a> para obtener las credenciales del cliente. También puede obtener credenciales mediante la API de OAuth, siguiendo las instrucciones de una de las guías que se enumeran a continuación.</p>
+      <p>Utilizar el <a href="/general/managing-api-authentication-credentials.html">Herramientas de administración de Studio</a> para obtener las credenciales del cliente. También puede obtener credenciales mediante la OAuth API, siguiendo las instrucciones de una de las guías que se enumeran a continuación.</p>
       </li>
     </ol>
     

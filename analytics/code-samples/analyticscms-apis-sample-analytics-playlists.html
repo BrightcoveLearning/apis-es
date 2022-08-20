@@ -1,6 +1,6 @@
 ---
 title: 'Análisis por listas de reproducción'
-description: 'En este ejemplo, aprenderá a utilizar el <span translate="No">API de CMS</span> y <span translate="No">API de análisis</span> juntos para seleccionar una lista de reproducción de su cuenta y obtener datos analíticos de todos los videos de la lista de reproducción.'
+description: 'En este ejemplo, aprenderá a utilizar el <span translate="No">CMS API</span> y <span translate="No">API de análisis</span> juntos para seleccionar una lista de reproducción de su cuenta y obtener datos analíticos de todos los videos de la lista de reproducción.'
 parent: Analytics with Other APIs 
 grandparent: Analytics API
 ---
@@ -24,7 +24,7 @@ grandparent: Analytics API
   <section class="bcls-section">
     <h2 id="logic">Lógica de la aplicación</h2>
 
-    <p>Esta es una aplicación híbrida que usa el <span translate="No">API de CMS</span> para recuperar la información de la lista de reproducción, y luego <span translate="No">API de análisis</span> para recuperar análisis de los videos en la lista de reproducción. Hay un pequeño giro: para la lista de reproducción EXPLÍCITA (manual), los metadatos incluyen los identificadores de video, por lo que podemos llevarlos directamente a la API de Analytics; para las listas de reproducción inteligentes, sin embargo, debemos volver a <span translate="No">API de CMS</span> utilizando los criterios de búsqueda, clasificación y límite de la lista de reproducción para obtener la información del video, que luego podemos llevar a la API de Analytics:</p>
+    <p>Esta es una aplicación híbrida que usa el <span translate="No">CMS API</span> para recuperar la información de la lista de reproducción, y luego <span translate="No">API de análisis</span> para recuperar análisis de los videos en la lista de reproducción. Hay un pequeño giro: para la lista de reproducción EXPLÍCITA (manual), los metadatos incluyen los identificadores de video, por lo que podemos llevarlos directamente a la API de Analytics; para las listas de reproducción inteligentes, sin embargo, debemos volver a <span translate="No">CMS API</span> utilizando los criterios de búsqueda, clasificación y límite de la lista de reproducción para obtener la información del video, que luego podemos llevar a la API de Analytics:</p>
 
     <figure class="bcls-figure"><img class="bcls-image" alt="App Logic" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/analytics-api/code-samples/analytics-by-playlist/get-analytics-by-playlist.png" />
       <figcaption class="bcls-caption--image">Lógica de la aplicación</figcaption>

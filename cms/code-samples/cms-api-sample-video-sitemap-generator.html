@@ -1,6 +1,6 @@
 ---
 title: 'Generador de mapas de sitios de videos'
-description: 'Este ejemplo demuestra cómo puede generar un mapa del sitio de video utilizando la API de CMS.'
+description: 'Este ejemplo demuestra cómo puede generar un mapa del sitio de video utilizando la CMS API.'
 
 parent: 'Code Samples' 
 grandparent: CMS API
@@ -13,7 +13,7 @@ grandparent: CMS API
 
     <aside class="bcls-aside bcls-aside--information">Esta muestra y el código asociado se proporcionan como una guía para su desarrollo de producción. El código no está certificado para uso en producción ni se admite oficialmente.</aside>
 
-    <p>Antes de usar esta aplicación, debe leer <a href="https://studio.support.brightcove.com/general/making-your-video-content-indexable.html">Hacer que su contenido de video sea indexable</a> para comprender mejor el propósito de los mapas de sitios de video y las estrategias para automatizar la generación de los mismos utilizando la API de CMS. Generar el XML para el mapa del sitio es bastante sencillo. El mayor desafío es que debe incluir una URL única para cada video, y la <span translate="No">API de CMS</span> no tiene acceso automático a esta información. Para superar esto, hay un par de cosas que puede hacer:</p>
+    <p>Antes de usar esta aplicación, debe leer <a href="https://studio.support.brightcove.com/general/making-your-video-content-indexable.html">Hacer que su contenido de video sea indexable</a> para comprender mejor el propósito de los mapas de sitios de video y las estrategias para automatizar la generación de los mismos utilizando la CMS API. Generar el XML para el mapa del sitio es bastante sencillo. El mayor desafío es que debe incluir una URL única para cada video, y la <span translate="No">CMS API</span> no tiene acceso automático a esta información. Para superar esto, hay un par de cosas que puede hacer:</p>
 
     <ol>
       <li>Agregue la URL donde se publica el video a los metadatos del video. La forma más sencilla de hacer esto sería crear un <a href="https://studio.support.brightcove.com/admin/creating-custom-metadata-fields.html">campo de metadatos personalizado</a> para almacenar la URL en.</li>
@@ -114,15 +114,15 @@ grandparent: CMS API
         <h2 id="getCredentials">Obtener credenciales</h2>
       </summary>
 
-      <p>Usar el <span translate="No">API de CMS</span> necesitará las credenciales adecuadas.</p>
+      <p>Usar el <span translate="No">CMS API</span> necesitará las credenciales adecuadas.</p>
 
-      <p>La forma más fácil de obtener credenciales en la mayoría de los casos es a través de la sección Autenticación de la API de administrador de Studio (requiere permisos de administrador en su cuenta). Ver <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a> para detalles. En la mayoría de los casos, probablemente solo desee obtener permisos para todos <span translate="No">API de CMS</span> operación:</p>
+      <p>La forma más fácil de obtener credenciales en la mayoría de los casos es a través de la sección Autenticación de la API de administrador de Studio (requiere permisos de administrador en su cuenta). Ver <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a> para detalles. En la mayoría de los casos, probablemente solo desee obtener permisos para todos <span translate="No">CMS API</span> operación:</p>
 
       <figure class="bcls-figure"><img class="bcls-image" alt="CMS API Permissions" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/cms-api/cms-permissions.png" />
-        <figcaption class="bcls-caption--image">Permisos de la API de CMS</figcaption>
+        <figcaption class="bcls-caption--image">Permisos de la CMS API</figcaption>
       </figure>
 
-      <p>Si los permisos que necesita no están disponibles en Studio, o si prefiere obtenerlos directamente de la API de OAuth, utilice su elección de <strong>Obtener credenciales de cliente</strong> documentos que se enumeran a continuación. Cualquiera que sea la opción que elija, deberá solicitar los permisos de operación correctos. Lo siguiente se puede usar con cURL, Postman o nuestra aplicación en línea para obtener todos los permisos para la API de CMS:</p>
+      <p>Si los permisos que necesita no están disponibles en Studio, o si prefiere obtenerlos directamente de la OAuth API, utilice su elección de <strong>Obtener credenciales de cliente</strong> documentos que se enumeran a continuación. Cualquiera que sea la opción que elija, deberá solicitar los permisos de operación correctos. Lo siguiente se puede usar con cURL, Postman o nuestra aplicación en línea para obtener todos los permisos para la CMS API:</p>
 
       <pre class="line-numbers">
               <code class="language-json" translate="No">"operations": [
@@ -136,7 +136,7 @@ grandparent: CMS API
       <ul>
         <li><a href="/oauth/guides/oauth-create-client-credentials-using-curl.html">OAuth: Obtener credenciales de cliente mediante cURL</a></li>
         <li><a href="/oauth/guides/oauth-create-client-credentials-using-postman.html">OAuth: Obtenga las credenciales del cliente con Postman</a></li>
-        <li><a href="/oauth/code-samples/oauth-api-sample-create-client-credentials.html">Ejemplo de API de OAuth: Crear credenciales de cliente</a></li>
+        <li><a href="/oauth/code-samples/oauth-api-sample-create-client-credentials.html">Ejemplo de OAuth API: Crear credenciales de cliente</a></li>
       </ul>
     </details>
   </section>
@@ -146,7 +146,7 @@ grandparent: CMS API
     <h3>Código fuente</h3>
     <p>Encuentre todo el código asociado con esta muestra en este <a href="https://github.com/BrightcoveLearning/18739-cms-api-sample-video-sitemap-generator">Repositorio de GitHub</a>.</p>
     <h3>Aplicación de muestra</h3>
-    <p class="codepen" data-height="1200" data-theme-id="34967" data-default-tab="result" data-user="rcrooks1969" data-slug-hash="VRLNJp" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="CMS API Sample: Video Sitemap Generator"><span>Ver la pluma <a href="https://codepen.io/team/rcrooks1969/pen/VRLNJp/"> <span translate="No">API de CMS</span> Muestra: Generador de mapas de sitios de video</a> por Brightcove Learning Services (<a href="https://codepen.io/rcrooks1969"> rcrooks1969</a> ) en <a href="https://codepen.io">CodePen</a>.</span></p>
+    <p class="codepen" data-height="1200" data-theme-id="34967" data-default-tab="result" data-user="rcrooks1969" data-slug-hash="VRLNJp" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="CMS API Sample: Video Sitemap Generator"><span>Ver la pluma <a href="https://codepen.io/team/rcrooks1969/pen/VRLNJp/"> <span translate="No">CMS API</span> Muestra: Generador de mapas de sitios de video</a> por Brightcove Learning Services (<a href="https://codepen.io/rcrooks1969"> rcrooks1969</a> ) en <a href="https://codepen.io">CodePen</a>.</span></p>
     <script async="async" src="https://static.codepen.io/assets/embed/ei.js"></script>
   </section>
 

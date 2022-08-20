@@ -24,7 +24,7 @@ grandparent: Dynamic Ingest API
     
     <p>Con la cola de prioridad normal, Dynamic Delivery Ingestion tiene un límite de 100 trabajos activos por cuenta. Cuando se excede ese límite, el sistema de ingestión pondrá en cola solicitudes adicionales para procesarlas más tarde. El tamaño de la cola tiene un límite separado, y cuando se alcanza, rechazará la solicitud de transferencia al cliente (con un código de error 429). Cuando los trabajos terminan, se libera capacidad y los trabajos que están en cola se recogerán y procesarán uno a la vez, en el orden en que se recibieron.</p>
     
-    <p>El estado del video en el <span translate="No">API de CMS</span> no refleja que el trabajo estaba en cola; el estado será <code translate="No">pending </code> si el trabajo está en proceso o en cola.</p>
+    <p>El estado del video en el <span translate="No">CMS API</span> no refleja que el trabajo estaba en cola; el estado será <code translate="No">pending </code> si el trabajo está en proceso o en cola.</p>
     </section>
     
     <section class="bcls-section">

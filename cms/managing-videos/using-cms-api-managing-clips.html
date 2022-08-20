@@ -1,6 +1,6 @@
 ---
 title: 'Gestión de clips'
-description: 'En este tema, aprenderá a administrar videoclips usando la API de CMS.'
+description: 'En este tema, aprenderá a administrar videoclips usando la CMS API.'
 parent: Managing Videos/Assets 
 grandparent: CMS API
 ---
@@ -15,7 +15,7 @@ grandparent: CMS API
   <section id="findingClips" class="bcls-section">
   <h2>Encontrar clips</h2>
   
-  <p>Hay términos de búsqueda especiales para <span translate="No">API de CMS</span> para ayudarlo a ubicar clips en su cuenta:</p>
+  <p>Hay términos de búsqueda especiales para <span translate="No">CMS API</span> para ayudarlo a ubicar clips en su cuenta:</p>
   
   <ul>
     <li><code translate="No">q=%2Bis_clip:true</code>- devuelve solo clips</li>
@@ -28,7 +28,7 @@ grandparent: CMS API
   <ul>
     <li><code translate="No">%2B</code> es un código URI <code translate="No">+</code> firmar</li>
     <li><code translate="No">%2D</code> es un código URI <code translate="No">-</code> firmar</li>
-    <li>Recuérdalo <code translate="No">limit</code> y <code translate="No">offset</code> aplicar: por defecto, <span translate="No">API de CMS</span> las consultas devuelven 10 videos (máximo: límite = 100), por lo que si hay muchos clips en la cuenta, deberá realizar varias solicitudes con los <code translate="No">limit</code> y <code translate="No">offset</code> parámetros para encontrarlos todos. Puede obtener un recuento de todos los clips enviando una solicitud GET al <span translate="No">API de CMS</span> cuenta el punto final: <code translate="No">.../accounts/account_id/ <span class="bcls-highlight">counts</span>/videos/ <span class="bcls-highlight">q=%2Bis_clip:true</span> </code></li>
+    <li>Recuérdalo <code translate="No">limit</code> y <code translate="No">offset</code> aplicar: por defecto, <span translate="No">CMS API</span> las consultas devuelven 10 videos (máximo: límite = 100), por lo que si hay muchos clips en la cuenta, deberá realizar varias solicitudes con los <code translate="No">limit</code> y <code translate="No">offset</code> parámetros para encontrarlos todos. Puede obtener un recuento de todos los clips enviando una solicitud GET al <span translate="No">CMS API</span> cuenta el punto final: <code translate="No">.../accounts/account_id/ <span class="bcls-highlight">counts</span>/videos/ <span class="bcls-highlight">q=%2Bis_clip:true</span> </code></li>
   </ul>
   </aside>
   
@@ -197,7 +197,7 @@ grandparent: CMS API
   
   <aside class="bcls-aside bcls-aside--warning">Tú haces <strong>no</strong> desea eliminar el clip en sí, porque si lo hace, ya no podrá obtener análisis sociales para él. También lo harás <strong>no</strong> obtenga análisis sociales si desactiva el clip o lo programa para una fecha futura.</aside>
   
-  <p>Para eliminar activos, utilizará <a href="/cms/references/reference.html#api-assetGroup">los puntos finales de activos de la API de CMS</a>. La lógica es simple: primero OBTENGA los activos para recuperar sus ID en el sistema de Video Cloud y luego BORRARlos:</p>
+  <p>Para eliminar activos, utilizará <a href="/cms/references/reference.html#api-assetGroup">los puntos finales de activos de la CMS API</a>. La lógica es simple: primero OBTENGA los activos para recuperar sus ID en el sistema de Video Cloud y luego BORRARlos:</p>
   
   <figure class="bcls-figure"><img class="bcls-image" alt="Logic for Removing Rendtions" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/cms-api/guides/clips/clips.svg" />
   <figcaption class="bcls-caption--image">Lógica para eliminar copias</figcaption>

@@ -1,6 +1,6 @@
 ---
-title: 'Mejores prácticas: API de reproducción y CMS'
-description: 'Este tema proporciona las mejores prácticas para usar las API de catálogo (CMS y API de reproducción).'
+title: 'Mejores prácticas: Playback API y CMS'
+description: 'Este tema proporciona las mejores prácticas para usar las API de catálogo (CMS y Playback API).'
 
 parent: 'Getting Started' 
 grandparent: CMS API
@@ -11,15 +11,15 @@ grandparent: CMS API
   <section class="bcls-section">
   <h2 id="Introduction">Introducción</h2>
   
-  <p>Tanto el CMS como las API de reproducción brindan acceso a sus datos de video de Video Cloud. El propósito de este tema es ayudarlo a comprender la diferencia entre ellos y las mejores prácticas para usarlos.</p>
+  <p>Tanto el CMS como las Playback API brindan acceso a sus datos de video de Video Cloud. El propósito de este tema es ayudarlo a comprender la diferencia entre ellos y las mejores prácticas para usarlos.</p>
   </section>
   
   <section class="bcls-section">
-  <h2 id="differences_between">Diferencias entre CMS y API de reproducción</h2>
+  <h2 id="differences_between">Diferencias entre CMS y Playback API</h2>
   
-  <p>Las API de reproducción y CMS acceden a los mismos datos de video subyacentes. Sin embargo, existen algunas diferencias clave entre ellos que deberían determinar cuál usa en situaciones particulares.</p>
+  <p>Las Playback API y CMS acceden a los mismos datos de video subyacentes. Sin embargo, existen algunas diferencias clave entre ellos que deberían determinar cuál usa en situaciones particulares.</p>
   
-  <p>En general, el <span translate="No">API de CMS</span> está diseñado para uso de backend, como la integración de Video Cloud con su sistema CMS. La API de reproducción está diseñada para uso frontend para obtener datos de listas de reproducción y videos para reproductores o portales de video (Brightcove Player <code translate="No">catalog</code> y <code translate="No">playlist</code> Las API utilizan la API de reproducción, por ejemplo).</p>
+  <p>En general, el <span translate="No">CMS API</span> está diseñado para uso de backend, como la integración de Video Cloud con su sistema CMS. La Playback API está diseñada para uso frontend para obtener datos de listas de reproducción y videos para reproductores o portales de video (Brightcove Player <code translate="No">catalog</code> y <code translate="No">playlist</code> Las API utilizan la Playback API, por ejemplo).</p>
   
   <p>La siguiente tabla enumera algunas diferencias clave entre las dos API.</p>
   
@@ -28,15 +28,15 @@ grandparent: CMS API
     <thead class="bcls-table__head">
       <tr>
         <th>Artículo</th>
-        <th>API de CMS</th>
-        <th>API de reproducción</th>
+        <th>CMS API</th>
+        <th>Playback API</th>
       </tr>
     </thead>
     <tbody class="bcls-table__body">
       <tr>
         <td><strong>Tipos de operaciones</strong></td>
         <td>crear, leer, actualizar, eliminar</td>
-        <td>solo lectura: no se pueden modificar datos con la API de reproducción</td>
+        <td>solo lectura: no se pueden modificar datos con la Playback API</td>
       </tr>
       <tr>
         <td><strong>Alcance de las operaciones</strong></td>
@@ -79,7 +79,7 @@ grandparent: CMS API
   
   <p>Además, todas las URL contienen un <code translate="No">TTL</code> token por razones de seguridad del contenido. Esto significa que las URL caducan después de 6 horas de forma predeterminada. La vida útil del token se puede extender hasta 365 días; si desea tokens de mayor duración, <a href="https://supportportal.brightcove.com/s/login/?language=en_US">Póngase en contacto con el soporte de Brightcove</a>. Tenga en cuenta, sin embargo, que el <code translate="No">TTL</code> refleja el tiempo máximo que la CDN almacenará en caché ese activo, pero no garantiza que la URL no cambie antes de que caduque el token.</p>
   
-  <p>La mejor manera de evitar que los enlaces a los medios se rompan es recuperarlos de Video Cloud en tiempo de ejecución utilizando el <a href="/cms/managing-videos/using-cms-api-retrieve-video-data.html">API de CMS</a> o el <a href="/playback/index.html">API de reproducción</a>.</p>
+  <p>La mejor manera de evitar que los enlaces a los medios se rompan es recuperarlos de Video Cloud en tiempo de ejecución utilizando el <a href="/cms/managing-videos/using-cms-api-retrieve-video-data.html">CMS API</a> o el <a href="/playback/index.html">Playback API</a>.</p>
   
   <section class="bcls-subsection">
   <h3>Almacenamiento en caché de URL</h3>
@@ -91,8 +91,8 @@ grandparent: CMS API
   <section class="bcls-section">
   <h2 id="reference_id_conflicts">Conflictos de ID de referencia</h2>
   
-  <p>Esta sección se aplica a la <span translate="No">API de CMS</span> solamente.</p>
+  <p>Esta sección se aplica a la <span translate="No">CMS API</span> solamente.</p>
   
-  <p>Para asegurar la unicidad de los identificadores de referencia, el <span translate="No">API de CMS</span> bloquea la identificación hasta 3 minutos después de cualquier operación en el video al que está asignado. Esto puede provocar que se devuelvan errores 409 cuando intentas reintentar una solicitud que falla demasiado rápido, o cuando intentas reutilizar una identificación de referencia demasiado pronto después de eliminar el video al que se asignó previamente. Ver el <a href="/cms/references/cms-api-error-message-reference.html#409_conflict">Referencia de mensaje de error</a> para más detalles.</p>
+  <p>Para asegurar la unicidad de los identificadores de referencia, el <span translate="No">CMS API</span> bloquea la identificación hasta 3 minutos después de cualquier operación en el video al que está asignado. Esto puede provocar que se devuelvan errores 409 cuando intentas reintentar una solicitud que falla demasiado rápido, o cuando intentas reutilizar una identificación de referencia demasiado pronto después de eliminar el video al que se asignó previamente. Ver el <a href="/cms/references/cms-api-error-message-reference.html#409_conflict">Referencia de mensaje de error</a> para más detalles.</p>
   </section>
   </article>

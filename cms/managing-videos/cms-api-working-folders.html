@@ -1,6 +1,6 @@
 ---
 title: 'Trabajar con carpetas'
-description: 'En este tema, aprenderá cómo agregar carpetas a su biblioteca de medios de Video Cloud y cómo agregar videos a carpetas usando la API de CMS.'
+description: 'En este tema, aprenderá cómo agregar carpetas a su biblioteca de medios de Video Cloud y cómo agregar videos a carpetas usando la CMS API.'
 parent: Managing Videos/Assets 
 grandparent: CMS API
 ---
@@ -15,9 +15,9 @@ grandparent: CMS API
     <aside class="bcls-aside bcls-aside--information"><strong>Notas:</strong>
     
     <ul>
-      <li>Todas las tareas discutidas en este tema también se pueden realizar en <a href="https://studio.support.brightcove.com/media/organizing-videos-using-folders.html">Estudio</a> en lugar de a través de la API de CMS.</li>
-      <li>los <span translate="No">API de CMS</span> requiere credenciales de cliente y tokens de acceso para todas las solicitudes. Si necesita ayuda para obtener credenciales, consulte la <a href="#getCredentials">Obtenga la sección de credenciales a continuación</a>.</li>
-      <li>Este tema cubre las operaciones de carpeta más utilizadas para la API de CMS, pero hay algunas más que puede encontrar en la <a href="/cms/references/reference.html#api-folderGroup">Referencia de la API de CMS</a>.</li>
+      <li>Todas las tareas discutidas en este tema también se pueden realizar en <a href="https://studio.support.brightcove.com/media/organizing-videos-using-folders.html">Estudio</a> en lugar de a través de la CMS API.</li>
+      <li>los <span translate="No">CMS API</span> requiere credenciales de cliente y tokens de acceso para todas las solicitudes. Si necesita ayuda para obtener credenciales, consulte la <a href="#getCredentials">Obtenga la sección de credenciales a continuación</a>.</li>
+      <li>Este tema cubre las operaciones de carpeta más utilizadas para la CMS API, pero hay algunas más que puede encontrar en la <a href="/cms/references/reference.html#api-folderGroup">Referencia de la CMS API</a>.</li>
     </ul>
     </aside>
     </section>
@@ -25,10 +25,10 @@ grandparent: CMS API
     <section class="bcls-section">
       <details>
     <summary>
-      <h2 id="getCredentials">Obtenga credenciales para la API de CMS</h2>
+      <h2 id="getCredentials">Obtenga credenciales para la CMS API</h2>
     </summary>
     
-    <p>Usar el <span translate="No">API de CMS</span> necesitará las credenciales adecuadas.</p>
+    <p>Usar el <span translate="No">CMS API</span> necesitará las credenciales adecuadas.</p>
     
     <p>La forma más fácil de obtener credenciales en la mayoría de los casos es a través de la sección Autenticación de la API de administrador de Studio (requiere permisos de administrador en su cuenta). Ver <a href="/general/managing-api-authentication-credentials.html">Administrar las credenciales de autenticación de API</a> para detalles. En este caso, los permisos que necesita son para <strong>videos</strong> - necesita permisos de lectura y escritura:</p>
     
@@ -36,7 +36,7 @@ grandparent: CMS API
     <figcaption class="bcls-caption--image">Compartir permisos de relación</figcaption>
     </figure>
     
-    <p>Si los permisos que necesita no están disponibles en Studio, o si prefiere obtenerlos directamente de la API de OAuth, utilice su elección de <strong>Obtener credenciales de cliente</strong> documentos que se enumeran a continuación. Cualquiera que sea la opción que elija, deberá solicitar los permisos de operación correctos. Lo siguiente se puede usar con cURL o Postman para obtener los permisos adecuados:</p>
+    <p>Si los permisos que necesita no están disponibles en Studio, o si prefiere obtenerlos directamente de la OAuth API, utilice su elección de <strong>Obtener credenciales de cliente</strong> documentos que se enumeran a continuación. Cualquiera que sea la opción que elija, deberá solicitar los permisos de operación correctos. Lo siguiente se puede usar con cURL o Postman para obtener los permisos adecuados:</p>
     
     <pre class="line-numbers">
            <code class="language-json" translate="No">"operations": [

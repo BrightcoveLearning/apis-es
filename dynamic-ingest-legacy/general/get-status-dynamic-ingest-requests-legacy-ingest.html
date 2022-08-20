@@ -74,7 +74,7 @@ grandparent: 'Dynamic Ingest API'
     <ul>
       <li>La <code translate="No">videoId</code> El valor le permite saber para qué video es la reproducción (en caso de que tenga varios trabajos de ingesta en ejecución)</li>
       <li>La <code translate="No">profileRefId</code> value es un código especial que le dice que el activo creado era un manifiesto HLS (los otros valores posibles son <code translate="No">HdsManifest</code> , <code translate="No">DashManifest</code> , y <code translate="No">SmoothIsmManifest</code>)</li>
-      <li>Para HLS y HDS, se creará un manifiesto, por lo que verá una notificación. Para DASH y SmoothIsm, se crean dos manifiestos (uno para usar en la API de medios heredada, el otro para la API de CMS), por lo que verá dos notificaciones de este tipo.</li>
+      <li>Para HLS y HDS, se creará un manifiesto, por lo que verá una notificación. Para DASH y SmoothIsm, se crean dos manifiestos (uno para usar en la API de medios heredada, el otro para la CMS API), por lo que verá dos notificaciones de este tipo.</li>
       <li>Si el <code translate="No">status</code> el valor es "SUCCESS", el manifiesto se creó correctamente</li>
       <li>Para un tipo segmentado como HLS o MPEG-DASH, no existe un orden definido para la creación de las representaciones y el manifiesto; estas representaciones no se pueden reproducir hasta que se crean ambas (o el video se ha procesado por completo; consulte el siguiente ejemplo).</li>
     </ul>
@@ -119,7 +119,7 @@ grandparent: 'Dynamic Ingest API'
     <section class="bcls-section" id="sample">
     <h2>Panel de control de muestra</h2>
     
-    <p>Esta sección explica cómo se pueden juntar las notificaciones para construir un tablero simple para la API de Dynamic Ingest. El controlador de notificaciones analiza las notificaciones del <span translate="No">API de ingesta dinámica</span> para identificar el procesamiento de notificaciones completas. Luego agrega las notificaciones de video en una matriz de objetos para cada video en un archivo JSON. El tablero en sí es una página HTML que importa el archivo JSON para obtener los datos de notificación. Utiliza los identificadores para realizar una solicitud al <a href="/cms/getting-started/overview-cms-api.html">API de CMS</a> para obtener los metadatos del video. Puedes ver el tablero <a href="//solutions.brightcove.com/bcls/di-api/di-log.html">aquí</a>.</p>
+    <p>Esta sección explica cómo se pueden juntar las notificaciones para construir un tablero simple para la API de Dynamic Ingest. El controlador de notificaciones analiza las notificaciones del <span translate="No">API de ingesta dinámica</span> para identificar el procesamiento de notificaciones completas. Luego agrega las notificaciones de video en una matriz de objetos para cada video en un archivo JSON. El tablero en sí es una página HTML que importa el archivo JSON para obtener los datos de notificación. Utiliza los identificadores para realizar una solicitud al <a href="/cms/getting-started/overview-cms-api.html">CMS API</a> para obtener los metadatos del video. Puedes ver el tablero <a href="//solutions.brightcove.com/bcls/di-api/di-log.html">aquí</a>.</p>
     
     <p>Todos los archivos de esta aplicación, junto con las instrucciones para configurarla para su cuenta, están en <a href="https://github.com/BrightcoveLearning/dynamic-ingest-dashboard">este repositorio</a>.</p>
     
@@ -142,7 +142,7 @@ grandparent: 'Dynamic Ingest API'
     
     <h4>Tablero</h4>
     
-    <p>El tablero incluye HTML y JavaScript para obtener los datos de notificación y datos de video adicionales del <span translate="No">API de CMS</span> y escribe los resultados en una tabla:</p>
+    <p>El tablero incluye HTML y JavaScript para obtener los datos de notificación y datos de video adicionales del <span translate="No">CMS API</span> y escribe los resultados en una tabla:</p>
     
     <pre class="line-numbers">
     <code class="language-html" translate="No">&lt;!DOCTYPE html&gt;

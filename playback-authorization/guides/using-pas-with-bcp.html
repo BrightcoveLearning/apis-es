@@ -33,7 +33,7 @@ layout: staging
   <section class="bcls-section">
     <h2 id="Using_a_token_in_the_catalog_parameters">Usando un token en los parámetros del catálogo</h2>
     <p>Esta sección detalla el código necesario para configurar el reproductor para usar PAS. Para hacer esto, pase un token de cadena como parte de un <a href="https://support.brightcove.com/player-catalog#Catalog_parameters_object">parámetros del catálogo</a> objeto, usando el nombre de la propiedad <code translate="No">bcovAuthToken</code>.</p>
-    <p>Este enfoque funcionará tanto para DRM como para HLSe. El reproductor detectará el tipo de fuente que se está cargando desde la API de reproducción y proporcionará la implementación correcta para esa fuente.</p>
+    <p>Este enfoque funcionará tanto para DRM como para HLSe. El reproductor detectará el tipo de fuente que se está cargando desde la Playback API y proporcionará la implementación correcta para esa fuente.</p>
     <aside class="bcls-aside bcls-aside--information">Nota: Esta implementación requiere la versión Player <strong>6.33.0</strong> o mayor. Si usa DRM, necesitará la versión <strong>5.5.0</strong> o más tarde del <a href="https://support.brightcove.com/configuring-brightcove-player-drm#Changelog">Complemento DRM</a>.</aside>
     <p>Este código de implementación de muestra utiliza el <a href="https://support.brightcove.com/player-catalog#get_method">catalog.get ()</a> método para solicitar el video mientras se proporciona el token (que debería reemplazar el <code translate="No">&lt;BCOV_AUTH_TOKEN&gt;</code> marcador de posición). Asegúrese de NO incluir la identificación del video en el <code translate="No">&lt;video-js&gt;</code> etiqueta.</p>
     <pre class="line-numbers">
