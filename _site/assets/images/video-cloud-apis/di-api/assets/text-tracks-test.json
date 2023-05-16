@@ -1,0 +1,19 @@
+{
+    "profile": "BoltIngestProfile",
+    "capture-images": true,
+    "text_tracks": [
+        {
+            "url": "https://solutions.brightcove.com/bcls/assets/vtt/sample.vtt",
+            "srclang": "en",
+            "kind": "captions",
+            "label": "EN",
+            "default": true
+        }
+    ],
+    "master": {
+        "url": "https://solutions.brightcove.com/bcls/assets/videos/Great_Blue_Heron.mp4"
+    },
+    "callbacks": [
+        "https://solutions.brightcove.com/bcls/di-api/di-callbacks.php"
+    ]
+}
