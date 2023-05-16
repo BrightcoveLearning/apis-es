@@ -1,0 +1,50 @@
+﻿<fieldset><legend>Crear clave de política</legend>
+
+  <p>Si no ingresa la información de la cuenta, se utilizará una cuenta de muestra de Brightcove.</p>
+
+  <p>Para obtener más información sobre las opciones de claves de política, consulte la <a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">Descripción general de la API de clave de política</a>.</p>
+  
+  <p>ID de la cuenta: <input id="account_id" type="text" value="" placeholder="1752604059001" /></p>
+  
+  <p>Identificación del cliente: <input id="client_id" type="text" size="60" value="" placeholder="c5d0a622-5479-46d8-8d8a-5f034b943fab" /></p>
+  
+  <p>Secreto del cliente: <input id="client_secret" type="text" size="60" value="" placeholder="w7NQYu0vUloM4GYYy2SXAxrvyFpt8fwI35qAFZcS13-VIgs0itwKNsAwHOS80sOWKJ1BUwHIvSFG2I" /></p>
+    
+    <p><input type="checkbox" id="search_enabled" checked> <label for="search_enabled">¿Clave de política habilitada para búsqueda?</label></p>
+    <p><input type="checkbox" id="restrict_domains"> <label for="restrict_domains">¿Agregar restricciones de dominio?</label></p>
+    <div>
+      Ingrese una lista separada por comas de dominios <strong>permitido</strong> (<code translate="No">https://mysite.com,https://somesite.com</code>)
+      <p>
+        <input type="text" id="domain_list" size="60">
+      </p>
+    </div>
+    <p><input type="checkbox" id="restrict_geo"> <label for="restrict_geo">¿Agregar restricciones geográficas?</label></p>
+    <div>
+      Ingrese una lista separada por comas de abreviaturas de países (<code translate="No">us,usmil,pr,gu,vi,as,mp</code>)
+      <p>
+        <input type="text" id="country_list" size="60">
+      </p>
+      <p><input type="checkbox" id="disallowed"> <label for="disallowed">Visita <strong>no</strong> permitido desde estos países</label> (si no está marcado, se permite la visualización <strong>solo</strong> en estos países)</p>
+    </div>
+    <p><input type="checkbox" id="require_ssai"> <label for="require_ssai">Requerir SSAI</label> (si no está marcado, se permite la visualización <strong>solo</strong> en estos países)</p>
+  
+  <p><button class="bcls-button" id="generateKey" style="color:#eeeeee;font-weight:normal">Crear la clave de política</button></p>
+  
+  <h4>Solicitud de API</h4>
+  
+  <pre class="line-numbers">
+  <code id="apiRequest" class="language-http">Esto se completará dinámicamente</code></pre>
+  
+  <h4>Cuerpo de la solicitud</h4>
+  
+  <pre class="line-numbers">
+  <code id="requestBody" class="language-json">Esto se completará dinámicamente</code></pre>
+
+  <h4>Clave de política</h4>
+    <textarea name="policy_key" id="policy_key" cols="100" rows="3"></textarea>
+
+  <h4>Respuesta completa</h4>
+  
+  <pre class="line-numbers">
+  <code id="apiResponse" class="language-json">Esto se completará dinámicamente</code></pre>
+  </fieldset>

@@ -1,0 +1,4100 @@
+﻿<!DOCTYPE html>
+<html lang="es"> 
+    <head>
+        <title>Descripción general: API de Brightcove Live</title>
+        
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="En esta descripción general, aprenderá para qué sirve la API en vivo y cómo usarla. Los temas incluidos en este documento incluyen regiones de AWS y CDN compatibles, eventos y canales en vivo, e inserción de metadatos cronometrados ID3 en una transmisión en vivo.">
+        
+        <!-- Google Font -->
+        <link href="/assets/s-site-assets-stylesheets/fonts/poppins.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/s-site-assets-stylesheets/fonts/articulat-site.css">
+        <link href="/assets/s-site-assets-stylesheets/fonts/source-code-pro.css" rel="stylesheet">
+        
+        <!-- FontAwesome JS-->
+        
+        <script src="https://kit.fontawesome.com/d67c74a882.js" crossorigin="anonymous"></script>  
+        
+        <!-- Plugins CSS -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+        <link rel="stylesheet" href="/assets/s-site-assets-template-stylesheets/plugins/simplelightbox/simple-lightbox.min.css">
+
+        <!-- Theme CSS -->  
+        <link id="theme-style" rel="stylesheet" href="/assets/s-site-assets-template-stylesheets/css/theme.css">
+        <link rel="stylesheet" href="/assets/s-site-assets-stylesheets/prism.css">
+        <link rel="stylesheet" href="/assets/s-site-assets-template-stylesheets/custom-css/styles.css">
+
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBJC11HF8Z"></script>
+        <script translate="no">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-XBJC11HF8Z');
+        </script>
+        <script src="/assets/s-site-assets-scripts/sixth-sense.js"></script>
+        <script src="/assets/s-site-assets-scripts/sajari-head.js"></script>
+        <script src="/assets/s-site-assets-scripts/feather.min.js"></script>
+
+    </head> 
+
+    <body class="docs-page">
+        
+
+<header class="header fixed-top">
+  <div class="branding docs-branding">
+    <div class="container-fluid position-relative py-2">
+      <div class="docs-logo-wrapper">
+        <button id="docs-sidebar-toggler" class="docs-sidebar-toggler"
+          type="button">
+          <span></span> <span></span> <span></span>
+        </button>
+        <div class="site-logo"><a class="navbar-brand" href="https://support.brightcove.com/" style="margin-left: 15px;"> <img class="logo-icon me-2" src="/assets/s-site-assets-template-stylesheets/images/bc_logo_black_1@1x.png" alt="logo" style="margin-bottom: 9px;"/>
+            <!-- <span class="logo-text">BRIGHTCOVE</span> -->
+          </a></div>
+      </div><!--//docs-logo-wrapper-->
+
+      <div class="docs-top-utilities d-flex justify-content-end
+        align-items-center">
+        
+        <!-- Search bar -->
+        <div id="nav-search-box" class="top-search-box d-none d-lg-flex" style="margin-right: 10px ;"></div>
+
+<select id="site_select" class="form-select select-focus" style="width:
+          20%; margin-right: 10px;" translate="no">
+          <option value="">Other Brightcove Docs</option>
+          
+          
+          <option value="https://support.brightcove.com" translate="no">Documentation Home</option>
+          
+          
+          
+          <option value="https://support.brightcove.com/" translate="no">-- VIDEO CLOUD --</option>
+          
+          
+          
+          <option value="https://studio.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Video Cloud Studio</option>
+          
+          
+          
+          <option value="https://mstudio.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Marketing Studio</option>
+          
+          
+          
+          <option value="https://player.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Brightcove Player Development</option>
+          
+          
+          
+          <option value="https://apis.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Video Cloud Platform APIs</option>
+          
+          
+          
+          <option value="https://sdks.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Video Cloud Device SDKs</option>
+          
+          
+          
+          <option value="https://integrations.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Integrations and CMS Connectors</option>
+          
+          
+          
+          <option value="https://general.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Video Cloud General Information</option>
+          
+          
+          
+          <option value="https://support.brightcove.com/" translate="no">-- VIDEO ESSENTIALS --</option>
+          
+          
+          
+          <option value="https://audience-insights.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Brightcove Audience Insights</option>
+          
+          
+          
+          <option value="https://beacon-help.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Brightcove Beacon Studio</option>
+          
+          
+          
+          <option value="https://beacon.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Brightcove Beacon Classic</option>
+          
+          
+          
+          <option value="https://corptv.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;CorpTV</option>
+          
+          
+          
+          <option value="https://live.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Brightcove Live</option>
+          
+          
+          
+          <option value="https://zencoder.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Zencoder</option>
+          
+          
+          
+          <option value="https://support.brightcove.com/" translate="no">-- VIDEO CLOUD ADD-ONS --</option>
+          
+          
+          
+          <option value="https://gallery.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Brightcove Gallery</option>
+          
+          
+          
+          <option value="https://studio.support.brightcove.com/social/index.html" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Brightcove Social</option>
+          
+          
+          
+          <option value="https://interactivity.support.brightcove.com/index.html" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Brightcove Interactivity</option>
+          
+          
+          
+          <option value="https://ssai.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Brightcove SSAI</option>
+          
+          
+          
+          <option value="https://campaign.support.brightcove.com" translate="no">&nbsp;&nbsp;&nbsp;&nbsp;Brightcove Campaign</option>
+          
+          
+        </select>
+
+        <select id="language_select" class="form-select select-focus" style="width: 10%;"
+          onchange="doGTranslate(this);" translate="no">
+          <!-- <option value="">Select Language</option> -->
+          <option value="en|en" translate="No">English</option>
+          <option value="en|zh-TW" translate="No">繁體中文</option>
+          <option value="en|fr" translate="No">Français</option>
+          <option value="en|de" translate="No">Deutsche</option>
+          <option value="en|ja" translate="No">日本語</option>
+          <option value="en|ko" translate="No">한국어</option>
+          <option value="en|es" translate="No">Español</option>
+        </select>
+
+        <script translate="no">
+          /* <![CDATA[ */
+          function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+          /* ]]> */
+        </script>
+      </div>
+    </div>
+  </div>
+</header><!--//header-->
+
+<div class="docs-wrapper">
+  <div id="docs-sidebar" class="docs-sidebar" style="padding-right: 15px;">
+    <div id="nav-search-box" class="top-search-box d-lg-none p-3"></div>
+    <div class="row">
+      
+        <div id="side_nav" style="margin-left: 1em; display: inline-block; border-right: 1px solid #e5e5e6; padding-right: 1em;">
+          
+          <nav class="docs-nav sidenav" aria-label="Main">
+            <ul class="site-nav" style="list-style-type: none;">
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/index.html">Inicio</a></li>
+            
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/getting-started/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;Empezando</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/getting-started/getting-started-brightcove-apis.html">Descripción general: API de plataforma</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/getting-started/authentication-brightcove-api-requests.html">Autenticación para solicitudes de API</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/getting-started/concepts-testing-tools-brightcove-apis.html">Herramientas de prueba para las API de Brightcove</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/getting-started/learning-guide-using-rest-apis.html">Guía de aprendizaje: Usando las API REST</a></li>
+              
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/general/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;Información general</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/general/integrating-your-cms-video-cloud.html">Integración de su CMS con Video Cloud</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/general/managing-api-authentication-credentials.html">Administración de credenciales de autenticación de API</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/general/all-api-references.html">Todas las referencias de API</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/general/platform-api-code-samples.html">Ejemplos de código de API de plataforma</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/general/video-cloud-api-training-videos.html">Vídeos de formación sobre la API de la plataforma</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/general/known-issues.html">Problemas conocidos de las API de la plataforma</a></li>
+              
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/general/developer-tools/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Herramientas de desarrollo</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/concepts-cors.html">Entendiendo CORS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/concepts-introducing-json.html">Presentamos JSON</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/concepts-javascript-module-design-pattern.html">Conceptos: El patrón de diseño del módulo JavaScript</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/concepts-using-javascript-promises.html">Conceptos: Uso de promesas JavaScript</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/concepts-set-curl.html">Conceptos: Configurar cURL</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/concepts-api-tester.html">Probador de API en línea</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/use-insomnia-api-requests.html">Utilice Insomnia para solicitudes de API</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/use-postman-api-requests.html">Utilice Postman para solicitudes de API</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/using-mtr-to-look-at-network-traffic.html">Usando MTR (mi traceroute)</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/using-wireshark-track-network-traffic-debugging.html">Uso de Wireshark para rastrear el tráfico de la red</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/general/features/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Características</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/audio-content.html">Contenido de audio</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/features/create-json-web-token.html">Creación de un token web JSON (JWT)</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/features/debugging-mobile-devices.html">Depuración en dispositivos móviles</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/developer-tools/concepts-javascript-debugging-basics.html">Conceptos básicos de depuración de JavaScript</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/overview-forensic-watermarking.html">Descripción general: Marca de agua forense</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/faq-forensic-watermarking.html">PREGUNTAS MÁS FRECUENTES: Marca de agua forense</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/overview-context-aware-encoding.html">Descripción general de la codificación sensible al contexto</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/tls-media-player-and-api-urls.html">TLS para URL de medios, reproductores y API</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/general/utilities/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Utilidades</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/utilities/string-encoder.html">Codificador de cadena</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/utilities/date-converter.html">Convertidor de fecha</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/utilities/base-64-encoding-tool.html">Herramienta de codificación Base 64</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/analytics/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de análisis</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/analytics/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/getting-started/overview-analytics-api-v1.html">Descripción general: API de análisis</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/getting-started/analytics-api-explorer.html">Explorador de API de Analytics</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/getting-started/overview-video-data-endpoint.html">Descripción general: Punto final de datos de video</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html">Descripción general: Dimensiones, campos y parámetros</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/analytics/general/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Información general</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/general/faq-analytics-api.html">PREGUNTAS MÁS FRECUENTES: API de análisis</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/general/analytics-api-glossary.html">Glosario de API de Analytics</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/general/data-sent-from-brightcove-player.html">Datos enviados a Analytics por Brightcove Player</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/general/analytics-api-unique-users.html">Usuarios únicos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/general/live-metrics.html">Métricas en vivo</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/analytics/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/references/reference.html">Referencia de la API de Analytics</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/references/analytics-api-release-notes.html">Notas de versión</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/references/known-issues.html">Problemas conocidos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/references/analytics-api-error-reference.html">Referencia de error</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/analytics/dimension-guides/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Guías de dimensiones</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-account.html">Dimensión: <code translate="No">account</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-browsertype.html">Dimensión: <code translate="No">browser_type</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-date.html">Dimensión: <code translate="No">date</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-datehour.html">Dimensión: <code translate="No">date_hour</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-destinationdomain.html">Dimensión: <code translate="No">destination_domain</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-destinationpath.html">Dimensión: <code translate="No">destination_path</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-devicemanufacturer.html">Dimensión: <code translate="No">device_manufacturer</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-devicetype.html">Dimensión: <code translate="No">device_type</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-deviceos.html">Dimensión: <code translate="No">device_os</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-city.html">Dimensión: <code translate="No">city</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-country.html">Dimensión: <code translate="No">country</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-region.html">Dimensión: <code translate="No">region</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-livestream.html">Dimensión: <code translate="No">live_stream</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-referrerdomain.html">Dimensión: <code translate="No">referrer_domain</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-sourcetype.html">Dimensión: <code translate="No">source_type</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-searchterms.html">Dimensión: <code translate="No">search_terms</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-socialplatform.html">Dimensión: <code translate="No">social_platform</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-player.html">Dimensión: <code translate="No">player</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-video.html">Dimensión: <code translate="No">video</code></a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/dimension-guides/dimension-viewer.html">Dimensión: <code translate="No">viewer</code></a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/analytics/code-samples/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Ejemplos de código</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analytics-api-sample-concurrent-viewers-live-events.html">Espectadores concurrentes para eventos en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analytics-api-sample-daily-analytics-report-generator.html">Generador de informes de análisis diario</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analytics-api-sample-destinations-report.html">Informe de destinos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analytics-api-sample-geographical-analytics-report.html">Informe de análisis geográfico</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analytics-api-sample-unique-users-day.html">Usuarios únicos por día</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analytics-api-sample-video-engagement-graph.html">Gráfico de participación de video</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analytics-api-sample-video-report-player-and-day.html">Informe de video por jugador y día</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analytics-api-sample-video-report-reference-id.html">Informe de video por ID de referencia</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analytics-api-sample-video-report-tags.html">Informe de video por etiquetas</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analyticscms-apis-sample-analytics-playlists.html">Análisis por listas de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/analyticscms-apis-sample-recently-added-videos.html">Vídeos añadidos recientemente</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/analytics/code-samples/code-sample-video-analytics-report-country-and-day.html">Informe de análisis de video por país y día</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/aspera/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;áspera</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/aspera/overview.html">Descripción general: Uso de Aspera para la transferencia a Video Cloud</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/aspera/manifest-metadata-reference.html">Referencia de manifiesto/metadatos</a></li>
+              
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/audience/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de audiencia</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href=" /audience/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/audience/getting-started/overview-audience-api.html">Descripción general: API de audiencia</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/audience/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/audience/references/reference.html">Referencia de la API de audiencia</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/cloud-playout-apis/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de reproducción en la nube</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href=" /cloud-playout-apis/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cloud-playout-apis/getting-started/overview-channel-api.html">Descripción general: API de canales</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cloud-playout-apis/getting-started/overview-epg-api.html">Descripción general: API EPG</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cloud-playout-apis/getting-started/epg-best-practices.html">API EPG: Mejores prácticas</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cloud-playout-apis/guides/search-channels-api.html">Búsqueda de canales</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/cloud-playout-apis/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cloud-playout-apis/references/reference-epg.html">Referencia de la API de EPG</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cloud-playout-apis/references/reference-channels.html">Referencia de la API de canales</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cloud-playout-apis/references/reference-cms-interactions.html">Referencia de la API de CMS para Cloud Playout</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cloud-playout-apis/references/release-notes.html">Notas de la versión de las API de Cloud Playout</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/cms/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de CMS</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/cms/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/getting-started/overview-cms-api.html">Descripción general: API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/getting-started/practice-area-cms-api.html">Área de práctica: API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/getting-started/best-practices-cms-and-playback-apis.html">Mejores prácticas: API de reproducción y CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/getting-started/cms-api-notifications.html">Notificaciones de la API de CMS</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/cms/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/references/reference.html">Referencia de la API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/references/catalog-apis-cms-api-and-playback-api-release-notes.html">Notas de la versión de CMS / API de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/references/known-issues.html">Problemas conocidos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/references/cms-api-video-fields-reference.html">Referencia de campos de video de la API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/references/cms-api-playlist-fields-reference.html">Referencia de campos de la lista de reproducción de la API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/references/cms-api-custom-fields-reference.html">Referencia de campos personalizados de la API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/references/cms-api-folder-fields-reference.html">Referencia de campos de carpeta de API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/references/cms-api-error-message-reference.html">Referencia de mensajes de error de la API de CMS</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/cms/searching/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;buscando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/searching/cms-and-playback-apis-video-search-v2.html">API de CMS: Búsqueda de vídeos v2</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/searching/cms-api-playlists-search.html">API de CMS: Búsqueda de listas de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/searching/using-cms-api-page-search-results.html">Resultados de búsqueda de página</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/searching/cmsplayback-api-videos-search.html">API de reproducción y CMS: Búsqueda de vídeos v1</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/guides/catalog-search-architecture.html">Arquitectura de búsqueda de catálogo</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/cms/managing-videos/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Administrar videos/activos</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/activate-deactivate-videos.html">Activar/Desactivar o Programar Videos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/audio-content.html">Contenido de audio</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/using-cms-api-add-geo-filtering.html">Agregar Geo-Filtrado</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/digital-master-delete-api.html">API de eliminación maestra digital</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/deleting-videos.html">Eliminación de vídeos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/getting-counts-videos-and-playlists.html">Obtener conteos de videos y listas de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/managing-custom-fields.html">Gestión de campos personalizados</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/managing-audio-tracks.html">Gestión de pistas de audio mediante la API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/managing-playlists-using-cms-api.html">Administrar listas de reproducción mediante la API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/using-cms-api-managing-clips.html">Gestión de clips</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/media-sharing-cms-api.html">Uso compartido de medios</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/multilingual-metadata.html">Metadatos multilingües</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/using-cms-api-retrieve-video-data.html">Recuperar datos de video</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/setting-360-degree-video-properties-cms-api.html">Establecer propiedades de video de 360 grados</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/using-cms-api-remote-assets.html">Activos remotos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/using-cms-api-add-webvtt-captions-text-tracks.html">Agregar subtítulos WebVTT (pistas de texto)</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/managing-text-tracks.html">Gestión de pistas de texto mediante la API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/managing-transcripts.html">Gestión de transcripciones mediante la API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/generate-video-sitemaps.html">Generar sitemaps de vídeo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/identifying-low-performing-content.html">Identificación de contenido de bajo rendimiento</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/cms-api-working-folders.html">Trabajar con carpetas</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/working-with-labels.html">Trabajar con etiquetas</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/linking-zencoder-and-video-cloud-video-demand.html">Vinculación de Zencoder y Video Cloud</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/cms/code-samples/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Ejemplos de código</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-add-multiple-affiliate-accounts-media-sharing.html">Agregar varias cuentas de afiliados</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-share-multiple-videos.html">Comparte varios videos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-media-sharing-report.html">Informe de uso compartido de medios</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-shared-media-report.html">Informe de medios compartidos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-update-videos.html">Actualizar videos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-add-custom-field-multiple-videos.html">Agregar campo personalizado a varios videos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-update-geo-properties.html">Actualizar propiedades geográficas</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-add-cue-points.html">Agregar puntos de referencia</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-video-report-generator.html">Generador de informes de video</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-videos-delivery-type.html">Vídeos por tipo de envío</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-download-links.html">Descargar enlaces</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-video-sitemap-generator.html">Generador de mapas de sitios de video</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-mrss-generator.html">Generador MRSS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-mrss-feed-playlist.html">Feed de MRSS de la lista de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-generate-rss-podcast-feed-itunes.html">Feed de podcasts RSS para iTunes</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-video-schema-builder.html">Creador de esquemas de video</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-python-code-get-request.html">Código Python para una solicitud GET</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-report-audio-only-content.html">Informe sobre contenido de solo audio</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-video-renditions-inspector.html">Inspector de reproducciones de video</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-video-search-app.html">Aplicación de búsqueda de videos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-videos-with-text-tracks.html">Vídeos con pistas de texto</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/code-samples/cms-api-sample-video-custom-fields-report.html">Informe de campos personalizados de videos</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/xdr/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de currículum entre dispositivos (XDR)</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/xdr/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/xdr/getting-started/xdr-overview.html">Descripción general: Currículum multidispositivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/xdr/getting-started/get-playback-position.html">Obtener la posición de reproducción de la API XDR</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/xdr/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Guías</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="https://player.support.brightcove.com/playback/xdr-with-bcplayer.html">Currículum vitae multidispositivo con Brightcove Player</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="https://sdks.support.brightcove.com/features/cross-device-resume-sdks.html">Currículum vitae multidispositivo con los SDK nativos</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/xdr/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/xdr/references/reference.html">Referencia de API de currículum vitae multidispositivo</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/data-collection/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de recopilación de datos</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/data-collection/getting-started/overview-data-collection-api-v2.html">Descripción general: API de recopilación de datos</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/data-collection/getting-started/data-collection-api-sample.html">Muestra de API de recopilación de datos</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/data-collection/references/reference.html">Referencia de la API de recopilación de datos</a></li>
+              
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/delivery-rules/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de reglas de entrega</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/delivery-rules/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/delivery-rules/getting-started/overview-delivery-rules.html">Descripción general: Reglas de entrega</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/delivery-rules/getting-started/implementing-delivery-rules.html">Implementación de reglas de entrega</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/delivery-rules/guides/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Guías</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="https://player.support.brightcove.com/playback/using-delivery-rules-with-bcp.html">Uso de reglas de entrega con Brightcove Player</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="https://sdks.support.brightcove.com/features/using-delivery-rules-with-sdks.html">Uso de reglas de entrega con los SDK nativos</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/delivery-rules/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/delivery-rules/references/reference.html">Referencia de la API de reglas de entrega</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/delivery-system/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API del sistema de entrega</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/delivery-system/overview-delivery-system-api.html">Descripción general: API del sistema de entrega</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/delivery-system/step-step-delivery-system-api.html">Paso a paso: API del sistema de entrega</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/delivery-system/delivery-system-api-git-overview.html">Descripción general de Git</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/delivery-system/references/reference.html">Referencia de la API del sistema de entrega</a></li>
+              
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/dynamic-ingest/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de ingesta dinámica</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/dynamic-ingest/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/getting-started/overview-dynamic-ingest-api-dynamic-delivery.html">Descripción general: API de ingesta dinámica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/getting-started/quick-start-dynamic-ingest-api.html">Inicio rápido: API de ingesta dinámica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/getting-started/source-file-upload-api-dynamic-ingest.html">API de carga de archivos de origen para ingesta dinámica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/getting-started/overview-dynamic-delivery.html">Descripción general de la entrega dinámica</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/dynamic-ingest/general/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Información general</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/general/dynamic-ingest-api-best-practices.html">API de ingesta dinámica: Mejores prácticas</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/general/notifications-dynamic-delivery-video-cloud.html">Notificaciones para la ingesta dinámica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/general/get-status-dynamic-ingest-requests-dynamic-delivery.html">Obtener el estado de las solicitudes de ingesta dinámica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/general/fallback-retry-strategy.html">Estrategia de respaldo / reintento</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/general/using-dynamic-ingest-s3.html">Uso de Dynamic Ingest con S3</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/general/ugc-strategies.html">Estrategias UGC</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/dynamic-ingest/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/references/reference.html">Referencia de API de ingesta dinámica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/references/dynamic-ingest-api-release-notes.html">Notas de la versión de la API de ingesta dinámica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/references/known-issues.html">Problemas conocidos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/references/dynamic-ingest-ingest-fields.html">Referencia de campos de ingesta</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/references/dynamic-ingest-error-message-reference.html">Referencia de mensajes de error de ingesta dinámica</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/dynamic-ingest/ingest-guides/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Guías de ingesta</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/guides/archiving-masters.html">Maestros de archivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/managing-videos/audio-content.html">Contenido de audio</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/ingest-guides/dynamic-delivery-ingest-priority-queueing.html">Cola de prioridad de ingesta de entrega dinámica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/ingest-guides/dynamic-ingest-media-sharing.html">Ingesta dinámica con uso compartido de medios</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/ingest-guides/images-and-dynamic-ingest-api.html">Imágenes y API de ingesta dinámica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/ingest-guides/implementing-multiple-audio-tracks-using-apis.html">Implementación de múltiples pistas de audio</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/ingest-guides/ingesting-content-drm.html">Ingestando contenido con DRM</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/ingest-guides/ingesting-videos-multiple-audio-tracks.html">Ingerir videos con pistas de audio en varios idiomas</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/ingest-guides/ingesting-webvtt-files-text-trackscaptions.html">Ingesta de archivos WebVTT</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/ingest-guides/ingesting-transcriptions.html">Ingesta de archivos de transcripciones</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/ingest-guides/requesting-auto-captions.html">Solicitud de subtítulos automáticos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/ingest-guides/context-aware-encoding.html">Uso de codificación sensible al contexto</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/dynamic-ingest/code-samples/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Ejemplos de código</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/code-samples/dynamic-ingest-api-tester-dynamic-delivery.html">Probador de API de ingesta dinámica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-ingesting-videos-dynamic-delivery.html">Ingestión de videos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-re-transcoding-videos-dynamic-delivery.html">Re-transcodificación de videos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-replacing-videos-dynamic-delivery.html">Reemplazo de videos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-add-scheduled-videos-dynamic-delivery.html">Agregar videos programados</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-adding-text-tracks.html">Agregar pistas de texto</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-ingesting-low-priority-videos-dynamic-delivery.html">Ingesta de videos de baja prioridad</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-python-code.html">Código Python</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/images/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de imagen</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/images/getting-started/overview.html">Descripción general: API de imagen</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/images/references/reference.html">Referencia de API de imagen</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/images/references/image-token-api-reference.html">Referencia de API de token de imagen</a></li>
+              
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/ingest-profiles/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de perfiles de ingesta</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/ingest-profiles/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/getting-started/overview-ingest-profiles-api-dynamic-delivery-context-aware-encoding.html">Descripción general: API de perfiles de ingesta</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/getting-started/practice-area-ingest-profiles-api-dynamic-delivery.html">Área de práctica: API de perfiles de ingesta</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/ingest-profiles/guides/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Guías</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/guides/archiving-masters.html">Maestros de archivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/general/audio-content.html">Contenido de audio</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="https://studio.support.brightcove.com/admin/ingest-profiles/ingest-profiles-best-practices.html">Mejores prácticas</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/guides/cae-fast-publish.html">Publicación rápida CAE</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/guides/dolby-atmos-audio.html">Sonido Dolby Atmos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/guides/hevc-video.html">Vídeo HEVC</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/guides/mp4s-dynamic-delivery.html">MP4 en entrega dinámica</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/ingest-profiles/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/references/reference.html">Referencia de API de perfiles de ingesta</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/references/ingest-profiles-api-fields-reference-dynamic-delivery-and-context-aware-encoding.html">Referencia de campos de perfiles de ingesta</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/references/standard-ingest-profiles-dynamic-delivery-and-context-aware-encoding.html">Perfiles de ingesta estándar</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/references/standard-live-ingest-profiles.html">Perfiles de ingesta en vivo estándar</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/references/fields-custom-live-ingest-profiles.html">Campos para perfiles personalizados de ingesta en vivo</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/ingest-profiles/code-samples/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Ejemplos de código</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/code-samples/ingest-profiles-api-sample-create-custom-dynamic-delivery-profile.html">Crear perfil de entrega dinámico personalizado</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/code-samples/ingest-profiles-api-sample-create-custom-context-aware-encoding-profile.html">Crear perfil CAE personalizado</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/code-samples/ingest-profiles-api-sample-add-profile-multiple-accounts.html">Agregar perfil a varias cuentas</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/code-samples/ingest-profiles-api-sample-get-all-profiles-account.html">Obtener todos los perfiles de una cuenta</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ingest-profiles/code-samples/ingest-profiles-api-sample-set-default-profile-dynamic-delivery.html">Establecer perfil predeterminado</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/mrss-ingestion/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;Ingestión a través de MRSS</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/mrss-ingestion/getting-started/ingesting_from_a_remotely_hosted_mrss_feed.html">Ingestión a través de un feed MRSS</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/mrss-ingestion/getting-started/xml-manifest-for-ingestion-via-mrss.html">Manifiesto XML para la ingestión a través de MRSS</a></li>
+              
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/interactivity/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de interactividad de Brightcove</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/interactivity/addon-api/reference.html">API de complemento</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/interactivity/annotation-api/reference.html">API de anotaciones</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/interactivity/embed-api/reference.html">API de inserción</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/interactivity/extension-api/reference.html">API de extensión</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/interactivity/accessing-reporting-endpoints.html">Acceder a puntos finales de informes</a></li>
+              
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/ipx/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de experiencia en la página</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href=" /ipx/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ipx/getting-started/overview-page-experience-api.html">Descripción general: API de experiencia en la página</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ipx/getting-started/quick-start-page-experience-platform-rest-api.html">Inicio rápido: API de plataforma de experiencia en la página (REST)</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/ipx/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ipx/references/reference.html">Referencia de la API de experiencia en la página</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ipx/references/page-experience-api-error-reference.html">Referencia de errores de la API de experiencia en la página</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/in-page-exerience-client-api/index.html">API de cliente de experiencia en la página</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/live-api/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API en vivo</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/live-api/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item section-doc"><a class="nav-link" href="/live-api/getting-started/overview-brightcove-live-api.html" aria-current="page">Descripción general: API en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/getting-started/quick-start-create-live-stream-using-brightcove-live-api.html">Crear una transmisión en vivo usando la API</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/live-api/guides/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Guías</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="https://live.support.brightcove.com/get-started/live-module-guidelines-and-best-practices.html">Prácticas recomendadas de Brightcove Live</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/brightcove-live-program-ad-metadata-api.html">API de metadatos de anuncios del programa en vivo de Brightcove</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-api-creating-frame-accurate-clip.html">Creación de un clip con precisión de cuadro</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-api-creating-vod-clips.html">Creación de clips VOD</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/getting-list-live-or-vod-jobs.html">Obtener una lista de trabajos en vivo o VOD</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-api-insert-id3-timed-metadata.html">Insertar metadatos cronometrados ID3</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-drm-live-api.html">Live DRM a través de Live API</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/managing-credentials-live-api.html">Administrar credenciales para la API en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-multi-language-audio.html">Audio en varios idiomas con Live API</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-api-notifications.html">Notificaciones</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-playback-restrictions.html">Restricciones de reproducción con transmisiones en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/reducing-latency-live-streams.html">Reducción de la latencia de las transmisiones en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-api-rtmp-outputs.html">Salidas RTMP</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-api-static-entry-points.html">Puntos de entrada estáticos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/signed-urls-and-token-auth-live-stream.html">URL firmadas y autenticación de token con transmisión en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/using-live-redundancy.html">Uso de redundancia en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-api-vod-live-event.html">VOD de evento en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-scheduler.html">Descripción general: Programador en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-scheduler-stop-start.html">Programación de la activación / desactivación de una secuencia SEP</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-scheduler-clips.html">Programación de generación de clips para transmisiones en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-scheduler-notifications.html">Notificaciones del programador en vivo</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/live-api/ssai/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;SSAI</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/ssai/live-api-cue-points-and-ad-beacons-ssai.html">Puntos de referencia y balizas publicitarias con SSAI</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/ssai/live-api-server-side-ad-insertion-ssai.html">Inserción de anuncios en el servidor (SSAI)</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/ssai/overview-player-enhancements-live-ssai.html">Descripción general: Mejoras del jugador para Live SSAI</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/live-api/code-samples/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Ejemplos de código</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/code-samples/live-api-sample-create-live-job.html">Crear un trabajo en vivo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/code-samples/quick-start-create-live-job-mpeg2-ts-input.html">Crear un trabajo en vivo para entrada MPEG2-TS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/code-samples/quick-start-using-rtmp-outputs-live-events.html">Uso de salidas RTMP para eventos en vivo</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/live-api/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/references/live-api-error-messages.html">Mensajes de error</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/references/live-api-release-notes.html">Notas de versión</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/references/reference.html">Referencia de API en vivo</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/oauth/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de OAuth</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/oauth/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/getting-started/overview-oauth-api-v4.html">Descripción general: API de OAuth</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/getting-started/quick-start-oauth.html">Inicio rápido: API de OAuth</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/oauth/guides/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Guías</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/guides/oauth-create-client-credentials-using-curl.html">Crear credenciales de cliente: cURL</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/guides/oauth-create-client-credentials-using-postman.html">Crear credenciales de cliente: Cartero</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/guides/getting-access-tokens.html">Obtener tokens de acceso</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/guides/api-operations-client-credentials-requests.html">Operaciones de API para solicitudes de credenciales de cliente</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/guides/get-your-bc-token.html">Obteniendo tu BC_TOKEN</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/oauth/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/references/reference.html">Referencia de la API de OAuth</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/references/oauth-api-error-message-reference.html">Referencia de mensajes de error de la API de OAuth</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/oauth/code-samples/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Ejemplos de código</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/code-samples/oauth-api-sample-create-client-credentials.html">Crear credenciales de cliente</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/oauth/code-samples/oauth-api-sample-get-access-token.html">Obtenga un token de acceso</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/playback/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de reproducción</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/playback/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/getting-started/overview-playback-api.html">Descripción general: API de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/getting-started/quick-start-playback-api.html">Inicio rápido: API de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/getting-started/best-practices-cms-and-playback-apis.html">Mejores prácticas: API de reproducción y CMS</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/playback/guides/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Guías</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/searching/cmsplayback-api-videos-search.html">API de reproducción y CMS: Búsqueda de videos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/getting-started/best-practices-cms-and-playback-apis.html">Arquitectura de búsqueda de catálogo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/guides/short-manifest-ttl.html">Manifiesto corto TTL</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/guides/static-url-delivery.html">Entrega de URL estática</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/playback/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/references/reference_v2.html">Referencia de la API de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/references/playback-api-video-fields-reference.html">Referencia de campos de video</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/references/playback-api-playlist-fields-reference.html">Referencia de campos de lista de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/references/playback-api-error-reference.html">Referencia de error</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/references/catalog-apis-cms-api-and-playback-api-release-notes.html">Notas de la versión de CMS / API de reproducción</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/playback/code-samples/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Ejemplos de código</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/code-samples/thumbnail-grid.html">Cuadrícula de miniaturas de video</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/code-samples/playback-api-sample-mrss-generator.html">Generador MRSS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/code-samples/playback-api-sample-jsonmrss-feed-playlist.html">Feed JSON / MRSS de una lista de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback/code-samples/itunes-roku-feed-php-samples.html">Generadores de feeds de iTunes y Roku</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/player-management/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de gestión de jugadores</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/player-management/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/getting-started/overview-player-management-api.html">Descripción general: API de gestión de jugadores</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/getting-started/step-step-player-management.html">Paso a paso: Gestión de jugadores</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/getting-started/training-demand-quick-start-player-management.html">Capacitación bajo demanda: Inicio rápido de la administración de jugadores</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/getting-started/oauth-guide.html">Guía de OAuth</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/player-management/guides/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Guías</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/guides/player-configuration-guide.html">Guía de configuración del reproductor</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/guides/plugin-registry.html">Registro de complementos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/guides/pre-release-player.html">Reproductor de prelanzamiento</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/guides/player-repositories.html">Repositorios de jugadores</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/guides/guide-embed-apis.html">Insertar API</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/guides/opting-out-automatic-player-updates.html">Optar por no recibir actualizaciones automáticas del reproductor</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/guides/embedding-brightcove-players-cms.html">Incorporación de reproductores de Brightcove en un CMS</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/player-management/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/references/reference.html">Referencia de la API de administración de jugadores</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/references/player-management-api-release-notes.html">Notas de versión</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/player-management/code-samples/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Ejemplos de código</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/code-samples/setup-player-management-samples.html">Configuración para muestras de gestión de jugadores</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/code-samples/bulk-updating-brightcove-default-player.html">Actualización masiva del reproductor predeterminado</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/code-samples/player-management-api-sample-create-player.html">Crea un jugador</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/code-samples/player-managment-api-update-player-version.html">Actualizar versión del reproductor</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/code-samples/player-management-api-sample-display-players.html">Reproductores de pantalla</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/code-samples/player-management-api-sample-delete-players.html">Eliminar jugadores</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/code-samples/player-management-api-sample-using-lastviewed-data.html">Usando datos last_viewed</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/player-management/code-samples/player-management-api-sample-programmatically-update-players.html">Actualizar reproductores mediante programación</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/playback-restrictions/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;Restricciones de reproducción</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/playback-restrictions/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/getting-started/overview-playback-restrictions.html">Descripción general: Restricciones de reproducción de Brightcove</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/getting-started/implementing-playback-rights.html">Implementación de derechos de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item">Video Cloud Studio:<a class="nav-link" href="https://studio.support.brightcove.com/admin/general/managing-playback-rights.html"> Derechos de reproducción</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/playback-restrictions/guides/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Guías</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="https://general.support.brightcove.com/developer/create-json-web-token.html">Creación de un token web JSON (JWT)</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/guides/authentication-apis.html">Usar API de autenticación</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/guides/fallback-hdcp.html">HDCP alternativo</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/guides/generic-stream-concurrency.html">Simultaneidad de transmisión genérica</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/guides/stream-concurrency.html">Limitación de transmisiones simultáneas por espectador</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/guides/device-limits.html">Implementación de límites de dispositivos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="https://player.support.brightcove.com/playback/playback-restrictions-with-bcp.html">Restricciones de reproducción con Brightcove Player</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="https://sdks.support.brightcove.com/features/playback-restrictions-with-sdks.html">Restricciones de reproducción con los SDK nativos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/live-api/guides/live-playback-restrictions.html">Restricciones de reproducción con transmisiones en vivo</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/playback-restrictions/references/auth-index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Autenticación</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/references/key-api/reference.html">Referencia clave de API</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/references/blacklist-api/reference.html">Referencia de API de lista negra</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/references/audit-api/reference.html">Referencia de la API de auditoría</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/playback-restrictions/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/references/playback-rights/reference.html">Referencia de la API de derechos de reproducción</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/references/reference.html">Referencia de la API de CMS</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/references/devices-api/reference.html">Referencia de API de dispositivos</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/references/concurrency-service-api/reference.html">Referencia de la API del servicio de concurrencia</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/playback-restrictions/references/playback-rights-errors.html">Errores de restricciones de reproducción</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/policy/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de política</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/policy/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/policy/getting-started/overview-policy-api.html">Descripción general: API de política</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/policy/getting-started/quick-start-policy-api.html">Ejemplo de código: Generar una clave de política</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/policy/getting-started/policy-keys.html">Clave de política del jugador</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/policy/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/policy/references/reference.html">Referencia de la API de políticas</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/policy/references/policy-api-release-notes.html">Notas de versión</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/social/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API sociales</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/social/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/social/getting-started/overview-social-api.html">Descripción general: API social</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/social/getting-started/quick-start-social-api.html">Inicio rápido: API social</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/social/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/social/references/reference.html">Referencia de API social</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/social/references/social-api-error-reference.html">API social: Referencia de error</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/social-syndication/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API de distribución social</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/social-syndication/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/social-syndication/getting-started/public-syndication-api-overview.html">Descripción general: API de configuración de distribución</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/social-syndication/getting-started/feed-syndication-api-overview.html">Descripción general: API de feed de distribución</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/social-syndication/getting-started/sample-templates-universal-syndication.html">Plantillas para distribución universal</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/cms/searching/cms-and-playback-apis-video-search-v2.html">API de reproducción y CMS: Búsqueda de vídeos v2</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/social-syndication/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/social-syndication/references/configuration-reference.html">Referencia de API de configuración de distribución</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/social-syndication/references/feed-reference.html">Referencia de la API del feed de distribución</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/policy/references/policy-api-release-notes.html">Notas de versión</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/social-syndication/code-samples/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Ejemplos de código</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/social-syndication/code-samples/sitemap-generator-sample.html">Generador de mapa de sitio de vídeo</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/ssai/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;API SSAI</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/ssai/getting-started/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Empezando</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ssai/getting-started/video-cloud-ssai-ad-config-api.html">API de Video Cloud SSAI</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+
+              <li class="nav-item subsection-title">
+                
+                <a class="nav-link" href="/ssai/references/index.html"> <span class="theme-icon-holder me-2"><i class="fa-solid fa-minus"></i></span>&nbsp;Referencias</a>
+                
+
+                <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ssai/references/reference.html">Referencia de la API de SSAI</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="nav-item"><a class="nav-link" href="/ssai/references/ssai-api-error-reference.html">Referencia de errores de la API de SSAI</a></li>
+                  
+                  
+                  
+                </ul>
+              </li>
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/training/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;Capacitación</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/training/online-training-courses.html">Cursos de formación online</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/training/register-training.html">Regístrese para la capacitación dirigida por un instructor</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/training/brightcove-university.html">Cursos de formación de la Universidad de Brightcove</a></li>
+              
+              
+              
+            </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item section-title"><a class="nav-link" href="/support/index.html"><span class="theme-icon-holder me-2"> <i class="fa-solid fa-plus"></i></span>&nbsp;Apoyo</a>
+              <ul role="list" class="section-items list-unstyled nav flex-column pb-3" style="display:none;">
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/support/contact-sales.html">Contactar con ventas</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/support/viewing-brightcove-system-status-page.html">Visualización de la página de estado del sistema Brightcove</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/support/known-issues-studio-brightcove-player-and-apis.html">Problemas conocidos</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/support/opening-case-with-brightcove-support.html">Abrir un caso de soporte</a></li>
+              
+              
+              
+              
+              
+              <li class="nav-item"><a class="nav-link" href="/support/reset-support-portal-password.html">Restablecer la contraseña del portal de soporte</a></li>
+              
+              
+              
+            </ul>
+            </li>
+            
+            
+          </ul>
+          </nav>
+        </div>
+      </div>
+    </div><!--//docs-sidebar-->
+  </div>
+</div>
+
+<div style="margin-top: 20px;">
+  <div class="docs-content" style="padding-bottom: 0px;">
+    <div class="container">
+      <div class="docs-overview">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            
+            <li class="breadcrumb-item"><a class="theme-link" href="/">Inicio</a></li>
+            
+            
+            <li class="breadcrumb-item"><a class="theme-link" href="/live-api/">API en vivo</a></li>
+            
+            
+            
+            <li class="breadcrumb-item"><a class="theme-link" href="/live-api/getting-started/">Empezando</a></li>
+            
+            
+            
+            <li class="breadcrumb-item active" aria-current="page">Descripción general: API de Brightcove Live</li>
+            
+            
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="docs-content">
+  <div class="container">
+    <div class="docs-overview py-5">
+      
+      <div class="centered-inpage-nav" id="centered_inpage_nav">
+        <nav id="centered_toc">
+          <select id="centered_in_page_toc" class="form-select select-focus"></select>
+        </nav>
+      </div>
+      <br/>
+      
+      
+<h1>Descripción general: API de Brightcove Live</h1>
+<article class="bcls-article">
+ <summary>En esta descripción general, aprenderá para qué sirve la API en vivo y cómo usarla. Los temas incluidos en este documento incluyen regiones de AWS y CDN compatibles, eventos y canales en vivo, e inserción de metadatos cronometrados ID3 en una transmisión en vivo.</summary>
+
+    <section class="bcls-section">
+      <h2 id="Introduction">Introducción</h2>
+
+      <p>La <span translate="No">Live API</span> es una API basada en REST que le permite crear y administrar eventos de transmisión en vivo. Las características opcionales incluyen:</p>
+
+      <ul>
+        <li>Inserción de anuncios del lado del servidor ( <span translate="No">SSAI</span> )</li>
+        <li><span translate="No">AES-128</span> cifrado</li>
+        <li>Cree activos de video a pedido a partir de clips tomados de la transmisión en vivo</li>
+        <li><span translate="No">DVR</span> capacidad</li>
+        <li>Múltiple <span translate="No">CDNs</span></li>
+      </ul>
+
+      <p>También vea el <a href="/live-api/references/reference.html">Referencia de API</a>.</p>
+    </section>
+
+    <section class="bcls-section">
+
+      <h2 id="Base_URL">URL base</h2>
+
+      <p>La URL base para el <span translate="No">Live API</span> es:</p>
+
+      <pre><code class="language-http" translate="No">https://api.bcovlive.io</code></pre>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Headers">Encabezados</h2>
+
+      <p>Al realizar una solicitud a Live API, deberá autenticarse con una clave de API. Para obtener la clave de Live API, abra una <a href="https://supportportal.brightcove.com/s/login/?language=en_US&amp;startURL=%2Fs%2F&amp;ec=302">ticket de atención al cliente</a>. La clave se pasa en un <code translate="No">X-API-KEY </code> encabezamiento. A <code translate="No">Content-Type </code> También se requiere el encabezado:</p>
+      
+      <pre><code class="language-bash" translate="No">X-API-KEY : <span class="bcls-input" translate="No">YOUR_APIKey</span>
+      Content-Type: application/json</code></pre>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Supported_AWS_regions">Regiones de AWS admitidas</h2>
+
+      <p>Se admiten las siguientes regiones de AWS:</p>
+
+      <table class="bcls-table">
+        <caption class="bcls-caption--table">Regiones de AWS admitidas</caption>
+        <thead class="bcls-table__head">
+          <tr>
+            <th>Localización</th>
+            <th>Nombre de AWS</th>
+            <th>Soporte SSAI</th>
+          </tr>
+        </thead>
+        <tbody class="bcls-table__body">
+          <tr>
+            <td >Oregón</td>
+            <td ><span translate="No">us-west-2</span></td>
+            <td style="text-align: center;"><i data-feather="check"></i></td>
+          </tr>
+          <tr>
+            <td >Virginia</td>
+            <td ><span translate="No">us-east-1</span></td>
+            <td style="text-align: center;"><i data-feather="check"></i></td>
+          </tr>
+          <tr>
+            <td >Tokio</td>
+            <td ><span translate="No">ap-northeast-1</span></td>
+            <td style="text-align: center;"><i data-feather="check"></i></td>
+          </tr>
+          <tr>
+            <td >Singapur</td>
+            <td ><span translate="No">ap-southeast-1</span></td>
+            <td style="text-align: center;"><i data-feather="check"></i></td>
+          </tr>
+          <tr>
+            <td >Sydney</td>
+            <td ><span translate="No">ap-southeast-2</span></td>
+            <td style="text-align: center;"><i data-feather="check"></i></td>
+          </tr>
+          <tr>
+            <td >Bombay</td>
+            <td ><span translate="No">ap-south-1</span></td>
+            <td style="text-align: center;"><i data-feather="x"></i>&lt;</td>
+          </tr>
+          <tr>
+            <td >Frankfurt</td>
+            <td ><span translate="No">eu-central-1</span></td>
+            <td style="text-align: center;"><i data-feather="check"></i></td>
+          </tr>
+          <tr>
+            <td >Irlanda</td>
+            <td ><span translate="No">eu-west-1</span></td>
+            <td style="text-align: center;"><i data-feather="x"></i></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Tenga en cuenta que los trabajos SEP están limitados por cuenta donde el límite estándar es 3, excepto por el <strong>nosotros-oeste-2</strong> : su limitación es hasta 10. Todas las limitaciones se establecen por cuenta y no por región.</p>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Supported_CDNs">CDN compatibles</h2>
+
+      <p>Las siguientes CDN son compatibles con la transmisión en vivo:</p>
+
+      <ul>
+        <li><span translate="No">Akamai</span></li>
+        <li><span translate="No">Cloudfront</span></li>
+      </ul>
+
+      <p>Otras CDN basadas en archivos deberían funcionar, pero no se han probado y no se admiten activamente.</p>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Channels_and_event_hours">Canales y horario de eventos</h2>
+
+      <p>Hay dos opciones de compra para Live:</p>
+
+      <ul>
+        <li>Comprar horas de eventos de tiempo de transmisión</li>
+        <li>Comprar canales de transmisión</li>
+      </ul>
+
+      <p>También puede comprar canales y horarios de transmisión de eventos. Comuníquese con su Gerente de Éxito del Cliente para obtener más información sobre las ofertas.</p>
+
+      <aside class="bcls-aside bcls-aside--information"><strong>Si ha adquirido tanto las horas de transmisión de eventos como los canales</strong>, debe tener en cuenta lo siguiente:
+
+        <ul>
+          <li>De forma predeterminada, los trabajos en vivo se facturan en función de las horas de transmisión de eventos.</li>
+          <li>Si desea que un trabajo se facture como un trabajo de canal, <strong>deber</strong> incluya el siguiente campo en el cuerpo de la solicitud cuando cree el trabajo en vivo:
+            <p><code translate="No">"channel_type": "24x7"</code></p>
+          </li>
+          <li>Los clientes de solo canal siempre deben incluir el siguiente campo en el cuerpo de la solicitud cuando crea el trabajo en vivo:
+            <p><code translate="No">"channel_type": "24x7"</code></p>
+          </li>
+          <li>Los clientes que hayan comprado solo horas de eventos de tiempo de transmisión deben <strong>no</strong> incluir <code translate="No">"channel_type": "24x7"</code> en las solicitudes.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Billable_states">Estados facturables</h2>
+      <p>La facturación de trabajos en vivo se aplica a <strong>Activo</strong> estados:</p>
+      <h3>Estados activos (se aplica facturación)</h3>
+      <ul>
+        <li><code translate="no">waiting</code></li>
+        <li><code translate="no">processing</code></li>
+        <li><code translate="no">disconnected</code></li>
+      </ul>
+      <h3>Estados inactivos (no aplica facturación)</h3>
+      <ul>
+        <li><code translate="no">standby</code></li>
+        <li><code translate="no">cancelling</code></li>
+        <li><code translate="no">finishing</code></li>
+        <li><code translate="no">cancelled</code></li>
+        <li><code translate="no">finished</code></li>
+        <li><code translate="no">failed</code></li>
+      </ul>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Token_authentication">Autenticación de token</h2>
+
+      <p>Brightcove ofrece la opción de agregar autenticación de token a las URL de reproducción de transmisión de video en vivo. Si desea agregar autenticación de token, <a href="https://supportportal.brightcove.com">Póngase en contacto con el soporte de Brightcove</a>. La autenticación de token puede demorar hasta tres días en configurarse.</p>
+
+      <p>El TTL (tiempo de vida) de los tokens se puede establecer en cualquier valor desde una hora hasta 365 días. El tiempo que establezca el TTL dependerá de los tipos de transmisiones en vivo que implemente. Sin embargo, tenga en cuenta que el TTL es una configuración para toda la cuenta y se aplicará a todas las transmisiones en vivo.</p>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="DVR_capability"><span translate="No">DVR</span> capacidad</h2>
+
+      <p>Las transmisiones en vivo de Brightcove <span translate="No">DVR</span> capacidad. Para utilizar esta capacidad, debe:</p>
+
+      <ul>
+        <li>Utilizar el <code translate="No">playback_url_dvr</code> URL para reproducción</li>
+        <li>Utilice un reproductor que tenga <a href="https://player.support.brightcove.com/general/playing-live-streams.html">DVR</span> capacidad</a></li>
+      </ul>
+
+      <p>La capacidad de DVR está limitada a 86.400 segundos.</p>
+
+      <p>La <span translate="No">DVR</span> La transmisión permanecerá disponible durante 7 días después de que se complete la transmisión en vivo.</p>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Endpoints_and_operations">Endpoints y operaciones</h2>
+
+      <p>Las principales operaciones para el <span translate="No">Live API</span> están creando y administrando transmisiones en vivo y generan clips VOD a partir de transmisiones en vivo. Estas operaciones se llevan a cabo a través de solicitudes a los siguientes puntos finales, que se explican con más detalle en el resto del documento.</p>
+
+      <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que Brightcove Live tiene su propia identificación de cuenta, separada de cualquier otra identificación de cuenta. En las operaciones de la API, <code translate="No">account_id</code> hace referencia al ID de tu cuenta <strong>Live</strong>.</aside>
+
+      <h3><a href="#Creating_and_managing_jobs">Creación y gestión de trabajos</a></h3>
+
+      <ul>
+        <li><a href="#Create_a_Live_Job">Crear un trabajo en vivo</a></li>
+        <li><a href="#List_Live_Jobs">Lista de trabajos en vivo</a></li>
+        <li><a href="#Get_Live_Job_Details">Obtenga detalles del trabajo en vivo</a></li>
+        <li><a href="#Manual_Ad_Cue_Point_Insertion">Inserción manual de un punto de inserción de anuncios</a></li>
+        <li><a href="#Stop_a_Live_Job">Detener un trabajo en vivo</a></li>
+      </ul>
+
+      <h3><a href="#Creating_clips">Creando clips</a></h3>
+
+      <ul>
+        <li><a href="#Create_VOD_Clip">Crear clip VOD</a></li>
+      </ul>
+
+      <h3><a href="#Managing_SSAI">Manejo de SSAI</a></h3>
+
+      <ul>
+        <li><a href="#Get_Account_Ad_Configurations">Obtener configuraciones de anuncios de la cuenta</a></li>
+        <li><a href="#Create_Ad_Configuration">Crear configuración de anuncios</a></li>
+        <li><a href="#Get_Ad_Configuration">Obtener configuración de anuncios</a></li>
+        <li><a href="#Update_Ad_Configuration">Actualizar la configuración de anuncios</a></li>
+        <li><a href="#Get_Slate_Media_Source_Assets">Obtenga activos de origen de medios de pizarra</a></li>
+        <li><a href="#Ingest_Slate_Media_Source_Asset">Ingestión de activos de origen de medios de pizarra</a></li>
+        <li><a href="#Delete_Slate_Media_Source_Asset">Eliminar recurso de origen de medios de pizarra</a></li>
+      </ul>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Creating_and_managing_jobs">Creación y gestión de trabajos</h2>
+
+      <p>Estas operaciones le permiten crear un trabajo en vivo, obtener sus detalles y detenerlo. También hay un punto final para crear un punto de referencia inmediato para una pausa publicitaria.</p>
+
+      <h3 id="Create_a_Live_Job">Crear un trabajo en vivo</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">POST</span> https://api.bcovlive.io/v1/jobs</code></pre>
+
+      <p>Este punto final se utiliza para crear transmisiones en vivo a través de un <code translate="No">POST </code> pedido. Además de especificar las propiedades de la transmisión en vivo, la solicitud también puede especificar los clips de VOD que se generarán a partir de la transmisión en vivo (esto también se puede hacer más tarde a través de la <a href="#vod">punto final</a>). Los detalles de los campos que se pueden incluir en el cuerpo de la solicitud se dan en el <a href="/live-api/references/reference.html#operation/CreateALiveJob">Referencia de API</a>.</p>
+
+      <section class="bcls-subsection">
+        <h4 id="input_protocol">Protocolo de entrada</h4>
+
+        <p>Brightcove Live admite varios protocolos de entrada. Utilizar el <code translate="No">protocol</code> en el cuerpo de la solicitud cuando crea el trabajo para especificar el que utilizará. Los valores admitidos son:</p>
+
+        <ul>
+          <li><code translate="No">rtmp</code>(el valor por defecto)</li>
+          <li><code translate="No">rtp</code></li>
+          <li><code translate="No">rtp-fec</code></li>
+          <li><code translate="No">srt</code></li>
+        </ul>
+
+        <p>El protocolo RTMP es para entregar un flujo en formato FLV. Los otros protocolos son para entregar MPEG2-TS.</p>
+
+        <p>Si utiliza <code translate="No">rtp</code> , <code translate="No">rtp-fec</code> o <code translate="No">srt</code> , también debe especificar un <code translate="No">cidr_whitelist</code> (ver <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">itinerario entre recesos</a>).</p>
+
+        <p>Si lo utiliza <code translate="No">rtmp</code>, puede especificar un <code translate="No">ip_whitelist</code> para la entrada, pero esto no es obligatorio.</p>
+
+        <p>Cuerpo de solicitud de ejemplo para trabajo RTP + FEC:</p>
+
+<pre class="line-numbers">
+<code class="language-json" translate="No">{
+    "live_stream":true,
+    "region":"us-west-2",
+    "reconnect_time":300,
+    "outputs":[
+      {
+        "label": "hls720p",
+        "live_stream": true,
+        "height": 720,
+        "video_bitrate": 800,
+        "segment_seconds": 6,
+        "keyframe_interval": 90
+      }
+    ],
+    "protocol": "rtp-fec",
+    "cidr_whitelist": ["127.0.0.1/32"]
+}</code></pre>
+      </section>
+
+      <p>La <a href="/live-api/getting-started/quick-start-create-live-stream-using-brightcove-live-api.html"> <span translate="No">Live API</span> Inicio rápido</a> lo guía a través de la creación de un trabajo de transmisión en vivo y la configuración de Brightcove Player para reproducirlo.</p>
+
+      <h3 id="List_Live_Jobs">Lista de trabajos en vivo</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">GET</span> https://api.bcovlive.io/v1/jobs</code></pre>
+
+      <p>Este punto final se utiliza para enumerar sus transmisiones en vivo a través de un <code translate="No">GET </code> pedido. El punto final admite la paginación, la clasificación y el filtrado de búsqueda. Los detalles de los campos que se pueden incluir en el cuerpo de la solicitud se dan en el <a href="/live-api/references/reference.html#/Live_Jobs/ListLiveJobs">Referencia de API</a> y alguna información adicional se puede encontrar en <a href="/live-api/guides/getting-list-live-or-vod-jobs.html">Obtener una lista de trabajos en vivo o VOD</a>.</p>
+
+      <h3 id="Get_Live_Job_Details">Obtenga detalles del trabajo en vivo</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">GET</span> https://api.bcovlive.io/v1/jobs/<span class="bcls-input" translate="No">:jobId</span></code></pre>
+
+      <p>Este punto final le permite obtener información detallada sobre una transmisión en vivo, que también se muestra cuando crea originalmente el trabajo. Ver el <a href="/live-api/references/reference.html#/Live_Jobs/GetLiveJobDetails">Referencia de API</a> para obtener detalles de los campos de respuesta.</p>
+
+      <h3 id="Manual_Ad_Cue_Point_Insertion">Inserción manual de un punto de inserción de anuncios</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">POST</span> https://api.bcovlive.io/v1/jobs/<span class="bcls-input" translate="No">:jobId</span>/cuepoint</code></pre>
+
+      <p>Normalmente, su codificador enviará puntos de referencia para pausas publicitarias, pero también puede crear una pausa publicitaria inmediata enviando una solicitud a este punto final. Ver el <a href="/live-api/references/reference.html#/Live_Jobs/ManualAdCuePointInsertion">Referencia de API</a> para detalles.</p>
+
+      <p>Tenga en cuenta que un <code translate="No">timecode</code> en la forma <code translate="No">DD:HH:MM:SS</code> es necesario para el punto de referencia.</p>
+
+      <h3 id="Stop_a_Live_Job">Detener un trabajo en vivo</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">PUT</span> https://api.bcovlive.io/v1/jobs/<span class="bcls-input" translate="No">:jobId</span>/cancel</code></pre>
+
+      <p>Utilice este punto final para detener una transmisión en vivo de inmediato. Una vez cancelada, no se puede reiniciar una transmisión en vivo. Ver el <a href="/live-api/references/reference.html#/Live_Jobs/CancelLiveJob">Referencia de API</a> para detalles.</p>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Creating_clips">Creando clips</h2>
+
+      <p>Puede crear clips de video a pedido a partir de una transmisión en vivo y almacenarlos en una cuenta de Video Cloud, o enviarlos al depósito S3 o la dirección FTP. Puede definir los clips cuando crea la transmisión en vivo o crearlos más tarde utilizando el punto final que se describe a continuación. También vea el <a href="/live-api/guides/live-api-creating-vod-clips.html">Crear clips</a> guía.</p>
+
+      <h3 id="Create_VOD_Clip">Crear clip VOD</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">POST</span> https://api.bcovlive.io/v1/vods</code></pre>
+
+      <p>Los puntos de inicio y finalización de los clips se pueden definir en términos de compensaciones desde el inicio de la transmisión o marcas de tiempo de UNIX. Los detalles de los campos del cuerpo de la solicitud se pueden encontrar en el <a href="/live-api/references/reference.html#/Clips/CreateVodClip">Referencia de API</a>.</p>
+
+      <aside class="bcls-aside bcls-aside--information">Tenga en cuenta que se pueden crear clips de transmisiones en vivo para <strong>hasta 7 dias</strong> una vez finalizado el evento.</aside>
+
+      <h3>Obtener una lista de trabajos VOD (clip)</h3>
+
+      <p>Para obtener una lista de sus trabajos de VOD para clips, consulte <a href="/live-api/guides/getting-list-live-or-vod-jobs.html">Obtener una lista de trabajos en vivo o VOD</a> y el <a href="/live-api/references/reference.html#/Clips/ListVodClips">Referencia de API</a>.</p>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Managing_SSAI">Gerente <span translate="No">SSAI</span></h2>
+
+      <p>Uso de la inserción de anuncios del lado del servidor ( <span translate="No">SSAI</span>), puede insertar tantas pausas publicitarias como desee en su transmisión en vivo. También puede ingerir activos de pizarra (clips VOD) para llenar cualquier tiempo publicitario no utilizado con un mensaje de respuesta o lo que desee.</p>
+      <aside class="bcls-aside bcls-aside--information">Actualmente, un <strong>SRT + SSAI</strong> La configuración no es compatible con Brightcove Live. Sin embargo, es posible insertar SSAI en una secuencia SRT con <strong>SCTE-35</strong> marcadores enviados desde el codificador. Para aprender a agregar <strong>SCTE-35</strong> marcadores, revise la documentación de su codificador.</aside>
+      <p>Más detalles de la configuración <span translate="No">SSAI</span> puede encontrarse en <a href="/live-api/ssai/live-api-server-side-ad-insertion-ssai.html">Inserción de anuncios en el servidor con Brightcove <span translate="No">Live API</span> </a> y el <a href="/live-api/references/reference.html#api-SSAI">Referencia de API</a>.</p>
+
+      <h3 id="Get_Account_Ad_Configurations">Obtener configuraciones de anuncios de la cuenta</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">GET</span> https://api.bcovlive.io/v1/ssai/applications/<span class="bcls-input" translate="No">:account_id</span></code></pre>
+
+      <p>Este punto final le permite obtener todas las configuraciones de anuncios que se han configurado para una cuenta. Los detalles de los campos de respuesta se pueden encontrar en el <a href="/live-api/references/reference.html#api-SSAI-Get_Account_Ad_Configurations">Referencia de API</a>.</p>
+
+      <h3 id="Create_Ad_Configuration">Crear configuración de anuncios</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">POST</span> https://api.bcovlive.io/v1/ssai/application</code></pre>
+
+      <p>Cree una configuración de anuncios que defina cómo se recuperarán los anuncios para <span translate="No">SSAI</span>. Los detalles de los campos del cuerpo de la solicitud se pueden encontrar en el <a href="/live-api/references/reference.html#/SSAI/CreateAdConfiguration">Referencia de API.</a></p>
+
+      <h3 id="Get_Ad_Configuration">Obtener configuración de anuncios</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">GET</span> https://api.bcovlive.io/v1/ssai/application/<span class="bcls-input" translate="No">:application_id</span></code></pre>
+
+      <p>Utilice este punto final para obtener los detalles de una configuración de anuncios que ha creado. Los detalles de los campos de respuesta se pueden encontrar en el <a href="/live-api/references/reference.html#/SSAI/GetuserAdConfigurations">Referencia de API</a>.</p>
+
+      <h3 id="Update_Ad_Configuration">Actualizar la configuración de anuncios</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">PUT</span> https://api.bcovlive.io/v1/ssai/application/account/<span class="bcls-input" translate="No">:application_id</span></code></pre>
+
+      <p>Actualice los detalles de la configuración de un anuncio. Los detalles de los campos del cuerpo de la solicitud se pueden encontrar en el <a href="/live-api/references/reference.html#/SSAI/UpdateAdConfiguration">Referencia de API</a>.</p>
+
+      <h3 id="Get_Slate_Media_Source_Assets">Obtenga activos de origen de medios de pizarra</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">GET</span> https://api.bcovlive.io/v1/ssai/slates/<span class="bcls-input" translate="No">:ACCOUNT_ID</span></code></pre>
+
+      <p>Obtenga los activos de medios de pizarra que se han definido para una cuenta. Los activos de medios de pizarra se utilizan para completar el tiempo de pausa publicitaria que no se llena con anuncios. Los detalles de los campos de respuesta se pueden encontrar en el <a href="/live-api/references/reference.html#/SSAI/GetUserSlateMediaSourceAssets">Referencia de API</a>.</p>
+
+      <h3 id="Ingest_Slate_Media_Source_Asset">Ingestión de activos de origen de medios de pizarra</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">POST</span> https://api.bcovlive.io/v1/ssai/slates</code></pre>
+
+      <p>Agregue un recurso multimedia para pizarras para llenar el tiempo de pausa publicitaria sin completar. Los detalles de los campos del cuerpo de la solicitud se pueden encontrar en el <a href="/live-api/references/reference.html#/SSAI/IngestSlateMediaSourceAsset">Referencia de API</a>.</p>
+
+      <h3 id="Delete_Slate_Media_Source_Asset">Eliminar recurso de origen de medios de pizarra</h3>
+
+      <pre><code translate="No"><span class="bcls-highlight">DELETE</span> https://api.bcovlive.io/v1/ssai/slates/<span class="bcls-input" translate="No">:SLATE_MSA_ID</span></code></pre>
+
+      <p>Elimina un recurso multimedia de lista.</p>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Static_entry_points">Puntos de entrada estáticos</h2>
+
+      <p>La función Static Entry Points (SEP) permite un trabajo en vivo de larga duración que se puede activar y desactivar mientras se mantienen las URL de los puntos de entrada y las URL de reproducción estáticas y reutilizables. Esta característica permite a los clientes configurar su codificador en sus instalaciones o en el campo y permite al cliente crear su propia lógica de programación para canales o programas en vivo. Ver <a href="/live-api/guides/live-api-static-entry-points.html">Puntos de entrada estáticos</a> para detalles.</p>
+
+      <p>También hay un programador que le permite programar la activación y/o desactivación de trabajos SEP. Ver <a href="/live-api/guides/live-scheduler.html">Descripción general: Programador en vivo</a>.</p>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Captions">Subtítulos</h2>
+
+      <p>Si los subtítulos están dentro de la señal de entrada h264 (señalados correctamente en el paquete de datos de usuario), se pasan a las salidas h264.</p>
+
+      <p>Si está utilizando un codificador en vivo Elemental de transmisión, puede obtener subtítulos de SDI (EIA-608 / CEA-608) u otras fuentes (SCTE-20, SCC, Teletexto, DVB-Sub, Ancillary, ARIB, TTML, SCTE-27, STL, SRT, SMI) y colóquelos en la transmisión h264 que nos envía. Otros codificadores de grado de transmisión probablemente puedan hacer lo mismo, pero no los hemos probado formalmente.</p>
+
+      <aside class="bcls-aside bcls-aside--information">Como limitación actual, Safari mostrará los controles CC para transmisiones en vivo, incluso cuando no haya subtítulos para mostrar.</aside>
+
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Insert_ID3_timed_metadata">Insertar metadatos temporizados ID3</h2>
+
+      <p>Esta información se ha movido a <a href="/live-api/guides/live-api-insert-id3-timed-metadata.html">Insertar metadatos cronometrados ID3</a>.</p>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Limitations">Limitaciones</h2>
+
+      <ul>
+        <li>
+          Para que los trabajos en vivo creados con la API aparezcan y no se puedan utilizar en el módulo <a href="https://live.support.brightcove.com/live-module/creating-and-managing-live-events-using-live-module.html">activo</a>, debe incluir el <code translate="No">videocloud</code> objeto en el cuerpo de la solicitud al crear el trabajo.
+          <p>Por ejemplo:</p>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+  "live_stream": true,
+  "region": "eu-central-1",
+  "reconnect_time": 1800,
+  "live_sliding_window_duration_ms": 0,
+  "outputs": [
+    { "label": "hls720p", "live_stream": true, "width": 1280, "height": 720, "video_codec": "h264", "h264_profile": "high", "video_bitrate": 2100, "segment_seconds": 4, "keyframe_interval": 60 }
+    ,
+    { "label": "hls540p", "live_stream": true, "width": 960, "height": 540, "video_codec": "h264", "h264_profile": "main", "video_bitrate": 1500, "segment_seconds": 4, "keyframe_interval": 60 }
+    ,
+    { "label": "hls360p", "live_stream": true, "width": 640, "height": 360, "video_codec": "h264", "h264_profile": "main", "video_bitrate": 800, "segment_seconds": 4, "keyframe_interval": 60 }
+  ],
+  "<span class="bcls-highlight">videocloud</span>": {
+    "video":
+      { "name": "live event UI", "description": "live event UI", "long_description": "", "tags": [], "reference_id": "", "state": "ACTIVE" }
+    }
+  }</code></pre>
+        </li>
+        <li>La conexión inicial del codificador proporciona la información de ancho de banda que se creará con la lista de reproducción en vivo. Si la conexión inicial es baja, incluso si la configuración del trabajo tuvo un alto rendimiento, la lista de reproducción seguirá manteniendo la misma información en la lista de reproducción hasta que se haga lo siguiente:
+          <ul>
+            <li>El codificador se reinicia</li>
+            <li>Es posible que también deba borrarse la caché de CDN</li>
+          </ul>
+        </li>
+        <li>Actualmente, la velocidad de fotogramas para los flujos de entrada está limitada a 30 FPS. Si está interesado en utilizar una velocidad de fotogramas más alta, comuníquese con Soporte.</li>
+        <li>De forma predeterminada, la resolución del flujo de entrada está limitada a 1080p.</li>
+        <li>Al desconectarse y volver a conectarse, la configuración de la transmisión debe permanecer igual. Cualquier cambio en la cantidad de canales de audio, resoluciones o configuraciones de códec dará como resultado un comportamiento impredecible.</li>
+        <li>Aunque puede agregar DASH y MP4 para fuentes remotas para videos de Video Cloud, Live actualmente admite <strong translate="No">HLS</strong> solo.</li>
+        <li>Solo el audio AAC es compatible con las transmisiones de entrada.</li>
+        <li>Un máximo de 5 activos <strong>esperando, sin comenzar</strong> Se permiten trabajos en cualquier momento.
+          <p>Limitaciones adicionales en trabajos concurrentes:</p>
+
+          <ul>
+            <li>El número de <code translate="No">channel</code> (24x7) trabajos está limitado a 0 o un número bajo por región (dependiendo del tipo de cuenta).</li>
+            <li>El número de concurrentemente <strong>corriendo</strong> <code translate="No">event</code> Los puestos de trabajo están limitados por región, generalmente a 100.</li>
+            <li>El número de concurrentemente <strong>esperando para conectarse</strong> <code translate="No">event</code> Los trabajos se limitan a 5.</li>
+            <li>El número de puestos de trabajo SEP por región está limitado a 3 o 10 (consulte <a href="#Support_aws_regions">Regiones de AWS admitidas</a>).</li>
+          </ul>
+
+          <p>El equipo de soporte puede ajustar cualquiera de estos límites a nivel de cuenta. Comuníquese con su Gerente de Éxito del Cliente si necesita capacidad adicional.</p>
+        </li>
+        <li>La dirección "RTMP" devuelta como <code translate="No">stream_url</code> for Live jobs es una transmisión en vivo HD de Akamai, no una transmisión FMS RTMP heredada; no es compatible con versiones anteriores de Internet Explorer.</li>
+        <li>Las transmisiones en vivo se entregan a través de HTTPS, y si su cuenta de Brightcove no está habilitada para HTTPS, el reproductor de Brightcove no podrá cargar la transmisión en vivo. Si su cuenta no tiene habilitada la compatibilidad con HTTPS para el servicio de origen, <a href="https://supportportal.brightcove.com">Póngase en contacto con el soporte de Brightcove</a> para habilitar la compatibilidad con HTTPS para el servicio de origen a fin de evitar problemas de reproducción.</li>
+        <li>Cuando se utiliza una interpretación transmuxed dentro de una salida HLS de tasa de bits múltiple, <code translate="No">segment_size</code> se puede incluir cuando se transmuxing, pero debe configurarse de modo que sea un múltiplo de la <code translate="No">GOP</code> tamaño del flujo de entrada. Entonces, si la entrada es de 30 fps con fotogramas clave cada 60 fotogramas, la <code translate="No">GOP</code> el tamaño es de 2 segundos y el tamaño del segmento debe ser múltiplo de 2. Si no hace esto, los segmentos de la corriente serán de diferentes tamaños.
+          <p>También, <code translate="No">keyframe_interval</code> debería <strong>no</strong> ser especificado en cualquier salida.</p>
+        </li>
+        <li>Cuando utilice su propia ubicación de origen FTP o S3, su CDN debe configurarse para volver a su ubicación de origen. El sistema Brightcove Live no validará las ubicaciones de origen de las CDN proporcionadas en la solicitud de trabajo.</li>
+      </ul>
+    </section>
+</article>
+<!-- <div class="col-sm-2 right-side-bar" style="display: inline-block;max-width: 20%;"> -->
+  
+  <nav class="right-side-nav" id="right_side_nav">
+    <h6 class="toc">Contenido de la página</h6>
+    <ul id="in_page_nav" class="list-none"></ul>
+  </nav>
+  
+<!-- </div> -->
+</div>
+</div>
+</div>
+<div class="page-content" style="background-color: rgb(1, 5, 14);">
+  <div class="container" style="width: 50%;">
+    <footer class="py-5">
+      <div class="row">
+        <div class="col-6 col-md">
+          <h5 class="h5-text">Soporte de Brightcove</h5>
+          <ul class="list-unstyled text-small" style="color: white ;">
+            <li><a class="a-text" href="https://status.brightcove.com">Estado del sistema</a></li>
+            <li><a class="a-text" href="https://supportportal.brightcove.com">Contactar con el soporte</a></li>
+            <li><a class="a-text" href="https://support.brightcove.com/search.html">Buscar toda la documentación</a></li>
+          </ul>
+        </div>
+      
+        <div class="col-6 col-md">
+          <h5 class="h5-text">Capacitación</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="a-text" href="https://studio.support.brightcove.com/get-started/training/online-training-courses.html">Cursos online</a></li>
+            <li><a class="a-text" href="https://studio.support.brightcove.com/get-started/training/register-training.html">Regístrese para un curso</a></li>
+            <li><a class="a-text" href="https://academy.brightcove.com/">Academia Brightcove</a></li>
+          </ul>
+        </div>
+      
+        <div class="col-6 col-md">
+          <h5 class="h5-text">Brightcove</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="a-text" href="https://www.brightcove.com">Brightcove.com</a></li>
+            <li><a class="a-text" href="https://community.brightcove.com/s/">Foro de la comunidad de Bright Spot</a></li>
+            <li><a class="a-text" href="https://support.brightcove.com/product-updates.html">Notas de lanzamiento del producto</a></li>
+            <li><a class="a-text" href="https://support.brightcove.com/doc-updates.html">Actualizaciones de documentación</a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>© Brightcove Inc. Todos los derechos reservados.</p>
+      <a class="a-text" href="https://www.brightcove.com/en/legal/privacy">Privacidad</a> <a class="a-text" href="https://www.brightcove.com/en/terms-and-conditions">Términos y condiciones</a>
+
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" target="_blank" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a></li>
+
+        <li class="ms-3"><a href="https://twitter.com/brightcove" title="Gorjeo" target="_blank" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a></li>
+
+        <li class="ms-3"><a href="https://www.facebook.com/Brightcove" title="Facebook" target="_blank" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a></li>
+      </ul>
+      </div>
+    </footer>
+  </div>
+</div>
+
+
+<script translate="no">
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documentation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder,
+    styling: {
+      components: {
+        
+        input: {
+          container: {
+          backgroundColor: 'white',
+          }
+        
+        }
+      }
+    },
+    maxSuggestions: 5, // Maximum number of suggestions to show
+      attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+
+  
+
+
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+    window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+  
+  </script>
+  
+  <!-- Javascript -->          
+  <script src="/assets/s-site-assets-template-stylesheets/plugins/popper.min.js"></script>
+  <script src="/assets/s-site-assets-template-stylesheets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+
+
+  <!-- Page Specific JS -->
+  <script src="/assets/s-site-assets-template-stylesheets/plugins/smoothscroll.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script> -->
+  <!-- <script src="/assets/s-site-assets-template-stylesheets/js/highlight-custom.js"></script>  -->
+  <script src="/assets/s-site-assets-template-stylesheets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
+  <script src="/assets/s-site-assets-template-stylesheets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+  <script src="/assets/s-site-assets-template-stylesheets/js/docs.js"></script> 
+
+  <!-- original footer components -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+  <script src="/assets/s-site-assets-scripts/https-fix.js"></script>
+  <script src="/assets/s-site-assets-scripts/setDate.js"></script>
+  <script src="/assets/s-site-assets-scripts/selector.js"></script>
+  
+  <script src="/assets/s-site-assets-scripts/prism.js"></script>
+  <script src="/assets/s-site-assets-scripts/prism-normalize.js"></script>
+  
+  <script src="/assets/s-site-assets-scripts/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/learning-paths/learning-paths.js"></script>
+  <!-- <script src="/assets/s-site-assets-scripts/site.js"></script> -->
+  <script src="/assets/s-site-assets-scripts/tabs.js"></script>
+  
+  <script src="/assets/s-site-assets-scripts/toc-new-template.js"></script>
+  
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="/assets/s-site-assets-scripts/bcls-utils.js"></script>
+  <script src="/assets/s-site-assets-scripts/local-link-fix.js"></script>
+  <script src="/assets/s-site-assets-scripts/sajari-reindex.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/s-site-assets-scripts/sajari-search-foot.js"></script>
+  
+  <script translate="no">
+    feather.replace()
+  </script>
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <script src="/assets/s-site-assets-scripts/in-app.js"></script>
+  <style translate="no">
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+  </body>
+</html> 
